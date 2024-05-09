@@ -10,6 +10,6 @@ class RegistrasiRelawan extends Model
     protected $table = 'registrasi_relawan';
     protected $primaryKey = 'IDRegistrasiRelawan';
     protected $fillable = [
-        'IDDonaturRelawan', 'IDKegiatanRelawan', 'IDStatus', 'AlasanRegistrasiRelawan',
+        'IDDonaturRelawan', 'IDKegiatanRelawan','StatusRegistrasiRelawan', 'AlasanRegistrasiRelawan'
     ];
 }

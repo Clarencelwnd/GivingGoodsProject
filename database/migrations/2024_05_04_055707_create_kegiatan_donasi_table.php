@@ -11,9 +11,7 @@ return new class extends Migration
         Schema::create('kegiatan_donasi', function (Blueprint $table) {
             $table->bigIncrements('IDKegiatanDonasi');
             $table->unsignedBigInteger('IDPantiSosial');
-            $table->unsignedBigInteger('IDStatus');
             $table->foreign('IDPantiSosial')->references('IDPantiSosial')->on('panti_sosial');
-            $table->foreign('IDStatus')->references('IDStatus')->on('status_kegiatan_atau_penerimaan');
             $table->string('GambarKegiatanDonasi', 255);
             $table->string('NamaKegiatanDonasi', 255);
             $table->string('DeskripsiKegiatanDonasi', 255);
@@ -21,6 +19,8 @@ return new class extends Migration
             $table->date('TanggalKegiatanDonasiSelesai');
             $table->string('LokasiKegiatanDonasi', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
+            $table->string('StatusKegiatanDonasi', 20);
+            $table->string('JenisDonasiDibutuhkan', 255);
             $table->timestamps();
         });
     }

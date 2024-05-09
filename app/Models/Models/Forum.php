@@ -10,7 +10,7 @@ class Forum extends Model
     protected $table = 'forum';
     protected $primaryKey = 'IDForum';
     protected $fillable = [
-        'IDPembuatForumDonatur', 'IDPembuatForumPantiSosial', 'JudulForum', 'DeskripsiForum', 'TanggalBuatForum',
+        'IDDonaturRelawanPembuatForum', 'IDPantiSosialPembuatForum', 'JudulForum', 'DeskripsiForum', 'TanggalBuatForum',
     ];
 }
 

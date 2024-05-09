@@ -10,6 +10,6 @@ class KomentarForum extends Model
     protected $table = 'komentar_forum';
     protected $primaryKey = 'IDKomentarForum';
     protected $fillable = [
-        'IDPengomentarDonatur', 'IDPengomentarPantiSosial', 'KomentarForum', 'TanggalKomentarForum',
+        'IDDonaturRelawanPengomentarForum', 'IDPantiSosialPengomentarForum', 'KomentarForum', 'TanggalKomentarForum',
     ];
 }

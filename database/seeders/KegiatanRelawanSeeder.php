@@ -12,8 +12,6 @@ class KegiatanRelawanSeeder extends Seeder
         DB::table('kegiatan_relawan')->insert([
             [
                 'IDPantiSosial' => 1,
-                'IDJenisKegiatanRelawan' => 1,
-                'IDStatus' => 1,
                 'GambarKegiatanRelawan' => 'gambar1.jpg',
                 'NamaKegiatanRelawan' => 'Bersih-bersih Lingkungan',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan membersihkan lingkungan sekitar untuk menjaga kebersihan dan kesehatan bersama.',
@@ -28,11 +26,11 @@ class KegiatanRelawanSeeder extends Seeder
                 'KriteriaRelawan' => 'Punya semangat dan kepedulian tinggi terhadap lingkungan.',
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa alat pembersih sendiri.',
                 'KontakKegiatanRelawan' => '081234567890',
+                'JenisKegiatanRelawan' => 'Bencana alam',
+                'StatusKegiatanRelawan' => 'Open',
             ],
             [
                 'IDPantiSosial' => 2,
-                'IDJenisKegiatanRelawan' => 2,
-                'IDStatus' => 1,
                 'GambarKegiatanRelawan' => 'gambar2.jpg',
                 'NamaKegiatanRelawan' => 'Mengajar Anak-anak Miskin',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan pengajaran dasar untuk anak-anak miskin di wilayah sekitar.',
@@ -47,11 +45,11 @@ class KegiatanRelawanSeeder extends Seeder
                 'KriteriaRelawan' => 'Punya kemampuan mengajar dan peduli terhadap pendidikan anak-anak.',
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa materi ajaran sendiri.',
                 'KontakKegiatanRelawan' => '081234567891',
+                'JenisKegiatanRelawan' => 'Mengajar',
+                'StatusKegiatanRelawan' => 'On Going',
             ],
             [
                 'IDPantiSosial' => 3,
-                'IDJenisKegiatanRelawan' => 3,
-                'IDStatus' => 2,
                 'GambarKegiatanRelawan' => 'gambar3.jpg',
                 'NamaKegiatanRelawan' => 'Pengobatan Gratis',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan memberikan pelayanan pengobatan gratis kepada masyarakat yang membutuhkan.',
@@ -66,6 +64,9 @@ class KegiatanRelawanSeeder extends Seeder
                 'KriteriaRelawan' => 'Punya keahlian dalam bidang kesehatan.',
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa peralatan medis dasar.',
                 'KontakKegiatanRelawan' => '081234567892',
+                'JenisKegiatanRelawan' => 'Pelestarian Lingkungan',
+                'StatusKegiatanRelawan' => 'Closed',
+
             ],
         ]);
     }

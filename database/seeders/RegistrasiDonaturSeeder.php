@@ -13,7 +13,8 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 1,
                 'IDKegiatanDonasi' => 1,
-                'IDStatus' => 1,
+                'StatusKegiatanRelawan' => 'Open',
+                'JenisDonasiDidonasikan' => 'Peralatan Sekolah',
                 'DeskripsiBarangDonasi' => 'Buku pelajaran',
                 'TanggalDonasi' => '2024-05-15',
                 'JamDonasi' => '09:30:00',
@@ -21,7 +22,8 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 2,
-                'IDStatus' => 1,
+                'StatusKegiatanRelawan' => 'On Going',
+                'JenisDonasiDidonasikan' => 'Pakaian',
                 'DeskripsiBarangDonasi' => 'Baju layak pakai',
                 'TanggalDonasi' => '2024-06-10',
                 'JamDonasi' => '11:45:00',
@@ -29,7 +31,8 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 3,
                 'IDKegiatanDonasi' => 3,
-                'IDStatus' => 2,
+                'StatusKegiatanRelawan' => 'Closed',
+                'JenisDonasiDidonasikan' => 'Mainan',
                 'DeskripsiBarangDonasi' => 'Mainan anak',
                 'TanggalDonasi' => '2024-07-20',
                 'JamDonasi' => '14:20:00',

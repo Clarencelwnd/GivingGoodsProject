@@ -11,11 +11,7 @@ return new class extends Migration
         Schema::create('kegiatan_relawan', function (Blueprint $table) {
             $table->bigIncrements('IDKegiatanRelawan');
             $table->unsignedBigInteger('IDPantiSosial');
-            $table->unsignedBigInteger('IDJenisKegiatanRelawan');
-            $table->unsignedBigInteger('IDStatus');
             $table->foreign('IDPantiSosial')->references('IDPantiSosial')->on('panti_sosial');
-            $table->foreign('IDJenisKegiatanRelawan')->references('IDJenisKegiatanRelawan')->on('jenis_kegiatan_relawan');
-            $table->foreign('IDStatus')->references('IDStatus')->on('status_kegiatan_atau_penerimaan');
             $table->string('GambarKegiatanRelawan', 255);
             $table->string('NamaKegiatanRelawan', 255);
             $table->string('DeskripsiKegiatanRelawan', 255);
@@ -30,6 +26,8 @@ return new class extends Migration
             $table->string('KriteriaRelawan', 255);
             $table->string('SyaratDanInstruksiKegiatanRelawan', 255);
             $table->string('KontakKegiatanRelawan', 255);
+            $table->string('JenisKegiatanRelawan', 255);
+            $table->string('StatusKegiatanRelawan', 255);
             $table->timestamps();
         });
     }
