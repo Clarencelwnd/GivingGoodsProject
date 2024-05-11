@@ -33,7 +33,12 @@
                             <label for="email" id="email" class="email-text fw-normal lh-1">
                                 Masukkan email yang terdaftar. Kami akan mengirim kode verifikasi untuk atur ulang kata sandi.
                             </label>
-                            <input type="text" name="email" class="email-input">
+                            <input type="text" name="email" class="email-input @error('email') is-invalid @enderror">
+                            @error('email')
+                                <label class="error-msg invalid-feedback fw-normal lh-1">
+                                    {{$message}}
+                                </label>
+                            @enderror
                             <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
                                 Lanjut
                             </button>

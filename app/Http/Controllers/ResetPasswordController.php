@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Models\DonaturAtauRelawan;
 use App\Models\Models\PantiSosial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ResetPasswordController extends Controller
 {
@@ -13,7 +14,24 @@ class ResetPasswordController extends Controller
     }
 
     public function checking_email(Request $request){
-        $email = $request->email;
+        // validasiin emailnya wajib diisi, formatnya email
+        // buat error msg jg
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|email'
+        ],
+        [
+            'required' => 'Email wajib diisi.',
+            'email' => 'Masukkan email dengan format yang sesuai.'
+        ]);
+
+        // klu validasi gagal
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // ngambil data
+        $email = $request->input('email');
+
         // cari email di donatur/relawan
         $foundEmail = DonaturAtauRelawan::where('EmailDonaturRelawan', 'LIKE', "$email")->first();
         // klu ga ada, cari di panti sosial
