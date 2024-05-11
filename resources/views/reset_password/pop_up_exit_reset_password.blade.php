@@ -8,9 +8,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/new_password.css')}}">
+    <link rel="stylesheet" href="{{asset('css/pop_up_exit_reset_password.css')}}">
 </head>
 <body>
+    {{-- content  --}}
     <div class="row g-0">
         <div class="col-sm-6 d-none d-md-block">
             <img src="{{asset('storage/Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
@@ -38,17 +39,35 @@
                                 Ketik Ulang Kata Sandi Baru
                             </label>
                             <input type="text" name="confirm_password" class="password-input">
-                            <button type="button" class="btn px-4 me-md-2 fw-normal" id="btn-save">
+                            <button type="button" class="btn btn-new-password px-4 me-md-2 fw-normal" id="btn-save">
                                 Simpan
                             </button>
                         </form>
-                        <a href="{{route('exit_reset_password')}}" class="btn btn-block" id="btn-back">Kembali</a>
+                        <a href="#" class="btn btn-new-password btn-block" id="btn-back">Kembali</a>
                     </div>
                 </div>
 
                 <!-- Sudah punya akun? -->
                 <div class="d-flex bottom-txt">
                     <div id="copyright-txt">©️GivingGoods | 2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- overlay --}}
+    <div class="overlay">
+        <div class="modal modal-sheet position-fixed d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content rounded-3 shadow">
+                    <div class="modal-body p-4 text-center popup-text">
+                        <h5 class="mb-3 popup-title">Keluar dari Halaman Ini?</h5>
+                        <div class="mb-0 popup-desc lh-1">Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.</div>
+                    </div>
+                    <div class="modal-footer pb-3 border-top-0 d-flex justify-content-between">
+                        <button type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-exit">Keluar</button>
+                        <button onclick="window.location.href='{{route('new_password')}}'" type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-change">Lanjut ubah</button>
+                    </div>
                 </div>
             </div>
         </div>

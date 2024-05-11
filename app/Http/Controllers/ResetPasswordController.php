@@ -30,14 +30,16 @@ class ResetPasswordController extends Controller
         }
     }
 
-    // public function test(){
-    //     return view('resetpassword.pop_up_email');
-    // }
+    public function test(){
+        return view('reset_password/pop_up_email');
+    }
     public function input_otp(){
         return view('reset_password/input_otp');
     }
-
     public function new_password(){
         return view('reset_password/new_password');
+    }
+    public function exit_reset_password(){
+        return view('reset_password/pop_up_exit_reset_password');
     }
 }

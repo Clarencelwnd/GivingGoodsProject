@@ -8,132 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <style>
-        *{
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .img-fluid{
-            display: block;
-            height: 100vh;
-            width: 50vw;
-            border-top-left-radius: .25rem;
-            border-bottom-left-radius: .25rem;
-        }
-
-        .logo-img{
-            width: 74px;
-            height: 76px;
-        }
-
-        .header{
-            width: 100%;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: #00744C;
-            word-wrap: break-word;
-        }
-
-        .card{
-            width: 70%;
-            height: 100%;
-            margin: 0 auto;
-            padding-top: 5px;
-            background: #FDFFFE;
-            border: none;
-        }
-
-        .card-body{
-            width: 95%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            gap: 8px;
-            display: inline-flex;
-        }
-
-        .card-title{
-            color: #003A44;
-            font-size: 18px;
-            font-weight: 600;
-            word-wrap: break-word;
-        }
-
-        .otp-text{
-            color: #003A44;
-            text-align:justify;
-            font-size: 10px;
-            margin-bottom: 15px;
-        }
-
-        #kirim-ulang{
-            margin-bottom: 15px;
-        }
-
-        .otp-input{
-            background-color: #F0F0F0;
-            border: none;
-            border-radius: 5px;
-            width: 100%;
-            height: 40px;
-            margin-bottom: 15px;
-        }
-
-        .btn{
-            width: 100%;
-            border-radius:5px;
-            font-size: 13px;
-        }
-
-        #btn-next{
-            background: #00AF71;
-            color: #FDFFFE;
-        }
-
-        #btn-next:hover{
-            background: #009B65;
-            color: #FDFFFE;
-        }
-
-        #btn-back{
-            color: #007C92;
-            border: 1px solid #007C92;
-        }
-
-        #btn-back:hover{
-            background: #E6E7E6;
-            color: #007C92;
-        }
-
-        .bottom-txt{
-            width: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 10px;
-        }
-
-        #copyright-txt{
-            padding-top: 15px;
-            color: #009B65;
-            font-size: 10px;
-            font-weight: 500;
-            word-wrap: break-word;
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('css/input_otp.css')}}">
 </head>
 <body>
-    <div class="left row g-0">
+    <div class="row g-0">
         <div class="col-sm-6 d-none d-md-block">
             <img src="{{asset('storage/Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="right col-lg-6">
+        <div class="col-lg-6">
             <div class="card-body p-md-5 ">
                 <!-- HEADER -->
                 <div class="d-flex header">
@@ -155,7 +38,7 @@
                                 Verifikasi
                             </button>
                         </form>
-                        <a href="#" class="btn btn-block" id="btn-back">Kembali</a>
+                        <a href="{{route('reset_password')}}" class="btn btn-block" id="btn-back">Kembali</a>
                     </div>
                 </div>
 
