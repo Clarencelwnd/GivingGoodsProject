@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('panti_sosial', function (Blueprint $table) {
             $table->bigIncrements('IDPantiSosial');
+            $table->string('EmailPantiSosial', 255);
+            $table->string('PasswordPantiSosial', 255);
             $table->string('NamaPantiSosial', 255);
             $table->string('NomorRegistrasiPantiSosial', 255);
             $table->string('DokumenValiditasPantiSosial', 255);

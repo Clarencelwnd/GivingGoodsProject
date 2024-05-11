@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('EmailDonaturRelawan', 255);
             $table->string('PasswordDonaturRelawan', 255);
             $table->string('NamaDonaturRelawan', 255);
-            $table->date('TanggalLahirDoanturRelawan');
+            $table->date('TanggalLahirDonaturRelawan');
             $table->string('JenisKelaminDonaturRelawan', 10);
             $table->string('NomorTeleponDonaturRelawan', 15);
             $table->string('AlamatDonaturRelawan', 255);

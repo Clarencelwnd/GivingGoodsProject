@@ -27,7 +27,7 @@ class KegiatanRelawanSeeder extends Seeder
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa alat pembersih sendiri.',
                 'KontakKegiatanRelawan' => '081234567890',
                 'JenisKegiatanRelawan' => 'Bencana alam',
-                'StatusKegiatanRelawan' => 'Open',
+                'StatusKegiatanRelawan' => 'Akan berlangsung',
             ],
             [
                 'IDPantiSosial' => 2,
@@ -46,7 +46,7 @@ class KegiatanRelawanSeeder extends Seeder
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa materi ajaran sendiri.',
                 'KontakKegiatanRelawan' => '081234567891',
                 'JenisKegiatanRelawan' => 'Mengajar',
-                'StatusKegiatanRelawan' => 'On Going',
+                'StatusKegiatanRelawan' => 'Sedang berlangsung',
             ],
             [
                 'IDPantiSosial' => 3,
@@ -65,7 +65,7 @@ class KegiatanRelawanSeeder extends Seeder
                 'SyaratDanInstruksiKegiatanRelawan' => 'Membawa peralatan medis dasar.',
                 'KontakKegiatanRelawan' => '081234567892',
                 'JenisKegiatanRelawan' => 'Pelestarian Lingkungan',
-                'StatusKegiatanRelawan' => 'Closed',
+                'StatusKegiatanRelawan' => 'Selesai',
 
             ],
         ]);

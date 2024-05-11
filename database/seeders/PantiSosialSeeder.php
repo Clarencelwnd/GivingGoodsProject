@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class PantiSosialSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class PantiSosialSeeder extends Seeder
     {
         DB::table('panti_sosial')->insert([
             [
+                'EmailPantiSosial' => 'pansos1@example.com',
+                'PasswordPantiSosial' => Hash::make('password1'),
                 'NamaPantiSosial' => 'Panti Asuhan Budi Mulia',
                 'NomorRegistrasiPantiSosial' => '12345',
                 'DokumenValiditasPantiSosial' => 'doc123.pdf',
@@ -23,6 +26,8 @@ class PantiSosialSeeder extends Seeder
                 'LogoPantiSosial' => 'logo_panti.png',
             ],
             [
+                'EmailPantiSosial' => 'pansos2@example.com',
+                'PasswordPantiSosial' => Hash::make('password2'),
                 'NamaPantiSosial' => 'Panti Jompo Harapan Sejahtera',
                 'NomorRegistrasiPantiSosial' => '67890',
                 'DokumenValiditasPantiSosial' => 'doc678.pdf',
@@ -35,6 +40,8 @@ class PantiSosialSeeder extends Seeder
                 'LogoPantiSosial' => 'logo_panti_jompo.png',
             ],
             [
+                'EmailPantiSosial' => 'pansos3@example.com',
+                'PasswordPantiSosial' => Hash::make('password3'),
                 'NamaPantiSosial' => 'Rumah Singgah Nusa Indah',
                 'NomorRegistrasiPantiSosial' => '24680',
                 'DokumenValiditasPantiSosial' => 'doc246.pdf',

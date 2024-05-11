@@ -19,7 +19,7 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-05-17',
                 'LokasiKegiatanDonasi' => 'Jl. Merdeka No. 123, Kota ABC',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/123',
-                'StatusKegiatanDonasi' => 'Open',
+                'StatusKegiatanDonasi' => 'Akan berlangsung',
                 'JenisDonasiDibutuhkan' => 'Pakaian'
             ],
             [
@@ -31,7 +31,7 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-06-12',
                 'LokasiKegiatanDonasi' => 'Jl. Diponegoro No. 456, Kota XYZ',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/456',
-                'StatusKegiatanDonasi' => 'Closed',
+                'StatusKegiatanDonasi' => 'Sedang berlangsung',
                 'JenisDonasiDibutuhkan' => 'Perlengkapan sekolah'
             ],
             [
@@ -43,7 +43,7 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-07-22',
                 'LokasiKegiatanDonasi' => 'Jl. Sudirman No. 789, Kota DEF',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/789',
-                'StatusKegiatanDonasi' => 'On Going',
+                'StatusKegiatanDonasi' => 'Selesai',
                 'JenisDonasiDibutuhkan' => 'Mainan'
             ],
         ]);

@@ -13,19 +13,19 @@ class RegistrasiRelawanSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 1,
                 'IDKegiatanRelawan' => 1,
-                'StatusRegistrasiRelawan' => 'Terdaftar',
+                'StatusRegistrasiRelawan' => 'Menunggu konfirmasi',
                 'AlasanRegistrasiRelawan' => 'Saya ingin membantu sesama.',
             ],
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanRelawan' => 2,
-                'StatusRegistrasiRelawan' => 'Terdaftar',
+                'StatusRegistrasiRelawan' => 'Selesai',
                 'AlasanRegistrasiRelawan' => 'Saya ingin berbagi ilmu kepada anak-anak.',
             ],
             [
                 'IDDonaturRelawan' => 3,
                 'IDKegiatanRelawan' => 3,
-                'StatusRegistrasiRelawan' => 'Belum terdaftar',
+                'StatusRegistrasiRelawan' => 'Selesai',
                 'AlasanRegistrasiRelawan' => 'Saya ingin belajar menjadi relawan yang lebih baik.',
             ],
         ]);
