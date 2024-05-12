@@ -22,6 +22,12 @@ class AuthController extends Controller
             'password' => 'required | min:5 | max:12'
          ]);
 
+        $user = User::where('email', $request->email)->first();
+
+        if(!$user){
+            return back()->with('fail', '❌  Email belum terdaftar');
+        }
+
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)){
