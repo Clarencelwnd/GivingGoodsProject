@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -44,6 +45,12 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'LinkGoogleMapsDonaturRelawan' => 'https://maps.google.com/relawan1',
                 'FotoDonaturRelawan' => 'foto_relawan1.png',
             ],
+        ]);
+
+        User::create([
+            'name' => 'Donatur 1',
+            'email' => 'donatur1@example.com',
+            'password' => Hash::make('password1')
         ]);
     }
 }

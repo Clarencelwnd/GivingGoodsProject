@@ -29,26 +29,28 @@
                     <div class="card-body">
                         <h5 class="card-title">Akses Akun Anda</h5>
 
-                        <!-- EMAIL -->
-                        <!-- <div class= "mb-2">  -->
-                            <div data-mdb-input-init>
+                        <form action="{{ url('login') }}" method="POST">
+                            <!-- EMAIL -->
+                            <!-- <div class= "mb-2">  -->
+                            <div data-mdb-input-init class="email">
                                 <label class="form-label" for="email-input">Email</label>
                                 <input type="text" id="email-input" class="form-control form-control-md border-1 shadow-none" >
                             </div>
-                        <!-- </div> -->
-
-                        <div class="password">
-                            <!-- PASSWORD -->
-                            <!-- <div class="col-md-10 mb-0"> -->
-                                <div data-mdb-input-init>
-                                    <label class="form-label" for="password-input">Kata Sandi</label>
-                                    <input type="text" id="password-input" class="form-control form-control-md border-1 shadow-none " >
-                                </div>
                             <!-- </div> -->
 
-                            <!-- FORGOT PASSWORD -->
-                                <a href="#" id="forgot-password-btn">Lupa kata sandi?</a>
-                        </div>
+                            <div class="password">
+                                <!-- PASSWORD -->
+                                <!-- <div class="col-md-10 mb-0"> -->
+                                    <div data-mdb-input-init>
+                                        <label class="form-label" for="password-input">Kata Sandi</label>
+                                        <input type="text" id="password-input" class="form-control form-control-md border-1 shadow-none " >
+                                    </div>
+                                <!-- </div> -->
+
+                                <!-- FORGOT PASSWORD -->
+                                    <a href="#" id="forgot-password-btn">Lupa kata sandi?</a>
+                            </div>
+                        </form>
 
                         <a href="#" class="btn-next btn btn-block">Masuk Akun</a>
 
