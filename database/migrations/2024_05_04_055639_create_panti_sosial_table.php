@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('panti_sosial', function (Blueprint $table) {
             $table->bigIncrements('IDPantiSosial');
             $table->string('NamaPantiSosial', 255);
-            $table->string('NomorRegistrasiPantiSosial', 255);
+            $table->string('NomorRegistrasiPantiSosial', 255)->unique();;
             $table->string('DokumenValiditasPantiSosial', 255);
             $table->string('DeskripsiPantiSosial', 255);
             $table->string('NomorTeleponPantiSosial', 15);

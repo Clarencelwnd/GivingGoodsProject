@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('donatur_atau_relawan', function (Blueprint $table) {
             $table->bigIncrements('IDDonaturRelawan');
-            $table->string('EmailDonaturRelawan', 255);
+            $table->string('EmailDonaturRelawan', 255)->unique();;
             $table->string('PasswordDonaturRelawan', 255);
             $table->string('NamaDonaturRelawan', 255);
             $table->date('TanggalLahirDoanturRelawan');
