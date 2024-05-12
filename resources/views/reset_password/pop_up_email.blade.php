@@ -15,14 +15,14 @@
     {{-- content  --}}
     <div class="row g-0">
         <div class="col-sm-6 d-none d-md-block">
-            <img src="{{asset('storage/Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
+            <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
         <div class="col-lg-6">
             <div class="card-body p-md-5 ">
                 <!-- HEADER -->
                 <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('storage/Image/general/logo.png')}}" alt="logo">
+                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
                     <h3 class="mb-3">GivingGoods</h3>
                 </div>
 

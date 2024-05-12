@@ -13,14 +13,14 @@
 <body>
     <div class="row g-0">
         <div class="col-sm-6 d-none d-md-block">
-            <img src="{{asset('storage/Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
+            <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
         <div class="col-lg-6">
             <div class="card-body p-md-5 ">
                 <!-- HEADER -->
                 <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('storage/Image/general/logo.png')}}" alt="logo">
+                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
                     <h3 class="mb-3">GivingGoods</h3>
                 </div>
 
@@ -59,31 +59,6 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-        var timer = 30;
-        const kirimUlang = "Kirim ulang";
-        const url = document.getElementById('kirim').value;
-
-        function anchor(){
-            const anchor = document.createElement('a');
-            anchor.setAttribute("href", url);
-            anchor.textContent = kirimUlang;
-            anchor.className = "link-kirim-ulang";
-            document.getElementById('kirim-ulang').appendChild(anchor);
-        }
-
-        function countdown(){
-            document.getElementById('sec').innerHTML = timer;
-            timer--;
-            if(timer < 0){
-                clearInterval(getCountDown);
-                // anchor();
-                document.getElementById('kirim-ulang').innerHTML = "Tidak menerima kode?" + " ";
-                anchor();
-            }
-        }
-        var getCountDown = setInterval(countdown, 1000);
-        // anchor();
-    </script>
+    <script src="js/input_otp.js"></script>
 </body>
 </html>

@@ -13,14 +13,14 @@
 <body>
     <div class="row g-0">
         <div class="col-sm-6 d-none d-md-block">
-            <img src="{{asset('storage/Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
+            <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
         <div class="col-lg-6">
             <div class="card-body p-md-5 ">
                 <!-- HEADER -->
                 <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('storage/Image/general/logo.png')}}" alt="logo">
+                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
                     <h5 class="mb-1">GivingGoods</h5>
                 </div>
 
@@ -56,7 +56,7 @@
                         <a href="{{route('exit_reset_password')}}" class="btn btn-block" id="btn-back">Kembali</a>
                     </div>
                 </div>
-
+                
                 <!-- Sudah punya akun? -->
                 <div class="d-flex bottom-txt">
                     <div id="copyright-txt">©️GivingGoods | 2024</div>
