@@ -31,17 +31,16 @@
                         <form action="{{route('checking_otp')}}" class="text" method="POST">
                             @csrf
                             <input type="hidden" name="email" type="text" value="{{$email}}">
-                            <input type="hidden" name="otp" type="text" value="{{$otp}}">
+                            <input type="hidden" name="body" type="text" value="{{$rightOtp}}">
+                            <input type="hidden" name="send" type="boolean" value="false">
                             <input type="hidden" id="kirim" value="{{route('checking_otp')}}">
                             <label for="otp" id="otp" class="otp-text fw-normal lh-1">
                                 Masukkan kode OTP yang telah dikirim ke email Anda
                             </label>
-                            <input type="text" name="otp" class="otp-input @error('otp') is-invalid @enderror">
-                            @error('otp')
-                                <label class="error-msg invalid-feedback fw-normal lh-1">
-                                    {{$message}}
-                                </label>
-                            @enderror
+                            <label for="wrong_otp" id="wrong_otp" class="otp-text fw-normal lh-1">
+                                Mohon maaf, OTP yang Anda masukkan salah. Silakan coba lagi.
+                            </label>
+                            <input type="text" name="otp" class="otp-input">
                             <div class="otp-text fw-normal lh-1" id="kirim-ulang">Mohon tunggu dalam <span id="sec">30</span> detik untuk kirim ulang OTP</div>
                             <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
                                 Verifikasi

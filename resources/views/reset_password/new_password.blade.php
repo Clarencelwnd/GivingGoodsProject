@@ -33,11 +33,11 @@
                             <label for="password" id="password" class="password-text fw-normal lh-1">
                                 Kata Sandi Baru
                             </label>
-                            <input type="text" name="password" class="password-input">
-                            <label for="confirm_password" id="password" class="password-text fw-normal lh-1">
+                            <input type="password" name="password" class="password-input">
+                            <label for="password_confirmation" id="password" class="password-text fw-normal lh-1">
                                 Ketik Ulang Kata Sandi Baru
                             </label>
-                            <input type="text" name="confirm_password" class="password-input">
+                            <input type="password" name="password_confirmation" class="password-input">
                             <button type="button" class="btn px-4 me-md-2 fw-normal" id="btn-save">
                                 Simpan
                             </button>
