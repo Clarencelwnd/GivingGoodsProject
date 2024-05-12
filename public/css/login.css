@@ -12,6 +12,16 @@ top: 13px;
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+.alert-danger{
+    color: #CB3A31;
+    font-size: 12px;
+    font-weight: 600;
+    word-wrap: break-word;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+}
+
 .img-fluid{
     display: block;
     height: 100vh;
@@ -63,6 +73,7 @@ top: 13px;
     background: #F0F0F0;
     border-radius: 5px;
     font-size: 13px;
+    box-sizing: border-box;
 }
 
 .form-label{
@@ -70,6 +81,14 @@ top: 13px;
     font-size: 14px;
     font-weight: 500;
     word-wrap: break-word;
+}
+
+.form-group{
+    padding-bottom: 15px;
+}
+
+.text-danger{
+    font-size: 12px;
 }
 
 input[type=text]{
@@ -81,7 +100,7 @@ input[type=text]:focus{
 }
 
 .btn-next{
-    width: 100%;
+    width: 245%;
     background: #00AF71;
     border-radius: 5px;
     color: #FDFFFE;

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -13,34 +16,30 @@ class AuthController extends Controller
         return view('login');
     }
 
-    public function checkLogin (Request $request){
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+    public function loginUser(Request $request){
+        $request -> validate([
+            'email' => 'required | email ',
+            'password' => 'required | min:5 | max:12'
+         ]);
 
-        if(Auth::attempt($credentials, true)){
+        $credentials = $request->only('email', 'password');
 
-            if($request->remember){
-                Cookie::queue('user', Auth::user(), 60);
-            }
-           Session::put('user', Auth::user());
-           return redirect('home');
-        };
-
-        return redirect()->back();
-
-        function logout(){
-            Auth::logout();
-            Cookie::queue(Cookie::forget('user'));
-            Session::invalidate();
-            Session::regenerateToken();
-            return redirect('login');
+        if(Auth::attempt($credentials)){
+            return redirect()->intended('/home');
         }
+        return back()->with('fail', '❌  Email/Kata Sandi salah');
+
     }
 
     public function displayHomeView(){
         return view('testHome');
+    }
+
+    public function logoutUser(Request $request): RedirectResponse{
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 
 }

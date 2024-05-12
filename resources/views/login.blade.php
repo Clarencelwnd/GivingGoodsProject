@@ -27,33 +27,42 @@
                <!-- OPTIONS  -->
                 <div class="card justify-content-center">
                     <div class="card-body">
-                        <h5 class="card-title">Akses Akun Anda</h5>
+                            <h5 class="card-title">Akses Akun Anda</h5>
+                            <!-- IF SESSION FAILS -->
+                            @if (Session::has('fail'))
+                                <div class="alert-danger"> {{ Session::get('fail') }}</div>
+                           @endif
 
-                        <form action="{{ url('login') }}" method="POST">
+                        <form action="{{ route('login-user') }}" method="POST">
+                            @csrf
                             <!-- EMAIL -->
                             <!-- <div class= "mb-2">  -->
-                            <div data-mdb-input-init class="email">
-                                <label class="form-label" for="email-input">Email</label>
-                                <input type="text" id="email-input" class="form-control form-control-md border-1 shadow-none" >
-                            </div>
+                                <div data-mdb-input-init class="form-group">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="text" id="email" name="email" class="form-control form-control-md border-1 shadow-none" value="{{ old('email') }}" >
+                                    {{-- <span class="text-danger">@error('email') {{ $message }} @enderror</span> --}}
+                                </div>
                             <!-- </div> -->
 
                             <div class="password">
                                 <!-- PASSWORD -->
                                 <!-- <div class="col-md-10 mb-0"> -->
-                                    <div data-mdb-input-init>
-                                        <label class="form-label" for="password-input">Kata Sandi</label>
-                                        <input type="text" id="password-input" class="form-control form-control-md border-1 shadow-none " >
+                                    <div data-mdb-input-init class="form-group">
+                                        <label class="form-label" for="password">Kata Sandi</label>
+                                        <input type="text" id="password" name="password" class="form-control form-control-md border-1 shadow-none " >
+                                        {{-- <span class="text-danger">@error('password') {{ $message }} @enderror</span> --}}
                                     </div>
                                 <!-- </div> -->
 
                                 <!-- FORGOT PASSWORD -->
                                     <a href="#" id="forgot-password-btn">Lupa kata sandi?</a>
                             </div>
+
+                            <div class="form-group">
+                                <button class="btn-next btn btn-block" type="submit">Masuk Akun</button>
+                            </div>
+
                         </form>
-
-                        <a href="#" class="btn-next btn btn-block">Masuk Akun</a>
-
                     </div>
                 </div>
 

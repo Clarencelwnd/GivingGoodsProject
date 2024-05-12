@@ -47,10 +47,5 @@ class DonaturAtauRelawanSeeder extends Seeder
             ],
         ]);
 
-        User::create([
-            'name' => 'Donatur 1',
-            'email' => 'donatur1@example.com',
-            'password' => Hash::make('password1')
-        ]);
     }
 }
