@@ -32,7 +32,7 @@
                             @csrf
                             <input type="hidden" name="email" type="text" value="{{$email}}">
                             <input type="hidden" name="otp" type="text" value="{{$otp}}">
-                            <input type="hidden" id="kirim" value="{{route('checking_otp')}}">
+                            <input type="hidden" id="kirim" value="{{route('input_otp')}}">
                             <label for="otp" id="otp" class="otp-text fw-normal lh-1">
                                 Masukkan kode OTP yang telah dikirim ke email Anda
                             </label>
@@ -60,14 +60,15 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        var timer = 3;
-        const kirimUlang = "Kirim ulang"
+        var timer = 30;
+        const kirimUlang = "Kirim ulang";
+        const url = document.getElementById('kirim').value;
 
         function anchor(){
             const anchor = document.createElement('a');
-            anchor.setAttribute("href", kirim);
+            anchor.setAttribute("href", url);
             anchor.textContent = kirimUlang;
-            // anchor.appendChild(kirimUlang);
+            anchor.className = "link-kirim-ulang";
             document.getElementById('kirim-ulang').appendChild(anchor);
         }
 
@@ -77,7 +78,8 @@
             if(timer < 0){
                 clearInterval(getCountDown);
                 // anchor();
-                document.getElementById('kirim-ulang').innerHTML = "Tidak menerima kode?" + " " + kirimUlang;
+                document.getElementById('kirim-ulang').innerHTML = "Tidak menerima kode?" + " ";
+                anchor();
             }
         }
         var getCountDown = setInterval(countdown, 1000);

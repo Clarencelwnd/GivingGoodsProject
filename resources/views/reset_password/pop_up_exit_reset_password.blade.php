@@ -43,7 +43,7 @@
                                 Simpan
                             </button>
                         </form>
-                        <a href="#" class="btn btn-new-password btn-block" id="btn-back">Kembali</a>
+                        <a href="{{route('new_password')}}" class="btn btn-new-password btn-block" id="btn-back">Kembali</a>
                     </div>
                 </div>
 

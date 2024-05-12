@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\OtpMail;
+use Illuminate\Support\Facades\Hash;
 
 use function PHPUnit\Framework\returnValue;
 
@@ -43,15 +44,16 @@ class ResetPasswordController extends Controller
             $foundEmail = PantiSosial::where('EmailPantiSosial', 'LIKE', "$email")->first();
         }
 
+        session()->put('email', $email);
+
         // klu email ditemukan/ga ditemukan di dua tabel itu:
         if($foundEmail){
-            session()->put('email', $email);
             $this->sending_otp();
             $otp = session()->get('otp');
             return view('reset_password/input_otp', compact('email', 'otp'));
         }
         else{
-            return view('reset_password/pop_up_email', compact('foundEmail'));
+            return view('reset_password/pop_up_email', compact('email'));
         }
     }
 
@@ -76,7 +78,7 @@ class ResetPasswordController extends Controller
             return view('reset_password/new_password');
         }
         else{
-            return redirect()->route('input_otp')->withErrors(['otp' => 'Mohon maaf OTP yang Anda masukkan salah. Silakan coba lagi.']);
+            return redirect()->route('input_otp')->withErrors(['otp' => 'Mohon maaf OTP yang Anda masukkan salah. Kode OTP baru telah dikirimkan ke email Anda.']);
         }
     }
 
@@ -85,22 +87,46 @@ class ResetPasswordController extends Controller
     }
 
     public function checking_password(Request $request){
+        // validasi password
         $validator = Validator::make($request->all(),[
             'password' => 'required|confirmed'
         ],
         [
-            'required' => 'Password wajib diisi.',
-            // 'email' => 'Masukkan password dengan ketentuan: .'
+            'required' => 'Kata sandi wajib diisi.',
+            'confirmed' => 'Ketik ulang kata sandi baru dengan kata sandi yang sama.'
         ]);
 
+        // validasi gagal
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
+        $email = session()->get('email');
+
+        // cari email di donatur/relawan
+        $foundEmail = DonaturAtauRelawan::where('EmailDonaturRelawan', 'LIKE', "$email")->first();
+        $pansos = false;
+        // klu ga ada, cari di panti sosial
+        if(!$foundEmail){
+            $foundEmail = PantiSosial::where('EmailPantiSosial', 'LIKE', "$email")->first();
+            $pansos = true;
+        }
+
+        $password = Hash::make($request->input('password'));
+
+        if($pansos){
+            $foundEmail->PasswordPantiSosial = $password;
+        }
+        else{
+            $foundEmail->PasswordDonaturRelawan = $password;
+        }
+
+        $foundEmail->save();
+        // sementara return kyk gini dlu
+        return response()->json(['message' => 'Kata sandi berhasil diperbarui'], 200);
     }
 
     public function exit_reset_password(){
         return view('reset_password/pop_up_exit_reset_password');
-    }
-
-    public function test(){
-        return view('reset_password.input_wrong_otp');
     }
 }

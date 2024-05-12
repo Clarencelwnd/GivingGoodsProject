@@ -29,16 +29,27 @@
                     <div class="card-body">
                         <h5 class="card-title">Atur ulang kata sandi</h5>
                         <div class="desc-text">Buat kata sandi baru yang kuat untuk akunmu</div>
-                        <form action="" class="text">
-                            <label for="password" id="password" class="password-text fw-normal lh-1">
+                        <form action="{{route('checking_password')}}" class="text" method="POST">
+                            @csrf
+                            <label for="password" id="password" class="password-text fw-normal lh-1 ">
                                 Kata Sandi Baru
                             </label>
-                            <input type="password" name="password" class="password-input">
+                            <input type="password" name="password" class="password-input @error('password') is-invalid @enderror">
+                            @error('password')
+                                <div class="error-msg invalid-feedback fw-normal lh-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
                             <label for="password_confirmation" id="password" class="password-text fw-normal lh-1">
                                 Ketik Ulang Kata Sandi Baru
                             </label>
-                            <input type="password" name="password_confirmation" class="password-input">
-                            <button type="button" class="btn px-4 me-md-2 fw-normal" id="btn-save">
+                            <input type="password" name="password_confirmation" class="password-input  @error('password_confirmation') is-invalid @enderror">
+                            @error('password_confirmation')
+                                <div class="error-msg invalid-feedback fw-normal lh-1">
+                                    {{$message}}
+                                </div>
+                            @enderror
+                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-save">
                                 Simpan
                             </button>
                         </form>

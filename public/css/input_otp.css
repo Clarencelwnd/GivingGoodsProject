@@ -40,7 +40,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 8px;
+    gap: 5px;
     display: inline-flex;
 }
 
@@ -62,6 +62,12 @@
     margin-bottom: 15px;
 }
 
+.link-kirim-ulang{
+    text-decoration-line: none;
+    color: #0095AF;
+    font-weight: 600px;
+}
+
 .otp-input{
     background-color: #F0F0F0;
     border: none;
@@ -72,7 +78,7 @@
 }
 
 .error-msg{
-    margin-bottom: 6px;
+    margin-bottom: 7px;
     font-size: 10px;
 }
 
