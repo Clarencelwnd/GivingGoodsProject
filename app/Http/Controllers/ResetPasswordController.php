@@ -122,11 +122,34 @@ class ResetPasswordController extends Controller
         }
 
         $foundEmail->save();
-        // sementara return kyk gini dlu
-        return response()->json(['message' => 'Kata sandi berhasil diperbarui'], 200);
+
+        session()->forget(['email', 'otp']);
+        session()->flush();
+        
+        return view('reset_password/dummy_login');
     }
 
     public function exit_reset_password(){
         return view('reset_password/pop_up_exit_reset_password');
+    }
+
+
+
+
+
+
+
+
+    // dummy
+    public function dummy_login(){
+        // ini tolong ttp dimasukkan di controller login ya
+        session()->forget(['email', 'otp']);
+        session()->flush();
+
+        return view('reset_password/dummy_login');
+    }
+
+    public function dummy_register(){
+        return view('reset_password/dummy_register');
     }
 }

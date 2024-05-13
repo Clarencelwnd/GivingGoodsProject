@@ -43,7 +43,7 @@
                                 Lanjut
                             </button>
                         </form>
-                        <a href="#" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
+                        <a href="{{route('dummy_login')}}" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
                     </div>
                 </div>
 

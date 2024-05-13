@@ -26,4 +26,6 @@ Route::get('/new_password', [ResetPasswordController::class, 'new_password'])->n
 Route::post('/checking_password', [ResetPasswordController::class, 'checking_password'])->name('checking_password');
 Route::get('/exit_reset_password', [ResetPasswordController::class, 'exit_reset_password'])->name('exit_reset_password');
 
-// Route::get('/test',[ResetPasswordController::class, 'test'])->name('test');
+// dummy
+Route::get('/dummy_login', [ResetPasswordController::class, 'dummy_login'])->name('dummy_login');
+Route::get('/dummy_register', [ResetPasswordController::class, 'dummy_register'])->name('dummy_register');

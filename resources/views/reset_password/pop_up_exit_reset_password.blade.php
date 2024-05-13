@@ -65,7 +65,7 @@
                         <div class="mb-0 popup-desc lh-1">Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.</div>
                     </div>
                     <div class="modal-footer pb-3 border-top-0 d-flex justify-content-between">
-                        <button type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-exit">Keluar</button>
+                        <button onclick="window.location.href='{{route('dummy_login')}}'" type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-exit">Keluar</button>
                         <button onclick="window.location.href='{{route('new_password')}}'" type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-change">Lanjut ubah</button>
                     </div>
                 </div>

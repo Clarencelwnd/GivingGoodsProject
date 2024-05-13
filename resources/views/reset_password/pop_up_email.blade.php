@@ -40,7 +40,7 @@
                                 Lanjut
                             </button>
                         </form>
-                        <a href="#" class="btn btn-email-page btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
+                        <a href="{{route('dummy_login')}}" class="btn btn-email-page btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                     </div>
                     <div class="modal-footer pb-3 border-top-0 d-flex justify-content-between">
                         <button onclick="window.location.href='{{route('reset_password')}}'" type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-change">Ubah</button>
-                        <button type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-register">Ya, Daftar</button>
+                        <button onclick="window.location.href='{{route('dummy_register')}}'" type="button" class="btn btn-pop-up btn-lg fs-6 text-decoration-none col-5 py-2 m-0" id="btn-register">Ya, Daftar</button>
                     </div>
                 </div>
             </div>
