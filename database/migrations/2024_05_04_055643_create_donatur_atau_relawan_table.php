@@ -10,15 +10,15 @@ return new class extends Migration
     {
         Schema::create('donatur_atau_relawan', function (Blueprint $table) {
             $table->bigIncrements('IDDonaturRelawan');
-            $table->string('EmailDonaturRelawan', 255)->unique();;
+            $table->string('EmailDonaturRelawan', 255)->unique();
             $table->string('PasswordDonaturRelawan', 255);
             $table->string('NamaDonaturRelawan', 255);
-            $table->date('TanggalLahirDoanturRelawan');
-            $table->string('JenisKelaminDonaturRelawan', 10);
+            $table->date('TanggalLahirDoanturRelawan')->nullable();
+            $table->string('JenisKelaminDonaturRelawan', 10)->nullable();
             $table->string('NomorTeleponDonaturRelawan', 15);
-            $table->string('AlamatDonaturRelawan', 255);
-            $table->string('LinkGoogleMapsDonaturRelawan', 255);
-            $table->string('FotoDonaturRelawan', 255);
+            $table->string('AlamatDonaturRelawan', 255)->nullable();
+            $table->string('LinkGoogleMapsDonaturRelawan', 255)->nullable();
+            $table->string('FotoDonaturRelawan', 255)->nullable();
             $table->timestamps();
         });
     }
