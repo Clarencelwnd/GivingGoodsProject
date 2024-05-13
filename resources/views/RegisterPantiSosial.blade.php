@@ -3,151 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Register Panti Sosial</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100vh;
-        }
-        .left-side {
-            width: 50%;
-            height: 100%;
-            background-image: url("{{ asset('image/login_reset_password/bg3.png') }}");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .right-side {
-            width: 50%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 20px;
-        }
-        .logo {
-            margin-bottom: 20px;
-            height: 120px;
-        }
-        .form-container {
-            background-color: #FFFFFF;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            width: 60%;
-            text-align: center;
-        }
-        .form-container h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-container label {
-            text-align: left;
-            display: block;
-            margin-bottom: 5px;
-        }
-        .form-container input[type="text"],
-        .form-container input[type="email"],
-        .form-container input[type="tel"],
-        .form-container input[type="password"] {
-            width: calc(100% - 20px);
-            margin-bottom: 10px;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            background-color: #F0F0F0;
-        }
-        .password-hint {
-            color: #989898;
-            font-size: 12px;
-            text-align: left;
-            margin-top: -5px;
-            margin-bottom: 10px;
-        }
-        .btn-container {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .btn-primary, .btn-secondary {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-        .btn-primary {
-            background-color: #00AF71;
-            color: #FFFFFF;
-        }
-        .btn-secondary {
-            background-color: #FFFFFF;
-            color: #007C92;
-            border: 1px solid #007C92;
-        }
-        .already-have-account {
-            margin-top: 20px;
-            text-align: center;
-            width: 60%;
-        }
-        .already-have-account a {
-            color: #0095AF;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .footer-image {
-            margin-top: auto;
-            margin-bottom: 20px;
-            max-width: 100%;
-            height: 15px;
-        }
-
-        .num-container {
-        position: relative;
-        margin-bottom: 10px;
-        width: calc(100% - 20px);
-    }
-
-    .num-btn {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 15%;
-    height: calc(100% - 30px);
-    padding: 10px;
-    background-color: #DFDFDF;
-    border-radius: 4px 0 0 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.num-container input[type="text"] {
-    width: calc(85% - 10px);
-    margin-left: calc(15% + 10px);
-    padding: 10px;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    background-color: #F0F0F0;
-}
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/RegisterPantiSosial.css') }}">
+    {{-- <script src="{{ asset('js/RegisterPantiSosial.js') }}"></script> --}}
 </head>
 <body>
+
     <div class="container">
         <div class="left-side"></div>
         <div class="right-side">
@@ -177,5 +43,6 @@
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>
     </div>
+
 </body>
 </html>

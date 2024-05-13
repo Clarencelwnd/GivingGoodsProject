@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -206,7 +206,7 @@
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>
-    </div>
+    </div> --}}
 
 
 <!-- Pop-up berhasil-->
@@ -231,7 +231,7 @@
 </div> --}}
 
 
-
+{{--
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const buatAkunButton = document.querySelector(".btn-primary");
@@ -363,4 +363,7 @@
 
 
 </body>
-</html>
+</html> --}}
+
+
+
