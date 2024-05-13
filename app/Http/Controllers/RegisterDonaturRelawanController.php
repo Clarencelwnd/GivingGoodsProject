@@ -14,6 +14,8 @@ class RegisterDonaturRelawanController extends Controller
             $validatedData = $request->validate([
                 'email' => 'required|email|unique:donatur_atau_relawan,EmailDonaturRelawan',
                 'password' => 'required|min:8',
+                'phone' => 'required', // sesuaikan validasi sesuai kebutuhan
+                'organization' => 'required', // sesuaikan validasi sesuai kebutuhan
                 // Tambahkan validasi untuk data lain jika diperlukan
             ]);
 

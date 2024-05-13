@@ -181,25 +181,25 @@
             <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
             <div class="form-container">
                 <h2>Mulai Bergabung</h2>
-                <label for="organization">Nama Organisasi</label>
-                <input type="text" id="organization" placeholder="">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="">
-                <label for="phone">Nomor HP</label>
-                <div class="num-container">
-                    <div class="num-btn">+62</div>
-                    <input type="text" id="phone" placeholder="">
-                </div>
-                <label for="password">Kata Sandi</label>
-                <input type="password" id="password" placeholder="">
-                <p class="password-hint">Harus terdiri dari minimal 8 karakter</p>
-                <div class="btn-container">
-                    <form id="registerForm" action="/check-email" method="POST">
-                        @csrf
+                <form id="registerForm" action="{{ route('register.store') }}" method="POST">
+                    @csrf
+                    <label for="organization">Nama Organisasi</label>
+                    <input type="text" id="organization" name="organization" placeholder="">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="">
+                    <label for="phone">Nomor HP</label>
+                    <div class="num-container">
+                        <div class="num-btn">+62</div>
+                        <input type="text" id="phone" name="phone" placeholder="">
+                    </div>
+                    <label for="password">Kata Sandi</label>
+                    <input type="password" id="password" name="password" placeholder="">
+                    <p class="password-hint">Harus terdiri dari minimal 8 karakter</p>
+                    <div class="btn-container">
                         <button type="submit" class="btn-primary">Buat Akun</button>
-                    </form>
-                    <button class="btn-secondary">Kembali</button>
-                </div>
+                        <button class="btn-secondary">Kembali</button>
+                    </div>
+                </form>
             </div>
             <div class="already-have-account">
                 Sudah Punya Akun? <a href="#">Masuk</a>
@@ -274,7 +274,7 @@
             formData.append('email', email);
             formData.append('_token', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
 
-            fetch('/check-email', {
+            fetch('{{ route('register.checkEmail') }}', {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
@@ -302,7 +302,7 @@
                     popupContainer.innerHTML = popupContent;
                 } else {
                     // Email belum terdaftar, simpan data ke database
-                    fetch('/store', {
+                    fetch('{{ route('register.store') }}', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',

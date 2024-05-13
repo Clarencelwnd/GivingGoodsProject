@@ -25,7 +25,7 @@ Route::get('/RegisterDonaturRelawan', function () {
 });
 
 
-Route::post('/check-email', [RegisterDonaturRelawanController::class, 'checkEmail']);
-Route::post('/store', [RegisterDonaturRelawanController::class, 'store']);
+Route::post('/check-email', [RegisterDonaturRelawanController::class, 'checkEmail'])->name('register.checkEmail');
+Route::post('/store', [RegisterDonaturRelawanController::class, 'store'])->name('register.store');
 
 
