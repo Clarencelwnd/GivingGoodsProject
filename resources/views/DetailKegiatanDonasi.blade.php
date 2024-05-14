@@ -14,17 +14,17 @@
 }
 
 .sidebar {
-    width: 15%; /* 1/6 dari lebar page */
+    width: 15%;
     background-color: #00849B;
     color: white;
     padding: 20px;
     position: fixed;
     height: 100%;
     display: flex;
-    flex-direction: column; /* Menetapkan arah kolom */
+    flex-direction: column;
 }
 .contact-info {
-    margin-top: auto; /* Menggeser elemen ke bagian bawah */
+    margin-top: auto;
     margin-bottom: 40px
 }
 
