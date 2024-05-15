@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/generalPage', [generalPageController::class, 'displayGeneralPage']);
+Route::get('/generalPage', [generalPageController::class, 'displayTemplatePage']);
+
+Route::get('/testPage', [generalPageController::class, 'displayTestPage']);
 
 
