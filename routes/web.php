@@ -7,7 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/generalPage', [generalPageController::class, 'displayTemplatePage']);
+// Route::get('/templatePage', [generalPageController::class, 'displayTemplatePage']);
 
-Route::get('/testPage', [generalPageController::class, 'displayGeneralPage']);
+Route::get('/generalPage', [generalPageController::class, 'displayGeneralPage']);
+
+Route::get('/dummyProfile', [generalPageController::class, 'displayDummyProfilePage'])->name('dummyProfile');
 
