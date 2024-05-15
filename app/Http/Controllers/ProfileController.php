@@ -9,7 +9,7 @@ class ProfileController extends Controller
 {
     public function index(Request $request){
         $user = PantiSosial::find($request->id);
-        return view('profile_pansos/profile');
+        return view('profile_pansos/profile', compact('user'));
     }
 
     public function test(){

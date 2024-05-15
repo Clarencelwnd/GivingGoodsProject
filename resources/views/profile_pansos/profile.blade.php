@@ -11,50 +11,108 @@
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
 </head>
 <body>
-    <div class="content row g-0">
-        <div class="left col-sm-3 d-none d-md-block">
-            <h4 class="left-title fw-semibold">Pengaturan</h4>
+    <div class="row g-0">
+        <div class="left col-sm-2 d-none d-md-block">
+            <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
             <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
             <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
             <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
             <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
-
         </div>
 
-        <div class="col-lg-9">
-            <div class="card-body p-md-5 ">
-                <!-- HEADER -->
-                <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
-                    <h3 class="mb-3">GivingGoods</h3>
-                </div>
-
-                {{-- OPTIONS --}}
-                <div class="card justify-content-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Atur ulang kata sandi</h5>
-                        <form action="#" class="text" method="POST">
-                            @csrf
-                            <label for="email" id="email" class="email-text fw-normal lh-1">
-                                Masukkan email yang terdaftar. Kami akan mengirim kode verifikasi untuk atur ulang kata sandi.
-                            </label>
-                            <input type="text" name="email" class="email-input @error('email') is-invalid @enderror">
-                            @error('email')
-                                <label class="error-msg invalid-feedback fw-normal lh-1">
-                                    {{$message}}
-                                </label>
-                            @enderror
-                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
-                                Lanjut
-                            </button>
-                        </form>
-                        <a href="#" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
+        <div class="right col-lg-10 d-none d-md-block">
+            <div class="row g-0">
+                <div class="col-lg-3 d-none d-md-block">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="#" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Nama Panti Sosial</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Nomor Registrasi</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Deskripsi</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Email</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Nomor HP</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Website</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Alamat Lengkap</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Lokasi pada Google Maps</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Jam Operasional</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">Media Sosial</div>
                     </div>
                 </div>
-
-                <!-- Sudah punya akun? -->
-                <div class="d-flex bottom-txt">
-                    <div id="copyright-txt">©️GivingGoods | 2024</div>
+                <div class="col-lg-7 d-none d-md-block">
+                    <div class="card">
+                        <div class="card-body"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->NamaPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->NomorRegistrasiPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->DeskripsiPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->EmailPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->NomorTeleponPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->WebsitePantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                           {{$user->AlamatPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->LinkGoogleMapsPantiSosial}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{-- Jam Operasional --}}
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            {{$user->MediaSosialPantiSosial}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

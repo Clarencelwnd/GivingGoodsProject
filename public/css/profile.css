@@ -15,72 +15,55 @@
     margin-bottom: 30px;
 }
 
-#btn-choose-photo{
+.btn{
+    width: 100%;
+    border-radius:5px;
+    font-size: 13px;
+}
+
+#btn-choose-photo, #btn-change-password{
     color: #007C92;
     border: 1px solid #006374;
+    margin-bottom: 15px;
 }
 
-#btn-login:hover{
+#btn-choose-photo:hover, #btn-change-password:hover{
     background: #E6E7E6;
-    color: #007C92;
+    font-weight: 500;
 }
 
-
-.logo-img{
-    width: 74px;
-    height: 76px;
+#btn-logout{
+    background: #B7342C;
+    color: #FFFFFF;
 }
 
-.header{
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #00744C;
-    word-wrap: break-word;
+#btn-logout:hover{
+    background: #A42E28;
+    font-weight: 500;
 }
 
 .card{
-    width: 70%;
-    height: 100%;
+    /* width: 100%; */
+    height: 10%;
     margin: 0 auto;
-    padding-top: 5px;
-    background: #FDFFFE;
     border: none;
 }
 
 .card-body{
-    width: 95%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-    display: inline-flex;
+    /* width: 100%; */
+    font-size: 13px;
+    color: #006374;
 }
 
-.card-title{
-    color: #003A44;
-    font-size: 18px;
-    font-weight: 600;
-    word-wrap: break-word;
+#btn-edit{
+    background: #007C92;
+    color: #FFFFFF;
+    /* font-size: 13px; */
 }
 
-.email-text{
-    color: #003A44;
-    text-align:justify;
-    font-size: 10px;
-    margin-bottom: 15px;
-}
-
-.email-input{
-    background-color: #F0F0F0;
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 40px;
-    margin-bottom: 8px;
+#btn-edit:hover{
+    background: #017286;
+    font-weight: 500;
 }
 
 .error-msg{
@@ -88,54 +71,17 @@
     font-size: 12px;
 }
 
-.btn{
-    width: 100%;
-    border-radius:5px;
-    font-size: 13px;
-}
-
-#btn-next{
-    background: #00AF71;
-    color: #FDFFFE;
-}
-
-#btn-next:hover{
-    background: #009B65;
-    color: #FDFFFE;
-}
-
-#btn-login{
-    color: #007C92;
-    border: 1px solid #007C92;
-}
-
-#btn-login:hover{
-    background: #E6E7E6;
-    color: #007C92;
-}
-
-.bottom-txt{
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
-}
-
-#copyright-txt{
-    padding-top: 15px;
-    color: #009B65;
-    font-size: 10px;
-    font-weight: 500;
-    word-wrap: break-word;
-}
-
 .left{
     padding-left: 50px;
     padding-top:50px;
+    overflow: hidden;
+    height: 100vh;
 }
 
-
+.right{
+    height: 100vh;
+    padding-top: 50px;
+    padding-left: 100px;
+    overflow-y: auto;
+}
 
