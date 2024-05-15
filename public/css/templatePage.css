@@ -95,7 +95,46 @@
 }
 
 footer .text-muted{
-    color: #00744C; /* Change this to your desired text color */
+    color: #00744C;
+}
+
+/* HEADER MODAL */
+.modal-footer{
+    gap: 30px;
+}
+
+.btn-kembali{
+    padding: 5px 40px 5px 40px;
+    color: #007C92;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px #007C92 solid;
+}
+
+.btn-kembali:hover{
+    padding: 5px 40px 5px 40px;
+    color: #007C92;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1.5px #007C92 solid;
+}
+
+.btn-keluar{
+    padding: 5px 40px 5px 40px;
+    color: #FDFFFE;
+    font-size: 16px;
+    font-weight: 500;
+    background: #B7342C;
+    border-radius: 5px;
+}
+
+.btn-keluar:hover{
+    padding: 5px 40px 5px 40px;
+    color: #FDFFFE;
+    font-size: 16px;
+    font-weight: 600;
+    background: #B7342C;
+    border-radius: 5px;
 }
 
 

@@ -10,7 +10,8 @@ class generalPageController extends Controller
         return view('templatePage');
     }
 
-    public function displayTestPage(){
-        return view('testPage');
+    public function displayGeneralPage(){
+        return view('generalPage');
     }
+
 }

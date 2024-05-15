@@ -9,6 +9,5 @@ Route::get('/', function () {
 
 Route::get('/generalPage', [generalPageController::class, 'displayTemplatePage']);
 
-Route::get('/testPage', [generalPageController::class, 'displayTestPage']);
-
+Route::get('/testPage', [generalPageController::class, 'displayGeneralPage']);
 

@@ -3,6 +3,6 @@
 @section('title', 'New Page Title')
 
 @section('content')
-New Page Content
+General Page nih
 @endsection
 

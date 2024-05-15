@@ -10,3 +10,8 @@ function toggleNav(){
     }
 }
 
+function openModalView() {
+    const modalView = document.getElementById("keluarAkun");
+    modalView.display='block';
+}
+
