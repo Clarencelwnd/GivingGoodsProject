@@ -17,10 +17,10 @@ class RegistrasiDonaturController extends Controller
         foreach ($registrasiDonatur as $registrasi) {
             $tanggalDonasi = date('Y-m-d', strtotime($registrasi->TanggalDonasi));
             $jamDonasi = date('H:i', strtotime($registrasi->JamDonasi));
-            $registrasi->jamTanggalDonasi = $tanggalDonasi . ' ' . $jamDonasi;
+            $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
         }
 
-        dd($registrasiDonatur);
+        // dd($registrasiDonatur);
 
         // Kirim data ke view
         return view('RiwayatDonatur', compact('registrasiDonatur'));
