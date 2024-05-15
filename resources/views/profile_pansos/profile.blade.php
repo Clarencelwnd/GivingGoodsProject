@@ -13,12 +13,11 @@
 <body>
     <div class="content row g-0">
         <div class="left col-sm-3 d-none d-md-block">
-            {{-- <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid"> --}}
-            <div>Pengaturan</div>
-            <img src="{{asset('Image/general/dummy_profile_pict.png')}}" alt="">
-            <a href="#" class="btn btn-block" id="btn-login">Pilih Foto</a>
-            <a href="#" class="btn btn-block" id="btn-login">Ubah Kata Sandi</a>
-            <a href="#" class="btn btn-block" id="btn-login">Keluar Akun</a>
+            <h4 class="left-title fw-semibold">Pengaturan</h4>
+            <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
+            <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
+            <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
+            <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
 
         </div>
 

@@ -2,13 +2,29 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.img-fluid{
-    display: block;
-    height: 100vh;
-    width: 50vw;
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+.left-title{
+    color: #006374;
+    margin-bottom: 30px;
 }
+
+.profile-pict{
+    width: 150px;
+    height: 150px;
+    border-radius: 75%;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+#btn-choose-photo{
+    color: #007C92;
+    border: 1px solid #006374;
+}
+
+#btn-login:hover{
+    background: #E6E7E6;
+    color: #007C92;
+}
+
 
 .logo-img{
     width: 74px;
