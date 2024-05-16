@@ -12,10 +12,9 @@ class DonaturAtauRelawanSeeder extends Seeder
     {
         DB::table('donatur_atau_relawan')->insert([
             [
-                'EmailDonaturRelawan' => 'donatur1@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password1'),
+                'IDUser' => 3,
                 'NamaDonaturRelawan' => 'Donatur Pertama',
-                'TanggalLahirDoanturRelawan' => '1990-05-15',
+                'TanggalLahirDonaturRelawan' => '1990-05-15',
                 'JenisKelaminDonaturRelawan' => 'Laki-laki',
                 'NomorTeleponDonaturRelawan' => '08111222333',
                 'AlamatDonaturRelawan' => 'Jl. Sudirman No. 123',
@@ -23,10 +22,9 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'FotoDonaturRelawan' => 'foto_donatur1.png',
             ],
             [
-                'EmailDonaturRelawan' => 'donatur2@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password2'),
+                'IDUser' => 6,
                 'NamaDonaturRelawan' => 'Donatur Kedua',
-                'TanggalLahirDoanturRelawan' => '1985-10-20',
+                'TanggalLahirDonaturRelawan' => '1985-10-20',
                 'JenisKelaminDonaturRelawan' => 'Perempuan',
                 'NomorTeleponDonaturRelawan' => '08233445566',
                 'AlamatDonaturRelawan' => 'Jl. Thamrin No. 456',
@@ -34,10 +32,9 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'FotoDonaturRelawan' => 'foto_donatur2.png',
             ],
             [
-                'EmailDonaturRelawan' => 'relawan1@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password3'),
+                'IDUser' => 4,
                 'NamaDonaturRelawan' => 'Relawan Pertama',
-                'TanggalLahirDoanturRelawan' => '1992-08-25',
+                'TanggalLahirDonaturRelawan' => '1992-08-25',
                 'JenisKelaminDonaturRelawan' => 'Laki-laki',
                 'NomorTeleponDonaturRelawan' => '08355667788',
                 'AlamatDonaturRelawan' => 'Jl. HR Rasuna Said No. 789',
