@@ -10,6 +10,18 @@ class KomentarForum extends Model
     protected $table = 'komentar_forum';
     protected $primaryKey = 'IDKomentarForum';
     protected $fillable = [
-        'IDDonaturRelawanPengomentarForum', 'IDPantiSosialPengomentarForum', 'KomentarForum', 'TanggalKomentarForum',
+        'IDForum', 'IDDonaturRelawanPengomentarForum', 'IDPantiSosialPengomentarForum', 'KomentarForum', 'TanggalKomentarForum',
     ];
+
+    public function donaturRelawan(){
+        return $this->belongsTo(DonaturAtauRelawan::class, 'IDDonaturRelawanPengomentarForum', 'IDDonaturRelawan');
+    }
+
+    public function forum(){
+        return $this->belongsTo(Forum::class, 'IDForum', 'IDForum');
+    }
+
+    public function pantiSosial(){
+        return $this->belongsTo(PantiSosial::class, 'IDPantiSosialPengomentarForum', 'IDPantiSosial');
+    }
 }

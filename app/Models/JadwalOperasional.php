@@ -12,4 +12,12 @@ class JadwalOperasional extends Model
     protected $fillable = [
         'IDPantiSosial', 'Hari', 'JamBukaPantiSosial', 'JamTutupPantiSosial',
     ];
+
+    public function pantiSosial(){
+        return $this->belongsTo(PantiSosial::class, 'IDPantiSosial', 'IDPantiSosial');
+    }
+
+    public function jadwalKegiatanDonasi(){
+        return $this->hasMany(JadwalKegiatanDonasi::class, 'IDJadwalOperasional', 'IDJadwalOperasional');
+    }
 }

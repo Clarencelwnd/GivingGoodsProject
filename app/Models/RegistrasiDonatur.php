@@ -10,6 +10,14 @@ class RegistrasiDonatur extends Model
     protected $table = 'registrasi_donatur';
     protected $primaryKey = 'IDRegistrasiDonatur';
     protected $fillable = [
-        'IDDonaturRelawan', 'IDKegiatanDonasi', 'StatusKegiatanRelawan', 'JenisDonasiDidonasikan', 'DeskripsiBarangDonasi', 'TanggalDonasi', 'JamDonasi',
+        'IDDonaturRelawan', 'IDKegiatanDonasi', 'StatusRegistrasiDonatur', 'JenisDonasiDidonasikan', 'DeskripsiBarangDonasi', 'TanggalDonasi', 'JamDonasi',
     ];
+
+    public function donaturRelawan(){
+        return $this->belongsTo(DonaturAtauRelawan::class, 'IDDonaturRelawan', 'IDDonaturRelawan');
+    }
+
+    public function kegiatanDonasi(){
+        return $this->belongsTo(KegiatanDonasi::class, 'IDKegiatanDonasi', 'IDKegiatanDonasi');
+    }
 }

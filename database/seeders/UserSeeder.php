@@ -16,34 +16,34 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             [
-                'Email' => 'pansos1@example.com',
-                'Password' => Hash::make('pansos1'),
-                'Role' => 'panti_sosial',
+                'email' => 'pansos1@example.com',
+                'password' => Hash::make('pansos1'),
+                'role' => 'panti_sosial',
             ],
             [
-                'Email' => 'pansos2@example.com',
-                'Password' => Hash::make('pansos2'),
-                'Role' => 'panti_sosial',
+                'email' => 'pansos2@example.com',
+                'password' => Hash::make('pansos2'),
+                'role' => 'panti_sosial',
             ],
             [
-                'Email' => 'donatur1@example.com',
-                'Password' => Hash::make('donatur1'),
-                'Role' => 'donatur_relawan',
+                'email' => 'donatur1@example.com',
+                'password' => Hash::make('donatur1'),
+                'role' => 'donatur_relawan',
             ],
             [
-                'Email' => 'relawan1@example.com',
-                'Password' => Hash::make('relawan1'),
-                'Role' => 'donatur_relawan',
+                'email' => 'relawan1@example.com',
+                'password' => Hash::make('relawan1'),
+                'role' => 'donatur_relawan',
             ],
             [
-                'Email' => 'pansos3@example.com',
-                'Password' => Hash::make('pansos3'),
-                'Role' => 'panti_sosial',
+                'email' => 'pansos3@example.com',
+                'password' => Hash::make('pansos3'),
+                'role' => 'panti_sosial',
             ],
             [
-                'Email' => 'donatur2@example.com',
-                'Password' => Hash::make('donatur2'),
-                'Role' => 'donatur_relawan',
+                'email' => 'donatur2@example.com',
+                'password' => Hash::make('donatur2'),
+                'role' => 'donatur_relawan',
             ],
         ]);
 

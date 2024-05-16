@@ -10,6 +10,14 @@ class KegiatanRelawan extends Model
     protected $table = 'kegiatan_relawan';
     protected $primaryKey = 'IDKegiatanRelawan';
     protected $fillable = [
-        'IDPantiSosial', 'GambarKegiatanRelawan', 'NamaKegiatanRelawan', 'DeskripsiKegiatanRelawan', 'TanggalKegiatanRelawanMulai', 'TanggalKegiatanRelawanSelesai', 'TanggalPendaftaranKegiatanDitutup', 'JamMulaiKegiatanRelawan', 'JamSelesaiKegiatanRelawan', 'JumlahRelawanDibutuhkan', 'LokasiKegiatanRelawan', 'LinkGoogleMapsLokasiKegiatanRelawan', 'KriteriaRelawan', 'SyaratDanInstruksiKegiatanRelawan', 'KontakKegiatanRelawan', 'JenisKegiatanRelawan', 'StatusKegiatanRelawan'
+        'IDPantiSosial', 'GambarKegiatanRelawan', 'NamaKegiatanRelawan', 'DeskripsiKegiatanRelawan', 'JenisKegiatanRelawan', 'TanggalKegiatanRelawanMulai', 'TanggalKegiatanRelawanSelesai', 'TanggalPendaftaranKegiatanDitutup', 'JamMulaiKegiatanRelawan', 'JamSelesaiKegiatanRelawan', 'JumlahRelawanDibutuhkan', 'LokasiKegiatanRelawan', 'LinkGoogleMapsLokasiKegiatanRelawan', 'KriteriaRelawan', 'SyaratDanInstruksiKegiatanRelawan', 'KontakKegiatanRelawan',
     ];
+
+    public function registrasiRelawan(){
+        return $this->hasMany(RegistrasiRelawan::class, 'IDKegiatanRelawan', 'IDKegiatanRelawan');
+    }
+
+    public function pantiSosial(){
+        return $this->belongsTo(PantiSosial::class, 'IDPantiSosial', 'IDPantiSosial');
+    }
 }
