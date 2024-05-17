@@ -13,10 +13,11 @@ return new class extends Migration
             $table->unsignedBigInteger('IDUser');
             $table->foreign('IDUser')->references('id')->on('users');
             $table->string('NamaPantiSosial', 255);
+            $table->string('EmailPantiSosial', 255)->unique();
             $table->string('NomorRegistrasiPantiSosial', 255);
             $table->string('DokumenValiditasPantiSosial', 255);
             $table->string('DeskripsiPantiSosial', 255)->nullable();
-            $table->string('NomorTeleponPantiSosial', 15); 
+            $table->string('NomorTeleponPantiSosial', 15);
             $table->string('WebsitePantiSosial', 255)->nullable();
             $table->string('AlamatPantiSosial', 255)->nullable();
             $table->string('LinkGoogleMapsPantiSosial', 255)->nullable();
