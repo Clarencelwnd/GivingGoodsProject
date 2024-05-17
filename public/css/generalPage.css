@@ -31,3 +31,21 @@
     background-color: rgba(137, 137, 137, 0.54);
     z-index: 0;
 } */
+
+/* SEARCH BAR */
+.searchbar{
+    margin-top: 30px;
+}
+
+#placeholder-text{
+    color: #3C3C43;
+    font-size: 16px;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+/* OPTIONS */
+.kegiatan-nav{
+    display: flex;
+    flex-direction: row;
+}
