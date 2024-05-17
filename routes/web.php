@@ -9,7 +9,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< HEAD
 Route::get('/RegisterPantiSosial', function () {
     return view('RegisterPantiSosial');
 });
@@ -39,10 +38,12 @@ Route::post('/register-pantisosial2', [RegisterPantiSosialController::class, 're
 
 //REGISTER DONATUR RELAWAN
 Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
-=======
-Route::get('/login', [AuthController::class, 'displayLoginView']);
+
+//Login
+Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
+Route::get('/login', [AuthController::class, 'displayLoginView'])->name('login');
 Route::get('/home', [AuthController::class, 'displayHomeView']);
 Route::get('/logout', [AuthController::class, 'logoutUser']);
 
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
->>>>>>> f/login
+

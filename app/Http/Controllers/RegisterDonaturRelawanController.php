@@ -14,7 +14,6 @@ class RegisterDonaturRelawanController extends Controller
             'email' => 'required|email',
             'phone' => 'required|numeric|min:7',
             'password' => 'required|min:8', // sesuaikan validasi sesuai kebutuhan
-            // Tambahkan validasi untuk data lain jika diperlukan
         ]);
 
         $email = $request->input('email');
@@ -22,7 +21,6 @@ class RegisterDonaturRelawanController extends Controller
 
         if ($user) {
             // Email sudah terdaftar
-            // return response()->json(['exists' => true]);
             $registeredEmail = $user->EmailDonaturRelawan;// Mengambil email yang sudah terdaftar
             return back()->with('exists', true)->with('registeredEmail', $registeredEmail);// Mengirim email yang sudah terdaftar ke view
         } else {
@@ -42,43 +40,4 @@ class RegisterDonaturRelawanController extends Controller
         }
 
     }
-
-    // public function store(Request $request)
-    // {
-    //     try {
-    //         // Validasi input yang diterima dari formulir
-    //         $validatedData = $request->validate([
-    //             'email' => 'required|email|unique:donatur_atau_relawan, EmailDonaturRelawan',
-    //             'password' => 'required|min:8',
-    //             'phone' => 'required |min:7 |max:13', // sesuaikan validasi sesuai kebutuhan
-    //             'name' => 'required| min:2 | max:15' // sesuaikan validasi sesuai kebutuhan
-    //             // Tambahkan validasi untuk data lain jika diperlukan
-    //         ]);
-
-    //         // Email belum terdaftar, lanjutkan dengan registrasi
-    //         DonaturAtauRelawan::create($validatedData);
-
-    //         // Response JSON untuk dikirimkan ke JavaScript
-    //         return response()->json(['exists' => false]);
-    //     } catch (\Exception $e) {
-    //         // Tangani kesalahan dengan memberikan respons yang sesuai
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-    // }
-
-    // Metode untuk memeriksa apakah email sudah terdaftar atau belum
-    // public function checkEmail(Request $request)
-    // {
-    //     $email = $request->input('email');
-
-    //     $user = DonaturAtauRelawan::where('EmailDonaturRelawan', $email)->first();
-
-    //     if ($user) {
-    //         // Email sudah terdaftar
-    //         return response()->json(['exists' => true]);
-    //     } else {
-    //         // Email belum terdaftar
-    //         return response()->json(['exists' => false]);
-    //     }
-    // }
 }

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RegisterDonaturRelawan</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/RegisterSelected.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="left-side"></div>
+        <div class="left-side">
+            <img src="{{ asset('Image/login_reset_password/bg2.png') }}" alt="Sample photo" class="img-fluid">
+        </div>
         <div class="right-side">
             <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
             <div class="form-container">
@@ -21,7 +22,7 @@
                 </div>
             </div>
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="#">Masuk</a>
+                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>

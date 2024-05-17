@@ -34,11 +34,10 @@
                  </div>
 
                  <script>
-                    // Function to hide the popup and redirect after 3 seconds
                     setTimeout(function() {
                         document.getElementById('popup-container-success').style.display = 'none';
-                        window.location.href = "{{ route('registerSelected') }}";
-                    }, 2000); // 3000 milliseconds = 3 seconds
+                        window.location.href = "{{ route('login') }}";
+                    }, 1500);
                 </script>
              @endif
 
@@ -46,19 +45,7 @@
                  <div class="alert-danger"> {{ Session::get('fail') }}</div>
              @endif
 
-             @if(Session::has('exists'))
-             <div id="popup-container-email-exists" style="display: block;">
-                 <!-- Popup untuk email sudah terdaftar -->
-                 <div id="popup">
-                     <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Email sudah terdaftar</h3>
-                     <p style="margin-top: 10px;">Lanjutkan dengan email ini? <br> joshdoe@gmail.com</p>
-                     <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                         <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;">Ubah</button>
-                         <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Masuk</button>
-                     </div>
-                 </div>
-             </div>
-             @endif
+
                  <div>
                 <label for="registration-num">Nomor Registrasi</label>
                 <input type="text" id="registration_num" name="registration_num" value="{{ old('registration_num') }}">
@@ -98,20 +85,13 @@
             </div>
 
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="#">Masuk</a>
+                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
             </div>
 
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>
 
     </div>
-
-    {{-- <div id="popup-container">
-        <div id="popup">
-            <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
-            <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
-        </div>
-    </div> --}}
 
 </body>
 </html>

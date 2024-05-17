@@ -71,7 +71,7 @@
 
                     <div class="btn-container" class="form-group">
                         <button type="submit" class="btn-primary">Selanjutnya</button>
-                        <button class="btn-secondary">Kembali</button>
+                        <a class="btn-secondary" href="{{ route('registerSelected') }}" style="text-decoration: none;">Kembali</a>
                     </div>
 
                 </form>
@@ -79,7 +79,7 @@
 
             {{-- SUDAH PUNYA AKUN --}}
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="#">Masuk</a>
+                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>

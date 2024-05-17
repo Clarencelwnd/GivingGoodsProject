@@ -11,7 +11,7 @@ body, html {
 .left-side {
     width: 50%;
     height: 100%;
-    background-image: url("{{ asset('image/login_reset_password/bg2.png') }}");
+    /* background-image: url("{{ asset('image/login_reset_password/bg2.png') }}"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
