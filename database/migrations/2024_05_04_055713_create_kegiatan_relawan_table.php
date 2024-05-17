@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('GambarKegiatanRelawan', 255);
             $table->string('NamaKegiatanRelawan', 255);
             $table->string('DeskripsiKegiatanRelawan', 255);
+            $table->string('JenisKegiatanRelawan', 255);
             $table->date('TanggalKegiatanRelawanMulai');
             $table->date('TanggalKegiatanRelawanSelesai');
             $table->date('TanggalPendaftaranKegiatanDitutup');
@@ -26,8 +27,6 @@ return new class extends Migration
             $table->string('KriteriaRelawan', 255);
             $table->string('SyaratDanInstruksiKegiatanRelawan', 255);
             $table->string('KontakKegiatanRelawan', 255);
-            $table->string('JenisKegiatanRelawan', 255);
-            $table->string('StatusKegiatanRelawan', 255);
             $table->timestamps();
         });
     }

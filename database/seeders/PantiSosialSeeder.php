@@ -11,6 +11,7 @@ class PantiSosialSeeder extends Seeder
     {
         DB::table('panti_sosial')->insert([
             [
+                'IDUser' => 1,
                 'NamaPantiSosial' => 'Panti Asuhan Budi Mulia',
                 'EmailPantiSosial' => 'budimulia@gmail.com',
                 'NomorRegistrasiPantiSosial' => '12345',
@@ -24,6 +25,7 @@ class PantiSosialSeeder extends Seeder
                 'LogoPantiSosial' => 'logo_panti.png',
             ],
             [
+                'IDUser' => 2,
                 'NamaPantiSosial' => 'Panti Jompo Harapan Sejahtera',
                 'EmailPantiSosial' => 'jompoharapan@gmail.com',
                 'NomorRegistrasiPantiSosial' => '67890',
@@ -37,6 +39,7 @@ class PantiSosialSeeder extends Seeder
                 'LogoPantiSosial' => 'logo_panti_jompo.png',
             ],
             [
+                'IDUser' => 5,
                 'NamaPantiSosial' => 'Rumah Singgah Nusa Indah',
                 'EmailPantiSosial' => 'nusaindah@example.com',
                 'NomorRegistrasiPantiSosial' => '24680',
