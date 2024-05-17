@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="organization-name">Nama Organisasi</label>
                         <input type="text" name="organization-name" id="organization" value="{{ old('organization-name') }}">
-                        <span style="color:red">
+                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                             @error('organization-name')
                                 {{ $message }}
                             @enderror
@@ -38,7 +38,7 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" value="{{ old('email') }}">
-                        <span style="color:red">
+                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                             @error('email')
                                 {{ $message }}
                             @enderror
@@ -47,11 +47,11 @@
 
                     <div class="form-group">
                         <label for="phone">Nomor HP</label>
-                        <div class="num-container">
+                        <div class="num-container" style="padding-left: 5px;">
                             <div class="num-btn">+62</div>
                             <input type="text" name="phone" value="{{ old('phone') }}">
                         </div>
-                        <span style="color:red">
+                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                             @error('phone')
                                 {{ $message }}
                             @enderror
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <label for="password">Kata Sandi</label>
                         <input type="password" name="password" id="password">
-                        <span style="color:red">
+                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                             @error('password')
                                 {{ $message }}
                             @enderror
@@ -70,7 +70,7 @@
                     </div>
 
                     <div class="btn-container" class="form-group">
-                        <button class="btn-primary" onclick="window.location.href='/RegisterPantiSosial-2'">Selanjutnya</button>
+                        <button type="submit" class="btn-primary">Selanjutnya</button>
                         <button class="btn-secondary">Kembali</button>
                     </div>
 

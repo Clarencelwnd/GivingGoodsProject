@@ -10,7 +10,8 @@ class RegisterDonaturRelawanController extends Controller
     public function registerUser(Request $request){
         $request->validate([
             'name' => 'required|min:2|max:255',
-            'email' => 'required|email|unique:donatur_atau_relawan,EmailDonaturRelawan',
+            // 'email' => 'required|email|unique:donatur_atau_relawan,EmailDonaturRelawan',
+            'email' => 'required|email',
             'phone' => 'required|numeric|min:7',
             'password' => 'required|min:8', // sesuaikan validasi sesuai kebutuhan
             // Tambahkan validasi untuk data lain jika diperlukan
@@ -21,7 +22,9 @@ class RegisterDonaturRelawanController extends Controller
 
         if ($user) {
             // Email sudah terdaftar
-            return response()->json(['exists' => true]);
+            // return response()->json(['exists' => true]);
+            $registeredEmail = $user->EmailDonaturRelawan;// Mengambil email yang sudah terdaftar
+            return back()->with('exists', true)->with('registeredEmail', $registeredEmail);// Mengirim email yang sudah terdaftar ke view
         } else {
             // Email belum terdaftar
             $user = new DonaturAtauRelawan();

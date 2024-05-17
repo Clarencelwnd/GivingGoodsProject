@@ -7,7 +7,7 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> --}}
     <link href="{{ asset('css/RegisterPantiSosial-2.css') }}" rel="stylesheet">
     <script src="{{ asset('js/RegisterPantiSosial-2.js') }}"></script>
 </head>
@@ -21,20 +21,80 @@
             <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
             <div class="form-container">
                 <h2>Mulai Bergabung</h2>
-                <label for="organization">Nomor Registrasi</label>
-                <input type="text" id="organization" placeholder="">
+            <form action="{{ route('registerPantiSosial2') }}" method="POST">
+                 @csrf
 
-                <label for="document">Unggah Dokumen Validitas</label>
-                <div class="upload-container">
-                    <input type="file" id="document" style="display: none;">
-                    <div class="upload-btn" onclick="document.getElementById('document').click()">Upload</div>
-                    <input type="text" placeholder="" readonly>
+                 @if (Session::has('success'))
+                 <div id="popup-container-success" style="display: block;">
+                     <!-- Popup untuk berhasil membuat akun -->
+                     <div id="popup">
+                         <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
+                         <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
+                     </div>
+                 </div>
+
+                 <script>
+                    // Function to hide the popup and redirect after 3 seconds
+                    setTimeout(function() {
+                        document.getElementById('popup-container-success').style.display = 'none';
+                        window.location.href = "{{ route('registerSelected') }}";
+                    }, 2000); // 3000 milliseconds = 3 seconds
+                </script>
+             @endif
+
+             @if (Session::has('fail'))
+                 <div class="alert-danger"> {{ Session::get('fail') }}</div>
+             @endif
+
+             @if(Session::has('exists'))
+             <div id="popup-container-email-exists" style="display: block;">
+                 <!-- Popup untuk email sudah terdaftar -->
+                 <div id="popup">
+                     <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Email sudah terdaftar</h3>
+                     <p style="margin-top: 10px;">Lanjutkan dengan email ini? <br> joshdoe@gmail.com</p>
+                     <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                         <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;">Ubah</button>
+                         <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Masuk</button>
+                     </div>
+                 </div>
+             </div>
+             @endif
+                 <div>
+                <label for="registration-num">Nomor Registrasi</label>
+                <input type="text" id="registration_num" name="registration_num" value="{{ old('registration_num') }}">
+                <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                    @error('registration_num')
+                        {{ $message }}
+                    @enderror
+                </span>
                 </div>
+
+                <div>
+                    <label for="document">Unggah Dokumen Validitas</label>
+                    <div class="upload-container" style="padding-left: 5px;">
+                        <input type="file" id="document" name="validation_document" style="display: none;" onchange="updateFileName(this)">
+                        <div class="upload-btn" onclick="document.getElementById('document').click()">Upload</div>
+                        <input type="text" id="validation_document_text" readonly>
+                    </div>
+                    <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                        @error('validation_document')
+                            {{ $message }}
+                        @enderror
+                    </span>
+                </div>
+
+                <script>
+                    function updateFileName(input) {
+                        const fileName = input.files[0].name;
+                        document.getElementById('validation_document_text').value = fileName;
+                    }
+                </script>
 
                 <div class="btn-container">
-                    <button class="btn-primary">Buat Akun</button>
-                    <button class="btn-secondary">Kembali</button>
+                    <button type="submit" class="btn-primary">Buat Akun</button>
+                    <button type="button" class="btn-secondary" onclick="window.location.href='{{ url()->previous() }}'">Kembali</button>
                 </div>
+            </form>
             </div>
 
             <div class="already-have-account">
@@ -46,12 +106,12 @@
 
     </div>
 
-    <div id="popup-container">
+    {{-- <div id="popup-container">
         <div id="popup">
             <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
             <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
         </div>
-    </div>
+    </div> --}}
 
 </body>
 </html>

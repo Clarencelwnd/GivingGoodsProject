@@ -150,7 +150,9 @@ border: none;
 border-radius: 0 4px 4px 0;
 background-color: #F0F0F0;
 }
-#popup-container {
+
+#popup-container-success,
+#popup-container-email-exists {
     display: none;
     position: fixed;
     top: 0;

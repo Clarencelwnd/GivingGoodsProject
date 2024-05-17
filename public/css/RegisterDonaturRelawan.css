@@ -13,9 +13,10 @@ body, html {
     height: 100vh;
 }
 .left-side {
-    width: 50%;
-    height: 100%;
-    background-image: url("{{ asset('image/login_reset_password/bg2.png') }}");
+    display: block;
+    width: 50vw;
+    height: 100vh;
+    /* background-image: url("{{ asset('Image/login_reset_password/bg3.png') }}"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -100,6 +101,7 @@ body, html {
     margin-top: 20px;
     text-align: center;
     width: 60%;
+    font-size: 14px;
 }
 .already-have-account a {
     color: #0095AF;
@@ -120,29 +122,31 @@ width: calc(100% - 20px);
 }
 
 .num-btn {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 15%;
-    height: calc(100% - 30px);
-    padding: 10px;
-    background-color: #DFDFDF;
-    border-radius: 4px 0 0 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+position: absolute;
+left: 0;
+top: 0;
+width: 15%;
+height: calc(100% - 30px);
+padding: 10px;
+background-color: #DFDFDF;
+border-radius: 4px 0 0 4px;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 .num-container input[type="text"] {
-    width: calc(85% - 10px);
-    margin-left: calc(15% + 10px);
-    padding: 10px;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    background-color: #F0F0F0;
+width: calc(85% - 10px);
+margin-left: calc(15% + 10px);
+padding: 10px;
+border: none;
+border-radius: 0 4px 4px 0;
+background-color: #F0F0F0;
 }
 
-#popup-container {
+
+#popup-container-success,
+#popup-container-email-exists {
     display: none;
     position: fixed;
     top: 0;
