@@ -1,0 +1,142 @@
+/* .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    } */
+/*
+.card-registration .select-arrow {
+top: 13px;
+} */
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.img-fluid{
+    display: block;
+    height: 100vh;
+    width: 50vw;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+.logo-img{
+    width: 74px;
+    height: 76px;
+}
+
+.header{
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #00744C;
+    word-wrap: break-word;
+}
+
+.card{
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 5px;
+    background: #FDFFFE;
+}
+
+.card-body{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    display: inline-flex;
+}
+
+.card-title{
+    color: #003A44;
+    font-size: 18px;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+#btn-donatur-relawan{
+    margin-bottom: 15px;
+}
+
+#btn-panti-sosial{
+    margin-bottom: 25px;
+}
+
+.btn-register-choose-role{
+    width: 100%;
+    height: 20%;
+    background: #F0F0F0;
+    border-radius: 5px;
+    color: #003A44;
+    font-size: 14px;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.btn-register-choose-role:hover{
+    background: #F0F0F0;
+    border-radius: 5px;
+    border: 1px #009B65 solid;
+}
+
+.btn-register-choose-role.clicked{
+    background: #F0F0F0;
+    border-radius: 5px;
+    border: 1px #009B65 solid;
+}
+
+.btn-next{
+    width: 100%;
+    background: #00AF71;
+    border-radius: 5px;
+    color: #FDFFFE;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.btn-next:hover{
+    background: #009B65;
+    color: #FDFFFE;
+}
+
+#have-account-txt{
+    color: #857E7E;
+    font-size: 13px;
+    font-weight: 500;
+    word-wrap: break-word;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bottom-txt{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
+
+#login-btn{
+    color: #0095AF;
+    font-size: 13px;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+#copyright-txt{
+    padding-top: 15px;
+    color: #009B65;
+    font-size: 10px;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
