@@ -10,18 +10,18 @@ return new class extends Migration
     {
         Schema::create('panti_sosial', function (Blueprint $table) {
             $table->bigIncrements('IDPantiSosial');
-            $table->string('EmailPantiSosial', 255);
-            $table->string('PasswordPantiSosial', 255);
+            $table->unsignedBigInteger('IDUser');
+            $table->foreign('IDUser')->references('id')->on('users');
             $table->string('NamaPantiSosial', 255);
             $table->string('NomorRegistrasiPantiSosial', 255);
             $table->string('DokumenValiditasPantiSosial', 255);
-            $table->string('DeskripsiPantiSosial', 255);
-            $table->string('NomorTeleponPantiSosial', 15);
-            $table->string('WebsitePantiSosial', 255);
-            $table->string('AlamatPantiSosial', 255);
-            $table->string('LinkGoogleMapsPantiSosial', 255);
-            $table->string('MediaSosialPantiSosial', 255);
-            $table->string('LogoPantiSosial', 255);
+            $table->string('DeskripsiPantiSosial', 255)->nullable();
+            $table->string('NomorTeleponPantiSosial', 15); 
+            $table->string('WebsitePantiSosial', 255)->nullable();
+            $table->string('AlamatPantiSosial', 255)->nullable();
+            $table->string('LinkGoogleMapsPantiSosial', 255)->nullable();
+            $table->string('MediaSosialPantiSosial', 255)->nullable();
+            $table->string('LogoPantiSosial', 255)->nullable();
             $table->timestamps();
         });
     }

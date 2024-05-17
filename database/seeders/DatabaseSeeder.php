@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         // \DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->call([
+            UserSeeder::class,
             PantiSosialSeeder::class,
             DonaturAtauRelawanSeeder::class,
             ForumSeeder::class,

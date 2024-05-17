@@ -12,8 +12,7 @@ class DonaturAtauRelawanSeeder extends Seeder
     {
         DB::table('donatur_atau_relawan')->insert([
             [
-                'EmailDonaturRelawan' => 'donatur1@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password1'),
+                'IDUser' => 3,
                 'NamaDonaturRelawan' => 'Donatur Pertama',
                 'TanggalLahirDonaturRelawan' => '1990-05-15',
                 'JenisKelaminDonaturRelawan' => 'Laki-laki',
@@ -23,8 +22,7 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'FotoDonaturRelawan' => 'foto_donatur1.png',
             ],
             [
-                'EmailDonaturRelawan' => 'donatur2@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password2'),
+                'IDUser' => 6,
                 'NamaDonaturRelawan' => 'Donatur Kedua',
                 'TanggalLahirDonaturRelawan' => '1985-10-20',
                 'JenisKelaminDonaturRelawan' => 'Perempuan',
@@ -34,8 +32,7 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'FotoDonaturRelawan' => 'foto_donatur2.png',
             ],
             [
-                'EmailDonaturRelawan' => 'relawan1@example.com',
-                'PasswordDonaturRelawan' => Hash::make('password3'),
+                'IDUser' => 4,
                 'NamaDonaturRelawan' => 'Relawan Pertama',
                 'TanggalLahirDonaturRelawan' => '1992-08-25',
                 'JenisKelaminDonaturRelawan' => 'Laki-laki',
