@@ -41,10 +41,8 @@
                         <input type="password" id="password" name="password">
                     </div>
 
-                    <div class="btn-container">
-                        <a href="#" id="forgot-password-btn">Lupa kata sandi?</a>
-                        <button type="submit" class="btn-primary">Buat Akun</button>
-                    </div>
+                    <a href="#" id="forgot-password-btn">Lupa kata sandi?</a>
+                    <button type="submit" class="btn-primary">Masuk Akun</button>
                 </form>
             </div>
 

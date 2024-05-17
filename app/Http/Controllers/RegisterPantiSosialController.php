@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\PantiSosial;
+use App\Models\PantiSosial;
 
 class RegisterPantiSosialController extends Controller
 {
@@ -47,7 +47,7 @@ class RegisterPantiSosialController extends Controller
 
         // Validasi input menggunakan Validator
         $request->validate([
-            'registration_num' => 'required', // Nama organisasi harus diisi
+            'registration_number' => 'required', // Nama organisasi harus diisi
             'validation_document' => 'required', // Dokumen harus diupload dan berupa file dengan ekstensi jpg atau png
         ]);
 
@@ -66,7 +66,7 @@ class RegisterPantiSosialController extends Controller
             $user->EmailPantiSosial = $email; // Menggunakan variabel yang telah diambil dari session
             $user->NomorTeleponPantiSosial = $phone; // Menggunakan variabel yang telah diambil dari session
             // $user->Password = $request->password;
-            $user->NomorRegistrasiPantiSosial = $request->registration_num;
+            $user->NomorRegistrasiPantiSosial = $request->registration_number;
             $user->DokumenValiditasPantiSosial = $request->validation_document;
 
 

@@ -47,10 +47,10 @@
 
 
                  <div>
-                <label for="registration-num">Nomor Registrasi</label>
-                <input type="text" id="registration_num" name="registration_num" value="{{ old('registration_num') }}">
+                <label for="registration-number">Nomor Registrasi</label>
+                <input type="text" id="registration_number" name="registration_number" value="{{ old('registration_number') }}">
                 <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
-                    @error('registration_num')
+                    @error('registration_number')
                         {{ $message }}
                     @enderror
                 </span>

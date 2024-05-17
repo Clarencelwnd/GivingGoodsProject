@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
@@ -6,17 +6,18 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100vh;
 }
+
 .left-side {
     display: block;
     width: 50vw;
     height: 100vh;
-    /* background-image: url("{{ asset('Image/login_reset_password/bg3.png') }}"); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
@@ -31,10 +32,12 @@ body, html {
     justify-content: flex-start;
     padding-top: 20px;
 }
+
 .logo {
     margin-bottom: 20px;
     height: 120px;
 }
+
 .form-container {
     background-color: #FFFFFF;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -43,15 +46,20 @@ body, html {
     width: 60%;
     text-align: center;
 }
+
 .form-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #003A44;
+    font-size: 20px;
+    font-weight: 600;
     text-align: left;
 }
+
 .form-container label {
     text-align: left;
     display: block;
     margin-bottom: 5px;
+    color: #003A44;
+    font-size: 16px;
 }
 
 .form-container input[type="email"],
@@ -63,6 +71,7 @@ body, html {
     border-radius: 4px;
     background-color: #F0F0F0;
 }
+
 .password-hint {
     color: #989898;
     font-size: 12px;
@@ -70,6 +79,7 @@ body, html {
     margin-top: -5px;
     margin-bottom: 10px;
 }
+
 .btn-container {
     width: 100%;
     display: flex;
@@ -77,6 +87,7 @@ body, html {
     justify-content: space-between;
     margin-top: 20px;
 }
+
 .btn-primary, .btn-secondary {
     width: 100%;
     padding: 10px;
@@ -87,63 +98,68 @@ body, html {
     font-size: 16px;
     margin-top: 10px;
 }
+
 .btn-primary {
     background-color: #00AF71;
     color: #FFFFFF;
 }
+
 .btn-secondary {
     background-color: #FFFFFF;
     color: #007C92;
     border: 1px solid #007C92;
 }
+
 .already-have-account {
     margin-top: 20px;
     text-align: center;
     width: 60%;
     font-size: 14px;
 }
+
 .already-have-account a {
     color: #0095AF;
     text-decoration: none;
     font-weight: bold;
 }
+
 .footer-image {
-    margin-top: auto;
+    margin-top: 260px;
     margin-bottom: 20px;
     max-width: 100%;
     height: 15px;
 }
 
 .num-container {
-position: relative;
-margin-bottom: 10px;
-width: calc(100% - 20px);
+    position: relative;
+    margin-bottom: 10px;
+    width: calc(100% - 20px);
 }
 
 .num-btn {
-position: absolute;
-left: 0;
-top: 0;
-width: 15%;
-height: calc(100% - 30px);
-padding: 10px;
-background-color: #DFDFDF;
-border-radius: 4px 0 0 4px;
-display: flex;
-align-items: center;
-justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15%;
+    height: calc(100% - 30px);
+    padding: 10px;
+    background-color: #DFDFDF;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .num-container input[type="text"] {
-width: calc(85% - 10px);
-margin-left: calc(15% + 10px);
-padding: 10px;
-border: none;
-border-radius: 0 4px 4px 0;
-background-color: #F0F0F0;
+    width: calc(85% - 10px);
+    margin-left: calc(15% + 10px);
+    padding: 10px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #F0F0F0;
 }
 
-.alert-danger{
+.alert-danger {
     color: #CB3A31;
     font-size: 12px;
     font-weight: 600;
@@ -153,8 +169,11 @@ background-color: #F0F0F0;
     padding-left: 0px;
 }
 
-#forgot-password-btn{
+#forgot-password-btn {
     text-decoration: none;
     color: #0095AF;
     font-size: 12px;
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
 }
