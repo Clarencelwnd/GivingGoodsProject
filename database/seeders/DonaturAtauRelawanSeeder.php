@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -45,5 +46,6 @@ class DonaturAtauRelawanSeeder extends Seeder
                 'FotoDonaturRelawan' => 'foto_relawan1.png',
             ],
         ]);
+
     }
 }
