@@ -15,3 +15,21 @@ function openModalView() {
     modalView.display='block';
 }
 
+function activeTab(){
+const navLinks = document.querySelectorAll('.nav-item .nav-link');
+
+// Loop through each nav link
+navLinks.forEach(link => {
+    // Add a click event listener to each link
+    link.addEventListener('click', function() {
+        // Remove the 'active' class from all links
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add the 'active' class to the clicked link
+        this.classList.add('active');
+    });
+});
+}
+

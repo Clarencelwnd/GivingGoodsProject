@@ -27,8 +27,9 @@
             </ul>
 
             <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
+                    <p id="organization-name">OCG Saving The Ocean</p>
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 34px, 0px);" data-popper-placement="bottom-start">
                   <li><a class="dropdown-item" href="#">Pengaturan</a></li>
@@ -37,7 +38,6 @@
                     <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
                   </li>
                 </ul>
-
             </div>
 
             <!-- MODAL -->

@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <footer class="py-3 my-4">
-        <p class="text-center" id="footer-text" style="color: #00744C">© 2024 GivingGoods. All rights reserved</p>
+    <footer class="footer">
+        <p class="footer-text">© 2024 GivingGoods. All rights reserved</p>
     </footer>
 
 </body>

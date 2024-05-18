@@ -38,7 +38,8 @@
 }
 
 #placeholder-text{
-    color: #3C3C43;
+    background-color: #FAFAFA;
+    color: rgba(60, 60, 67, 0.60);
     font-size: 16px;
     font-weight: 400;
     word-wrap: break-word
@@ -47,5 +48,74 @@
 /* OPTIONS */
 .kegiatan-nav{
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 45px;
+    flex-wrap: nowrap;
+}
+
+/* Set text color for kegiatan-nav lists */
+.kegiatan-nav .nav-item .nav-link {
+    color: #1C3F5B;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.kegiatan-nav .nav-item .nav-link.active {
+    color: #1C3F5B;
+    font-weight: bold;
+}
+
+.btn-buatKegiatan{
+margin-left: 450px;
+white-space: nowrap;
+}
+
+/* FILTER */
+.filter-container{
+    color: #009B65;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+#filterDropdown{
+    border: 0px;
+    color: #009B65;
+}
+
+/* CARD */
+.card{
+    margin-bottom: 50px;
+}
+
+/* PAGINATION */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.pagination {
+    margin: 0;
+}
+
+/* FOOTER */
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-top: auto; /* Pushes footer to the bottom of the page */
+}
+
+.footer-text {
+    color: #00744C;
+    text-align: center;
+    margin: 0;
 }

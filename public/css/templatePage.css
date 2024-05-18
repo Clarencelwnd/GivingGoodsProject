@@ -66,6 +66,24 @@
     height: 56px;
 }
 
+#dropdownOrganizationName {
+    /* display: flex;
+    align-items: center; */
+    text-decoration: none;
+    color: inherit;
+    /* font-size: 18px; */
+}
+
+#organization-profile{
+    width: 32px;
+    height: 32px;
+    margin-right: 5px; /* Adjust as needed */
+}
+
+#organization-name {
+    margin: 0;
+}
+
 #givingGoodsTitle {
     color: #00744C;
     font-size: 25px;
