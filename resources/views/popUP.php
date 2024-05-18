@@ -57,7 +57,7 @@
 
 </style>
 
-
+                <!-- POP UP KONFIRMASI HAPUS PERUBAHAN  -->
                 <!-- <div id="popup-container" style="display: block;">
                         <div id="popup">
                             <h3 style="color: #152F44; font-size: 24px; font-weight: 700;">Hapus Kegiatan</h3>
@@ -69,7 +69,7 @@
                         </div>
                 </div> -->
 
-
+                <!-- POP UP KONFIRMASI SIMPAN PERUBAHAN  -->
                 <!-- <div id="popup-container" style="display: block;">
                         <div id="popup">
                             <h3 style="color: #152F44; font-size: 24px; font-weight: 700;">Konfirmasi Penyimpanan Perubahan</h3>
@@ -81,7 +81,7 @@
                         </div>
                 </div> -->
 
-
+                <!-- POP UP KELUAR DARI TAMPILAN HALAMAN  -->
                 <!-- <div id="popup-container" style="display: block;">
                         <div id="popup">
                             <h3 style="color: #152F44; font-size: 24px; font-weight: 600;">Keluar dari Halaman ini?</h3>
@@ -94,6 +94,7 @@
                 </div> -->
 
 
+                <!-- POP UP KEGIATAN BERHASIL  -->
                 <div id="popup-container" style="display: block;">
                             <!-- Popup untuk berhasil membuat akun -->
                             <div id="popup">
