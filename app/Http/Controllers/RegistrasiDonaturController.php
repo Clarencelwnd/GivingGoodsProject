@@ -20,6 +20,7 @@ class RegistrasiDonaturController extends Controller
             $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
         }
 
+        // erorrrrr undefineddd
         // dd($registrasiDonatur);
 
         // Kirim data ke view
