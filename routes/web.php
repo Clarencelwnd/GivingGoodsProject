@@ -7,5 +7,5 @@ Route::get('/', function () {
 });
 
 Route::get('/popup', function () {
-    return view('popUP_konfirmasiHapus');
+    return view('popUP');
 });

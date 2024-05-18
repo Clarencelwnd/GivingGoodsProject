@@ -58,7 +58,7 @@
 </style>
 
 
-                <div id="popup-container" style="display: block;">
+                <!-- <div id="popup-container" style="display: block;">
                         <div id="popup">
                             <h3 style="color: #152F44; font-size: 24px; font-weight: 700;">Hapus Kegiatan</h3>
                             <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
@@ -67,7 +67,7 @@
                                 <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" onclick="window.location.href='{{ route('') }}'; return false;">Ya, Hapus</button>
                             </div>
                         </div>
-                </div>
+                </div> -->
 
 
                 <!-- <div id="popup-container" style="display: block;">
@@ -94,6 +94,13 @@
                 </div> -->
 
 
+                <div id="popup-container" style="display: block;">
+                            <!-- Popup untuk berhasil membuat akun -->
+                            <div id="popup">
+                                <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Kegiatan Berhasil Dibuat</h3>
+                                <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
+                            </div>
+                        </div>
 
 
 
