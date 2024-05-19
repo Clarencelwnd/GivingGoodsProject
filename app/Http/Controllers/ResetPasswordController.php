@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Models\DonaturAtauRelawan;
-use App\Models\Models\PantiSosial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -17,6 +15,8 @@ class ResetPasswordController extends Controller
 {
 
     public function index(){
+        // session()->put('showModal', false);
+        // dd(session('showModal'));
         return view('reset_password/email_reset_password');
     }
 
@@ -50,7 +50,13 @@ class ResetPasswordController extends Controller
             return view('reset_password/input_otp', compact('email', 'otp'));
         }
         else{
-            return view('reset_password/pop_up_email', compact('email'));
+            // return view('reset_password.email_reset_password');
+            session()->put('showModal', true);
+            // dd(session('showModal'));
+            return back();
+
+            // redirect()->route('reset_password');
+            // return view('reset_password/pop_up_email', compact('email'));
         }
     }
 

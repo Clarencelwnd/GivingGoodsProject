@@ -53,7 +53,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header text-center border-0">
+                    <h5 class="modal-title w-100" id="logoutModalLabel" >Keluar dari Akun</h5>
+                </div>
+                <div class="modal-body">
+                    Apakah Anda yakin ingin keluar dari akun Anda?
+                </div>
+                <div class="modal-footer align-content-center justify-content-center border-0">
+                    <button type="button" class="btn btn-kembali" data-bs-dismiss="modal">Kembali</button>
+                    <button type="button" class="btn btn-keluar">Ya, keluar</button>
+                </div>
+            </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {{-- <script src="{{asset('js/email_reset_password.js')}}"></script> --}}
+    @if (session()->has('showModal'))
+        <script>
+        // const modalView = document.getElementById("");
+        // modalView.display='block';
+        window.onload = function() {
+                document.getElementById('logoutModal').style.display = 'block';
+            };
+        </script>
+        <?php session()->forget('showModal'); ?>
+    @endif
 </body>
 </html>
