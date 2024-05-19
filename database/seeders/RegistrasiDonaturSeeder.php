@@ -22,7 +22,7 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 2,
-                'StatusKegiatanRelawan' => 'Donasi Diterima',
+                'StatusRegistrasiDonatur' => 'Donasi Diterima',
                 'JenisDonasiDidonasikan' => 'obat',
                 'DeskripsiBarangDonasi' => 'paramex 5 kotak',
                 'TanggalDonasi' => '2024-06-10',
@@ -31,7 +31,7 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 3,
                 'IDKegiatanDonasi' => 1,
-                'StatusKegiatanRelawan' => 'Menunggu Konfirmasi',
+                'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi',
                 'JenisDonasiDidonasikan' => 'mainan',
                 'DeskripsiBarangDonasi' => 'Mainan anak',
                 'TanggalDonasi' => '2024-07-20',
@@ -40,7 +40,7 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 1,
-                'StatusKegiatanRelawan' => 'Donasi Diterima',
+                'StatusRegistrasiDonatur' => 'Donasi Diterima',
                 'JenisDonasiDidonasikan' => 'buku',
                 'DeskripsiBarangDonasi' => 'Buku pelajaran',
                 'TanggalDonasi' => '2024-07-20',
