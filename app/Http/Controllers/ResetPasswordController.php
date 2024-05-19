@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Mail\OtpMail;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 use function PHPUnit\Framework\returnValue;
@@ -37,16 +38,12 @@ class ResetPasswordController extends Controller
 
         $email = $request->input('email');
 
-        // cari email di donatur/relawan
-        $foundEmail = DonaturAtauRelawan::where('EmailDonaturRelawan', 'LIKE', "$email")->first();
-        // klu ga ada, cari di panti sosial
-        if(!$foundEmail){
-            $foundEmail = PantiSosial::where('EmailPantiSosial', 'LIKE', "$email")->first();
-        }
+        // cari email
+        $foundEmail = User::where('email', 'LIKE', "$email")->first();
 
         session()->put('email', $email);
 
-        // klu email ditemukan/ga ditemukan di dua tabel itu:
+        // klu email ditemukan/ga
         if($foundEmail){
             $this->sending_otp();
             $otp = session()->get('otp');
@@ -103,29 +100,19 @@ class ResetPasswordController extends Controller
 
         $email = session()->get('email');
 
-        // cari email di donatur/relawan
-        $foundEmail = DonaturAtauRelawan::where('EmailDonaturRelawan', 'LIKE', "$email")->first();
-        $pansos = false;
-        // klu ga ada, cari di panti sosial
-        if(!$foundEmail){
-            $foundEmail = PantiSosial::where('EmailPantiSosial', 'LIKE', "$email")->first();
-            $pansos = true;
-        }
+        // cari email
+        $foundEmail = User::where('email', 'LIKE', "$email")->first();
 
+        // hashing password
         $password = Hash::make($request->input('password'));
 
-        if($pansos){
-            $foundEmail->PasswordPantiSosial = $password;
-        }
-        else{
-            $foundEmail->PasswordDonaturRelawan = $password;
-        }
-
+        // masukkan password baru
+        $foundEmail->password = $password;
         $foundEmail->save();
 
         session()->forget(['email', 'otp']);
         session()->flush();
-        
+
         return view('reset_password/dummy_login');
     }
 
