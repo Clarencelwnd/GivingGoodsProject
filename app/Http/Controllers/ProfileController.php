@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Models\PantiSosial;
+use App\Models\PantiSosial;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
     public function index(Request $request){
-        $user = PantiSosial::find($request->id);
-        return view('profile_pansos/profile', compact('user'));
+        // $user = User::find($requ)
+        $detailPansos = PantiSosial::find($request->id);
+        $userPansos = $detailPansos->User;
+        dd($detailPansos, $userPansos);
+        return view('profile_pansos/profile', compact('detailPansos', 'userPansos'));
     }
 
     public function test(){
