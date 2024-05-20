@@ -18,7 +18,7 @@
 
         <div class="col-lg-6">
             <div class="card-body p-md-5 ">
-                <!-- HEADER -->
+                {{-- HEADER --}}
                 <div class="d-flex header">
                     <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
                     <h3 class="mb-3">GivingGoods</h3>
@@ -47,29 +47,33 @@
                     </div>
                 </div>
 
-                <!-- Sudah punya akun? -->
+                {{-- Sudah punya akun? --}}
                 <div class="d-flex bottom-txt">
                     <div id="copyright-txt">©️GivingGoods | 2024</div>
                 </div>
             </div>
         </div>
 
-        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content text-center">
-                <div class="modal-header text-center border-0">
-                    <h5 class="modal-title w-100" id="logoutModalLabel" >Keluar dari Akun</h5>
+        {{-- modal --}}
+        <div class="container">
+            <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <h5 class="modal-title w-100" id="logoutModalLabel" >Keluar dari Akun</h5>
+                    </div>
+                    <div class="modal-body">
+                        Apakah Anda yakin ingin keluar dari akun Anda?
+                    </div>
+                    <div class="modal-footer align-content-center justify-content-center border-0">
+                        <button type="button" class="btn btn-kembali" data-bs-dismiss="modal">Kembali</button>
+                        <button type="button" class="btn btn-keluar">Ya, keluar</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    Apakah Anda yakin ingin keluar dari akun Anda?
                 </div>
-                <div class="modal-footer align-content-center justify-content-center border-0">
-                    <button type="button" class="btn btn-kembali" data-bs-dismiss="modal">Kembali</button>
-                    <button type="button" class="btn btn-keluar">Ya, keluar</button>
-                </div>
-            </div>
             </div>
         </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     {{-- <script src="{{asset('js/email_reset_password.js')}}"></script> --}}
     @if (session()->has('showModal'))
