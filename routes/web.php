@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
-Route:: get('/test', [ProfileController::class, 'test'])->name('test');
+

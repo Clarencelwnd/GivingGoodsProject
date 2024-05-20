@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalOperasional;
 use App\Models\PantiSosial;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -9,14 +10,12 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(Request $request){
-        // $user = User::find($requ)
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $request->id)->get();
         $detailPansos = PantiSosial::find($request->id);
         $userPansos = $detailPansos->User;
-        dd($detailPansos, $userPansos);
-        return view('profile_pansos/profile', compact('detailPansos', 'userPansos'));
+
+        // dd($jadwalPansos, $detailPansos, $userPansos);
+        return view('profile_pansos/profile', compact('jadwalPansos', 'detailPansos', 'userPansos'));
     }
 
-    public function test(){
-        return view('profile_pansos.test');
-    }
 }

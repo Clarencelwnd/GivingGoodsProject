@@ -28,92 +28,59 @@
                             <a href="#" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-body">Nama Panti Sosial</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Nomor Registrasi</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Deskripsi</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Email</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Nomor HP</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Website</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Alamat Lengkap</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Lokasi pada Google Maps</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Jam Operasional</div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">Media Sosial</div>
-                    </div>
                 </div>
-                <div class="col-lg-7 d-none d-md-block">
-                    <div class="card">
-                        <div class="card-body"></div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->NamaPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->NomorRegistrasiPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->DeskripsiPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->EmailPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->NomorTeleponPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->WebsitePantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                           {{$user->AlamatPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->LinkGoogleMapsPantiSosial}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{-- Jam Operasional --}}
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            {{$user->MediaSosialPantiSosial}}
-                        </div>
-                    </div>
-                </div>
+                <table class="main-table">
+                    <tr>
+                        <td class="left-column">Nama Panti Sosial</td>
+                        <td class="right-column"> {{$detailPansos->NamaPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Nomor Registrasi</td>
+                        <td class="right-column"> {{$detailPansos->NomorRegistrasiPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Deskripsi</td>
+                        <td class="right-column"> {{$detailPansos->DeskripsiPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Email</td>
+                        <td class="right-column"> {{$userPansos->email}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Nomor HP</td>
+                        <td class="right-column"> {{$detailPansos->NomorTeleponPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Website</td>
+                        <td class="right-column"> {{$detailPansos->WebsitePantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Alamat Lengkap</td>
+                        <td class="right-column"> {{$detailPansos->AlamatPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Lokasi pada Google Maps</td>
+                        <td class="right-column"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Media Sosial</td>
+                        <td class="right-column"> {{$detailPansos->MediaSosialPantiSosial}}</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">Jam Operasional</td>
+                        <td class="right-column">
+                            <table class="schedule-table">
+                                @foreach ($jadwalPansos as $jadwal)
+                                    <tr>
+                                        <td>{{$jadwal->Hari}}</td>
+                                        <td>{{$jadwal->JamBukaPantiSosial}}</td>
+                                        <td>{{$jadwal->JamTutupPantiSosial}}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
