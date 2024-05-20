@@ -75,12 +75,23 @@ td, tr{
     padding-bottom: 20px;
 }
 
-.left-column, .right-column{
+.left-column-mt, .right-column-mt{
     color: #006374;
 }
 
-.left-column{
+.left-column-mt{
     font-weight: 500;
+}
+
+.schedule-table{
+    border: 1px solid;
+    border-spacing: 50px;
+}
+
+.row-st{
+    /* padding-top: 3px; */
+    padding-left: 5px;
+    padding-right: 15px;
 }
 
 .error-msg{

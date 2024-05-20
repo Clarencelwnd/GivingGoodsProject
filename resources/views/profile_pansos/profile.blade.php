@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,52 +35,80 @@
                 </div>
                 <table class="main-table">
                     <tr>
-                        <td class="left-column">Nama Panti Sosial</td>
-                        <td class="right-column"> {{$detailPansos->NamaPantiSosial}}</td>
+                        <td class="left-column-mt">Nama Panti Sosial</td>
+                        <td class="right-column-mt"> {{$detailPansos->NamaPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Nomor Registrasi</td>
-                        <td class="right-column"> {{$detailPansos->NomorRegistrasiPantiSosial}}</td>
+                        <td class="left-column-mt">Nomor Registrasi</td>
+                        <td class="right-column-mt"> {{$detailPansos->NomorRegistrasiPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Deskripsi</td>
-                        <td class="right-column"> {{$detailPansos->DeskripsiPantiSosial}}</td>
+                        <td class="left-column-mt">Deskripsi</td>
+                        <td class="right-column-mt"> {{$detailPansos->DeskripsiPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Email</td>
-                        <td class="right-column"> {{$userPansos->email}}</td>
+                        <td class="left-column-mt">Email</td>
+                        <td class="right-column-mt"> {{$userPansos->email}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Nomor HP</td>
-                        <td class="right-column"> {{$detailPansos->NomorTeleponPantiSosial}}</td>
+                        <td class="left-column-mt">Nomor HP</td>
+                        <td class="right-column-mt"> {{$detailPansos->NomorTeleponPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Website</td>
-                        <td class="right-column"> {{$detailPansos->WebsitePantiSosial}}</td>
+                        <td class="left-column-mt">Website</td>
+                        <td class="right-column-mt"> {{$detailPansos->WebsitePantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Alamat Lengkap</td>
-                        <td class="right-column"> {{$detailPansos->AlamatPantiSosial}}</td>
+                        <td class="left-column-mt">Alamat Lengkap</td>
+                        <td class="right-column-mt"> {{$detailPansos->AlamatPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Lokasi pada Google Maps</td>
-                        <td class="right-column"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
+                        <td class="left-column-mt">Lokasi pada Google Maps</td>
+                        <td class="right-column-mt"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Media Sosial</td>
-                        <td class="right-column"> {{$detailPansos->MediaSosialPantiSosial}}</td>
+                        <td class="left-column-mt">Media Sosial</td>
+                        <td class="right-column-mt"> {{$detailPansos->MediaSosialPantiSosial}}</td>
                     </tr>
                     <tr>
-                        <td class="left-column">Jam Operasional</td>
-                        <td class="right-column">
+                        <td class="left-column-mt">Jam Operasional</td>
+                        <td class="right-column-mt">
                             <table class="schedule-table">
-                                @foreach ($jadwalPansos as $jadwal)
+                                @php
+                                    $index = 0;
+                                    $total = count($jadwalPansos);
+                                    $first = true;
+                                @endphp
+                                @while ($index < $total)
+                                    @php
+                                        $first_day = $jadwalPansos[$index];
+                                        $last_index = $index;
+                                        while (($last_index < ($total - 1)) && ($jadwalPansos[$last_index+1]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamBukaPantiSosial) && ($jadwalPansos[$last_index+1]->JamTutupPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)) {
+                                            $last_index++;
+                                        }
+                                        $last_day = $jadwalPansos[$last_index];
+                                    @endphp
                                     <tr>
-                                        <td>{{$jadwal->Hari}}</td>
-                                        <td>{{$jadwal->JamBukaPantiSosial}}</td>
-                                        <td>{{$jadwal->JamTutupPantiSosial}}</td>
+                                        <td class="row-st">
+                                            @if ($first_day === $last_day)
+                                                {{$first_day->Hari}}
+                                            @else
+                                                {{$first_day->Hari}} - {{$last_day->Hari}}
+                                            @endif
+                                        </td>
+                                        <td> | </td>
+                                        <td class="row-st">
+                                            @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
+                                                Libur
+                                            @else
+                                                {{Carbon::parse($first_day->JamBukaPantiSosial)->format('H:i')}} - {{Carbon::parse($first_day->JamTutupPantiSosial)->format('H:i')}} WIB
+                                            @endif
+                                        </td>
                                     </tr>
-                                @endforeach
+                                    @php
+                                        $index = $last_index+1;
+                                    @endphp
+                                @endwhile
                             </table>
                         </td>
                     </tr>
