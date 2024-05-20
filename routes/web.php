@@ -12,3 +12,7 @@ Route::get('/RiwayatDonatur', function () {
 });
 
 Route::get('/registrasi-donatur', [RegistrasiDonaturController::class, 'index']);
+
+Route::post('/update-status/{IDRegistrasiDonatur}', [RegistrasiDonaturController::class, 'updateStatus'])->name('update-status');
+
+

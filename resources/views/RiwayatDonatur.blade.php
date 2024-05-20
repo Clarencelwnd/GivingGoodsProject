@@ -40,7 +40,7 @@ h1 {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 50px 0;
+    padding: 50px 20px;
 }
 .jumlah {
     margin-left: 180px;
@@ -68,13 +68,21 @@ h1 {
     color: #006374;
 }
 
-.confirmation-box {
-    background-color: #00C27E;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
+.btn-confirmation {
+        background-color: white; /* Added/Updated styling */
+        color: #005739; /* Added/Updated styling */
+        border: 2px solid #005739; /* Added/Updated styling */
+        border-radius: 5px; /* Added/Updated styling */
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+    }
 
+.btn-confirmation.clicked {
+        background-color: #DFDFDF; /* Added/Updated styling */
+        color: #727272; /* Added/Updated styling */
+        border: none; /* Added/Updated styling */
+    }
 .btn-detail {
     background-color: white;
     color: #00925F;
@@ -82,11 +90,75 @@ h1 {
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 .container {
     padding: 40px;
 }
+
+
+/* Popup styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+    width: 500px;
+    max-height: 80%;
+    overflow-y: auto;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.popup-title {
+    font-weight: 600;
+    font-size: 32px;
+    color: #1C3F5B;
+    margin: 0 auto;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.popup-close {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}
+
+
+.popup-close img {
+    width: 20px;
+    height: 20px;
+}
+
+.popup-subtitle {
+    font-size: 22px;
+    font-weight: 500;
+    color: #007C92;
+    margin-top: 20px;
+}
+
+.popup-data {
+    margin-bottom: 10px;
+}
+
 
 
 </style>
@@ -111,7 +183,7 @@ h1 {
                 <p>Total Donatur</p>
             </div>
             <div class="jumlah">
-                <p>20 orang</p>
+                <p>{{ $jumlahKonfirmasiDiterima }} orang</p> <!-- Updated -->
             </div>
         </div>
 
@@ -137,15 +209,26 @@ h1 {
                             <td>{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}</td>
                             <td>{{ $registrasi->jamTanggalDonasi }}</td>
                             <td>
-                                <div class="confirmation-box">
-                                    Barang Diterima
-                                </div>
+                                <form action="{{ route('update-status', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
+                                    @csrf
+                                    @method('POST')
+                                    <button type="submit" class="btn-confirmation @if($registrasi->StatusKegiatanRelawan == 'Konfirmasi Diterima') clicked @endif" @if($registrasi->StatusKegiatanRelawan == 'Konfirmasi Diterima') disabled @endif>
+                                        Konfirmasi Diterima
+                                    </button>
+                                </form>
                             </td>
                             <td>
                                 <input type="checkbox" name="sudah_dihubungi[]" value="1">
                             </td>
                             <td>
-                                <button class="btn-detail">Lihat Detail</button>
+                                <button class="btn-detail"
+                                onclick="openPopup(
+                                    '{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}',
+                                    '{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}',
+                                    '{{ $registrasi->jamTanggalDonasi }}',
+                                    '{{ $registrasi->JenisDonasiDidonasikan }}',
+                                    '{{ $registrasi->DeskripsiBarangDonasi }}'
+                                )">Lihat Detail</button>
                             </td>
                         </tr>
                     @endforeach
@@ -155,5 +238,59 @@ h1 {
             </div>
         </div>
     </div>
+
+
+
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="popup-title">Detail Donatur</div>
+                <div class="popup-close" onclick="closePopup()">
+                    <img src="{{ asset('image/general/close.png') }}" alt="Close">
+                </div>
+            </div>
+            <!-- Popup data -->
+            <div class="popup-subtitle">Nama Donatur</div>
+            <div class="popup-data" id="popup-nama"></div>
+
+            <div class="popup-subtitle">Nomor HP</div>
+            <div class="popup-data" id="popup-hp"></div>
+
+            <div class="popup-subtitle">Jam & Tanggal Donasi</div>
+            <div class="popup-data" id="popup-tanggal"></div>
+
+            <div class="popup-subtitle">Jenis Donasi</div>
+            <div class="popup-data" id="popup-jenis"></div>
+
+            <div class="popup-subtitle">Deskripsi Donasi</div>
+            <div class="popup-data" id="popup-deskripsi"></div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function handleConfirmationClick(button) {
+            if (!button.classList.contains('clicked')) {
+                button.classList.add('clicked'); // Add clicked class for styling
+                button.disabled = true; // Disable button to prevent further clicks
+            }
+        }
+
+        function openPopup(nama, hp, tanggal, jenis, deskripsi) {
+            document.getElementById('popup-nama').innerText = nama;
+            document.getElementById('popup-hp').innerText = hp;
+            document.getElementById('popup-tanggal').innerText = tanggal;
+            document.getElementById('popup-jenis').innerText = jenis;
+            document.getElementById('popup-deskripsi').innerText = deskripsi;
+
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+    </script>
 </body>
 </html>

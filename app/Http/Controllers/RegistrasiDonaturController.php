@@ -20,10 +20,26 @@ class RegistrasiDonaturController extends Controller
             $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
         }
 
-        // erorrrrr undefineddd
-        // dd($registrasiDonatur);
+        // Hitung jumlah donatur dengan status "Konfirmasi Diterima"
+        $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusKegiatanRelawan', 'Konfirmasi Diterima')->count();
 
-        // Kirim data ke view
-        return view('RiwayatDonatur', compact('registrasiDonatur'));
+        // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
+        return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima'));
     }
+
+
+
+    public function updateStatus(Request $request, $id)
+    {
+        $registrasi = RegistrasiDonatur::find($id);
+        if ($registrasi) {
+            $registrasi->StatusKegiatanRelawan = 'Konfirmasi Diterima'; // Ubah status di sini
+            $registrasi->save();
+
+            return redirect()->back()->with('success', 'Status berhasil diperbarui');
+        }
+
+        return redirect()->back()->with('error', 'Registrasi tidak ditemukan');
+    }
+
 }
