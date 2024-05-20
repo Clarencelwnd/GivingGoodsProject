@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('forum', function (Blueprint $table) {
             $table->bigIncrements('IDForum');
             $table->unsignedBigInteger('IDDonaturRelawanPembuatForum')->nullable();
-            $table->unsignedBigInteger('IDPantiSosialPembuatForum')->nullable();
             $table->foreign('IDDonaturRelawanPembuatForum')->references('IDDonaturRelawan')->on('donatur_atau_relawan');
+            $table->unsignedBigInteger('IDPantiSosialPembuatForum')->nullable();
             $table->foreign('IDPantiSosialPembuatForum')->references('IDPantiSosial')->on('panti_sosial');
             $table->string('JudulForum', 255);
             $table->string('DeskripsiForum', 255);
