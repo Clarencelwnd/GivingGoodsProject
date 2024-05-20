@@ -81,15 +81,15 @@
         <div class="card-body">
             <div>
                 <span class="badge text-bg-warning rounded-pill">Warning</span>
-                <h6 class="card-title">Pendaftaran ditutup: {{ $data->TanggalPenutupanRelawan }}</h6>
+                <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($data->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
             </div>
 
             <h5 class="card-title">{{ $data->NamaKegiatanRelawan }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanRelawanMulai }} - {{ $data->TanggalKegiatanRelawanSelesai }}</p>
+            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
             <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanRelawan }}</p>
             <p class="card-text">Jenis relawan: {{ $data->JenisKegiatanRelawan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Relawan: {{ $data->JumlahRelawan }}</p>
+            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
+            <p class="card-text">Relawan: {{ $data->registrasi_relawan_count . '/' . $data->JumlahRelawanDibutuhkan }}</p>
         </div>
     </div>
     @endforeach
@@ -107,11 +107,11 @@
             </div>
 
             <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanDonasiMulai }} - {{ $data->TanggalKegiatanDonasiSelesai }}</p>
+            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
             <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
             <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Donatur: {{ $data->JumlahDonatur }}</p>
+            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
+            <p class="card-text">Donasi: {{ $data->registrasi_donatur_count }}</p>
         </div>
     </div>
     @endforeach

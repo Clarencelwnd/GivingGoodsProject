@@ -84,10 +84,10 @@
             </div>
 
         <h5 class="card-title">{{ $data->NamaKegiatanRelawan }}</h5>
-        <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanRelawanMulai }} - {{ $data->TanggalKegiatanRelawanSelesai }}</p>
+        <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
         <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanRelawan }}</p>
         <p class="card-text">Jenis relawan: {{ $data->JenisKegiatanRelawan }}</p>
-        <p class="card-text">Tanggal kegiatan dibuat: 18 mei 2024</p>
+        <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
         <p class="card-text">Relawan: 5/10</p>
         </div>
     </div>

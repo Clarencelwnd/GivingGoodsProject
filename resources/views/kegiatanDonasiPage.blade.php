@@ -83,11 +83,11 @@
                 <span class="badge text-bg-warning rounded-pill">Warning</span>
             </div>
             <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanDonasiMulai }} - {{ $data->TanggalKegiatanDonasiSelesai }}</p>
+            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
             <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
             <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Donasi: 1</p>
+            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
+            <p class="card-text">Donasi: {{ $data->registrasi_donatur_count }}</p>
         </div>
     </div>
     @endforeach
@@ -97,6 +97,8 @@
 
 
 {{-- PAGINATION --}}
+
+{{ $sorted->links() }}
 <div class="pagination-container">
     <nav aria-label="...">
         <ul class="pagination">
