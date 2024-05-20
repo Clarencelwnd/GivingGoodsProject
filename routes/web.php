@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegistrasiDonaturController;
+use App\Http\Controllers\RiwayatDonaturController;
+use App\Http\Controllers\RiwayatRelawanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,8 +12,14 @@ Route::get('/RiwayatDonatur', function () {
     return view('RiwayatDonatur');
 });
 
-Route::get('/registrasi-donatur', [RegistrasiDonaturController::class, 'index']);
+Route::get('/registrasi-donatur', [RiwayatDonaturController::class, 'index']);
 
-Route::post('/update-status/{IDRegistrasiDonatur}', [RegistrasiDonaturController::class, 'updateStatus'])->name('update-status');
+Route::post('/update-status/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatus'])->name('update-status');
 
+
+
+
+Route::get('/registrasi-relawan', [RiwayatRelawanController::class, 'index']);
+
+Route::post('/update-status/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
 

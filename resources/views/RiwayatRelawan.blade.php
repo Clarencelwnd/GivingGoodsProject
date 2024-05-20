@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Donatur</title>
+    <title>Riwayat Relawan</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
@@ -71,6 +71,7 @@ h1 {
     text-align: center;
     padding-top: 20px;
     font-size: 20px;
+    padding-bottom: 20px;
 }
 
 .table th {
@@ -87,13 +88,58 @@ h1 {
         padding: 5px 10px;
         cursor: pointer;
         font-size: 16px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
-.btn-confirmation.clicked {
-        background-color: #DFDFDF; /* Added/Updated styling */
-        color: #727272; /* Added/Updated styling */
-        border: none; /* Added/Updated styling */
-    }
+    .btn-confirmation:not(.clicked) {
+    background-color: #DFDFDF;
+    color: #727272;
+    border: none;
+}
+
+    /* Styling untuk tombol "Terima" */
+.btn-confirmation.accept {
+    background-color: white;
+    color: #005739;
+    border: 2px solid #005739;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px
+}
+
+.btn-confirmation.accept.clicked {
+    background-color: #B0ECD7;
+    color: #005739;
+    border: none;
+}
+
+/* Styling untuk tombol "Tolak" */
+.btn-confirmation.reject {
+    background-color: white;
+    color: #005739;
+    border: 2px solid #005739;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-confirmation.reject.clicked {
+    background-color: #EFC2BF;
+    color: #7A231D;
+    border: none;
+}
+
+/* Menonaktifkan tombol saat diklik */
+.btn-confirmation[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .btn-detail {
     background-color: white;
     color: #00925F;
@@ -184,14 +230,14 @@ h1 {
                 </a>
             </div>
             <div class="col">
-                <h1 style="font-weight: 600; font-size: 36px;">Riwayat Donatur</h1>
+                <h1 style="font-weight: 600; font-size: 36px;">Riwayat Relawan</h1>
             </div>
         </div>
 
 
         <div class="total-jumlah">
             <div class="col">
-                <p>Total Donatur</p>
+                <p>Total Relawan Mendaftar</p>
             </div>
             <div class="jumlah">
                 <p>{{ $jumlahKonfirmasiDiterima }} orang</p> <!-- Updated -->
@@ -204,9 +250,10 @@ h1 {
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Nama Donatur</th>
-                            <th>No HP</th>
-                            <th>Jam & Tanggal Donasi</th>
+                            <th>Nama Relawan</th>
+                            <th>Nomor Handphone</th>
+                            <th>Tanggal Kegiatan</th>
+                            <th>Waktu Kegiatan</th>
                             <th>Konfirmasi</th>
                             <th>Sudah dihubungi</th>
                             <th></th>
@@ -214,20 +261,31 @@ h1 {
                     </thead>
                     <tbody>
 
-                        @foreach($registrasiDonatur as $registrasi)
+                        @foreach($registrasiRelawan as $registrasi)
                         <tr>
                             <td>{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}</td>
                             <td>{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}</td>
-                            <td>{{ $registrasi->jamTanggalDonasi }}</td>
+                            <td>{{ $registrasi->tanggalKegiatan }}</td>
+                            <td>{{ $registrasi->waktuKegiatan }}</td>
                             <td>
-                                <form action="{{ route('update-status', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
+                                <form action="{{ route('update-status-relawan', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                     @csrf
                                     @method('POST')
-                                    <button type="submit" class="btn-confirmation @if($registrasi->StatusRegistrasiDonatur == 'Konfirmasi Diterima') clicked @endif" @if($registrasi->StatusRegistrasiDonatur == 'Konfirmasi Diterima') disabled @endif>
-                                        Konfirmasi Diterima
+                                    <!-- Tombol "Terima" -->
+                                    <button type="submit" name="terima" class="btn-confirmation accept @if($registrasi->StatusRegistrasiRelawan == 'Terima') clicked @endif" @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                        Terima
+                                    </button>
+
+                                    <!-- Tombol "Tolak" -->
+                                    <button type="submit" name="tolak" class="btn-confirmation reject @if($registrasi->StatusRegistrasiRelawan == 'Ditolak') clicked @endif" @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                        Tolak
                                     </button>
                                 </form>
+
+
                             </td>
+
+
                             <td>
                                 <input type="checkbox" name="sudah_dihubungi[]" value="1" style="transform: scale(1.5);">
                             </td>
@@ -236,9 +294,8 @@ h1 {
                                 onclick="openPopup(
                                     '{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}',
                                     '{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}',
-                                    '{{ $registrasi->jamTanggalDonasi }}',
-                                    '{{ $registrasi->JenisDonasiDidonasikan }}',
-                                    '{{ $registrasi->DeskripsiBarangDonasi }}'
+                                    '{{ $registrasi->AlasanRegistrasiRelawan }}',
+                                    '{{ $registrasi->waktuKegiatan }}',
                                 )">Lihat Detail</button>
                             </td>
                         </tr>
@@ -255,45 +312,34 @@ h1 {
     <div class="popup-overlay" id="popup">
         <div class="popup-content">
             <div class="popup-header">
-                <div class="popup-title">Detail Donatur</div>
+                <div class="popup-title">Detail Relawan</div>
                 <div class="popup-close" onclick="closePopup()">
                     <img src="{{ asset('image/general/close.png') }}" alt="Close">
                 </div>
             </div>
             <!-- Popup data -->
-            <div class="popup-subtitle">Nama Donatur</div>
+            <div class="popup-subtitle">Nama Relawan</div>
             <div class="popup-data" id="popup-nama"></div>
 
-            <div class="popup-subtitle">Nomor HP</div>
+            <div class="popup-subtitle">Nomor Handphone</div>
             <div class="popup-data" id="popup-hp"></div>
 
-            <div class="popup-subtitle">Jam & Tanggal Donasi</div>
-            <div class="popup-data" id="popup-tanggal"></div>
+            <div class="popup-subtitle">Alasan Bergabung</div>
+            <div class="popup-data" id="popup-alasan"></div>
 
-            <div class="popup-subtitle">Jenis Donasi</div>
-            <div class="popup-data" id="popup-jenis"></div>
-
-            <div class="popup-subtitle">Deskripsi Donasi</div>
-            <div class="popup-data" id="popup-deskripsi"></div>
+            <div class="popup-subtitle">Shift yang dipilih</div>
+            <div class="popup-data" id="popup-shift"></div>
         </div>
     </div>
 
 
 
     <script>
-        function handleConfirmationClick(button) {
-            if (!button.classList.contains('clicked')) {
-                button.classList.add('clicked'); // Add clicked class for styling
-                button.disabled = true; // Disable button to prevent further clicks
-            }
-        }
-
-        function openPopup(nama, hp, tanggal, jenis, deskripsi) {
+        function openPopup(nama, hp, alasan, shift) {
             document.getElementById('popup-nama').innerText = nama;
             document.getElementById('popup-hp').innerText = hp;
-            document.getElementById('popup-tanggal').innerText = tanggal;
-            document.getElementById('popup-jenis').innerText = jenis;
-            document.getElementById('popup-deskripsi').innerText = deskripsi;
+            document.getElementById('popup-alasan').innerText = alasan;
+            document.getElementById('popup-shift').innerText = shift;
 
             document.getElementById('popup').style.display = 'flex';
         }
