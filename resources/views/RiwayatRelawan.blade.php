@@ -311,11 +311,24 @@ h1 {
 
 
                             <td>
-                                <form action="{{ route('update-status-checkbox', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
+                                <form id="checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}" action="{{ route('update-status-checkbox', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                     @csrf
-                                    <input type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);">
+                                    <input id="sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiRelawan }}" type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);" @if($registrasi->StatusDihubungi == 'Sudah') checked @endif>
                                 </form>
+                                <script>
+                                    var checkbox = document.getElementById('sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiRelawan }}');
+                                    checkbox.addEventListener('change', function() {
+                                        document.getElementById('checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}').submit();
+                                    });
+
+                                    // Set checkbox checked status based on server response
+                                    var status = "{{ $registrasi->StatusDihubungi }}";
+                                    if (status === 'Sudah') {
+                                        checkbox.checked = true;
+                                    }
+                                </script>
                             </td>
+
                             <td>
                                 <button class="btn-detail"
                                 onclick="openPopup(
