@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Post;
+use App\Http\Controllers\Controller;
 use App\Models\KegiatanDonasi;
 use App\Models\KegiatanRelawan;
-use PhpParser\Node\Expr\PostDec;
 use Carbon\Carbon;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class generalPageController extends Controller
 {
@@ -18,7 +19,9 @@ class generalPageController extends Controller
     // }
 
     public function displayGeneralPage(){
-        $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+        $perPage = 5;
+
+          $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -33,7 +36,17 @@ class generalPageController extends Controller
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
 
-        return view('generalPage', ['activities'=> $sorted]);
+        $paginator = new LengthAwarePaginator(
+            $sorted->forPage(LengthAwarePaginator::resolveCurrentPage(), $perPage),
+            $sorted->count(),
+            $perPage,
+            LengthAwarePaginator::resolveCurrentPage()
+        );
+
+        // Get pagination links
+        $paginationLinks = $paginator->links();
+
+        return view('generalPage', ['activities'=> $paginator, 'paginationLinks'=>$paginationLinks]);
     }
 
     public function displayDummyProfilePage(){
@@ -41,16 +54,23 @@ class generalPageController extends Controller
     }
 
     public function viewAllKegiatanDonasi(){
+        // $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
+
         return view('kegiatanDonasiPage', compact('kegiatanDonasi'));
     }
 
     public function viewAllKegiatanRelawan(){
+        // $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
         return view('kegiatanRelawanPage', compact('kegiatanRelawan'));
     }
 
@@ -92,43 +112,6 @@ class generalPageController extends Controller
 
         return view($view, ['activities' => $sorted]);
     }
-
-    // public function filterStatusKegiatan(Request $request){
-    //     $status = $request->input('status');
-    //     $today = \Carbon\Carbon::today();
-
-    //     $kegiatanRelawan = KegiatanRelawan::query();
-    //     $kegiatanDonasi = KegiatanDonasi::query();
-
-    //     if($status == 'Akan Datang'){
-    //         $kegiatanRelawan->whereDate('TanggalKegiatanRelawanMulai', '>', $today);
-    //         $kegiatanDonasi->whereDate('TanggalKegiatanDonasiMulai', '>', $today);
-
-    //     }else if ($status == 'Selesai'){
-    //         $kegiatanRelawan->whereDate('TanggalKegiatanRelawanMulai', '<', $today);
-    //         $kegiatanDonasi->whereDate('TanggalKegiatanDonasiMulai', '<', $today);
-
-    //     }else if($status == 'Sedang Berlangsung'){
-    //         $kegiatanRelawan->where(function ($query) use ($today) {
-    //             $query->whereDate('TanggalKegiatanRelawanMulai', '<=', $today)
-    //                   ->whereDate('TanggalKegiatanRelawanSelesai', '>=', $today);
-    //         });
-    //         $kegiatanDonasi->where(function ($query) use ($today) {
-    //             $query->whereDate('TanggalKegiatanDonasiMulai', '<=', $today)
-    //                   ->whereDate('TanggalKegiatanDonasiSelesai', '>=', $today);
-    //         });
-    //     }
-
-    //     if(request()->is('viewAllKegiatanRelawan')){
-    //         $activities = $kegiatanRelawan->get();
-    //     }else if(request()->is('viewAllKegiatanDonasi')){
-    //         $activities = $kegiatanDonasi->get();
-    //     }else{
-    //         $activities = $kegiatanRelawan->get()->merge($kegiatanDonasi->get());
-    //     }
-
-    //     return view(request()->path(), compact('activities'));
-    // }
 
     public function filterStatusKegiatan(Request $request){
         $status = $request->input('status');
@@ -173,6 +156,12 @@ class generalPageController extends Controller
 
     }
 
+    private function addPaginationLinks($activities){
+        $links = $activities->links();
+        Paginator::useBootstrap();
+        $links->withPath('');
+        return $links;
+    }
 
 
 }
