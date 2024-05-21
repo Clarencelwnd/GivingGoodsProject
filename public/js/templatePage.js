@@ -26,7 +26,6 @@ navLinks.forEach(link => {
         navLinks.forEach(link => {
             link.classList.remove('active');
         });
-
         // Add the 'active' class to the clicked link
         this.classList.add('active');
     });

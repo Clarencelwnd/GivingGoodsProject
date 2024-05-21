@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     @include('components.sideBar')
 
     @section('header')
@@ -26,6 +25,7 @@
         @include('components.header')
 
         @yield('content')
+
     </div>
 
     @include('components.footer')
