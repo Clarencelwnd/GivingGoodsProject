@@ -49,6 +49,24 @@ class RiwayatRelawanController extends Controller
     }
 
 
+    public function updateStatusCheckbox(Request $request, $id)
+{
+    $registrasi = RegistrasiRelawan::find($id);
+    if ($registrasi) {
+        // Periksa apakah checkbox sudah dicentang atau tidak
+        $isChecked = $request->has('sudah_dihubungi');
+        $status = $isChecked ? 'Sudah' : 'Belum';
+        $registrasi->StatusDihubungi = $status;
+        $registrasi->save();
+
+        return redirect()->back()->with('success', 'Status berhasil diperbarui');
+    }
+
+    return redirect()->back()->with('error', 'Registrasi tidak ditemukan');
+}
+
+
+
 
 
 }

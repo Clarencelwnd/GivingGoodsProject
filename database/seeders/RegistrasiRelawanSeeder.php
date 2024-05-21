@@ -19,6 +19,7 @@ class RegistrasiRelawanSeeder extends Seeder
                 'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
                 'JamMulaiRelawan' => '08:00:00',
                 'JamSelesaiRelawan' => '14:00:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 2,
@@ -29,6 +30,7 @@ class RegistrasiRelawanSeeder extends Seeder
                 'TanggalKegiatanSelesaiRelawan' => '2024-06-05',
                 'JamMulaiRelawan' => '09:00:00',
                 'JamSelesaiRelawan' => '12:00:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 3,
@@ -39,6 +41,7 @@ class RegistrasiRelawanSeeder extends Seeder
                 'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
                 'JamMulaiRelawan' => '08:00:00',
                 'JamSelesaiRelawan' => '14:00:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 2,
@@ -49,6 +52,7 @@ class RegistrasiRelawanSeeder extends Seeder
                 'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
                 'JamMulaiRelawan' => '08:00:00',
                 'JamSelesaiRelawan' => '14:00:00',
+                'StatusDihubungi' => 'Belum',
             ],
         ]);
     }

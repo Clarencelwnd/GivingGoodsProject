@@ -21,5 +21,10 @@ Route::post('/update-status/{IDRegistrasiDonatur}', [RiwayatDonaturController::c
 
 Route::get('/registrasi-relawan', [RiwayatRelawanController::class, 'index']);
 
-Route::post('/update-status/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
+Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
+
+
+Route::post('/update-status-checkbox/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox');
+
+
 

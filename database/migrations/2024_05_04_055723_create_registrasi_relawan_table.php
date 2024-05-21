@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('TanggalKegiatanSelesaiRelawan');
             $table->time('JamMulaiRelawan');
             $table->time('JamSelesaiRelawan');
+            $table->string('StatusDihubungi', 20);
             $table->timestamps();
         });
     }

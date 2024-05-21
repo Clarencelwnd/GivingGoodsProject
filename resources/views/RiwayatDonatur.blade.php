@@ -80,19 +80,19 @@ h1 {
 }
 
 .btn-confirmation {
-        background-color: white; /* Added/Updated styling */
-        color: #005739; /* Added/Updated styling */
-        border: 2px solid #005739; /* Added/Updated styling */
-        border-radius: 5px; /* Added/Updated styling */
+        background-color: white;
+        color: #005739;
+        border: 2px solid #005739;
+        border-radius: 5px;
         padding: 5px 10px;
         cursor: pointer;
         font-size: 16px;
     }
 
 .btn-confirmation.clicked {
-        background-color: #DFDFDF; /* Added/Updated styling */
-        color: #727272; /* Added/Updated styling */
-        border: none; /* Added/Updated styling */
+        background-color: #DFDFDF;
+        color: #727272;
+        border: none;
     }
 .btn-detail {
     background-color: white;
@@ -170,6 +170,18 @@ h1 {
     margin-bottom: 10px;
 }
 
+
+.footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .copyright-image {
+       height: 25px;
+    }
 
 
 </style>
@@ -283,8 +295,8 @@ h1 {
     <script>
         function handleConfirmationClick(button) {
             if (!button.classList.contains('clicked')) {
-                button.classList.add('clicked'); // Add clicked class for styling
-                button.disabled = true; // Disable button to prevent further clicks
+                button.classList.add('clicked');
+                button.disabled = true;
             }
         }
 
@@ -303,5 +315,10 @@ h1 {
         }
 
     </script>
+
+
+<div class="footer">
+    <img src="{{ asset('image/footer/copyright.png') }}" alt="Copyright" class="copyright-image">
+</div>
 </body>
 </html>

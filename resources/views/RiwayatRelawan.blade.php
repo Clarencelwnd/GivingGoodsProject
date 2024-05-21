@@ -81,10 +81,10 @@ h1 {
 }
 
 .btn-confirmation {
-        background-color: white; /* Added/Updated styling */
-        color: #005739; /* Added/Updated styling */
-        border: 2px solid #005739; /* Added/Updated styling */
-        border-radius: 5px; /* Added/Updated styling */
+        background-color: white;
+        color: #005739;
+        border: 2px solid #005739;
+        border-radius: 5px;
         padding: 5px 10px;
         cursor: pointer;
         font-size: 16px;
@@ -93,13 +93,18 @@ h1 {
         justify-content: center;
     }
 
-    .btn-confirmation:not(.clicked) {
+    .btn-confirmation.accept.inactive {
+    background-color: #DFDFDF;
+    color: #727272;
+    border: none;
+}
+.btn-confirmation.reject.inactive {
     background-color: #DFDFDF;
     color: #727272;
     border: none;
 }
 
-    /* Styling untuk tombol "Terima" */
+/* Styling untuk tombol "Terima" */
 .btn-confirmation.accept {
     background-color: white;
     color: #005739;
@@ -108,7 +113,7 @@ h1 {
     padding: 5px 10px;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 
 .btn-confirmation.accept.clicked {
@@ -139,6 +144,7 @@ h1 {
     opacity: 0.6;
     cursor: not-allowed;
 }
+
 
 .btn-detail {
     background-color: white;
@@ -213,8 +219,21 @@ h1 {
 }
 
 .popup-data {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
+
+
+.footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .copyright-image {
+       height: 25px;
+    }
 
 
 
@@ -240,7 +259,7 @@ h1 {
                 <p>Total Relawan Mendaftar</p>
             </div>
             <div class="jumlah">
-                <p>{{ $jumlahKonfirmasiDiterima }} orang</p> <!-- Updated -->
+                <p>{{ $jumlahKonfirmasiDiterima }} orang</p>
             </div>
         </div>
 
@@ -271,13 +290,18 @@ h1 {
                                 <form action="{{ route('update-status-relawan', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                     @csrf
                                     @method('POST')
+
                                     <!-- Tombol "Terima" -->
-                                    <button type="submit" name="terima" class="btn-confirmation accept @if($registrasi->StatusRegistrasiRelawan == 'Terima') clicked @endif" @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                    <button type="submit" name="terima" class="btn-confirmation accept
+                                        @if($registrasi->StatusRegistrasiRelawan == 'Terima') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Ditolak') inactive @endif"
+                                        @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
                                         Terima
                                     </button>
 
                                     <!-- Tombol "Tolak" -->
-                                    <button type="submit" name="tolak" class="btn-confirmation reject @if($registrasi->StatusRegistrasiRelawan == 'Ditolak') clicked @endif" @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                    <button type="submit" name="tolak" class="btn-confirmation reject
+                                        @if($registrasi->StatusRegistrasiRelawan == 'Ditolak') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Terima') inactive @endif"
+                                        @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
                                         Tolak
                                     </button>
                                 </form>
@@ -287,7 +311,10 @@ h1 {
 
 
                             <td>
-                                <input type="checkbox" name="sudah_dihubungi[]" value="1" style="transform: scale(1.5);">
+                                <form action="{{ route('update-status-checkbox', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
+                                    @csrf
+                                    <input type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);">
+                                </form>
                             </td>
                             <td>
                                 <button class="btn-detail"
@@ -296,6 +323,7 @@ h1 {
                                     '{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}',
                                     '{{ $registrasi->AlasanRegistrasiRelawan }}',
                                     '{{ $registrasi->waktuKegiatan }}',
+                                    '{{ $registrasi->tanggalKegiatan  }}',
                                 )">Lihat Detail</button>
                             </td>
                         </tr>
@@ -329,17 +357,21 @@ h1 {
 
             <div class="popup-subtitle">Shift yang dipilih</div>
             <div class="popup-data" id="popup-shift"></div>
+
+            <div class="popup-subtitle">Tanggal Kegiatan</div>
+            <div class="popup-data" id="popup-tanggal"></div>
         </div>
     </div>
 
 
 
     <script>
-        function openPopup(nama, hp, alasan, shift) {
+        function openPopup(nama, hp, alasan, shift, tanggal) {
             document.getElementById('popup-nama').innerText = nama;
             document.getElementById('popup-hp').innerText = hp;
             document.getElementById('popup-alasan').innerText = alasan;
             document.getElementById('popup-shift').innerText = shift;
+            document.getElementById('popup-tanggal').innerText = tanggal;
 
             document.getElementById('popup').style.display = 'flex';
         }
@@ -349,5 +381,10 @@ h1 {
         }
 
     </script>
+
+
+<div class="footer">
+    <img src="{{ asset('image/footer/copyright.png') }}" alt="Copyright" class="copyright-image">
+</div>
 </body>
 </html>
