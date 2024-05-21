@@ -73,24 +73,27 @@
 </div>
 
 {{-- CARDS --}}
-{{-- Relawan --}}
 @if (isset($kegiatanRelawan) && $kegiatanRelawan->isNotEmpty())
-    @foreach ($kegiatanRelawan as $data )
-    <div class="card w-80">
-        <div class="card-body">
-            <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
-                <h6 class="card-title">Pendaftaran ditutup: 10 April 2024</h6>
-            </div>
+    @foreach ($kegiatanRelawan as $activity)
+        <div class="card w-80">
+            <div class="card-body">
+                <div>
+                    <p>Mohon Konfirmasi 2 calon relawan yang sudah mendaftar</p>
+                    <span class="badge text-bg-warning rounded-pill">Warning</span>
+                    <h6 class="card-title">Pendaftaran ditutup: {{ $activity->TanggalPendaftaranKegiatanDitutup }}</h6>
+                </div>
 
-        <h5 class="card-title">{{ $data->NamaKegiatanRelawan }}</h5>
-        <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanRelawanMulai }} - {{ $data->TanggalKegiatanRelawanSelesai }}</p>
-        <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanRelawan }}</p>
-        <p class="card-text">Jenis relawan: {{ $data->JenisKegiatanRelawan }}</p>
-        <p class="card-text">Tanggal kegiatan dibuat: 18 mei 2024</p>
-        <p class="card-text">Relawan: 5/10</p>
+                <h5 class="card-title">{{ $activity->NamaKegiatanRelawan }}</h5>
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
+                <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
+
+                <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+
+                <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+
+                <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
+            </div>
         </div>
-    </div>
     @endforeach
 @else
     <p>No kegiatan relawan found.</p>

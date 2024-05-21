@@ -29,9 +29,9 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
-                    <p id="organization-name">OCG Saving The Ocean</p>
+                    OCG Saving The Ocean
                 </a>
-                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 34px, 0px);" data-popper-placement="bottom-start">
+                <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start">
                   <li><a class="dropdown-item" href="#">Pengaturan</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
@@ -39,6 +39,8 @@
                   </li>
                 </ul>
             </div>
+
+
 
             <!-- MODAL -->
             <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">

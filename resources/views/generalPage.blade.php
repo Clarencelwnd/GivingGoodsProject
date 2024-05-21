@@ -1,6 +1,6 @@
 @extends('templatePage')
 
-@section('title', 'New Page Title')
+@section('title', 'Home Panti Sosial')
 
 @section('stylesheets')
     @parent
@@ -75,7 +75,54 @@
 
 {{-- CARDS --}}
 {{-- Cari Relawan --}}
-@if(isset($kegiatanRelawan) && $kegiatanRelawan->isNotEmpty())
+@foreach ($activities as $activity)
+    <div class="card w-80">
+        <div class="card-body">
+            <div>
+                <span class="badge text-bg-warning rounded-pill">Warning</span>
+                @if (isset($activity->NamaKegiatanRelawan))
+                    <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                @endif
+            </div>
+
+            {{-- Nama kegiatan --}}
+            <h5 class="card-title">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
+
+            {{-- Tanggal Kegiatan --}}
+            @if (isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
+            @elseif (isset($activity->NamaKegiatanDonasi))
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
+            @endif
+
+            {{-- Lokasi Kegiatan --}}
+            @if (isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
+            @elseif (isset($activity->NamaKegiatanDonasi))
+            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
+            @endif
+
+            {{-- Jenis Kegiatan --}}
+            @if (isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Jenis relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+            @elseif (isset($activity->NamaKegiatanDonasi))
+                <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+            @endif
+
+            <p class="card-text">Tanggal Kegiatan Dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+
+             {{-- Relawan / Donasi --}}
+             @if (isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
+            @elseif (isset($activity->NamaKegiatanDonasi))
+                <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
+            @endif
+
+        </div>
+    </div>
+@endforeach
+
+{{-- @if(isset($kegiatanRelawan) && $kegiatanRelawan->isNotEmpty())
     @foreach ($kegiatanRelawan as $data)
     <div class="card w-80">
         <div class="card-body">
@@ -97,7 +144,7 @@
     <p>No kegiatan relawan found.</p>
 @endif
 
-{{-- Cari Donasi --}}
+
 @if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
     @foreach ($kegiatanDonasi as $data)
     <div class="card w-80">
@@ -117,7 +164,7 @@
     @endforeach
 @else
     <p>No kegiatan donasi found.</p>
-@endif
+@endif --}}
 
 
 {{-- PAGINATION --}}

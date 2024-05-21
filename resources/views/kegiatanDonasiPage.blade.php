@@ -76,18 +76,18 @@
 {{-- CARDS --}}
 {{-- Kegiatan Donasi --}}
 @if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
-    @foreach ($kegiatanDonasi as $data )
+    @foreach ($kegiatanDonasi as $activity )
     <div class="card w-80">
         <div class="card-body">
             <div>
                 <span class="badge text-bg-warning rounded-pill">Warning</span>
             </div>
-            <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanDonasiMulai }} - {{ $data->TanggalKegiatanDonasiSelesai }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Donasi: 1</p>
+            <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
+            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
+            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
+            <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
+            <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
         </div>
     </div>
     @endforeach

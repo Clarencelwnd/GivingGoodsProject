@@ -17,9 +17,22 @@ class generalPageController extends Controller
     // }
 
     public function displayGeneralPage(){
-        $kegiatanRelawan = KegiatanRelawan::all();
-        $kegiatanDonasi = KegiatanDonasi::all();
-        return view('generalPage', compact('kegiatanRelawan', 'kegiatanDonasi'));
+        $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        //Convert eloquent collections to base collections
+        $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
+        $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
+
+        $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
+        $sorted = $merged->sortByDesc('created_at');
+
+        return view('generalPage', ['activities'=> $sorted]);
     }
 
     public function displayDummyProfilePage(){
@@ -27,14 +40,16 @@ class generalPageController extends Controller
     }
 
     public function viewAllKegiatanDonasi(){
-        // $kegiatan_donasi = DB::table('kegiatan_donasi')->get();
-        $kegiatanDonasi = KegiatanDonasi::all();
+        $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('kegiatanDonasiPage', compact('kegiatanDonasi'));
     }
 
     public function viewAllKegiatanRelawan(){
-        // $kegiatan_donasi = DB::table('kegiatan_donasi')->get();
-        $kegiatanRelawan = KegiatanRelawan::all();
+        $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('kegiatanRelawanPage', compact('kegiatanRelawan'));
     }
 
@@ -45,22 +60,37 @@ class generalPageController extends Controller
             // Search Kegiatan Relawan
             $kegiatanRelawan = KegiatanRelawan::where('NamaKegiatanRelawan', 'like', "%$search%")
                 ->orWhere('JenisKegiatanRelawan', 'like', "%$search%")
+                ->withCount('registrasiRelawan')
+                ->orderBy('created_at', 'desc')
                 ->get();
 
             // Search Kegiatan Donasi
             $kegiatanDonasi = KegiatanDonasi::where('NamaKegiatanDonasi', 'like', "%$search%")
                 ->orWhere('JenisDonasiDibutuhkan', 'like', "%$search%")
+                ->withCount('registrasiDonatur')
+                ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $kegiatanRelawan = KegiatanRelawan::all();
-            $kegiatanDonasi = KegiatanDonasi::all();
+            $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+                ->orderBy('created_at', 'desc')
+                ->get();
         }
+
+        $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
+        $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
+
+        $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
+        $sorted = $merged->sortByDesc('created_at');
 
         // Determine which view to return based on search context
         $view = $request->input('view', 'generalPage');
-        return view($view, compact('kegiatanRelawan', 'kegiatanDonasi', 'search'));
-        
-        // return view('generalPage', compact('kegiatanRelawan', 'kegiatanDonasi', 'search'));
+
+        return view($view, ['activities' => $sorted]);
+
     }
 
 
