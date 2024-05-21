@@ -119,3 +119,45 @@ white-space: nowrap;
     text-align: center;
     margin: 0;
 }
+
+/* BADGES */
+.badge-akan-datang{
+    background-color: #898989;
+    width: auto;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 42px;
+    padding-right: 42px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.badge-sedang-berlangsung{
+    background-color: #F3A229;
+    width: auto;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 50px;
+    padding-right: 50px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.badge-selesai{
+    background-color: #16B364;
+    width: auto;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 42px;
+    padding-right: 42px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+

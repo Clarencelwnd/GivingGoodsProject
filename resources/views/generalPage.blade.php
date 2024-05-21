@@ -78,8 +78,46 @@
 @foreach ($activities as $activity)
     <div class="card w-80">
         <div class="card-body">
+
+            @php
+                $status =  '';
+
+                //Determine start and end dates based on activity type
+                if (isset($activity->NamaKegiatanRelawan)) {
+                    $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai);
+                    $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai);
+                } elseif (isset($activity->NamaKegiatanDonasi)) {
+                    $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai);
+                    $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai);
+                }
+
+                $today = \Carbon\Carbon::today();
+
+                //Determine status
+                if($today->lessThan($startDate)){
+                    $status = 'Akan Datang';
+                }else if ($today->between($startDate, $endDate)){
+                    $status = 'Sedang Berlangsung';
+                }else{
+                    $status = 'Selesai';
+                }
+
+                //Determine CSS based on status
+                $badgeClass = '';
+                if($status == 'Akan Datang'){
+                    $badgeClass = 'badge-akan-datang';
+                }else if($status == 'Sedang Berlangsung'){
+                    $badgeClass = 'badge-sedang-berlangsung';
+                }else{
+                    $badgeClass = 'badge-selesai';
+                }
+            @endphp
+
             <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
+                <span class="badge {{ $badgeClass }} rounded-pill">
+                    {{ $status }}
+                </span>
+
                 @if (isset($activity->NamaKegiatanRelawan))
                     <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
                 @endif
@@ -121,51 +159,6 @@
         </div>
     </div>
 @endforeach
-
-{{-- @if(isset($kegiatanRelawan) && $kegiatanRelawan->isNotEmpty())
-    @foreach ($kegiatanRelawan as $data)
-    <div class="card w-80">
-        <div class="card-body">
-            <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
-                <h6 class="card-title">Pendaftaran ditutup: {{ $data->TanggalPenutupanRelawan }}</h6>
-            </div>
-
-            <h5 class="card-title">{{ $data->NamaKegiatanRelawan }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanRelawanMulai }} - {{ $data->TanggalKegiatanRelawanSelesai }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanRelawan }}</p>
-            <p class="card-text">Jenis relawan: {{ $data->JenisKegiatanRelawan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Relawan: {{ $data->JumlahRelawan }}</p>
-        </div>
-    </div>
-    @endforeach
-@else
-    <p>No kegiatan relawan found.</p>
-@endif
-
-
-@if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
-    @foreach ($kegiatanDonasi as $data)
-    <div class="card w-80">
-        <div class="card-body">
-            <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
-            </div>
-
-            <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $data->TanggalKegiatanDonasiMulai }} - {{ $data->TanggalKegiatanDonasiSelesai }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $data->created_at }}</p>
-            <p class="card-text">Donatur: {{ $data->JumlahDonatur }}</p>
-        </div>
-    </div>
-    @endforeach
-@else
-    <p>No kegiatan donasi found.</p>
-@endif --}}
-
 
 {{-- PAGINATION --}}
 <div class="pagination-container">
