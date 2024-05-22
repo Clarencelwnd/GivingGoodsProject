@@ -131,4 +131,11 @@
     @endforeach
 @endsection
 
+{{-- Pagination Links --}}
+@section('pagination')
+    <div class="pagination-container">
+        {{ $activities->links('components.pagination') }}
+    </div>
+@endsection
+
 

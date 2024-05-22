@@ -77,104 +77,53 @@
 
 {{-- CARDS --}}
 {{-- Kegiatan Donasi --}}
-{{-- @if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
-    @foreach ($kegiatanDonasi as $activity )
-    <div class="card w-80">
-        <div class="card-body">
+    @foreach ($kegiatanDonasi as $activity)
+        @php
+            $status = '';
+            $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai);
+            $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai);
+            $today = \Carbon\Carbon::today();
 
-            @php
-                $status =  '';
+            if ($today->lessThan($startDate)) {
+                $status = 'Akan Datang';
+            } else if ($today->between($startDate, $endDate)) {
+                $status = 'Sedang Berlangsung';
+            } else {
+                $status = 'Selesai';
+            }
 
-                //Determine start and end dates based on activity type
-                if (isset($activity->NamaKegiatanRelawan)) {
-                    $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai);
-                    $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai);
-                } elseif (isset($activity->NamaKegiatanDonasi)) {
-                    $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai);
-                    $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai);
-                }
+            $badgeClass = '';
+            if ($status == 'Akan Datang') {
+                $badgeClass = 'badge-akan-datang';
+            } else if ($status == 'Sedang Berlangsung') {
+                $badgeClass = 'badge-sedang-berlangsung';
+            } else {
+                $badgeClass = 'badge-selesai';
+            }
+        @endphp
 
-                $today = \Carbon\Carbon::today();
+        <div class="card w-80" data-status="{{ $status }}" data-type="Donasi">
+            <div class="card-body">
+                <div>
+                    <p>Mohon Konfirmasi 2 calon donatur yang sudah mendaftar</p>
+                    <span class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                </div>
 
-                //Determine status
-                if($today->lessThan($startDate)){
-                    $status = 'Akan Datang';
-                }else if ($today->between($startDate, $endDate)){
-                    $status = 'Sedang Berlangsung';
-                }else{
-                    $status = 'Selesai';
-                }
-
-                //Determine CSS based on status
-                $badgeClass = '';
-                if($status == 'Akan Datang'){
-                    $badgeClass = 'badge-akan-datang';
-                }else if($status == 'Sedang Berlangsung'){
-                    $badgeClass = 'badge-sedang-berlangsung';
-                }else{
-                    $badgeClass = 'badge-selesai';
-                }
-            @endphp
-
-            <div>
-                <p>Mohon Konfirmasi 2 calon donatur yang sudah mendaftar</p>
-
-                <span class="badge {{ $badgeClass }} rounded-pill">
-                    {{ $status }}
-                </span>
+                <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
+                <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
+                <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
+                <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+                <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
+                <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
             </div>
-            <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
-            <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
         </div>
-    </div>
     @endforeach
-@else
-    <p>No kegiatan donasi found.</p>
-@endif --}}
-
-@foreach ($kegiatanDonasi as $activity)
-    @php
-        $status = '';
-        $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai);
-        $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai);
-        $today = \Carbon\Carbon::today();
-
-        if ($today->lessThan($startDate)) {
-            $status = 'Akan Datang';
-        } else if ($today->between($startDate, $endDate)) {
-            $status = 'Sedang Berlangsung';
-        } else {
-            $status = 'Selesai';
-        }
-
-        $badgeClass = '';
-        if ($status == 'Akan Datang') {
-            $badgeClass = 'badge-akan-datang';
-        } else if ($status == 'Sedang Berlangsung') {
-            $badgeClass = 'badge-sedang-berlangsung';
-        } else {
-            $badgeClass = 'badge-selesai';
-        }
-    @endphp
-
-    <div class="card w-80" data-status="{{ $status }}" data-type="Donasi">
-        <div class="card-body">
-            <div>
-                <p>Mohon Konfirmasi 2 calon donatur yang sudah mendaftar</p>
-                <span class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
-            </div>
-
-            <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
-            <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
-        </div>
-    </div>
-@endforeach
 @endsection
+
+@section('pagination')
+    <div class="pagination-container">
+        {{ $kegiatanDonasi->links('components.pagination') }}
+    </div>
+@endsection
+
+
