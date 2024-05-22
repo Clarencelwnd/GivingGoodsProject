@@ -56,7 +56,6 @@ class generalPageController extends Controller
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-
         return view('kegiatanDonasiPage', compact('kegiatanDonasi'));
     }
 
@@ -84,6 +83,7 @@ class generalPageController extends Controller
                 ->withCount('registrasiDonatur')
                 ->orderBy('created_at', 'desc')
                 ->get();
+          
         } else {
             $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
                 ->orderBy('created_at', 'desc')
@@ -99,6 +99,7 @@ class generalPageController extends Controller
 
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
+
 
         $perPage = 5;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
