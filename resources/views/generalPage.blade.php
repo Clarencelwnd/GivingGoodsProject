@@ -101,15 +101,18 @@
             } else {
                 $badgeClass = 'badge-selesai';
             }
+
+            //Count of registrations for each activity
+            $registrationsCount = $activity instanceof App\Models\KegiatanRelawan ?
+                $activity->registrasiRelawan->count() :
+                $activity->registrasiDonatur->count();
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="{{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donasi' }}">
             <div class="card-body">
                 <div>
-                    @if (isset($activity->NamaKegiatanRelawan))
-                        <p class="konfirmasi-alert">Mohon Konfirmasi 2 Calon Relawan yang Sudah Mendaftar</p>
-                    @elseif (isset($activity->NamaKegiatanDonasi))
-                        <p class="konfirmasi-alert" >Mohon Konfirmasi 2 Calon Donatur yang Sudah Mendaftar</p>
+                    @if ($registrationsCount > 0)
+                        <p class="konfirmasi-alert">Mohon Konfirmasi {{ $registrationsCount }} Calon {{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donatur' }} yang Sudah Mendaftar</p>
                     @endif
 
                     <div class="card-top-info">
