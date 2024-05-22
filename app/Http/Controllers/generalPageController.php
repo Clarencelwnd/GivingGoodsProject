@@ -61,9 +61,6 @@ class generalPageController extends Controller
     }
 
     public function viewAllKegiatanRelawan(){
-        // $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
-        //     ->orderBy('created_at', 'desc')
-        //     ->get();
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->orderBy('created_at', 'desc')
             ->paginate(5);
@@ -103,10 +100,17 @@ class generalPageController extends Controller
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
 
+        $perPage = 5;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentPageItems = $sorted->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $paginator = new LengthAwarePaginator($currentPageItems, $sorted->count(), $perPage, $currentPage, [
+            'path' => LengthAwarePaginator::resolveCurrentPath()
+        ]);
+
         // Determine which view to return based on search context
         $view = $request->input('view', 'generalPage');
 
-        return view($view, ['activities' => $sorted]);
+        return view($view, ['activities' => $paginator]);
     }
 
     public function filterStatusKegiatan(Request $request){
