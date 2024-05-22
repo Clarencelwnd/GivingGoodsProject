@@ -88,8 +88,45 @@ white-space: nowrap;
 }
 
 /* CARD */
+.card-top-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card{
     margin-bottom: 50px;
+}
+
+.card-info{
+    font-weight: 400;
+    color: #006374;
+    font-size: 16px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+#pendaftaranTutup{
+    color: #1C3F5B;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 7px;
+}
+
+#namaKegiatan{
+    margin: 0;
+    padding-bottom: 20px;
+    font-size: 20px;
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+.jumlahDonaturRelawan{
+    font-size: 18px;
+    font-weight: 500;
 }
 
 /* PAGINATION */
@@ -121,6 +158,17 @@ white-space: nowrap;
 }
 
 /* BADGES */
+#badge{
+   font-size: 16px;
+   font-weight: 500;
+   word-wrap: break-word;
+}
+.badge-container{
+    font-size: 16px;
+    font-weight: 500;
+    word-wrap: break-word;
+    padding-bottom: 20px;
+}
 .badge-akan-datang{
     background-color: #898989;
     width: auto;
@@ -158,6 +206,23 @@ white-space: nowrap;
     color: white;
     font-size: 16px;
     font-weight: 400;
+}
+
+
+/* ALERT */
+.konfirmasi-alert{
+    width: auto;
+    height: auto;
+    color: #CB3A31;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3px 15px 3px 15px;
+    border: 1px #CB3A31 solid;
+    border-radius: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    display: inline-flex
 }
 
 

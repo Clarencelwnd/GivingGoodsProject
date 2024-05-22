@@ -49,7 +49,7 @@ class generalPageController extends Controller
     }
 
     public function displayDummyProfilePage(){
-        return view('dummyProfilePage');
+        return view('dummyPages.dummyProfilePage');
     }
 
     public function viewAllKegiatanDonasi(){
