@@ -47,11 +47,10 @@
 
 /* OPTIONS */
 .kegiatan-nav{
-    display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     margin-top: 45px;
-    flex-wrap: nowrap;
+    /* flex-wrap: nowrap; */
 }
 
 /* Set text color for kegiatan-nav lists */
@@ -66,9 +65,31 @@
     font-weight: bold;
 }
 
-.btn-buatKegiatan{
-margin-left: 450px;
-white-space: nowrap;
+.nav-items{
+    display: flex;
+    flex-direction: row;
+}
+
+#buatKegiatanDropdown{
+    background: #006374;
+    border-radius: 5px;
+    border: 0px transparent;
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+.nav-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dropdown-buatKegiatan {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 61%;
+    white-space: nowrap;
+
 }
 
 /* FILTER */

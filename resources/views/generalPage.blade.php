@@ -30,28 +30,31 @@
         </div>
     </form>
 
-{{-- OPTIONS --}}
-<div class="kegiatan-nav">
-    <ul class="nav justify-content-start">
-        <li class="nav-item">
-          <a class="nav-link active" href="{{ route('viewAllKegiatan') }}">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('viewAllKegiatanRelawan') }}">Kegiatan Relawan</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('viewAllKegiatanDonasi') }}">Kegiatan Donasi</a>
-        </li>
-    </ul>
+    {{-- OPTIONS --}}
+    <div class="kegiatan-nav">
+        <ul class="nav justify-content-start">
+            <div class="nav-items">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('viewAllKegiatan') }}">All</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('viewAllKegiatanRelawan') }}">Kegiatan Relawan</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ route('viewAllKegiatanDonasi') }}">Kegiatan Donasi</a>
+                    </li>
+            </div>
 
-    <div class="dropdown-buatKegiatan">
-        <button class="btn btn-primary" type="button" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            Buat Kegiatan
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">
-            <li><a class="dropdown-item" href="{{ route('dummyBuatRelawan') }}">Buat Kegiatan Relawan</a></li>
-            <li><a class="dropdown-item" href="{{ route('dummyBuatDonasi') }}">Buat Kegiatan Donasi</a></li>
+            <div class="dropdown-buatKegiatan">
+                <button class="btn btn-primary" type="button" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    Buat Kegiatan
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">
+                    <li><a class="dropdown-item" href="{{ route('dummyBuatRelawan') }}">Buat Kegiatan Relawan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('dummyBuatDonasi') }}">Buat Kegiatan Donasi</a></li>
 
+                </ul>
+            </div>
         </ul>
     </div>
 
