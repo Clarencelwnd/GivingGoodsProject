@@ -25,7 +25,3 @@ Route::get('/dummyBuatKegiatanDonasi', [buatKegiatanController::class, 'displayD
 
 //FILTER
 Route::get('/filter', [generalPageController::class, 'filterStatusKegiatan'])->name('filterStatus');
-
-
-
-

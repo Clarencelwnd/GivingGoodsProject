@@ -26,6 +26,7 @@
                 </div>
             </ul>
 
+
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
@@ -38,7 +39,7 @@
                     <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
                   </li>
                 </ul>
-            </div>
+            </div> 
 
 
 
@@ -63,5 +64,7 @@
           </div>
         </div>
       </header>
+
+
 </body>
 </html>

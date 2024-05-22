@@ -110,10 +110,10 @@
                 </div>
 
                 <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
-                <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
                 <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
                 <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
-                <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
+                <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
                 <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
             </div>
         </div>
