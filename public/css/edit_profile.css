@@ -55,7 +55,7 @@
 
 .right{
     height: 100vh;
-    padding-top: 50px;
+    /* padding-top: 50px; */
     padding-left: 100px;
     overflow-y: auto;
 }
@@ -138,6 +138,36 @@ td, tr{
     font-size: 12px;
 }
 
+/* #col-right{
+    width: 80%;
+    margin-left: auto;
+} */
 
+#button-style{
+    width: 86%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
 
+#btn-next{
+    background: #00AF71;
+    color: #FDFFFE;
+    width: 100%;
+}
+
+#btn-next:hover{
+    background: #009B65;
+    color: #FDFFFE;
+}
+
+#btn-back{
+    color: #007C92;
+    border: 1px solid #007C92;
+    width: 100%;
+}
+
+#btn-back:hover{
+    background: #E6E7E6;
+    color: #007C92;
+}
 

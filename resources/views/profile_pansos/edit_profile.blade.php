@@ -76,7 +76,6 @@
                                             <td></td>
                                             <td></td>
                                             <td class="img-cell"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></td>
-
                                         </tr>
                                         @php
                                             $index = 0;
@@ -118,7 +117,18 @@
                             </td>
                         </tr>
                     </table>
+                    <div class="row justify-content-end" id="button-style">
+                        <div class="col-2">
+                            <a href="#" class="btn btn-block" id="btn-back">Batal</a>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
+                                Simpan Perubahan
+                            </button>
+                        </div>
+                    </div>
                 </form>
+
             </div>
         </div>
     </div>
