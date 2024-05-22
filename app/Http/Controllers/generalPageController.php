@@ -20,8 +20,9 @@ class generalPageController extends Controller
 
     public function displayGeneralPage(){
         $perPage = 5;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-          $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+        $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -37,16 +38,14 @@ class generalPageController extends Controller
         $sorted = $merged->sortByDesc('created_at');
 
         $paginator = new LengthAwarePaginator(
-            $sorted->forPage(LengthAwarePaginator::resolveCurrentPage(), $perPage),
+            $sorted->forPage($currentPage, $perPage),
             $sorted->count(),
             $perPage,
-            LengthAwarePaginator::resolveCurrentPage()
+            $currentPage,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        // Get pagination links
-        $paginationLinks = $paginator->links();
-
-        return view('generalPage', ['activities'=> $paginator, 'paginationLinks'=>$paginationLinks]);
+        return view('generalPage', ['activities'=> $paginator]);
     }
 
     public function displayDummyProfilePage(){
@@ -54,9 +53,6 @@ class generalPageController extends Controller
     }
 
     public function viewAllKegiatanDonasi(){
-        // $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
-        //     ->orderBy('created_at', 'desc')
-        //     ->get();
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
             ->orderBy('created_at', 'desc')
             ->paginate(5);

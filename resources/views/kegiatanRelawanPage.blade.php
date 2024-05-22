@@ -75,49 +75,54 @@
 </div>
 
 {{-- CARDS --}}
-@foreach ($kegiatanRelawan as $activity)
-    @php
-        $status = '';
-        $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai);
-        $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai);
-        $today = \Carbon\Carbon::today();
+    @foreach ($kegiatanRelawan as $activity)
+        @php
+            $status = '';
+            $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai);
+            $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai);
+            $today = \Carbon\Carbon::today();
 
-        if ($today->lessThan($startDate)) {
-            $status = 'Akan Datang';
-        } else if ($today->between($startDate, $endDate)) {
-            $status = 'Sedang Berlangsung';
-        } else {
-            $status = 'Selesai';
-        }
+            if ($today->lessThan($startDate)) {
+                $status = 'Akan Datang';
+            } else if ($today->between($startDate, $endDate)) {
+                $status = 'Sedang Berlangsung';
+            } else {
+                $status = 'Selesai';
+            }
 
-        $badgeClass = '';
-        if ($status == 'Akan Datang') {
-            $badgeClass = 'badge-akan-datang';
-        } else if ($status == 'Sedang Berlangsung') {
-            $badgeClass = 'badge-sedang-berlangsung';
-        } else {
-            $badgeClass = 'badge-selesai';
-        }
-    @endphp
+            $badgeClass = '';
+            if ($status == 'Akan Datang') {
+                $badgeClass = 'badge-akan-datang';
+            } else if ($status == 'Sedang Berlangsung') {
+                $badgeClass = 'badge-sedang-berlangsung';
+            } else {
+                $badgeClass = 'badge-selesai';
+            }
+        @endphp
 
-    <div class="card w-80" data-status="{{ $status }}" data-type="Relawan">
-        <div class="card-body">
-            <div>
-                <p>Mohon Konfirmasi 2 calon relawan yang sudah mendaftar</p>
-                <span class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
-                <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+        <div class="card w-80" data-status="{{ $status }}" data-type="Relawan">
+            <div class="card-body">
+                <div>
+                    <p>Mohon Konfirmasi 2 calon relawan yang sudah mendaftar</p>
+                    <span class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                    <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                </div>
+
+                <h5 class="card-title">{{ $activity->NamaKegiatanRelawan }}</h5>
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
+                <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
+                <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+                <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+                <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
             </div>
-
-            <h5 class="card-title">{{ $activity->NamaKegiatanRelawan }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
-            <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
-            <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
         </div>
-    </div>
-@endforeach
+    @endforeach
+@endsection
 
+@section('pagination')
+    <div class="pagination-container">
+        {{ $kegiatanRelawan->links('components.pagination') }}
+    </div>
 @endsection
 
 
