@@ -5,6 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <script src="{{ asset('js/generalPage.js') }}"></script>
 @endsection
 
 @section('content')
@@ -47,7 +48,7 @@
         <button class="btn btn-primary" type="button" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             Buat Kegiatan
         </button>
-        <ul class="dropdown-menu" aria-labelledby="buatKegiatanDropdown">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">
             <li><a class="dropdown-item" href="{{ route('dummyBuatRelawan') }}">Buat Kegiatan Relawan</a></li>
             <li><a class="dropdown-item" href="{{ route('dummyBuatDonasi') }}">Buat Kegiatan Donasi</a></li>
         </ul>
@@ -74,50 +75,63 @@
 
 
 {{-- CARDS --}}
-{{-- Cari Relawan --}}
-@if(isset($kegiatanRelawan) && $kegiatanRelawan->isNotEmpty())
-    @foreach ($kegiatanRelawan as $data)
+@foreach ($activities as $activity)
+    {{-- STATUS KEGIATAN --}}
+    @php
+        $today = \Carbon\Carbon::today();
+        $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai ?? $activity->TanggalKegiatanDonasiMulai);
+        $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai ?? $activity->TanggalKegiatanDonasiSelesai);
+
+        if ($today->lt($startDate)) {
+            $statusClass = 'statusAkanDatang';
+            $statusText = 'Akan Datang';
+        }else if($today->between($startDate, $endDate)){
+            $statusClass = 'statusSedangBerlangsung';
+            $statusText = 'Sedang Berlangsung';
+        }else{
+            $statusClass = 'statusSelesai';
+            $statusText = 'Selesai';
+        }
+    @endphp
+
     <div class="card w-80">
         <div class="card-body">
             <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
-                <h6 class="card-title">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($data->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                @if (isset($activity->NamaKegiatanRelawan))
+                    <p>Mohon Konfirmasi 2 calon relawan yang sudah mendaftar</p>
+                @elseif (isset($activity->NamaKegiatanDonasi))
+                    <p>Mohon Konfirmasi 2 calon donatur yang sudah mendaftar</p>
+                @endif
+
+                <x-statusKegiatan :statusClass="$statusClass" :statusText="$statusText" />
+
+                @if (isset($activity->NamaKegiatanRelawan))
+                    <h6 class="card-title">Pendaftaran ditutup: {{ $activity->TanggalPendaftaranKegiatanDitutup ?? $activity->TanggalPenutupanDonasi }}</h6>
+                @endif
+
             </div>
 
-            <h5 class="card-title">{{ $data->NamaKegiatanRelawan }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanRelawan }}</p>
-            <p class="card-text">Jenis relawan: {{ $data->JenisKegiatanRelawan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
-            <p class="card-text">Relawan: {{ $data->registrasi_relawan_count . '/' . $data->JumlahRelawanDibutuhkan }}</p>
+            <h5 class="card-title">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
+            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai ?? $activity->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai ?? $activity->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
+            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan ?? $activity->LokasiKegiatanDonasi }}</p>
+
+            @if (isset($activity->NamaKegiatanDonasi))
+                <p class="card-text">Jenis Donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+            @elseif(isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+            @endif
+
+            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+
+            @if (isset($activity->NamaKegiatanDonasi))
+                <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
+            @elseif(isset($activity->NamaKegiatanRelawan))
+                <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
+            @endif
         </div>
     </div>
-    @endforeach
-@else
-    <p>No kegiatan relawan found.</p>
-@endif
-
-{{-- Cari Donasi --}}
-@if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
-    @foreach ($kegiatanDonasi as $data)
-    <div class="card w-80">
-        <div class="card-body">
-            <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
-            </div>
-
-            <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
-            <p class="card-text">Donasi: {{ $data->registrasi_donatur_count }}</p>
-        </div>
-    </div>
-    @endforeach
-@else
-    <p>No kegiatan donasi found.</p>
-@endif
+@endforeach
+{{  }}
 
 
 {{-- PAGINATION --}}

@@ -66,14 +66,6 @@
     height: 56px;
 }
 
-#dropdownOrganizationName {
-    /* display: flex;
-    align-items: center; */
-    text-decoration: none;
-    color: inherit;
-    /* font-size: 18px; */
-}
-
 #organization-profile{
     width: 32px;
     height: 32px;
@@ -99,8 +91,39 @@
     display: inline-flex;
 }
 
+/* DROPDOWN */
+#dropdownOrganizationName {
+    border: 0px;
+    text-decoration: none;
+    color: inherit;
+}
+
 .dropdown-item{
     color: #007C92;
+}
+
+.dropdown a{
+    width: auto;
+}
+
+.dropdown-toggle{
+    display: flex;
+    align-items: center;
+}
+
+.dropdown .dropdown-toggle:focus,
+.dropdown .dropdown-toggle:active,
+.dropdown .dropdown-toggle:focus-visible {
+    outline: none !important;
+    box-shadow: none !important; /* Remove any default box-shadow */
+}
+
+.dropdown-toggle img{
+    margin-right: 10px;
+}
+
+.dropdown-toggle p {
+    margin: 0;
 }
 
 #keluarAkun{
@@ -117,6 +140,11 @@ footer .text-muted{
 }
 
 /* HEADER MODAL */
+.modal-backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
 .modal-footer{
     gap: 30px;
 }
@@ -164,4 +192,36 @@ footer .text-muted{
     .sidebar a {
         font-size: 18px;
     }
+}
+
+
+/* STATUS */
+.badge-custom {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: auto;
+    height: 100%;
+    padding: 3px 25px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+ .statusAkanDatang {
+    background: #898989;
+    color: white;
+}
+
+.statusSedangBerlangsung {
+    background: #F3A229;
+    color: white;
+}
+
+.statusSelesai {
+    background: #16B364;
+    color: white;
 }

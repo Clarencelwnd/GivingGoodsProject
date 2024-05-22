@@ -87,6 +87,11 @@ white-space: nowrap;
     color: #009B65;
 }
 
+.dropdown-menu-end{
+    margin-top: 0; /* Reset default margin */
+    z-index: 1000;
+}
+
 /* CARD */
 .card{
     margin-bottom: 50px;

@@ -26,9 +26,23 @@
                 </div>
             </ul>
 
-            <div class="dropdown text-end">
-                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
+            {{-- DROPDOWN --}}
+            <div class="dropdown">
+                <a class="btn dropdown-toggle d-block link-dark text-decoration-none shadow-none" id="dropdownOrganizationName" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset('Image/general/dummy_profile_pict.png') }}" alt="">
+                    OCG Saving The Ocean
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" id="keluarAkun" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
+                </ul>
+              </div>
+
+            {{-- <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="true">
+                    <img src="{{ asset('Image/general/dummy_profile_pict.png') }}" id="organization-profile" alt="mdo" class="rounded-circle">
                     <p id="organization-name">OCG Saving The Ocean</p>
                 </a>
                 <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 34px, 0px);" data-popper-placement="bottom-start">
@@ -38,7 +52,7 @@
                     <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
                   </li>
                 </ul>
-            </div>
+            </div> --}}
 
             <!-- MODAL -->
             <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
@@ -61,5 +75,7 @@
           </div>
         </div>
       </header>
+
+
 </body>
 </html>

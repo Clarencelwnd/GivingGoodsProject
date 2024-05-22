@@ -74,31 +74,51 @@
 </div>
 
 {{-- CARDS --}}
-{{-- Kegiatan Donasi --}}
 @if(isset($kegiatanDonasi) && $kegiatanDonasi->isNotEmpty())
-    @foreach ($kegiatanDonasi as $data )
-    <div class="card w-80">
-        <div class="card-body">
-            <div>
-                <span class="badge text-bg-warning rounded-pill">Warning</span>
+    @foreach ($kegiatanDonasi as $activity)
+        {{-- STATUS KEGIATAN --}}
+        @php
+            $today = \Carbon\Carbon::today();
+            $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai ?? $activity->TanggalKegiatanDonasiMulai);
+            $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai ?? $activity->TanggalKegiatanDonasiSelesai);
+
+            if ($today->lt($startDate)) {
+                $statusClass = 'statusAkanDatang';
+                $statusText = 'Akan Datang';
+            }else if($today->between($startDate, $endDate)){
+                $statusClass = 'statusSedangBerlangsung';
+                $statusText = 'Sedang Berlangsung';
+            }else{
+                $statusClass = 'statusSelesai';
+                $statusText = 'Selesai';
+            }
+        @endphp
+
+        <div class="card w-80">
+            <div class="card-body">
+                <div>
+                    <p>Mohon Konfirmasi 2 calon donatur yang sudah mendaftar</p>
+                    <x-statusKegiatan :statusClass="$statusClass" :statusText="$statusText" />
+                    <h6 class="card-title">Pendaftaran ditutup: {{ $activity->TanggalPenutupanDonasi }}</h6>
+                </div>
+
+                <h5 class="card-title">{{ $activity->NamaKegiatanDonasi }}</h5>
+                <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
+                <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
+
+                <p class="card-text">Jenis Donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+
+                <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+
+                <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
             </div>
-            <h5 class="card-title">{{ $data->NamaKegiatanDonasi }}</h5>
-            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($data->TanggalKegiatanDonasiSelesai)->format('d M Y') }}</p>
-            <p class="card-text">Lokasi kegiatan: {{ $data->LokasiKegiatanDonasi }}</p>
-            <p class="card-text">Jenis donasi: {{ $data->JenisDonasiDibutuhkan }}</p>
-            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($data->created_at)->format('d M Y H:i:s') }}</p>
-            <p class="card-text">Donasi: {{ $data->registrasi_donatur_count }}</p>
         </div>
-    </div>
     @endforeach
 @else
     <p>No kegiatan donasi found.</p>
 @endif
 
-
 {{-- PAGINATION --}}
-
-{{ $sorted->links() }}
 <div class="pagination-container">
     <nav aria-label="...">
         <ul class="pagination">

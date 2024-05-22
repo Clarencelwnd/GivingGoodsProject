@@ -22,4 +22,5 @@ Route::get('/dummyProfile', [generalPageController::class, 'displayDummyProfileP
 Route::get('/dummyBuatKegiatanRelawan', [buatKegiatanController::class, 'displayDummyBuatRelawanPage'])->name('dummyBuatRelawan');
 Route::get('/dummyBuatKegiatanDonasi', [buatKegiatanController::class, 'displayDummyBuatDonasiPage'])->name('dummyBuatDonasi');
 
-
+// STATUS
+Route::get('/generalPage/viewAllKegiatan/', [generalPageController::class, 'displayStatusKegiatan'])->name('statusKegiatan');

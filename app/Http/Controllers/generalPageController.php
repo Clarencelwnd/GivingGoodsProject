@@ -8,8 +8,8 @@ use App\Http\Controllers\Post;
 use App\Models\KegiatanDonasi;
 use App\Models\KegiatanRelawan;
 use Carbon\Carbon;
-use App\Http\Controllers\LengthAwarePaginator;
-use Illuminate\Pagination\LengthAwarePaginator as PaginationLengthAwarePaginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class generalPageController extends Controller
 {
@@ -21,21 +21,24 @@ class generalPageController extends Controller
     public function displayGeneralPage(){
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
 
-        // $merge = $kegiatanRelawan->merge($kegiatanDonasi);
-        // $sorted = $merge->sortByDesc('created_at');
+        $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
+        $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
 
+        $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
+        $sorted = $merged->sortByDesc('created_at');
+
+         // Paginate the sorted collection with 5 items per page
+        // $currentPage = LengthAwarePaginator::resolveCurrentPage();
         // $perPage = 5;
-        // $currentPage = PaginationLengthAwarePaginator::resolveCurrentPage();
         // $currentPageItems = $sorted->slice(($currentPage - 1) * $perPage, $perPage)->all();
-        // $paginatedCollection = new PaginationLengthAwarePaginator($currentPageItems, $sorted->count(), $perPage);
+        // $paginated = new LengthAwarePaginator($currentPageItems, $sorted->count(), $perPage, $currentPage);
 
-        return view('generalPage', compact('kegiatanRelawan', 'kegiatanDonasi'));
-        // return view('generalPage', ['sorted' => $paginatedCollection]);
+        return view('generalPage', ['activities' => $sorted]);
     }
 
     public function displayDummyProfilePage(){
@@ -61,13 +64,15 @@ class generalPageController extends Controller
 
         if ($search) {
             // Search Kegiatan Relawan
-            $kegiatanRelawan = KegiatanRelawan::where('NamaKegiatanRelawan', 'like', "%$search%")
+            $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+                ->where('NamaKegiatanRelawan', 'like', "%$search%")
                 ->orWhere('JenisKegiatanRelawan', 'like', "%$search%")
                 ->orderBy('created_at', 'desc')
                 ->get();
 
             // Search Kegiatan Donasi
-            $kegiatanDonasi = KegiatanDonasi::where('NamaKegiatanDonasi', 'like', "%$search%")
+            $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+                ->where('NamaKegiatanDonasi', 'like', "%$search%")
                 ->orWhere('JenisDonasiDibutuhkan', 'like', "%$search%")
                 ->orderBy('created_at', 'desc')
                 ->get();
@@ -80,10 +85,20 @@ class generalPageController extends Controller
                 ->get();
         }
 
+        $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
+        $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
+
+        $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
+        $sorted = $merged->sortByDesc('created_at');
+
         // Determine which view to return based on search context
         $view = $request->input('view', 'generalPage');
 
-        return view($view, compact('kegiatanRelawan', 'kegiatanDonasi', 'search'));
+        return view($view, ['activities' => $sorted]);
+    }
+
+    public function displayStatusKegiatan(){
+        return view('components.statusKegiatan');
     }
 
 
