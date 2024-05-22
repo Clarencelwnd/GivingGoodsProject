@@ -11,20 +11,25 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
     public function index(Request $request){
-        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $request->id)->get();
-        $detailPansos = PantiSosial::find($request->id);
+        $id = $request->id;
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
+        $detailPansos = PantiSosial::find($id);
         $userPansos = $detailPansos->User;
 
-        // $registrasiRelawan = RegistrasiRelawan::where('IDRegistrasiRelawan', "1")->first();
-        // $timestamp = strtotime($registrasiRelawan->TanggalKegiatanMulaiRelawan);
-        // $hari = date("l", $timestamp);
-        // $tes = date("l", $registrasiRelawan->TanggalKegiatanMulaiRelawan);
-        // dd(config('app.locale'));
-        // dd($hari);
+        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
+    }
 
+    public function edit_view($id){
+        // $id = $request->id;
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
+        $detailPansos = PantiSosial::find($id);
+        $userPansos = $detailPansos->User;
 
-        // dd($jadwalPansos, $detailPansos, $userPansos);
-        return view('profile_pansos/profile', compact('jadwalPansos', 'detailPansos', 'userPansos'));
+        return view('profile_pansos/edit_profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
+    }
+
+    public function edit_logic(Request $request){
+
     }
 
 }

@@ -25,13 +25,21 @@
         </div>
 
         <div class="right col-lg-10 d-none d-md-block">
+            @if (!$detailPansos->LinkGoogleMapsPantiSosial)
+            <div class="container information-button">
+                {{-- <div class="overlay" id="overlay"></div> --}}
+                <div class="row">
+                    <div class="alert alert-light" role="alert">
+                        <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
+                        <p>Lengkapi profil panti sosial untuk memberikan informasi yang lebih baik kepada calon donatur/relawan.</p>
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <div class="row g-0">
                 <div class="col-lg-3 d-none d-md-block">
-                    <div class="card">
-                        <div class="card-body">
-                            <a href="#" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
-                        </div>
-                    </div>
+                    <a href="{{route('edit_profile',['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                 </div>
                 <table class="main-table">
                     <tr>
