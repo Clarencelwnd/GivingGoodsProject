@@ -17,4 +17,14 @@ class DetailKegiatanDonasiController extends Controller
 
         return view('DetailKegiatanDonasi', compact('kegiatanDonasi'));
     }
+
+
+
+    public function destroy($id)
+    {
+        $kegiatanDonasi = KegiatanDonasi::findOrFail($id);
+        $kegiatanDonasi->delete();
+
+        return redirect()->route('kegiatan-donasi.index')->with('success', 'Kegiatan Donasi berhasil dihapus.');
+    }
 }

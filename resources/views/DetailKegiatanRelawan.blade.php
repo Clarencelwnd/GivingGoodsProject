@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Kegiatan Donasi</title>
+    <title>Detail Kegiatan Relawan</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <style>
@@ -320,6 +320,10 @@ body {
                 <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
             </div>
             <div class="detail-row">
+                <div class="detail-label">Jenis Relawan</div>
+                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
+            </div>
+            <div class="detail-row">
                 <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                 <div class="detail-dates">
                     <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
@@ -328,14 +332,14 @@ body {
                 </div>
             </div>
             <div class="detail-row">
-                <div class="detail-label">Jenis Donasi
+                <div class="detail-label">Pendaftaran ditutup</div>
+                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Jumlah Relawan yang Dibutuhkan
                     <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                 </div>
                 <div class="detail-info">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
-            </div>
-            <div class="detail-row">
-                <div class="detail-label">Deskripsi Jenis Donasi</div>
-                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiJenisDonasi }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
@@ -345,11 +349,28 @@ body {
                 <div class="detail-label">Lokasi pada Google Maps</div>
                 <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
             </div>
+            <div class="detail-row">
+                <div class="detail-label">Jam Kegiatan</div>
+                <div class="detail-dates">
+                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
+                    <div class="date-separator">-</div>
+                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
+                </div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Kriteria Relawan</div>
+                <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+            </div>
+            <div class="detail-row">
+                <div class="detail-label">Persyaratan & Instruksi <br> untuk Mengikuti Kegiatan</div>
+                <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+            </div>
+
         </div>
 
         <div class="donor-history">
-            <h2>Riwayat Donatur</h2>
-            <button class="view-history-btn">Lihat Riwayat Donatur</button>
+            <h2>Riwayat Relawan</h2>
+            <button class="view-history-btn">Lihat Riwayat Relawan</button>
         </div>
     </div>
 
@@ -362,7 +383,7 @@ body {
                             <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
                             <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                                 <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="hidePopup()">Batal</button>
-                                <form id="delete-form" action="{{ route('delete-kegiatan-donasi.destroy', 2) }}" method="POST" style="display:inline;">
+                                <form id="delete-form" action="{{ route('delete-kegiatan-relawan.destroy', 2) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                 <button type="submit" class="btn-primary delete-button" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" >Ya, Hapus</button>
@@ -373,32 +394,7 @@ body {
 
 
 
-                <div id="donation-popup-container" style="display: none;">
-                    <div id="donation-popup">
-                        <div class="popup-header">
-                            <h3>Jenis Donasi</h3>
-                            <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
-                        </div>
-                        <div class="popup-content">
-                            <div class="popup-column">
-                                <!-- Left Column Items -->
-                                <div class="popup-row"><img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
-                            </div>
-                            <div class="popup-column">
-                                <!-- Right Column Items -->
-                                <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
-                                <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
 
         <script>
@@ -409,16 +405,6 @@ body {
             function hidePopup() {
                 document.getElementById('popup-container').style.display = 'none';
             }
-
-
-
-                function showDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'flex';
-                }
-
-                function hideDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'none';
-                }
 
         </script>
 
