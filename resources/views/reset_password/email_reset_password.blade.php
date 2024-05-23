@@ -33,7 +33,7 @@
                             <label for="email" id="email" class="email-text fw-normal lh-1">
                                 Masukkan email yang terdaftar. Kami akan mengirim kode verifikasi untuk atur ulang kata sandi.
                             </label>
-                            <input type="text" name="email" class="email-input @error('email') is-invalid @enderror">
+                            <input type="text" name="email" value="{{session('email')}}" class="email-input @error('email') is-invalid @enderror">
                             @error('email')
                                 <label class="error-msg invalid-feedback fw-normal lh-1">
                                     {{$message}}
@@ -54,20 +54,24 @@
             </div>
         </div>
 
-        {{-- modal --}}
+        {{-- MODAL --}}
         <div class="container">
             <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header text-center border-0">
-                        <h5 class="modal-title w-100" id="logoutModalLabel" >Keluar dari Akun</h5>
+                        <h5 class="modal-title w-100" id="logoutModalLabel">Email belum terdaftar</h5>
                     </div>
                     <div class="modal-body">
-                        Apakah Anda yakin ingin keluar dari akun Anda?
+                        Lanjutkan dengan email ini {{session('email')}}?
                     </div>
-                    <div class="modal-footer align-content-center justify-content-center border-0">
-                        <button type="button" class="btn btn-kembali" data-bs-dismiss="modal">Kembali</button>
-                        <button type="button" class="btn btn-keluar">Ya, keluar</button>
+                    <div class="row modal-footer align-content-center justify-content-center border-0">
+                        <div class="col-change">
+                            <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Ubah</button>
+                        </div>
+                        <div class="col-register">
+                            <button  onclick="window.location.href='{{route('dummy_register')}}'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
+                        </div>
                     </div>
                 </div>
                 </div>

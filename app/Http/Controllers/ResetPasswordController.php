@@ -15,8 +15,6 @@ class ResetPasswordController extends Controller
 {
 
     public function index(){
-        // session()->put('showModal', false);
-        // dd(session('showModal'));
         return view('reset_password/email_reset_password');
     }
 
@@ -46,25 +44,17 @@ class ResetPasswordController extends Controller
         // klu email ditemukan/ga
         if($foundEmail){
             $this->sending_otp();
-            $otp = session()->get('otp');
-            return view('reset_password/input_otp', compact('email', 'otp'));
+            return view('reset_password/input_otp');
         }
         else{
-            // return view('reset_password.email_reset_password');
             session()->put('showModal', true);
-            // dd(session('showModal'));
             return back();
-
-            // redirect()->route('reset_password');
-            // return view('reset_password/pop_up_email', compact('email'));
         }
     }
 
     public function input_otp(){
         $this->sending_otp();
-        $email = session()->get('email');
-        $otp = session()->get('otp');
-        return view('reset_password/input_otp', compact('email', 'otp'));
+        return view('reset_password/input_otp');
     }
 
     public function sending_otp(){
