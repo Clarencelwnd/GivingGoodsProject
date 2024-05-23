@@ -5,35 +5,44 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detailForumPage.css') }}">
     <script src="{{ asset('js/generalPage.js') }}"></script>
 @endsection
 
 
 @section('content')
-<h1>halam detail forum</h1>
 
-<div class="container">
     <a href="{{ route('displayDaftarForum') }}" class="btn btn-secondary mb-3">Kembali ke Daftar Forum</a>
 
-    <div class="card w-80">
+    {{-- DISKUSI UTAMA --}}
+    <div class="card w-60">
         <div class="card-body">
-            <h5 class="card-title">{{ $forum->JudulForum }}</h5>
-            <h6>{{ $forum->TanggalBuatForum }}</h6>
-            <div class="card-info">
-                @if ($forum->donaturRelawan)
-                    <h6>Nama pembuat: {{ $forum->donaturRelawan->NamaDonaturRelawan }}</h6>
-                @elseif ($forum->pantiSosial)
-                    <h6>Nama pembuat: {{ $forum->pantiSosial->NamaPantiSosial }}</h6>
-                @endif
+            <div class="card-top">
+                <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
+                <h6 id="tanggalBuatForum">{{ \Carbon\Carbon::parse($forum->TanggalBuatForum)->format('d M Y') }}</h6>
             </div>
-            <p class="card-text">{{ $forum->DeskripsiForum }}</p>
+                <h6 class="card-info" id="namaPembuatForum">Diposting oleh: {{ $forum->donaturRelawan->NamaDonaturRelawan ?? $forum->pantiSosial->NamaPantiSosial}}</h6>
+                <p class="card-text">{{ $forum->DeskripsiForum }}</p>
         </div>
     </div>
 
+    {{-- Reply text area --}}
+    <div class="mt-4 replyTextArea">
+        <form action="{{ route('simpanKomentar') }}" method="POST">
+            @csrf
+            <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
+            <textarea class="w-100 form-control" name="KomentarForum" rows="4" placeholder="Bagikan pendapatmu..." required></textarea>
+            <button type="submit" class="btn">
+                <img src="{{ asset('Image/general/send.png') }}" alt="Kirim">
+            </button>
+        </form>
+    </div>
+
+    {{-- REPLIES --}}
     <div class="mt-4">
-        <h5>Replies</h5>
+        <h5>Balasan</h5>
         @foreach ($forum->komentarForum as $komentar)
-            <div class="card w-80 mb-3">
+            <div class="card w-60 mb-3">
                 <div class="card-body">
                     @if ($komentar->donaturRelawan)
                         <h6>{{ $komentar->donaturRelawan->NamaDonaturRelawan }}</h6>
@@ -47,17 +56,7 @@
         @endforeach
     </div>
 
-    <div class="mt-4">
-        <h5>Share your thoughts</h5>
-        <form action="{{ route('simpanKomentar') }}" method="POST">
-            @csrf
-            <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
-            <div class="mb-3">
-                <textarea class="form-control" name="KomentarForum" rows="4" placeholder="Share your thoughts..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Kirim</button>
-        </form>
-    </div>
-</div>
+
+
 
 @endsection
