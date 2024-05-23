@@ -30,6 +30,7 @@
                         <h5 class="card-title">Atur ulang kata sandi</h5>
                         <form action="{{route('checking_otp')}}" class="text" method="POST">
                             @csrf
+                            <input type="hidden" id="kirim" value="{{route('input_otp')}}">
                             <label for="otp" id="otp" class="otp-text fw-normal lh-1">
                                 Masukkan kode OTP yang telah dikirim ke email Anda
                             </label>

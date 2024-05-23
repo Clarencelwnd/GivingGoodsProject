@@ -24,7 +24,6 @@ Route::get('/input_otp',[ResetPasswordController::class, 'input_otp'])->name('in
 Route::post('/new_password', [ResetPasswordController::class, 'checking_otp'])->name('checking_otp');
 Route::get('/new_password', [ResetPasswordController::class, 'new_password'])->name('new_password');
 Route::post('/checking_password', [ResetPasswordController::class, 'checking_password'])->name('checking_password');
-Route::get('/exit_reset_password', [ResetPasswordController::class, 'exit_reset_password'])->name('exit_reset_password');
 
 // dummy
 Route::get('/dummy_login', [ResetPasswordController::class, 'dummy_login'])->name('dummy_login');

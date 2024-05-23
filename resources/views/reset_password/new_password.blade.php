@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/new_password.css')}}">
+    <script src="{{ asset('js/new_password.js') }}"></script>
 </head>
 <body>
     <div class="row g-0">
@@ -28,7 +29,7 @@
                 <div class="card justify-content-center">
                     <div class="card-body">
                         <h5 class="card-title">Atur ulang kata sandi</h5>
-                        <div class="desc-text">Buat kata sandi baru yang kuat untuk akunmu</div>
+                        <div class="desc-text">Buat kata sandi baru yang kuat untuk akunmu.</div>
                         <form action="{{route('checking_password')}}" class="text" method="POST">
                             @csrf
                             <label for="password" id="password" class="password-text fw-normal lh-1 ">
@@ -53,13 +54,37 @@
                                 Simpan
                             </button>
                         </form>
-                        <a href="{{route('exit_reset_password')}}" class="btn btn-block" id="btn-back">Kembali</a>
+                        <a data-bs-toggle="modal" data-bs-target="#exitResetPasswordModal" class="btn btn-block btn-back" id="exitResetPassword">Kembali</a>
                     </div>
                 </div>
-                
+
                 <!-- Sudah punya akun? -->
                 <div class="d-flex bottom-txt">
                     <div id="copyright-txt">©️GivingGoods | 2024</div>
+                </div>
+            </div>
+        </div>
+
+        {{-- MODAL  --}}
+        <div class="container">
+            <div class="modal fade" id="exitResetPasswordModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <h5 class="modal-title w-100" id="logoutModalLabel">Keluar dari Halaman ini?</h5>
+                    </div>
+                    <div class="modal-body">
+                        Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
+                    </div>
+                    <div class="row modal-footer align-content-center justify-content-center border-0">
+                        <div class="col-change">
+                            <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
+                        </div>
+                        <div class="col-login">
+                            <button  onclick="window.location.href='{{route('dummy_login')}}'" type="button" class="btn" id="btn-login">Keluar</button>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
