@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
             $table->string('StatusKegiatanDonasi', 20);
             $table->string('JenisDonasiDibutuhkan', 255);
+            $table->string('DeskripsiJenisDonasi', 255);
             $table->timestamps();
         });
     }

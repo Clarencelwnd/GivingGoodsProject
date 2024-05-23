@@ -20,7 +20,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'LokasiKegiatanDonasi' => 'Jl. Merdeka No. 123, Kota ABC',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/123',
                 'StatusKegiatanDonasi' => 'Open',
-                'JenisDonasiDibutuhkan' => 'Pakaian'
+                'JenisDonasiDibutuhkan' => 'Pakaian',
+                'DeskripsiJenisDonasi' => 'Kami membutuhkan bantuan berupa pakaian layak pakai untuk anak-anak usia 5-12 tahun. Pakaian yang dibutuhkan termasuk seragam sekolah, baju hangat, dan sepatu.'
             ],
             [
                 'IDPantiSosial' => 2,
@@ -32,7 +33,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'LokasiKegiatanDonasi' => 'Jl. Diponegoro No. 456, Kota XYZ',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/456',
                 'StatusKegiatanDonasi' => 'Closed',
-                'JenisDonasiDibutuhkan' => 'Perlengkapan sekolah'
+                'JenisDonasiDibutuhkan' => 'Perlengkapan sekolah',
+                'DeskripsiJenisDonasi' => 'Bantuan yang diperlukan berupa buku pelajaran dan alat tulis untuk mendukung kegiatan belajar mengajar di sekolah-sekolah pedalaman. Buku yang dibutuhkan meliputi buku matematika, sains, dan bahasa.'
             ],
             [
                 'IDPantiSosial' => 3,
@@ -44,7 +46,9 @@ class KegiatanDonasiSeeder extends Seeder
                 'LokasiKegiatanDonasi' => 'Jl. Sudirman No. 789, Kota DEF',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/789',
                 'StatusKegiatanDonasi' => 'On Going',
-                'JenisDonasiDibutuhkan' => 'Mainan'
+                'JenisDonasiDibutuhkan' => 'Mainan',
+                'DeskripsiJenisDonasi' => 'Kami mencari donasi berupa bahan makanan pokok seperti beras, minyak goreng, gula, dan tepung untuk disalurkan kepada keluarga kurang mampu di desa-desa terpencil.'
+
             ],
         ]);
     }
