@@ -145,8 +145,14 @@ body {
 .detail-dates {
     display: flex;
     align-items: center;
-    padding-right: 436px;
+    padding-right: 432px;
 }
+.detail-time {
+    display: flex;
+    align-items: center;
+    padding-right: 470px;
+}
+
 
 .detail-info-tanggal {
     background-color: #D9D9D9;
@@ -303,7 +309,7 @@ body {
         <div class="header">
             <div class="title">
                 <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
-                <h1>{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
+                <h1>{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
                 <button class="edit-btn">Ubah Kegiatan</button>
@@ -313,57 +319,55 @@ body {
         <div class="details">
             <div class="detail-row">
                 <div class="detail-label">Nama Kegiatan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Deskripsi Kegiatan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->DeskripsiKegiatanRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Jenis Relawan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->JenisKegiatanRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                 <div class="detail-dates">
-                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
-                    <div class="date-separator">-</div>
-                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
+                    <div class="detail-info-tanggal">{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }}</div>
+                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                    <div class="detail-info-tanggal">{{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai }}</div>
                 </div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Pendaftaran ditutup</div>
-                <div class="detail-info">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->TanggalPendaftaranKegiatanDitutup }}</div>
             </div>
             <div class="detail-row">
-                <div class="detail-label">Jumlah Relawan yang Dibutuhkan
-                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
-                </div>
-                <div class="detail-info">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
+                <div class="detail-label">Jumlah Relawan yang <br> Dibutuhkan</div>
+                <div class="detail-info">{{ $kegiatanRelawan->JumlahRelawanDibutuhkan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->LokasiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Lokasi pada Google Maps</div>
-                <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->LinkGoogleMapsLokasiKegiatanRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Jam Kegiatan</div>
-                <div class="detail-dates">
-                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
-                    <div class="date-separator">-</div>
-                    <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
+                <div class="detail-time">
+                    <div class="detail-info-tanggal">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}</div>
+                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                    <div class="detail-info-tanggal">{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan  }}</div>
                 </div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Kriteria Relawan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->KriteriaRelawan }}</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Persyaratan & Instruksi <br> untuk Mengikuti Kegiatan</div>
-                <div class="detail-info">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->SyaratDanInstruksiKegiatanRelawan }}</div>
             </div>
 
         </div>
