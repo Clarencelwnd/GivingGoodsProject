@@ -118,7 +118,6 @@ td, tr{
 }
 
 .row-st{
-    /* padding-top: 3px; */
     padding-left: 10px;
     padding-right: 15px;
 }
@@ -132,16 +131,10 @@ td, tr{
     width: 20px;
 }
 
-
 .error-msg{
     margin-bottom: 20px;
     font-size: 12px;
 }
-
-/* #col-right{
-    width: 80%;
-    margin-left: auto;
-} */
 
 #button-style{
     width: 86%;
@@ -171,3 +164,18 @@ td, tr{
     color: #007C92;
 }
 
+/* MODAL  */
+.modal-title{
+    font-weight: 500;
+}
+
+th{
+    color: #007C92;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.row-sst{
+    padding: 10px;
+    text-align: center;
+}

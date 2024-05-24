@@ -16,6 +16,14 @@ class ProfileController extends Controller
         $detailPansos = PantiSosial::find($id);
         $userPansos = $detailPansos->User;
 
+        foreach ($jadwalPansos as $jadwal) {
+            $jamBuka = date('H:i', strtotime($jadwal->JamBukaPantiSosial));
+            $jadwal->setAttribute('jamBuka', $jamBuka);
+
+            $jamTutup = date('H:i', strtotime($jadwal->JamTutupPantiSosial));
+            $jadwal->setAttribute('jamTutup', $jamTutup);
+        }
+
         return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
     }
 

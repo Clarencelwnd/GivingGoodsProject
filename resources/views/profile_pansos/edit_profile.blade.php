@@ -16,6 +16,7 @@
 </head>
 <body>
     <div class="row g-0">
+        {{-- LEFT SIDE  --}}
         <div class="left col-sm-2 d-none d-md-block">
             <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
             <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
@@ -24,6 +25,7 @@
             <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
         </div>
 
+        {{-- RIGHT SIDE  --}}
         <div class="right col-lg-10 d-none d-md-block">
             <div class="row g-0">
                 <form action="" method="post">
@@ -69,13 +71,13 @@
                             <td class="left-column-mt">Jam Operasional</td>
                             <td class="right-column-mt" id="jam-operasional">
                                 @if (!$detailPansos->LinkGoogleMapsPantiSosial)
-                                    <a href="#" class="btn btn-block" id="btn-jam-operasional">Atur Jam Operasional</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#jadwalModal" class="btn btn-block" id="btn-jam-operasional">Atur Jam Operasional</a>
                                 @else
                                     <table class="schedule-table">
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td class="img-cell"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></td>
+                                            <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#jadwalModal" id="btn-img"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
                                         </tr>
                                         @php
                                             $index = 0;
@@ -117,6 +119,8 @@
                             </td>
                         </tr>
                     </table>
+
+                    {{-- BUTTON  --}}
                     <div class="row justify-content-end" id="button-style">
                         <div class="col-2">
                             <a href="#" class="btn btn-block" id="btn-back">Batal</a>
@@ -127,8 +131,119 @@
                             </button>
                         </div>
                     </div>
-                </form>
 
+                    {{-- MODAL JADWAL OPERASIONAL --}}
+                    {{-- <button onclick="openPopup()">Buka Popup</button> --}}
+
+{{-- <div class="popup-container" id="popupContainer">
+  <div class="popup" id="popup" aria-hidden="true">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <div class="row">
+      <div class="column">
+        <label for="input1">Input 1:</label>
+        <input type="text" id="input1">
+      </div>
+      <div class="column">
+        <label for="input2">Input 2:</label>
+        <input type="text" id="input2">
+      </div>
+      <div class="column">
+        <label for="input3">Input 3:</label>
+        <input type="text" id="input3">
+      </div>
+    </div>
+    <button onclick="submitForm()">Submit</button>
+  </div>
+</div> --}}
+
+                    <div class="container">
+                        <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header border-0 row">
+                                    <div class="col start">
+                                        <h6 class="modal-title w-100" id="logoutModalLabel">Atur Jam Operasional</h6>
+                                    </div>
+                                    <div class="col end">
+                                        <span class="close" data-bs-dismiss="modal">&times;</span>
+                                    </div>
+
+                                </div>
+                                <div class="modal-body">
+                                    <form action="">
+                                        <table class="set-schedule-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Hari</th>
+                                                    <th>Jam Buka (WIB)</th>
+                                                    <th>Jam Tutup (WIB)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{-- @if (!$detailPansos->LinkGoogleMapsPantiSosial) --}}
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-senin" id="hari">Senin</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-senin" name="jam-buka-senin" value="{{$jadwalPansos->where('hari', 'Senin')->first()->jamBuka ?? ''}}"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-senin" name="jam-tutup-senin" value="{{$jadwalPansos->where('hari', 'Senin')->first()->jamTutup ?? ''}}"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-selasa" id="hari">Selasa</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-selasa" name="jam-buka-selasa"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-selasa" name="jam-tutup-selasa"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-rabu" id="hari">Rabu</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-rabu" name="jam-buka-rabu"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-rabu" name="jam-tutup-rabu"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-kamis" id="hari">Kamis</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-kamis" name="jam-buka-kamis"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-kamis" name="jam-tutup-kamis"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-jumat" id="hari">Jumat</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-jumat" name="jam-buka-jumat"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-jumat" name="jam-tutup-jumat"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-sabtu" id="hari">Sabtu</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-sabtu" name="jam-buka-sabtu"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-sabtu" name="jam-tutup-sabtu"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="row-sst"><label for="hari-minggu" id="hari">Minggu</label></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-minggu" name="jam-buka-minggu"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-minggu" name="jam-tutup-minggu"></td>
+                                                </tr>
+                                            {{-- @else --}}
+
+                                            {{-- @endif --}}
+
+                                                {{-- @foreach ($jadwalPansos as $jadwal)
+                                                    <tr>
+                                                        <td>Senin</td>
+                                                        <td>{{$jadwal->JamBukaPantiSosial}}</td>
+                                                        <td>{{$jadwal->JamTutupPantiSosial}}</td>
+                                                    </tr>
+                                                @endforeach --}}
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <div class="row modal-footer align-content-center justify-content-center border-0">
+                                    <div class="col-change">
+                                        <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Ubah</button>
+                                    </div>
+                                    <div class="col-register">
+                                        <button  onclick="window.location.href='#'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
