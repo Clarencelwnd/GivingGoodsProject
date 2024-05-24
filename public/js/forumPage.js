@@ -24,14 +24,18 @@ function countWords(){
     var charactersTyped = textarea.value.length;
     var charactersLeft = maxCharacters - charactersTyped;
 
-    if (charactersTyped == 0 || charactersLeft <= 0) {
-        if(charactersLeft <= 0){
-            wordCountElement.textContent = "Maksimum karakter tercapai";
-            wordCountElement.style.color = "red";
-        }
-        // Disable submit button
+    //Kalo dia belom type atau charactersleft nya udah 0
+    if (charactersTyped == 0) {
+        wordCountElement.textContent = "Maks. 255 karakter";
+        wordCountElement.style.color = "";
         submitButton.disabled = true;
-    } else {
+
+    }else if( charactersLeft <= 0){
+        wordCountElement.textContent = "Maksimum karakter tercapai";
+        wordCountElement.style.color = "red";
+        submitButton.disabled = true;
+
+    }else {
         wordCountElement.textContent = charactersLeft + " karakter tersisa";
         wordCountElement.style.color = ""; // Reset color
         submitButton.disabled = false;

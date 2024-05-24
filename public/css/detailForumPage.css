@@ -24,8 +24,31 @@
     border-radius: 5px;
 }
 
-/* CARDS */
+/* BACK BUTTON */
+.btn-forumBack a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 10px;
+}
 
+.btn-forumBack:focus, .btn-forumBack:active {
+    outline: none;
+    box-shadow: none; /* Remove any box-shadow if present */
+}
+
+.back-img {
+    margin-right: 8px; /* Add space between the image and text */
+}
+
+#back-text{
+    color: #007C92;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* CARDS */
 .card{
     margin-bottom: 40px;
     border-color: 2px #007C92;
@@ -49,16 +72,17 @@
     font-weight: 600;
 }
 
-#tanggalBuatForum{
+.tanggalBuatForum{
     color: #1C3F5B;
     font-size: 16px;
     font-weight: 400;
 }
 
-#namaPembuatForum{
+.namaPembuatForum{
     color: #00AF71;
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: 20px;
 }
 
 .card-text{
@@ -93,5 +117,19 @@
 
 .replyTextArea button {
     flex: none;
+}
+
+/* REPLIES */
+#balasanTitle{
+    margin-left: 10px;
+    color: #007C92;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+#komentarForumText{
+    color: #006374;
+    font-size: 16px;
 }
 
