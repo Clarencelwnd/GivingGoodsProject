@@ -158,20 +158,28 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    @php
-                                                        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
-                                                        $jadwal = [];
-                                                        foreach ($days as $day) {
-                                                            $jadwal = $jadwalPansos->where('Hari', $day)->first();
-                                                            $jamBuka = $jadwal ? $jadwal->JamBukaPantiSosial : '';
-                                                            $jamTutup = $jadwal ? $jadwal->JamTutupPantiSosial : '';
-                                                        }
+                                                @php
+                                                    $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+                                                    $jadwal = [];
+                                                    foreach ($days as $day) {
+                                                        $jadwal = $jadwalPansos->where('Hari', $day)->first();
+                                                        $jamBuka = $jadwal ? $jadwal->JamBukaPantiSosial : '';
+                                                        $jamTutup = $jadwal ? $jadwal->JamTutupPantiSosial : '';
                                                         $jadwal[$hari] = [
                                                             'jamBuka' => $jamBuka;
                                                             'jamTutup' => $jamTutup;
-                                                        ]
-                                                    @endphp
+                                                        ];
+                                                    }
+                                                @endphp
+                                                <tr>
+                                                    @foreach ($jadwal as $jdwl)
+                                                        <td class="row-sst"><label for="hari-{{strtolower($hari)}}" id="hari">{{ucwords($hari)}}</label></td>
+                                                        <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($hari)}}" name="jam-buka-{{strtolower($hari)}}" value="{{$jamBukaSenin}}"></td>
+                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($hari)}}" name="jam-tutup-{{strtolower($hari)}}" value="{{$jamTutupSenin}}"></td>
+                                                    @endforeach
+                                                </tr>
+                                                {{-- <tr>
+
                                                     <td class="row-sst"><label for="hari-senin" id="hari">Senin</label></td>
                                                     <td class="row-sst"><input type="time" id="jam-buka-senin" name="jam-buka-senin" value="{{$jamBukaSenin}}"></td>
                                                     <td class="row-sst"><input type="time" id="jam-tutup-senin" name="jam-tutup-senin" value="{{$jamTutupSenin}}"></td>
@@ -205,7 +213,7 @@
                                                     <td class="row-sst"><label for="hari-minggu" id="hari">Minggu</label></td>
                                                     <td class="row-sst"><input type="time" id="jam-buka-minggu" name="jam-buka-minggu"></td>
                                                     <td class="row-sst"><input type="time" id="jam-tutup-minggu" name="jam-tutup-minggu"></td>
-                                                </tr>
+                                                </tr> --}}
                                             {{-- @else --}}
 
                                             {{-- @endif --}}
