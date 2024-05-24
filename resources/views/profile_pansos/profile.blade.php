@@ -109,7 +109,8 @@
                                             @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
                                                 Libur
                                             @else
-                                                {{Carbon::parse($first_day->JamBukaPantiSosial)->format('H:i')}} - {{Carbon::parse($first_day->JamTutupPantiSosial)->format('H:i')}} WIB
+                                                {{$first_day->JamBukaPantiSosial}} - {{$first_day->JamTutupPantiSosial}} WIB
+                                                {{-- {{Carbon::parse($first_day->JamBukaPantiSosial)->format('H:i')}} - {{Carbon::parse($first_day->JamTutupPantiSosial)->format('H:i')}} WIB --}}
                                             @endif
                                         </td>
                                     </tr>

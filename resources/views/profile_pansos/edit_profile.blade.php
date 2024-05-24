@@ -102,11 +102,12 @@
                                                     @endif
                                                 </td>
                                                 <td> | </td>
+
                                                 <td class="row-st">
                                                     @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
                                                         Libur
                                                     @else
-                                                        {{Carbon::parse($first_day->JamBukaPantiSosial)->format('H:i')}} - {{Carbon::parse($first_day->JamTutupPantiSosial)->format('H:i')}} WIB
+                                                        {{$first_day->JamBukaPantiSosial}} - {{$first_day->JamTutupPantiSosial}} WIB
                                                     @endif
                                                 </td>
                                             </tr>
@@ -133,29 +134,6 @@
                     </div>
 
                     {{-- MODAL JADWAL OPERASIONAL --}}
-                    {{-- <button onclick="openPopup()">Buka Popup</button> --}}
-
-{{-- <div class="popup-container" id="popupContainer">
-  <div class="popup" id="popup" aria-hidden="true">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <div class="row">
-      <div class="column">
-        <label for="input1">Input 1:</label>
-        <input type="text" id="input1">
-      </div>
-      <div class="column">
-        <label for="input2">Input 2:</label>
-        <input type="text" id="input2">
-      </div>
-      <div class="column">
-        <label for="input3">Input 3:</label>
-        <input type="text" id="input3">
-      </div>
-    </div>
-    <button onclick="submitForm()">Submit</button>
-  </div>
-</div> --}}
-
                     <div class="container">
                         <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -180,11 +158,23 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            {{-- @if (!$detailPansos->LinkGoogleMapsPantiSosial) --}}
                                                 <tr>
+                                                    @php
+                                                        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+                                                        $jadwal = [];
+                                                        foreach ($days as $day) {
+                                                            $jadwal = $jadwalPansos->where('Hari', $day)->first();
+                                                            $jamBuka = $jadwal ? $jadwal->JamBukaPantiSosial : '';
+                                                            $jamTutup = $jadwal ? $jadwal->JamTutupPantiSosial : '';
+                                                        }
+                                                        $jadwal[$hari] = [
+                                                            'jamBuka' => $jamBuka;
+                                                            'jamTutup' => $jamTutup;
+                                                        ]
+                                                    @endphp
                                                     <td class="row-sst"><label for="hari-senin" id="hari">Senin</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-senin" name="jam-buka-senin" value="{{$jadwalPansos->where('hari', 'Senin')->first()->jamBuka ?? ''}}"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-senin" name="jam-tutup-senin" value="{{$jadwalPansos->where('hari', 'Senin')->first()->jamTutup ?? ''}}"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-buka-senin" name="jam-buka-senin" value="{{$jamBukaSenin}}"></td>
+                                                    <td class="row-sst"><input type="time" id="jam-tutup-senin" name="jam-tutup-senin" value="{{$jamTutupSenin}}"></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="row-sst"><label for="hari-selasa" id="hari">Selasa</label></td>
@@ -237,7 +227,7 @@
                                     </div>
                                     <div class="col-register">
                                         <button  onclick="window.location.href='#'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
-                                    </div>
+                                    </div>x
                                 </div>
                             </div>
                             </div>
