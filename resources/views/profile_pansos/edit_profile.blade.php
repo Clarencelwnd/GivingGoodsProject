@@ -160,24 +160,25 @@
                                             <tbody>
                                                 @php
                                                     $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
-                                                    $jadwal = [];
+                                                    $jadwalHari = [];
                                                     foreach ($days as $day) {
                                                         $jadwal = $jadwalPansos->where('Hari', $day)->first();
                                                         $jamBuka = $jadwal ? $jadwal->JamBukaPantiSosial : '';
                                                         $jamTutup = $jadwal ? $jadwal->JamTutupPantiSosial : '';
-                                                        $jadwal[$hari] = [
-                                                            'jamBuka' => $jamBuka;
-                                                            'jamTutup' => $jamTutup;
+                                                        $jadwalHari[$day] = [
+                                                            'jamBuka' => $jamBuka,
+                                                            'jamTutup' => $jamTutup
                                                         ];
                                                     }
                                                 @endphp
-                                                <tr>
-                                                    @foreach ($jadwal as $jdwl)
-                                                        <td class="row-sst"><label for="hari-{{strtolower($hari)}}" id="hari">{{ucwords($hari)}}</label></td>
-                                                        <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($hari)}}" name="jam-buka-{{strtolower($hari)}}" value="{{$jamBukaSenin}}"></td>
-                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($hari)}}" name="jam-tutup-{{strtolower($hari)}}" value="{{$jamTutupSenin}}"></td>
-                                                    @endforeach
-                                                </tr>
+                                                @foreach ($jadwalHari as $day => $jadwal)
+                                                    <tr>
+                                                        <td class="row-sst"><label for="hari-{{strtolower($day)}}" id="day">{{ucwords($day)}}</label></td>
+                                                        <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jamBukaSenin}}"></td>
+                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jamTutupSenin}}"></td>
+                                                    </tr>
+                                                @endforeach
+
                                                 {{-- <tr>
 
                                                     <td class="row-sst"><label for="hari-senin" id="hari">Senin</label></td>
