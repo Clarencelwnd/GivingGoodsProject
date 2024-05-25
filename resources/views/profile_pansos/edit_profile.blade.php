@@ -28,7 +28,7 @@
         {{-- RIGHT SIDE  --}}
         <div class="right col-lg-10 d-none d-md-block">
             <div class="row g-0">
-                <form action="" method="post">
+                <form action="{{route('edit_profile_logic', ['id'=>$id])}}" method="post">
                     @csrf
                     <table class="main-table">
                         <tr>
@@ -127,28 +127,29 @@
                             <a href="#" class="btn btn-block" id="btn-back">Batal</a>
                         </div>
                         <div class="col-3">
-                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
+                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-save">
                                 Simpan Perubahan
                             </button>
                         </div>
                     </div>
+                </form>
 
-                    {{-- MODAL JADWAL OPERASIONAL --}}
-                    <div class="container">
-                        <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
+                {{-- MODAL JADWAL OPERASIONAL --}}
+                <div class="container">
+                    <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header border-0 row">
-                                    <div class="col start">
-                                        <h6 class="modal-title w-100" id="logoutModalLabel">Atur Jam Operasional</h6>
+                                <div class="modal-header align-items-center border-0 row">
+                                    <div class="col">
+                                        <h6 class="modal-title" id="logoutModalLabel">Atur Jam Operasional</h6>
                                     </div>
-                                    <div class="col end">
-                                        <span class="close" data-bs-dismiss="modal">&times;</span>
+                                    <div class="col text-end">
+                                        <h4 class="close" data-bs-dismiss="modal">&times;</h4>
                                     </div>
-
                                 </div>
                                 <div class="modal-body">
-                                    <form action="">
+                                    <form action="{{route('edit_schedule_logic', ['id'=>$id])}}" method="post">
+                                        @csrf
                                         <table class="set-schedule-table">
                                             <thead>
                                                 <tr>
@@ -174,75 +175,23 @@
                                                 @foreach ($jadwalHari as $day => $jadwal)
                                                     <tr>
                                                         <td class="row-sst"><label for="hari-{{strtolower($day)}}" id="day">{{ucwords($day)}}</label></td>
-                                                        <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jamBukaSenin}}"></td>
-                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jamTutupSenin}}"></td>
+                                                        <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jadwal['jamBuka']}}"></td>
+                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}"></td>
                                                     </tr>
                                                 @endforeach
-
-                                                {{-- <tr>
-
-                                                    <td class="row-sst"><label for="hari-senin" id="hari">Senin</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-senin" name="jam-buka-senin" value="{{$jamBukaSenin}}"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-senin" name="jam-tutup-senin" value="{{$jamTutupSenin}}"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-selasa" id="hari">Selasa</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-selasa" name="jam-buka-selasa"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-selasa" name="jam-tutup-selasa"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-rabu" id="hari">Rabu</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-rabu" name="jam-buka-rabu"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-rabu" name="jam-tutup-rabu"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-kamis" id="hari">Kamis</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-kamis" name="jam-buka-kamis"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-kamis" name="jam-tutup-kamis"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-jumat" id="hari">Jumat</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-jumat" name="jam-buka-jumat"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-jumat" name="jam-tutup-jumat"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-sabtu" id="hari">Sabtu</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-sabtu" name="jam-buka-sabtu"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-sabtu" name="jam-tutup-sabtu"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="row-sst"><label for="hari-minggu" id="hari">Minggu</label></td>
-                                                    <td class="row-sst"><input type="time" id="jam-buka-minggu" name="jam-buka-minggu"></td>
-                                                    <td class="row-sst"><input type="time" id="jam-tutup-minggu" name="jam-tutup-minggu"></td>
-                                                </tr> --}}
-                                            {{-- @else --}}
-
-                                            {{-- @endif --}}
-
-                                                {{-- @foreach ($jadwalPansos as $jadwal)
-                                                    <tr>
-                                                        <td>Senin</td>
-                                                        <td>{{$jadwal->JamBukaPantiSosial}}</td>
-                                                        <td>{{$jadwal->JamTutupPantiSosial}}</td>
-                                                    </tr>
-                                                @endforeach --}}
                                             </tbody>
                                         </table>
+                                        <div class="row modal-footer align-content-center justify-content-center border-0">
+                                            <div class="col-change">
+                                                <button type="submit" class="btn" id="btn-save-schedule" data-bs-dismiss="modal">Simpan</button>
+                                            </div>
+                                        </div>
                                     </form>
                                 </div>
-                                <div class="row modal-footer align-content-center justify-content-center border-0">
-                                    <div class="col-change">
-                                        <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Ubah</button>
-                                    </div>
-                                    <div class="col-register">
-                                        <button  onclick="window.location.href='#'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
-                                    </div>x
-                                </div>
-                            </div>
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

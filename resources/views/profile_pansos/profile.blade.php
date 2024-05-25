@@ -39,7 +39,7 @@
 
             <div class="row g-0">
                 <div class="col-lg-3 d-none d-md-block">
-                    <a href="{{route('edit_profile',['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
+                    <a href="{{route('edit_profile', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                 </div>
                 <table class="main-table">
                     <tr>

@@ -142,13 +142,13 @@ td, tr{
     padding-bottom: 20px;
 }
 
-#btn-next{
+#btn-save, #btn-save-schedule{
     background: #00AF71;
     color: #FDFFFE;
     width: 100%;
 }
 
-#btn-next:hover{
+#btn-save:hover, #btn-save-schedule{
     background: #009B65;
     color: #FDFFFE;
 }
@@ -166,7 +166,9 @@ td, tr{
 
 /* MODAL  */
 .modal-title{
-    font-weight: 500;
+    color: #1C3F5B;
+    font-weight: 600;
+    /* padding-bottom: 10px; */
 }
 
 th{

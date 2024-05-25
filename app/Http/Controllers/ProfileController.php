@@ -42,8 +42,29 @@ class ProfileController extends Controller
         return view('profile_pansos/edit_profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
     }
 
-    public function edit_logic(Request $request){
+    public function edit_profile_logic($id){
 
+    }
+
+    public function edit_schedule_logic(Request $request, $id){
+        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+
+        foreach ($days as $day) {
+            $jamBuka = $request->input("jam-buka-".strtolower($day));
+            $jamTutup = $request->input("jam-tutup-".strtolower($day));
+
+            JadwalOperasional::updateOrCreate(
+                ['IDPantiSosial' => $id],
+                ['Hari' => $day],
+                [
+                    'JamBukaPantiSosial' => $jamBuka,
+                    'JamTutupPantiSosial' => $jamTutup
+                ]
+            );
+        }
+        $jadwaloperasional = JadwalOperasional::all();
+        dd($jadwaloperasional);
+        return redirect()->back();
     }
 
 }
