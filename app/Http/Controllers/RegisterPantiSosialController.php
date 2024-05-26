@@ -72,12 +72,12 @@ class RegisterPantiSosialController extends Controller
               // Mengunggah file dan menyimpan path ke database
               if ($request->hasFile('validation_document')) {
                 $file = $request->file('validation_document');
-                $filePath = $file->store('validasi_dokumen', 'public'); // Simpan file di direktori 'storage/app/public/validasi_dokumen'
-                $user->DokumenValiditasPantiSosial = $filePath; // Simpan path file ke kolom DokumenValiditasPantiSosial
+                $fileName = time() . '.' . $file->getClientOriginalName();
+                $file->move(public_path('validasi_dokumen'), $fileName); // Pindahkan file ke direktori 'public/validasi_dokumen'
+                $user->DokumenValiditasPantiSosial = 'validasi_dokumen/' . $fileName; // Simpan URL file ke kolom DokumenValiditasPantiSosial
             } else {
                 return back()->with('fail', 'Dokumen validitas harus diunggah');
             }
-
 
 
             $result = $user->save();
