@@ -48,7 +48,7 @@ class RegisterPantiSosialController extends Controller
         // Validasi input menggunakan Validator
         $request->validate([
             'registration_num' => 'required', // Nama organisasi harus diisi
-            'validation_document' => 'required', // Dokumen harus diupload dan berupa file dengan ekstensi jpg atau png
+            'validation_document' => 'required|file|mimes:jpg,png|max:10240', // Dokumen harus diupload dan berupa file dengan ekstensi jpg atau png
         ]);
 
         // Simpan data dari halaman kedua dan data dari session ke dalam database
@@ -67,7 +67,17 @@ class RegisterPantiSosialController extends Controller
             $user->NomorTeleponPantiSosial = $phone; // Menggunakan variabel yang telah diambil dari session
             // $user->Password = $request->password;
             $user->NomorRegistrasiPantiSosial = $request->registration_num;
-            $user->DokumenValiditasPantiSosial = $request->validation_document;
+            // $user->DokumenValiditasPantiSosial = $request->validation_document;
+
+              // Mengunggah file dan menyimpan path ke database
+              if ($request->hasFile('validation_document')) {
+                $file = $request->file('validation_document');
+                $filePath = $file->store('validasi_dokumen', 'public'); // Simpan file di direktori 'storage/app/public/validasi_dokumen'
+                $user->DokumenValiditasPantiSosial = $filePath; // Simpan path file ke kolom DokumenValiditasPantiSosial
+            } else {
+                return back()->with('fail', 'Dokumen validitas harus diunggah');
+            }
+
 
 
             $result = $user->save();

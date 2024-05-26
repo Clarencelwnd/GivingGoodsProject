@@ -21,7 +21,7 @@
             <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
             <div class="form-container">
                 <h2>Mulai Bergabung</h2>
-            <form action="{{ route('registerPantiSosial2') }}" method="POST">
+                <form action="{{ route('registerPantiSosial2') }}" method="POST" enctype="multipart/form-data">
                  @csrf
 
                  @if (Session::has('success'))

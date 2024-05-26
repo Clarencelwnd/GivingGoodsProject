@@ -36,6 +36,7 @@ Route::post('/register-pantisosial', [RegisterPantiSosialController::class, 'reg
 // REGISTER PANTI SOSIAL 2
 Route::post('/register-pantisosial2', [RegisterPantiSosialController::class, 'registerPantiSosial2'])->name('registerPantiSosial2');
 
+
 //REGISTER DONATUR RELAWAN
 Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
 
