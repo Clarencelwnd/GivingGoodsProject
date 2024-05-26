@@ -23,7 +23,7 @@ class RegisterPantiSosialController extends Controller
         $user = PantiSosial::where('EmailPantiSosial', $email)->first();
 
         if ($user) {
-            // Jika email sudah ada, kembali dengan pesan kesalahan
+            // Jika email sudah ada, return error message
             return back()->withInput()->with('error', 'Email sudah terdaftar.');
         }
 
@@ -33,7 +33,7 @@ class RegisterPantiSosialController extends Controller
         $request->session()->put('phone', $request->input('phone'));
         $request->session()->put('password', $request->input('password'));
         // Lanjut ke halaman berikutnya jika validasi berhasil
-        return redirect()->route('registerPantiSosialNext'); // Sesuaikan dengan route yang benar untuk halaman berikutnya
+        return redirect()->route('registerPantiSosialNext');
     }
 
 
@@ -45,10 +45,10 @@ class RegisterPantiSosialController extends Controller
         $phone = $request->session()->get('phone');
         $password = $request->session()->get('password');
 
-        // Validasi input menggunakan Validator
+        // Validasi input
         $request->validate([
-            'registration_num' => 'required', // Nama organisasi harus diisi
-            'validation_document' => 'required|file|mimes:jpg,png|max:10240', // Dokumen harus diupload dan berupa file dengan ekstensi jpg atau png
+            'registration_num' => 'required',
+            'validation_document' => 'required|file|mimes:jpg,png|max:10240',
         ]);
 
         // Simpan data dari halaman kedua dan data dari session ke dalam database
@@ -62,19 +62,18 @@ class RegisterPantiSosialController extends Controller
         } else {
             // Email belum terdaftar
             $user = new PantiSosial();
-            $user->NamaPantiSosial = $organizationName; // Menggunakan variabel yang telah diambil dari session
-            $user->EmailPantiSosial = $email; // Menggunakan variabel yang telah diambil dari session
-            $user->NomorTeleponPantiSosial = $phone; // Menggunakan variabel yang telah diambil dari session
-            // $user->Password = $request->password;
+            $user->NamaPantiSosial = $organizationName;
+            $user->EmailPantiSosial = $email;
+            $user->NomorTeleponPantiSosial = $phone;
             $user->NomorRegistrasiPantiSosial = $request->registration_num;
-            // $user->DokumenValiditasPantiSosial = $request->validation_document;
 
-              // Mengunggah file dan menyimpan path ke database
+
+              // untuk uplaod file dan menyimpan path ke database
               if ($request->hasFile('validation_document')) {
                 $file = $request->file('validation_document');
                 $fileName = time() . '.' . $file->getClientOriginalName();
-                $file->move(public_path('validasi_dokumen'), $fileName); // Pindahkan file ke direktori 'public/validasi_dokumen'
-                $user->DokumenValiditasPantiSosial = 'validasi_dokumen/' . $fileName; // Simpan URL file ke kolom DokumenValiditasPantiSosial
+                $file->move(public_path('validasi_dokumen'), $fileName); // memindahkan file ke direktori 'public/validasi_dokumen'
+                $user->DokumenValiditasPantiSosial = 'validasi_dokumen/' . $fileName; // menyimpan URL file ke kolom DokumenValiditasPantiSosial
             } else {
                 return back()->with('fail', 'Dokumen validitas harus diunggah');
             }
