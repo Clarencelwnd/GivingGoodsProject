@@ -244,8 +244,8 @@ h1 {
 
         <div class="title-back">
             <div class="back">
-                <a href="#" class="btn-back">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back">
+                <a href="{{ route('kegiatan-relawan.show', ['id' => request()->id]) }}">
+                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
                 </a>
             </div>
             <div class="col">
