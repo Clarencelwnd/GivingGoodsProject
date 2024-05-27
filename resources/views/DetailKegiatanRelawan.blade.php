@@ -312,7 +312,9 @@ body {
                 <h1>{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
-                <button class="edit-btn">Ubah Kegiatan</button>
+                <a href="{{ route('ubah-kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+                    <button class="edit-btn">Ubah Kegiatan</button>
+                </a>
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
             </div>
         </div>

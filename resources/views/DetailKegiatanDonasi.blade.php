@@ -145,7 +145,7 @@ body {
 .detail-dates {
     display: flex;
     align-items: center;
-    padding-right: 436px;
+    padding-right: 432px;
 }
 
 .detail-info-tanggal {
@@ -306,7 +306,9 @@ body {
                 <h1>{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
             <div class="buttons">
+                <a href="{{ route('ubah-kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
                 <button class="edit-btn">Ubah Kegiatan</button>
+                </a>
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
             </div>
         </div>
@@ -323,7 +325,7 @@ body {
                 <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                 <div class="detail-dates">
                     <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
-                    <div class="date-separator">-</div>
+                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
                     <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
                 </div>
             </div>
