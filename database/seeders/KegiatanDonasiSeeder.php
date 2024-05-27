@@ -20,14 +20,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-05-17',
                 'LokasiKegiatanDonasi' => 'Jl. Merdeka No. 123, Kota ABC',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/123',
-<<<<<<< HEAD
                 'StatusKegiatanDonasi' => 'Open',
-                'JenisDonasiDibutuhkan' => 'Pakaian',
                 'DeskripsiJenisDonasi' => 'Kami membutuhkan bantuan berupa pakaian layak pakai untuk anak-anak usia 5-12 tahun. Pakaian yang dibutuhkan termasuk seragam sekolah, baju hangat, dan sepatu.'
-=======
-                'created_at' => '2024-05-01 10:05:11',
-                'updated_at' => '2024-05-01 10:05:11',
->>>>>>> f/riwayatRelawanDonatur2
             ],
             [
                 'IDPantiSosial' => 2,
@@ -39,14 +33,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-06-12',
                 'LokasiKegiatanDonasi' => 'Jl. Diponegoro No. 456, Kota XYZ',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/456',
-<<<<<<< HEAD
                 'StatusKegiatanDonasi' => 'Closed',
-                'JenisDonasiDibutuhkan' => 'Perlengkapan sekolah',
                 'DeskripsiJenisDonasi' => 'Bantuan yang diperlukan berupa buku pelajaran dan alat tulis untuk mendukung kegiatan belajar mengajar di sekolah-sekolah pedalaman. Buku yang dibutuhkan meliputi buku matematika, sains, dan bahasa.'
-=======
-                'created_at' => '2024-05-01 10:05:11',
-                'updated_at' => '2024-05-01 10:05:11',
->>>>>>> f/riwayatRelawanDonatur2
             ],
             [
                 'IDPantiSosial' => 3,
@@ -58,15 +46,9 @@ class KegiatanDonasiSeeder extends Seeder
                 'TanggalKegiatanDonasiSelesai' => '2024-07-22',
                 'LokasiKegiatanDonasi' => 'Jl. Sudirman No. 789, Kota DEF',
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/789',
-<<<<<<< HEAD
                 'StatusKegiatanDonasi' => 'On Going',
-                'JenisDonasiDibutuhkan' => 'Mainan',
                 'DeskripsiJenisDonasi' => 'Kami mencari donasi berupa bahan makanan pokok seperti beras, minyak goreng, gula, dan tepung untuk disalurkan kepada keluarga kurang mampu di desa-desa terpencil.'
 
-=======
-                'created_at' => '2024-05-01 10:05:12',
-                'updated_at' => '2024-05-06 10:10:43',
->>>>>>> f/riwayatRelawanDonatur2
             ],
         ]);
     }

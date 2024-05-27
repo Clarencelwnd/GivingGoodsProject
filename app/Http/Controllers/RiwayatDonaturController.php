@@ -8,24 +8,48 @@ use App\Models\Models\RegistrasiDonatur;
 
 class RiwayatDonaturController extends Controller
 {
-    public function index()
-    {
-        // Ambil data registrasi donatur beserta informasi donatur
-        $registrasiDonatur = RegistrasiDonatur::with('donaturRelawan')->get();
+    // public function index()
+    // {
+    //     // Ambil data registrasi donatur beserta informasi donatur
+    //     $registrasiDonatur = RegistrasiDonatur::with('donaturRelawan')->get();
 
-        // Format tanggal dan jam menjadi satu string
-        foreach ($registrasiDonatur as $registrasi) {
-            $tanggalDonasi = date('Y-m-d', strtotime($registrasi->TanggalDonasi));
-            $jamDonasi = date('H:i', strtotime($registrasi->JamDonasi));
-            $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
-        }
+    //     // Format tanggal dan jam menjadi satu string
+    //     foreach ($registrasiDonatur as $registrasi) {
+    //         $tanggalDonasi = date('Y-m-d', strtotime($registrasi->TanggalDonasi));
+    //         $jamDonasi = date('H:i', strtotime($registrasi->JamDonasi));
+    //         $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
+    //     }
 
-        // Hitung jumlah donatur dengan status "Konfirmasi Diterima"
-        $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
+    //     // Hitung jumlah donatur dengan status "Konfirmasi Diterima"
+    //     $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
 
-        // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
-        return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima'));
+    //     // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
+    //     return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima'));
+    // }
+
+
+    public function index(Request $request)
+{
+    // Ambil ID dari request
+    $id = $request->id;
+
+    // Ambil data registrasi donatur beserta informasi donatur berdasarkan ID
+    $registrasiDonatur = RegistrasiDonatur::with('donaturRelawan')->where('IDKegiatanDonasi', $id)->get();
+
+    // Format tanggal dan jam menjadi satu string
+    foreach ($registrasiDonatur as $registrasi) {
+        $tanggalDonasi = date('Y-m-d', strtotime($registrasi->TanggalDonasi));
+        $jamDonasi = date('H:i', strtotime($registrasi->JamDonasi));
+        $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
     }
+
+    // Hitung jumlah donatur dengan status "Konfirmasi Diterima"
+    $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
+
+    // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
+    return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima'));
+}
+
 
 
 

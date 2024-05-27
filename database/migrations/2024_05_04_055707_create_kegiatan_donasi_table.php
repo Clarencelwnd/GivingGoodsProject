@@ -20,12 +20,8 @@ return new class extends Migration
             $table->date('TanggalKegiatanDonasiSelesai');
             $table->string('LokasiKegiatanDonasi', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
-<<<<<<< HEAD
             $table->string('StatusKegiatanDonasi', 20);
-            $table->string('JenisDonasiDibutuhkan', 255);
             $table->string('DeskripsiJenisDonasi', 255);
-=======
->>>>>>> f/riwayatRelawanDonatur2
             $table->timestamps();
         });
     }

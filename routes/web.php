@@ -20,11 +20,10 @@ Route::get('/ubah-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class,
 Route::delete('/delete-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'destroy'])->name('delete-kegiatan-donasi.destroy');
 
 Route::put('/update-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'update'])->name('ubah-kegiatan-donasi.update');
-Route::get('/RiwayatDonatur', function () {
-    return view('RiwayatDonatur');
-});
 
-Route::get('/registrasi-donatur', [RiwayatDonaturController::class, 'index']);
+
+
+Route::get('/registrasi-donatur/{id}', [RiwayatDonaturController::class, 'index'])->name('riwayat-donatur.index');
 
 Route::post('/update-status/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatus'])->name('update-status');
 
@@ -39,7 +38,11 @@ Route::get('/ubah-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::clas
 Route::delete('/delete-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'destroy'])->name('delete-kegiatan-relawan.destroy');
 
 Route::put('/update-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'update'])->name('ubah-kegiatan-relawan.update');
-Route::get('/registrasi-relawan', [RiwayatRelawanController::class, 'index']);
+
+
+
+
+Route::get('/registrasi-relawan/{id}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');
 
 Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
 

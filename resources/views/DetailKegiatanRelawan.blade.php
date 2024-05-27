@@ -376,7 +376,9 @@ body {
 
         <div class="donor-history">
             <h2>Riwayat Relawan</h2>
-            <button class="view-history-btn">Lihat Riwayat Relawan</button>
+            <a href="{{ route('riwayat-relawan.index', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+                <button class="view-history-btn">Lihat Riwayat Relawan</button>
+                </a>
         </div>
     </div>
 
