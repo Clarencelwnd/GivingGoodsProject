@@ -11,11 +11,16 @@ return new class extends Migration
         Schema::create('registrasi_relawan', function (Blueprint $table) {
             $table->bigIncrements('IDRegistrasiRelawan');
             $table->unsignedBigInteger('IDDonaturRelawan');
-            $table->unsignedBigInteger('IDKegiatanRelawan');
-            $table->string('StatusRegistrasiRelawan', 20);
             $table->foreign('IDDonaturRelawan')->references('IDDonaturRelawan')->on('donatur_atau_relawan');
+            $table->unsignedBigInteger('IDKegiatanRelawan');
             $table->foreign('IDKegiatanRelawan')->references('IDKegiatanRelawan')->on('kegiatan_relawan');
+            $table->string('StatusRegistrasiRelawan', 20);
             $table->string('AlasanRegistrasiRelawan', 255);
+            $table->date('TanggalKegiatanMulaiRelawan');
+            $table->date('TanggalKegiatanSelesaiRelawan');
+            $table->time('JamMulaiRelawan');
+            $table->time('JamSelesaiRelawan');
+            $table->string('StatusDihubungi', 20);
             $table->timestamps();
         });
     }

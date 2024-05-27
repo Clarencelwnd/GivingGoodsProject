@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
 
         \DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
+        \DB::table('Users')->truncate();
         \DB::table('panti_sosial')->truncate();
         \DB::table('donatur_atau_relawan')->truncate();
         \DB::table('forum')->truncate();
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
         \DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->call([
+            UserSeeder::class,
             PantiSosialSeeder::class,
             DonaturAtauRelawanSeeder::class,
             ForumSeeder::class,

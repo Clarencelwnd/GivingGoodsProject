@@ -15,13 +15,17 @@ return new class extends Migration
             $table->string('GambarKegiatanDonasi', 255);
             $table->string('NamaKegiatanDonasi', 255);
             $table->string('DeskripsiKegiatanDonasi', 255);
+            $table->string('JenisDonasiDibutuhkan', 255);
             $table->date('TanggalKegiatanDonasiMulai');
             $table->date('TanggalKegiatanDonasiSelesai');
             $table->string('LokasiKegiatanDonasi', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
+<<<<<<< HEAD
             $table->string('StatusKegiatanDonasi', 20);
             $table->string('JenisDonasiDibutuhkan', 255);
             $table->string('DeskripsiJenisDonasi', 255);
+=======
+>>>>>>> f/riwayatRelawanDonatur2
             $table->timestamps();
         });
     }
