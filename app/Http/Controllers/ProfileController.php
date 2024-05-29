@@ -138,4 +138,12 @@ class ProfileController extends Controller
         dd($id);
     }
 
+    public function change_password_view($id){
+        return view('profile_pansos/change_password');
+    }
+
+    public function change_password_logic(){
+
+    }
+
 }

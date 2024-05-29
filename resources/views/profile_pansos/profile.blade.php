@@ -19,13 +19,13 @@
         <div class="left col-sm-2 d-none d-md-block">
             <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
             <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
-            <form action="{{route('edit_photo_logic', ['id'=>$id])}}" method="post">
+            {{-- <form action="{{route('edit_photo_logic', ['id'=>$id])}}" method="post">
                 <label for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo">Pilih Foto</label>
                 <input type="file" id="LogoPantiSosial" class="file-choose-photo">
-            </form>
+            </form> --}}
             <label for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo">Pilih Foto</label>
             {{-- <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a> --}}
-            <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
+            <a href="{{route('change_password', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
             <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
         </div>
 

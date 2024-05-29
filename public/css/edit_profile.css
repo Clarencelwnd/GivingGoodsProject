@@ -8,6 +8,10 @@
     font-size: 13px;
 }
 
+.close, #btn-img{
+    cursor: pointer;
+}
+
 /* LEFT SIDE  */
 
 .left{
@@ -34,21 +38,13 @@
     color: #007C92;
     border: 1px solid #006374;
     margin-bottom: 15px;
-}
-
-#btn-choose-photo:hover, #btn-change-password:hover{
-    background: #E6E7E6;
-    font-weight: 500;
+    pointer-events: none;
 }
 
 #btn-logout{
     background: #B7342C;
     color: #FFFFFF;
-}
-
-#btn-logout:hover{
-    background: #A42E28;
-    font-weight: 500;
+    pointer-events: none;
 }
 
 /* RIGHT SIDE  */
@@ -90,7 +86,6 @@ td, tr{
     width: 80%;
     height: 40px;
     padding-left: 10px;
-    /* margin-bottom: 8px; */
 }
 
 #jam-operasional{
@@ -102,7 +97,6 @@ td, tr{
     background: #007C92;
     color: #FFFFFF;
     width: 30%;
-    /* font-size: 13px; */
 }
 
 #btn-jam-operasional:hover{
@@ -168,7 +162,6 @@ td, tr{
 .modal-title{
     color: #1C3F5B;
     font-weight: 600;
-    /* padding-bottom: 10px; */
 }
 
 th{
@@ -181,3 +174,4 @@ th{
     padding: 10px;
     text-align: center;
 }
+
