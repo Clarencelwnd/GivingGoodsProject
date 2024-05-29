@@ -61,6 +61,10 @@
     font-weight: 500;
 }
 
+.file-choose-photo{
+    display: none;
+}
+
 #btn-logout{
     background: #B7342C;
     color: #FFFFFF;

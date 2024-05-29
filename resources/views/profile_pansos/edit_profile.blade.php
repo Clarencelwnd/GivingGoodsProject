@@ -33,39 +33,39 @@
                     <table class="main-table">
                         <tr>
                             <td class="left-column-mt">Nama Panti Sosial</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="NamaPantiSosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Nomor Registrasi</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Deskripsi</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="DeskripsiPantiSosial" value="{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Email</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('email', $userPansos->email)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Nomor HP</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="NomorTeleponPantiSosial" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Website</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Alamat Lengkap</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="AlamatPantiSosial" value="{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Lokasi pada Google Maps</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Media Sosial</td>
-                            <td><input class= "right-column-mt" type="text" value="{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt" type="text" name="MediaSosialPantiSosial" value="{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Jam Operasional</td>
@@ -102,7 +102,6 @@
                                                     @endif
                                                 </td>
                                                 <td> | </td>
-
                                                 <td class="row-st">
                                                     @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
                                                         Libur
@@ -124,7 +123,7 @@
                     {{-- BUTTON  --}}
                     <div class="row justify-content-end" id="button-style">
                         <div class="col-2">
-                            <a href="#" class="btn btn-block" id="btn-back">Batal</a>
+                            <a href="{{route('profile', ['id'=>$id])}}" class="btn btn-block" id="btn-back">Batal</a>
                         </div>
                         <div class="col-3">
                             <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-save">
@@ -176,14 +175,21 @@
                                                     <tr>
                                                         <td class="row-sst"><label for="hari-{{strtolower($day)}}" id="day">{{ucwords($day)}}</label></td>
                                                         <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jadwal['jamBuka']}}"></td>
-                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}"></td>
+                                                        <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}" class="@error('jam-tutup-{{strtolower($day)}}') is-invalid @enderror">
+                                                            @error('jam-tutup-{{strtolower($day)}}')
+                                                                <label class="error-msg invalid-feedback fw-normal lh-1">
+                                                                    {{$message}}
+                                                                </label>
+                                                            @enderror
+                                                        </td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                         <div class="row modal-footer align-content-center justify-content-center border-0">
                                             <div class="col-change">
-                                                <button type="submit" class="btn" id="btn-save-schedule" data-bs-dismiss="modal">Simpan</button>
+                                                <button type="submit" class="btn" id="btn-save-schedule">Simpan</button>
+                                                {{-- data-bs-dismiss="modal" --}}
                                             </div>
                                         </div>
                                     </form>

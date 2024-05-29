@@ -131,10 +131,10 @@ td, tr{
     width: 20px;
 }
 
-.error-msg{
+/* .error-msg{
     margin-bottom: 20px;
     font-size: 12px;
-}
+} */
 
 #button-style{
     width: 86%;
@@ -148,7 +148,7 @@ td, tr{
     width: 100%;
 }
 
-#btn-save:hover, #btn-save-schedule{
+#btn-save:hover, #btn-save-schedule:hover{
     background: #009B65;
     color: #FDFFFE;
 }
