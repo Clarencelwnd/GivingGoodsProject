@@ -8,6 +8,7 @@ use App\Models\RegistrasiRelawan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 use function PHPSTORM_META\map;
@@ -139,11 +140,44 @@ class ProfileController extends Controller
     }
 
     public function change_password_view($id){
-        return view('profile_pansos/change_password');
+        return view('profile_pansos/change_password', compact('id'));
     }
 
-    public function change_password_logic(){
+    public function change_password_logic(Request $request, $id){
+         // validasi password
+         $validator = Validator::make($request->all(),[
+            'password' => 'required|confirmed'
+        ],
+        [
+            'required' => 'Kata sandi wajib diisi.',
+            'confirmed' => 'Ketik ulang kata sandi baru dengan kata sandi yang sama.'
+        ]);
 
+        // validasi gagal
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $password = Hash::make($request->input('password'));
+
+        $user = PantiSosial::find($id)->User;
+        $user->password = $password;
+        $user->save();
+
+        // tarik data terbaru
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
+        $detailPansos = PantiSosial::find($id);
+        $userPansos = $detailPansos->User;
+
+        // format jam
+        foreach ($jadwalPansos as $jadwal) {
+            if($jadwal->JamBukaPantiSosial){
+                $jadwal->JamBukaPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamBukaPantiSosial)->format('H:i');
+                $jadwal->JamTutupPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamTutupPantiSosial)->format('H:i');
+            }
+        }
+
+        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
     }
 
 }

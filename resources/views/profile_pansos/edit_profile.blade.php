@@ -28,44 +28,44 @@
         {{-- RIGHT SIDE  --}}
         <div class="right col-lg-10 d-none d-md-block">
             <div class="row g-0">
-                <form action="{{route('edit_profile_logic', ['id'=>$id])}}" method="post">
+                <form action="{{route('edit_profile_logic', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                     @csrf
                     <table class="main-table">
-                        <tr>
+                        <tr class="form-group">
                             <td class="left-column-mt">Nama Panti Sosial</td>
-                            <td><input class= "right-column-mt" type="text" name="NamaPantiSosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="NamaPantiSosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Nomor Registrasi</td>
-                            <td><input class= "right-column-mt" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Deskripsi</td>
-                            <td><input class= "right-column-mt" type="text" name="DeskripsiPantiSosial" value="{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="DeskripsiPantiSosial" value="{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Email</td>
-                            <td><input class= "right-column-mt" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Nomor HP</td>
-                            <td><input class= "right-column-mt" type="text" name="NomorTeleponPantiSosial" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="NomorTeleponPantiSosial" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Website</td>
-                            <td><input class= "right-column-mt" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Alamat Lengkap</td>
-                            <td><input class= "right-column-mt" type="text" name="AlamatPantiSosial" value="{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="AlamatPantiSosial" value="{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Lokasi pada Google Maps</td>
-                            <td><input class= "right-column-mt" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Media Sosial</td>
-                            <td><input class= "right-column-mt" type="text" name="MediaSosialPantiSosial" value="{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial)}}"></td>
+                            <td><input class= "right-column-mt form-control" type="text" name="MediaSosialPantiSosial" value="{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial)}}"></td>
                         </tr>
                         <tr>
                             <td class="left-column-mt">Jam Operasional</td>

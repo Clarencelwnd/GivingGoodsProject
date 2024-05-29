@@ -12,39 +12,64 @@
     <link rel="stylesheet" href="{{asset('css/change_password.css')}}">
 </head>
 <body>
-    <div class="card">
+    <div class="card justify-content-center">
         <div class="card-header">
-            <div class="position">Profil > Ubah Kata Sandi</div>
-            <div class="row">
-                <div class="col"><a href="#">&lt;</a></div>
-                <div class="col">Kembali ke Profil</div>
-            </div>
-            <h3 class="mb-0">Ubah Kata Sandi</h3>
+            <p class="position">Profil > Ubah Kata Sandi</p>
+            <a class="btn-back" href="{{route('profile', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
+            <h5 class="title">Ubah Kata Sandi</h5>
         </div>
         <div class="card-body">
-            <form class="form" role="form" autocomplete="off">
+            <div class="desc-change-pass1">Atur ulang kata sandi</div>
+            <div class="desc-change-pass2" >Buat kata sandi baru yang kuat untuk akunmu</div>
+            <form action="{{route('change_password_logic', ['id'=>$id])}}" class= "form" role="form" autocomplete="off" method="post">
+                @csrf
                 <div class="form-group">
-                    <label for="inputPasswordOld">Current Password</label>
-                    <input type="password" class="form-control" id="inputPasswordOld" required="">
+                    <label for="password" id="password">Kata Sandi Baru</label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password">
+                    @error('password')
+                        <div class="error-msg invalid-feedback fw-normal lh-1">
+                            {{$message}}
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group">
-                    <label for="inputPasswordNew">New Password</label>
-                    <input type="password" class="form-control" id="inputPasswordNew" required="">
-                    <span class="form-text small text-muted">
-                            The password must be 8-20 characters, and must <em>not</em> contain spaces.
-                        </span>
+                    <label for="password_confirmation" id="password">Ketik Ulang Kata Sandi Baru</label>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation">
+                    @error('password_confirmation')
+                        <div class="error-msg invalid-feedback fw-normal lh-1">
+                            {{$message}}
+                        </div>
+                    @enderror
                 </div>
-                <div class="form-group">
-                    <label for="inputPasswordNewVerify">Verify</label>
-                    <input type="password" class="form-control" id="inputPasswordNewVerify" required="">
-                    <span class="form-text small text-muted">
-                            To confirm, type the new password again.
-                        </span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-lg float-right">Save</button>
+                <div class="save-cancel d-flex justify-content-end">
+                    <a data-bs-toggle="modal" data-bs-target="#exitChangePasswordModal" class="btn btn-cancel" id="exitChangePassword">Batal</a>
+                    <button type="submit" class="btn" id="btn-save">Simpan Perubahan </button>
                 </div>
             </form>
+        </div>
+
+        {{-- MODAL  --}}
+        <div class="container">
+            <div class="modal fade" id="exitChangePasswordModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <h5 class="modal-title w-100" id="logoutModalLabel">Keluar dari Halaman ini?</h5>
+                    </div>
+                    <div class="modal-body">
+                        Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
+                    </div>
+                    <div class="row modal-footer align-content-center justify-content-center border-0">
+                        <div class="col-change">
+                            <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
+                        </div>
+                        <div class="col-profile">
+                            <button  onclick="window.location.href='{{route('profile', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
 
