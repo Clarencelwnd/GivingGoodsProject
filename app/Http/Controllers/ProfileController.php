@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use function PHPSTORM_META\map;
@@ -71,20 +72,7 @@ class ProfileController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        // tarik data terbaru
-        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
-        $detailPansos = PantiSosial::find($id);
-        $userPansos = $detailPansos->User;
-
-        // format jam
-        foreach ($jadwalPansos as $jadwal) {
-            if($jadwal->JamBukaPantiSosial){
-                $jadwal->JamBukaPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamBukaPantiSosial)->format('H:i');
-                $jadwal->JamTutupPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamTutupPantiSosial)->format('H:i');
-            }
-        }
-
-        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
+        return redirect()->route('profile', ['id'=>$id]);
     }
 
     public function edit_schedule_logic(Request $request, $id){
@@ -138,7 +126,32 @@ class ProfileController extends Controller
     }
 
     public function edit_photo_logic(Request $request, $id){
-        dd($id);
+        $validator = Validator::make($request->all(),[
+            'LogoPantiSosial' => 'image|mimes:jpg,png,jpeg|max:3000'
+        ],
+        [
+            'image' => 'File yang diunggah harus berupa gambar.',
+            'mimes' => 'Foto wajib dengan format jpg, png, atau jpeg.',
+            'max' => 'Ukuran foto maksimal adalah 3MB.'
+        ]);
+
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $original_name = $request->file('LogoPantiSosial')->getClientOriginalName();
+        $original_ext = $request->file('LogoPantiSosial')->getClientOriginalExtension();
+        $logo_panti_sosial_name = $original_name . time() . '.' . $original_ext;
+
+        $request->file('LogoPantiSosial')->storeAs('public/Profile', $logo_panti_sosial_name);
+        $logo_panti_sosial = 'storage/Profile/' . $logo_panti_sosial_name;
+
+        $detailPansos = PantiSosial::find($id);
+        $detailPansos->LogoPantiSosial = $logo_panti_sosial;
+        $detailPansos->save();
+
+        return redirect()->route('profile',['id'=>$id]);
     }
 
     public function change_password_view($id){

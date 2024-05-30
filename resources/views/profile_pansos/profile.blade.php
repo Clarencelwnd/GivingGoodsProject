@@ -18,13 +18,12 @@
     <div class="row g-0">
         <div class="left col-sm-2 d-none d-md-block">
             <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
-            <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
-            {{-- <form action="{{route('edit_photo_logic', ['id'=>$id])}}" method="post">
-                <label for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo">Pilih Foto</label>
-                <input type="file" id="LogoPantiSosial" class="file-choose-photo">
-            </form> --}}
-            <label for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo">Pilih Foto</label>
-            {{-- <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a> --}}
+            <img class="profile-pict" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
+            <form id="photo" action="{{route('edit_photo_logic', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="LogoPantiSosial" id="input_photo" class="file-choose-photo" onchange="document.getElementById('photo').submit()">
+                <button type="button" for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
+            </form>
             <a href="{{route('change_password', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
             <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
         </div>
@@ -32,7 +31,6 @@
         <div class="right col-lg-10 d-none d-md-block">
             @if (!$detailPansos->LinkGoogleMapsPantiSosial)
             <div class="container information-button">
-                {{-- <div class="overlay" id="overlay"></div> --}}
                 <div class="row">
                     <div class="alert alert-light" role="alert">
                         <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">

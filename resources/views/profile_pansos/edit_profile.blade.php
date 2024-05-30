@@ -19,7 +19,7 @@
         {{-- LEFT SIDE  --}}
         <div class="left col-sm-2 d-none d-md-block">
             <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
-            <img class="profile-pict" src="{{asset('Image/login_reset_password/bg1.png')}}" alt="">
+            <img class="profile-pict" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
             <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
             <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
             <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
