@@ -1,9 +1,11 @@
-function openModalView1() {
+// USING BUTTON
+function openScheduleModalView1() {
     const modalView = document.getElementById("btn-jam-operasional");
     modalView.display='block';
 }
 
-function openModalView2() {
+// USING ICON/IMAGE
+function openScheduleModalView2() {
     const modalView = document.getElementById("btn-img");
     modalView.display='block';
 }

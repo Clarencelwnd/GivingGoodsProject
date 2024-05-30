@@ -14,3 +14,8 @@ Route::post('/edit_schedule/{id}', [ProfileController::class, 'edit_schedule_log
 Route::post('/edit_photo/{id}', [ProfileController::class, 'edit_photo_logic'])->name('edit_photo_logic');
 Route::get('/change_password/{id}', [ProfileController::class, 'change_password_view'])->name('change_password');
 Route::post('/change_password/{id}', [ProfileController::class, 'change_password_logic'])->name('change_password_logic');
+Route::get('/logout', [ProfileController::class, 'logout'])->name('logout');
+
+
+// DUMMY
+Route::get('/home_page', [ProfileController::class, 'home_page'])->name('home_page');

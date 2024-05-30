@@ -48,13 +48,13 @@
             </form>
         </div>
 
-        {{-- MODAL  --}}
+        {{-- MODAL CANCEL CHANGE PASSWORD --}}
         <div class="container">
-            <div class="modal fade" id="exitChangePasswordModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exitChangePasswordModal" tabindex="-1" aria-labelledby="exitChangePasswordModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header text-center border-0">
-                        <h5 class="modal-title w-100" id="logoutModalLabel">Keluar dari Halaman ini?</h5>
+                        <h5 class="modal-title w-100" id="exitChangePasswordModalLabel">Keluar dari Halaman ini?</h5>
                     </div>
                     <div class="modal-body">
                         Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
@@ -71,8 +71,34 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        {{-- MODAL SUCCESSFULLY CHANGE PASSWORD  --}}
+        <div class="container">
+            <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successsModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <h5 class="modal-title w-100" id="successModalLabel">Berhasil Diubah</h5>
+                    </div>
+                    {{-- <div class="modal-body">
+                        Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
+                    </div>
+                    <div class="row modal-footer align-content-center justify-content-center border-0">
+                        <div class="col-change">
+                            <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
+                        </div>
+                        <div class="col-profile">
+                            <button  onclick="window.location.href='{{route('profile', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
+                        </div>
+                    </div> --}}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    @if(session('success'))
+        <script src="{{ asset('js/change_password.js') }}"></script>
+    @endif
 </body>
 </html>

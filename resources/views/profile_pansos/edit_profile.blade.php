@@ -71,13 +71,13 @@
                             <td class="left-column-mt">Jam Operasional</td>
                             <td class="right-column-mt" id="jam-operasional">
                                 @if (!$detailPansos->LinkGoogleMapsPantiSosial)
-                                    <a data-bs-toggle="modal" data-bs-target="#jadwalModal" class="btn btn-block" id="btn-jam-operasional">Atur Jam Operasional</a>
+                                    <a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-block" id="btn-jam-operasional">Atur Jam Operasional</a>
                                 @else
                                     <table class="schedule-table">
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#jadwalModal" id="btn-img"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
+                                            <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#scheduleModal" id="btn-img"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
                                         </tr>
                                         @php
                                             $index = 0;
@@ -135,12 +135,12 @@
 
                 {{-- MODAL JADWAL OPERASIONAL --}}
                 <div class="container">
-                    <div class="modal fade" id="jadwalModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header align-items-center border-0 row">
                                     <div class="col">
-                                        <h6 class="modal-title" id="logoutModalLabel">Atur Jam Operasional</h6>
+                                        <h6 class="modal-title" id="scheduleModalLabel">Atur Jam Operasional</h6>
                                     </div>
                                     <div class="col text-end">
                                         <h4 class="close" data-bs-dismiss="modal">&times;</h4>
@@ -189,7 +189,6 @@
                                         <div class="row modal-footer align-content-center justify-content-center border-0">
                                             <div class="col-change">
                                                 <button type="submit" class="btn" id="btn-save-schedule">Simpan</button>
-                                                {{-- data-bs-dismiss="modal" --}}
                                             </div>
                                         </div>
                                     </form>
@@ -202,5 +201,6 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/edit_profile.js') }}"></script>
 </body>
 </html>

@@ -8,6 +8,8 @@ use App\Models\RegistrasiRelawan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -164,20 +166,13 @@ class ProfileController extends Controller
         $user->password = $password;
         $user->save();
 
-        // tarik data terbaru
-        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
-        $detailPansos = PantiSosial::find($id);
-        $userPansos = $detailPansos->User;
-
-        // format jam
-        foreach ($jadwalPansos as $jadwal) {
-            if($jadwal->JamBukaPantiSosial){
-                $jadwal->JamBukaPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamBukaPantiSosial)->format('H:i');
-                $jadwal->JamTutupPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamTutupPantiSosial)->format('H:i');
-            }
-        }
-
-        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
+        return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
+    public function logout(){
+        Auth::logout();
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));
+        return view('profile_pansos/dummy_home_page_not_login');
+    }
 }

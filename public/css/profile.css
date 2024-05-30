@@ -50,13 +50,16 @@
     margin-bottom: 30px;
 }
 
-#btn-choose-photo, #btn-change-password{
+#btn-choose-photo, #btn-change-password, #btn-back{
     color: #007C92;
+}
+
+#btn-choose-photo, #btn-change-password{
     border: 1px solid #006374;
     margin-bottom: 15px;
 }
 
-#btn-choose-photo:hover, #btn-change-password:hover{
+#btn-choose-photo:hover, #btn-change-password:hover, #btn-back:hover{
     background: #E6E7E6;
     font-weight: 500;
 }
@@ -65,12 +68,12 @@
     display: none;
 }
 
-#btn-logout{
+#btn-logout, #btn-yes-logout{
     background: #B7342C;
-    color: #FFFFFF;
+    color: #FDFFFE;
 }
 
-#btn-logout:hover{
+#btn-logout:hover, #btn-yes-logout:hover{
     background: #A42E28;
     font-weight: 500;
 }
@@ -130,3 +133,27 @@ td, tr{
     margin-bottom: 20px;
     font-size: 12px;
 }
+
+/* MODAL  */
+.modal-body{
+    word-wrap: break-word;
+}
+
+.col-change{
+    width: 30%;
+}
+
+.col-profile{
+    width: 30%;
+}
+
+#btn-back{
+    border: 1px solid #007C92;
+}
+
+/* #btn-back:hover{
+    font-weight: 500;
+    background: #E6E7E6;
+    color: #007C92;
+    border: 1px solid #007C92;
+} */
