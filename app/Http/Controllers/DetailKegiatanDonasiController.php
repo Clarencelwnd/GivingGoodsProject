@@ -29,6 +29,16 @@ class DetailKegiatanDonasiController extends Controller
         return view('UbahKegiatanDonasi', compact('kegiatanDonasi'));
     }
 
+    public function showBuat($id)
+    {
+        $kegiatanDonasi = KegiatanDonasi::find($id);
+
+        if (!$kegiatanDonasi) {
+            return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
+        }
+
+        return view('BuatKegiatanDonasi', compact('kegiatanDonasi'));
+    }
 
 
     public function update(Request $request, $id)

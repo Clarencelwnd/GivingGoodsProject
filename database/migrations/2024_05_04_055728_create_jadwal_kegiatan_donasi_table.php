@@ -13,10 +13,14 @@ return new class extends Migration
             $table->unsignedBigInteger('IDJadwalOperasional');
             $table->foreign('IDJadwalOperasional')->references('IDJadwalOperasional')->on('jadwal_operasional');
             $table->unsignedBigInteger('IDKegiatanDonasi');
-            $table->foreign('IDKegiatanDonasi')->references('IDKegiatanDonasi')->on('kegiatan_donasi');
+            $table->foreign('IDKegiatanDonasi')
+                  ->references('IDKegiatanDonasi')
+                  ->on('kegiatan_donasi')
+                  ->onDelete('cascade'); // Tambahkan cascading delete
             $table->timestamps();
         });
     }
+
 
     public function down()
     {

@@ -6,6 +6,10 @@ use App\Http\Controllers\DetailKegiatanRelawanController;
 use App\Http\Controllers\RiwayatDonaturController;
 use App\Http\Controllers\RiwayatRelawanController;
 
+use App\Http\Controllers\BuatKegiatanDonasiController;
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,4 +54,13 @@ Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanContr
 Route::post('/update-status-checkbox/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox');
 
 
+
+
+
+
+// Route untuk menampilkan form buat kegiatan donasi
+Route::get('/buat-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'show'])->name('buat_kegiatan_donasi.show');
+
+// Route untuk menyimpan data kegiatan donasi
+Route::post('/simpan-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'store'])->name('buat_kegiatan_donasi.store');
 

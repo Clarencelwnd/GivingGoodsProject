@@ -13,7 +13,10 @@ return new class extends Migration
             $table->unsignedBigInteger('IDDonaturRelawan');
             $table->foreign('IDDonaturRelawan')->references('IDDonaturRelawan')->on('donatur_atau_relawan');
             $table->unsignedBigInteger('IDKegiatanDonasi');
-            $table->foreign('IDKegiatanDonasi')->references('IDKegiatanDonasi')->on('kegiatan_donasi');
+            $table->foreign('IDKegiatanDonasi')
+                  ->references('IDKegiatanDonasi')
+                  ->on('kegiatan_donasi')
+                  ->onDelete('cascade'); // Tambahkan cascading delete
             $table->string('StatusRegistrasiDonatur', 20);
             $table->string('JenisDonasiDidonasikan', 255);
             $table->string('DeskripsiBarangDonasi', 255);
@@ -22,6 +25,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
+
 
     public function down()
     {

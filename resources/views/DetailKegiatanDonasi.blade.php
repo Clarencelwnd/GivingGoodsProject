@@ -366,7 +366,7 @@ body {
                             <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
                             <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                                 <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="hidePopup()">Batal</button>
-                                <form id="delete-form" action="{{ route('delete-kegiatan-donasi.destroy', 2) }}" method="POST" style="display:inline;">
+                                <form id="delete-form" action="{{ route('delete-kegiatan-donasi.destroy', $kegiatanDonasi->IDKegiatanDonasi) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                 <button type="submit" class="btn-primary delete-button" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" >Ya, Hapus</button>
