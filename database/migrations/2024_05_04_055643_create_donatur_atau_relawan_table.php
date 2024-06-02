@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('donatur_atau_relawan', function (Blueprint $table) {
             $table->bigIncrements('IDDonaturRelawan');
-            $table->string('EmailDonaturRelawan', 255)->unique();
-            $table->string('PasswordDonaturRelawan', 255);
+            $table->unsignedBigInteger('IDUser');
+            $table->foreign('IDUser')->references('id')->on('users');
             $table->string('NamaDonaturRelawan', 255);
-            $table->date('TanggalLahirDoanturRelawan')->nullable();
+            $table->date('TanggalLahirDonaturRelawan');
             $table->string('JenisKelaminDonaturRelawan', 10)->nullable();
             $table->string('NomorTeleponDonaturRelawan', 15);
             $table->string('AlamatDonaturRelawan', 255)->nullable();

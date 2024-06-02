@@ -10,6 +10,8 @@ return new class extends Migration
     {
         Schema::create('panti_sosial', function (Blueprint $table) {
             $table->bigIncrements('IDPantiSosial');
+            $table->unsignedBigInteger('IDUser');
+            $table->foreign('IDUser')->references('id')->on('users');
             $table->string('NamaPantiSosial', 255);
             $table->string('EmailPantiSosial', 255)->unique();
             $table->string('NomorRegistrasiPantiSosial', 255)->unique();;
