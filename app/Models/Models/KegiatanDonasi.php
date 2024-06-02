@@ -10,7 +10,7 @@ class KegiatanDonasi extends Model
     protected $table = 'kegiatan_donasi';
     protected $primaryKey = 'IDKegiatanDonasi';
     protected $fillable = [
-        'IDPantiSosial', 'GambarKegiatanDonasi', 'NamaKegiatanDonasi', 'DeskripsiKegiatanDonasi', 'TanggalKegiatanDonasiMulai', 'TanggalKegiatanDonasiSelesai', 'LokasiKegiatanDonasi', 'LinkGoogleMapsLokasiKegiatanDonasi', 'StatusKegiatanDonasi', ' JenisDonasiDibutuhkan', 'DeskripsiJenisDonasi'
+        'IDPantiSosial', 'GambarKegiatanDonasi', 'NamaKegiatanDonasi', 'DeskripsiKegiatanDonasi', 'TanggalKegiatanDonasiMulai', 'TanggalKegiatanDonasiSelesai', 'LokasiKegiatanDonasi', 'LinkGoogleMapsLokasiKegiatanDonasi', 'StatusKegiatanDonasi', 'JenisDonasiDibutuhkan', 'DeskripsiJenisDonasi', 'JasaPickup'
     ];
 
     public function registrasiDonatur(){

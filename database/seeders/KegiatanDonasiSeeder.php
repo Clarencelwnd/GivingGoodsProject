@@ -21,7 +21,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/123',
                 'StatusKegiatanDonasi' => 'Open',
                 'JenisDonasiDibutuhkan' => 'pakaian; mainan; alat_tulis; buku',
-                'DeskripsiJenisDonasi' => 'Kami membutuhkan bantuan berupa pakaian layak pakai untuk anak-anak usia 5-12 tahun. Pakaian yang dibutuhkan termasuk seragam sekolah, baju hangat, dan sepatu.'
+                'DeskripsiJenisDonasi' => 'Kami membutuhkan bantuan berupa pakaian layak pakai untuk anak-anak usia 5-12 tahun. Pakaian yang dibutuhkan termasuk seragam sekolah, baju hangat, dan sepatu.',
+                'JasaPickup' => "Unknown",
             ],
             [
                 'IDPantiSosial' => 2,
@@ -34,7 +35,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/456',
                 'StatusKegiatanDonasi' => 'Closed',
                 'JenisDonasiDibutuhkan' => 'obat',
-                'DeskripsiJenisDonasi' => 'Bantuan yang diperlukan berupa buku pelajaran dan alat tulis untuk mendukung kegiatan belajar mengajar di sekolah-sekolah pedalaman. Buku yang dibutuhkan meliputi buku matematika, sains, dan bahasa.'
+                'DeskripsiJenisDonasi' => 'Bantuan yang diperlukan berupa buku pelajaran dan alat tulis untuk mendukung kegiatan belajar mengajar di sekolah-sekolah pedalaman. Buku yang dibutuhkan meliputi buku matematika, sains, dan bahasa.',
+                'JasaPickup' => "Unknown",
             ],
             [
                 'IDPantiSosial' => 3,
@@ -47,8 +49,8 @@ class KegiatanDonasiSeeder extends Seeder
                 'LinkGoogleMapsLokasiKegiatanDonasi' => 'https://maps.google.com/789',
                 'StatusKegiatanDonasi' => 'On Going',
                 'JenisDonasiDibutuhkan' => 'keperluan_mandi; keperluan_rumah; keperluan_ibadah; makanan',
-                'DeskripsiJenisDonasi' => 'Kami mencari donasi berupa bahan makanan pokok seperti beras, minyak goreng, gula, dan tepung untuk disalurkan kepada keluarga kurang mampu di desa-desa terpencil.'
-
+                'DeskripsiJenisDonasi' => 'Kami mencari donasi berupa bahan makanan pokok seperti beras, minyak goreng, gula, dan tepung untuk disalurkan kepada keluarga kurang mampu di desa-desa terpencil.',
+                'JasaPickup' => "Unknown",
             ],
         ]);
     }

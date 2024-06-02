@@ -7,6 +7,8 @@ use App\Http\Controllers\RiwayatDonaturController;
 use App\Http\Controllers\RiwayatRelawanController;
 
 use App\Http\Controllers\BuatKegiatanDonasiController;
+use App\Http\Controllers\BuatKegiatanRelawanController;
+
 
 
 
@@ -63,4 +65,13 @@ Route::get('/buat-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'show'
 
 // Route untuk menyimpan data kegiatan donasi
 Route::post('/simpan-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'store'])->name('buat_kegiatan_donasi.store');
+
+
+
+
+// Route untuk menampilkan form buat kegiatan donasi
+Route::get('/buat-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'show'])->name('buat_kegiatan_relawan.show');
+
+// Route untuk menyimpan data kegiatan donasi
+Route::post('/simpan-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
 

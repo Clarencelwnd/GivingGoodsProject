@@ -137,6 +137,25 @@ body {
     border-radius: 5px;
     width: 82px;
 }
+.detail-info-tanggal-tutup {
+    background-color: #D9D9D9;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    width: 82px;
+    margin-right: 167px;
+}
+
+.detail-info-jam {
+    background-color: #D9D9D9;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    width: 82px;
+    display: flex;
+    justify-content: center;
+
+}
 
 .date-separator {
     padding: 0 20px;
@@ -372,6 +391,11 @@ body {
     background-color: #B0ECD7;
 }
 
+.optional-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: #4D4A4A;
+}
 
 
 </style>
@@ -391,11 +415,21 @@ body {
         <div class="header">
             <div class="title">
                 <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
-                <h1>Buat Kegiatan Donasi</h1>
+                <h1>Buat Kegiatan Relawan</h1>
             </div>
 
         </div>
-        <form action="{{ route('buat_kegiatan_donasi.store') }}" method="POST" enctype="multipart/form-data">
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+        <form action="{{ route('buat_kegiatan_relawan.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="details">
                 <!-- Bagian Detail Info yang bisa diubah -->
@@ -425,6 +459,29 @@ body {
                 </div>
 
                 <div class="detail-row">
+                    <div class="detail-label">Jenis Relawan</div>
+                    <div class="detail-info">
+                        <div class="dropdown" onclick="toggleDropdown()">
+                            <div class="dropdown-select">
+                                <span id="dropdown-selected"></span>
+                                <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
+                            </div>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-item" onclick="selectOption('Bencana Alam')">Bencana Alam</div>
+                                <div class="dropdown-item" onclick="selectOption('Pendidikan')">Pendidikan</div>
+                                <div class="dropdown-item" onclick="selectOption('Kesehatan')">Kesehatan</div>
+                                <div class="dropdown-item" onclick="selectOption('Lingkungan Hidup')">Lingkungan Hidup</div>
+                                <div class="dropdown-item" onclick="selectOption('IT dan teknologi')">IT dan teknologi</div>
+                                <div class="dropdown-item" onclick="selectOption('Pengembangan Masyarakat')">Pengembangan Masyaraka</div>
+                                <div class="dropdown-item" onclick="selectOption('Darurat dan Bencana')">Darurat dan Bencana</div>
+                                <div class="dropdown-item" onclick="selectOption('Seni dan Budaya')">Seni dan Budaya</div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="jenisRelawan" id="jenisRelawanInput" value="">
+                    </div>
+                </div>
+
+                <div class="detail-row">
                     <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                     <div class="detail-dates">
                         <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" oninput="updateHiddenInput('tglMulaiInput', this.innerText)"></div>
@@ -435,34 +492,19 @@ body {
                     </div>
                 </div>
 
-
                 <div class="detail-row">
-                    <div class="detail-label">Jenis Donasi
-                        <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
+                    <div class="detail-label">Pendaftaran ditutup</div>
+                    <div class="detail-dates">
+                        <div class="detail-info-tanggal-tutup" id="pendaftaranTutup" contenteditable="true" oninput="updateHiddenInput('pendaftaranTutupInput', this.innerText)"></div>
+                        <input type="hidden" name="pendaftaranTutup" id="pendaftaranTutupInput" value="">
                     </div>
-                    <div class="detail-info-jenis">
-                        <div class="donation-options">
-                            <img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="Keperluan Ibadah" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu" onclick="selectDonationOption(this)">
-                        </div>
-                    </div>
-                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="">
                 </div>
 
 
-
                 <div class="detail-row">
-                    <div class="detail-label">Deskripsi Jenis Donasi</div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('deskripsiJenisDonasiInput', this.innerText)"></div>
-                    <input type="hidden" name="deskripsiJenisDonasi" id="deskripsiJenisDonasiInput" value="">
+                    <div class="detail-label">Jumlah Relawan yang Dibutuhkan</div>
+                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('jmlhRelawanDibutuhkanInput', this.innerText)"></div>
+                    <input type="hidden" name="jmlhRelawanDibutuhkan" id="jmlhRelawanDibutuhkanInput" value="">
                 </div>
 
                 <div class="detail-row">
@@ -483,23 +525,35 @@ body {
                     Mohon mencari dan menyalin link <br> Google Maps untuk lokasi kegiatan donasi.
                 </div>
 
-            <div class="detail-row">
-                    <div class="detail-label">Apakah Panti Sosial <br> menyediakan jasa ambil <br> barang?</div>
-                    <div class="detail-info">
-                        <div class="dropdown" onclick="toggleDropdown()">
-                            <div class="dropdown-select">
-                                <span id="dropdown-selected"></span>
-                                <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
-                            </div>
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item" onclick="selectOption('Ya, kami memiliki jasa pick up')">Ya, kami memiliki jasa pick up</div>
-                                <div class="dropdown-item" onclick="selectOption('Tidak, kami tidak memiliki jasa pick up')">Tidak, kami tidak memiliki jasa pick up</div>
-                            </div>
-                        </div>
-                        <input type="hidden" name="jasaAmbilBarang" id="jasaAmbilBarangInput" value="">
+
+                <div class="detail-row">
+                    <div class="detail-label">Jam Kegiatan</div>
+                    <div class="detail-dates">
+                        <div class="detail-info-jam" id="jamMulai" contenteditable="true" oninput="updateHiddenInput('jamMulaiInput', this.innerText)"></div>
+                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                        <div class="detail-info-jam" id="jamSelesai" contenteditable="true" oninput="updateHiddenInput('jamSelesaiInput', this.innerText)"></div>
+                        <input type="hidden" name="jamMulai" id="jamMulaiInput" value="">
+                        <input type="hidden" name="jamSelesai" id="jamSelesaiInput" value="">
                     </div>
                 </div>
 
+                <div class="detail-row">
+                    <div class="detail-label">Kriteria Relawan</div>
+                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('kriteriaRelawanInput', this.innerText)"></div>
+                    <input type="hidden" name="kriteriaRelawan" id="kriteriaRelawanInput" value="">
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-label">Persyaratan & Instruksi <br> untuk mengikuti Kegiatan</div>
+                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('persyaratanInput', this.innerText)"></div>
+                    <input type="hidden" name="persyaratan" id="persyaratanInput" value="">
+                </div>
+
+                <div class="detail-row">
+                    <div class="detail-label">Kontak Spesifik <br> <span class="optional-text">(opsional)</span></div>
+                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('kontakSpesifikInput', this.innerText)"></div>
+                    <input type="hidden" name="kontakSpesifik" id="kontakSpesifikInput" value="">
+                </div>
 
                 <div class="button-container">
                     <button class="cancel-btn" type="button" onclick="window.location='{{ url("/") }}'">Batal</button>
@@ -524,7 +578,6 @@ body {
     </script>
     @endif
 
-
     <div id="popup-container" style="display: none;">
         <div id="popup">
             <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Kegiatan Berhasil Dibuat</h3>
@@ -533,38 +586,14 @@ body {
     </div>
 
 
-
-
-    <div id="donation-popup-container" style="display: none;">
-        <div id="donation-popup">
-            <div class="popup-header">
-                <h3>Jenis Donasi</h3>
-                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
-            </div>
-            <div class="popup-content">
-                <div class="popup-column">
-                    <!-- Left Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
-                </div>
-                <div class="popup-column">
-                    <!-- Right Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
         <script>
+
+function updateHiddenInput(inputId, value) {
+            document.getElementById(inputId).value = value;
+        }
+
 
         document.addEventListener('DOMContentLoaded', function() {
                     flatpickr("#tglMulai", {
@@ -582,12 +611,42 @@ body {
                             document.getElementById('tglSelesai').setAttribute('contenteditable', 'false');
                         }
                     });
+
+
+                    flatpickr("#pendaftaranTutup", {
+                        dateFormat: "Y-m-d",
+                        onChange: function(selectedDates, dateStr, instance) {
+                            document.getElementById('pendaftaranTutup').textContent = dateStr;
+                            document.getElementById('pendaftaranTutup').setAttribute('contenteditable', 'false');
+                        }
+                    });
                 });
 
 
-                function showDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'flex';
-                }
+                document.addEventListener('DOMContentLoaded', function() {
+                        flatpickr("#jamMulai", {
+                            enableTime: true,
+                            noCalendar: true,
+                            dateFormat: "H:i",
+                            time_24hr: true,
+                            onChange: function(selectedDates, dateStr, instance) {
+                                document.getElementById('jamMulai').textContent = dateStr;
+                                updateHiddenInput('jamMulaiInput', dateStr);
+                            }
+                        });
+
+                        flatpickr("#jamSelesai", {
+                            enableTime: true,
+                            noCalendar: true,
+                            dateFormat: "H:i",
+                            time_24hr: true,
+                            onChange: function(selectedDates, dateStr, instance) {
+                                document.getElementById('jamSelesai').textContent = dateStr;
+                                updateHiddenInput('jamSelesaiInput', dateStr);
+                            }
+                        });
+                    });
+
 
                 function hideDonationPopup() {
                     document.getElementById('donation-popup-container').style.display = 'none';
@@ -601,8 +660,8 @@ body {
 
                 function selectOption(option) {
                     document.getElementById('dropdown-selected').innerText = option;
-                    document.getElementById('jasaAmbilBarangInput').value = option;
-                    updateHiddenInput('jasaAmbilBarangInput', option); // Memperbarui input hidden
+                    document.getElementById('jenisRelawanInput').value = option;
+                    updateHiddenInput('jenisRelawanInput', option); // Memperbarui input hidden
                     setTimeout(() => {
                         document.querySelector('.dropdown').classList.remove('dropdown-open');
                     }, 100); // Beri sedikit jeda sebelum menutup dropdown
@@ -615,12 +674,6 @@ body {
                         dropdown.classList.remove('dropdown-open');
                     }
                 });
-
-
-
-function updateHiddenInput(inputId, value) {
-            document.getElementById(inputId).value = value;
-        }
 
      // Fungsi untuk menampilkan nama file yang diunggah dan mengupdate nilai input hidden dengan URL gambar
         function showFileName() {
@@ -657,24 +710,6 @@ function updateHiddenInput(inputId, value) {
                 });
             }
         }
-        function selectDonationOption(selectedImg) {
-            const jenisDonasiInput = document.getElementById('jenisDonasiInput');
-            let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
-
-            if (selectedImg.classList.contains('selected')) {
-                selectedImg.classList.remove('selected');
-                selectedValues = selectedValues.filter(value => value !== selectedImg.alt);
-            } else {
-                selectedImg.classList.add('selected');
-                selectedValues.push(selectedImg.alt);
-            }
-
-            jenisDonasiInput.value = selectedValues.join(',');
-            updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
-        }
-
-
-
 
         </script>
 
