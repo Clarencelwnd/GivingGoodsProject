@@ -43,7 +43,7 @@
                                 Lanjut
                             </button>
                         </form>
-                        <a href="{{route('dummy_login')}}" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
+                        <a href="{{route('login')}}" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@
                             <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Ubah</button>
                         </div>
                         <div class="col-register">
-                            <button  onclick="window.location.href='{{route('dummy_register')}}'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
+                            <button  onclick="window.location.href='{{route('registerSelected')}}'" type="button" class="btn" id="btn-register">Ya, Daftar</button>
                         </div>
                     </div>
                 </div>

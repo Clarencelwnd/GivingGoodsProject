@@ -40,7 +40,7 @@
                         <label for="password">Kata Sandi</label>
                         <input type="password" id="password" name="password">
                         <div id="forgot-password-btn"> <!-- Tambahkan div baru untuk "Lupa kata sandi?" -->
-                            <a href="#" style="text-decoration: none; color: #0095AF; font-size: 12px;">Lupa kata sandi?</a>
+                            <a href="{{ route('reset_password') }}" style="text-decoration: none; color: #0095AF; font-size: 12px;">Lupa kata sandi?</a>
                         </div>
                     </div>
 

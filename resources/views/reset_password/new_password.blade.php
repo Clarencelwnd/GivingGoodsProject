@@ -81,7 +81,7 @@
                             <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
                         </div>
                         <div class="col-login">
-                            <button  onclick="window.location.href='{{route('dummy_login')}}'" type="button" class="btn" id="btn-login">Keluar</button>
+                            <button  onclick="window.location.href='{{route('login')}}'" type="button" class="btn" id="btn-login">Keluar</button>
                         </div>
                     </div>
                 </div>
