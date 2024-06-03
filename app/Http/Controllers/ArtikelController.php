@@ -9,4 +9,8 @@ class ArtikelController extends Controller
     public function displayDaftarArtikel(){
         return view('daftarArtikel');
     }
+
+    public function displayDetailArtikel(){
+        return view('detailArtikel');
+    }
 }

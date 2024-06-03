@@ -1,9 +1,10 @@
 @extends('templateDonaturRelawan')
 
-@section('title', 'Home Donatur Relawan')
+@section('title', 'Daftar Artikel')
 
 @section('stylesheets')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
 @endsection
 
 @section('content')
@@ -11,7 +12,7 @@
     <h6 id="daftarForumTitle">Daftar Forum</h6>
 </div>
 
-<a href="" class="text-decoration-none text-dark">
+<a href="{{ route('displayDetailArtikel') }}" class="text-decoration-none text-dark">
     <div class="card w-60" id="forum-cards">
         <div class="card-body">
             <div class="card-top">
