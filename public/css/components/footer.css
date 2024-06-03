@@ -1,0 +1,60 @@
+#footerContainer{
+    width: 100vw;
+    background: #00AF71;
+}
+
+#title #phoneNumber{
+    color: #FDFFFE;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+#phoneNumber{
+    margin-top: 0px;
+}
+
+.generalFooterTitle{
+    margin-left: 10em;
+}
+
+.quickLinkDiv, .socialLinkDiv{
+    margin-left: 5em;
+}
+
+#quickLinks{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#kegiatanLink{
+    color: #FDFFFE ;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+#artikelLink{
+    color: #FDFFFE ;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+#forumLink{
+    color: #FDFFFE ;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+#faqLink{
+    color: #FDFFFE ;
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.socialLinks{
+    display: flex;
+    gap: 20px;
+}
