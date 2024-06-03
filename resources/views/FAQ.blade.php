@@ -4,100 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-        }
-
-        .container {
-            padding: 30px;
-        }
-
-        .faq-title {
-            font-weight: 600;
-            color: #006374;
-            font-size: 40px;
-            text-align: left;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-        .faq-subtitle{
-            font-weight: 600;
-            color: #1C3F5B;
-            font-size: 30px;
-            padding-top: 15px;
-
-        }
-
-        .section-divider {
-            border-top: 1px solid #B6B3B3;
-            margin: 50px 0 10px 0;
-        }
-
-        .faq-section {
-            margin-bottom: 20px;
-        }
-
-        .faq-question {
-            background-color: #0095AF;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            border: 1.5px solid #0095AF;
-        }
-
-        .faq-question:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-question-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            cursor: pointer;
-        }
-
-        .question-text {
-            font-size: 18px;
-            color: #fff;
-        }
-
-        .answer {
-            padding: 15px;
-            border-top: 1px solid #006374;
-            background-color: #fff;
-            display: none;
-        }
-
-        .rotate {
-            transition: transform 0.3s ease;
-        }
-
-        .arrow-icon {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
-        }
-
-        .faq-question.active .arrow-icon {
-            transform: rotate(180deg);
-        }
-
-        .faq-question.active .answer {
-            display: block;
-        }
-
-        .footer {
-            flex-shrink: 0; /* Mencegah footer dari penyusutan */
-            margin-top: auto; /* Memindahkan footer ke bawah */
-            text-align: center; /* Memposisikan teks di tengah */
-            padding-top: 80px;
-        }
-    </style>
+    <link href="{{ asset('css/faq.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -129,7 +36,7 @@
                 <br>
                 <br>
                 <span style="font-weight: bold;">KEGIATAN RELAWAN:</span> <br>
-                Anda dapat melihat status pendaftaran Anda sebagai relawan melalui halaman Riwayat Kegiatan yang dapat diakses dengan menekan Profil → Pengaturan → Riwayat Kegiatan → Relawan. <br>
+                Anda dapat melihat status pendaftaran Anda sebagai relawan melalui halaman Riwayat Kegiatan yang dapat diakses dengan menekan Profil → Pengaturan → Riwayat Kegiatan → Relawan.
                 Jika panti sosial sedang memproses pendaftaran Anda, maka riwayat kegiatan relawan yang ingin Anda ikuti akan masuk ke status “Menunggu Konfirmasi”.
                 Apabila panti sosial menerima pendaftaran Anda, maka riwayat kegiatan relawan yang ingin Anda ikuti akan masuk ke status “Relawan Diterima”. Namun, apabila panti sosial menolak pendaftaran Anda, maka riwayat kegiatan yang ingin Anda ikuti akan masuk ke status “Relawan Ditolak”.
 
@@ -236,7 +143,8 @@
              <br>
              <br>
              <span style="font-weight: bold;">KEGIATAN RELAWAN:</span> <br>
-             Apabila notifikasi berasal dari pendaftaran relawan, maka langkah selanjutnya yang pihak panti sosial harus lakukan adalah melakukan konfirmasi dengan menerima atau menolak calon relawan melalui halaman Riwayat Relawan. Panti sosial dapat mengakses halaman Riwayat Relawan untuk kegiatan relawan tertentu dengan cara: Memilih salah satu kegiatan relawan → Scroll ke bagian bawah dan menekan tombol “LIhat Riwayat Relawan” → Tekan tombol “Terima” apabila panti sosial menerima calon relawan atau tekan tombol “Tolak” apabila panti sosial menolak calon relawan. <br>
+             Apabila notifikasi berasal dari pendaftaran relawan, maka langkah selanjutnya yang pihak panti sosial harus lakukan adalah melakukan konfirmasi dengan menerima atau menolak calon relawan melalui halaman Riwayat Relawan. Panti sosial dapat mengakses halaman Riwayat Relawan untuk kegiatan relawan tertentu dengan cara:
+            Memilih salah satu kegiatan relawan → Scroll ke bagian bawah dan menekan tombol “LIhat Riwayat Relawan” → Tekan tombol “Terima” apabila panti sosial menerima calon relawan atau tekan tombol “Tolak” apabila panti sosial menolak calon relawan.
             Selanjutnya, setelah panti sosial memberikan konfirmasi terhadap calon relawan, panti sosial harus menghubungi secara langsung melalui nomor WhatsApp yang telah dicantumkan. Hal ini bertujuan untuk mengonfirmasi detail seperti lokasi pelaksanaan kegiatan relawan, hal-hal yang perlu disiapkan, waktu kedatangan, dan detail lainnya.
 
 
