@@ -283,7 +283,25 @@ body {
     padding-left: 20px;
 }
 
+.detail-info-jenis {
+    display: flex;
+    flex: 2;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: -10px;
+}
 
+.donation-options img {
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donation-options img.selected {
+    background-color: #B0ECD7;
+}
 
 
 </style>
@@ -329,12 +347,36 @@ body {
                     <div class="detail-info-tanggal">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
                 </div>
             </div>
-            <div class="detail-row">
+
+            {{-- <div class="detail-row">
                 <div class="detail-label">Jenis Donasi
                     <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                 </div>
                 <div class="detail-info">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
+            </div> --}}
+            <div class="detail-row">
+                <div class="detail-label">Jenis Donasi
+                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
+                </div>
+                <div class="detail-info-jenis">
+                    <div class="donation-options">
+                    @php
+                        // Memisahkan string menjadi array
+                        $jenisDonasiArray = explode(',', $kegiatanDonasi->JenisDonasiDibutuhkan);
+                    @endphp
+                    @foreach($jenisDonasiArray as $jenisDonasi)
+                        @php
+                            // Menghapus spasi dan mengonversi ke huruf kecil
+                            $namaFile = strtolower(str_replace(' ', '_', trim($jenisDonasi))) . '.png';
+                        @endphp
+                        <img src="{{ asset('image/donasi/' . $namaFile) }}" alt="{{ $jenisDonasi }}" height="20px">
+                    @endforeach
+                    </div>
+                </div>
             </div>
+
+
+
             <div class="detail-row">
                 <div class="detail-label">Deskripsi Jenis Donasi</div>
                 <div class="detail-info">{{ $kegiatanDonasi->DeskripsiJenisDonasi }}</div>

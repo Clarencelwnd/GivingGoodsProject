@@ -442,16 +442,16 @@ body {
                     </div>
                     <div class="detail-info-jenis">
                         <div class="donation-options">
-                            <img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="Keperluan Ibadah" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis" onclick="selectDonationOption(this)">
-                            <img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/pakaian.png') }}" alt="pakaian" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/makanan.png') }}" alt="makanan" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/obat.png') }}" alt="obat" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/buku.png') }}" alt="buku" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="perlengkapan_ibadah" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/mainan.png') }}" alt="mainan" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/toiletries.png') }}" alt="toiletries" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="keperluan_rumah" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="alat_tulis" onclick="selectDonationOption(this)">
+                            <img src="{{ asset('image/donasi/sepatu.png') }}" alt="sepatu" onclick="selectDonationOption(this)">
                         </div>
                     </div>
                     <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="">
@@ -467,17 +467,22 @@ body {
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('lokasiKegiatanInput', this.innerText)"></div>
-                    <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="">
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                        {{ $pantiSosial->AlamatPantiSosial }}
+                    </div>
+                    <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ $pantiSosial->AlamatPantiSosial }}">
                 </div>
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi pada Google Maps
-                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)">
+                        {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
                     </div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('linkGoogleMapsInput', this.innerText)"></div>
-                    <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="">
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                        {{ $pantiSosial->LinkGoogleMapsPantiSosial }}
+                    </div>
+                    <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ $pantiSosial->LinkGoogleMapsPantiSosial }}">
                 </div>
+
 
                 <div id="infoMessage">
                     Mohon mencari dan menyalin link <br> Google Maps untuk lokasi kegiatan donasi.
@@ -636,27 +641,27 @@ function updateHiddenInput(inputId, value) {
             updateHiddenInput('urlFotoKegiatanInput', imageURL);
         }
 
-        function showInfoMessage(imgElement) {
-            const infoMessage = document.getElementById('infoMessage');
-            if (infoMessage.style.display === 'block') {
-                infoMessage.style.display = 'none';
-            } else {
-                infoMessage.style.display = 'block';
+        // function showInfoMessage(imgElement) {
+        //     const infoMessage = document.getElementById('infoMessage');
+        //     if (infoMessage.style.display === 'block') {
+        //         infoMessage.style.display = 'none';
+        //     } else {
+        //         infoMessage.style.display = 'block';
 
-                // Posisi pesan dekat dengan gambar yang diklik
-                const rect = imgElement.getBoundingClientRect();
-                infoMessage.style.position = 'absolute';
-                infoMessage.style.left = `${rect.right + 10}px`;
-                infoMessage.style.top = `${rect.top}px`;
+        //         // Posisi pesan dekat dengan gambar yang diklik
+        //         const rect = imgElement.getBoundingClientRect();
+        //         infoMessage.style.position = 'absolute';
+        //         infoMessage.style.left = `${rect.right + 10}px`;
+        //         infoMessage.style.top = `${rect.top}px`;
 
-                // Tambahkan event listener untuk klik di luar pesan
-                document.addEventListener('click', function(event) {
-                    if (!infoMessage.contains(event.target) && !imgElement.contains(event.target)) {
-                        infoMessage.style.display = 'none';
-                    }
-                });
-            }
-        }
+        //         // Tambahkan event listener untuk klik di luar pesan
+        //         document.addEventListener('click', function(event) {
+        //             if (!infoMessage.contains(event.target) && !imgElement.contains(event.target)) {
+        //                 infoMessage.style.display = 'none';
+        //             }
+        //         });
+        //     }
+        // }
         function selectDonationOption(selectedImg) {
             const jenisDonasiInput = document.getElementById('jenisDonasiInput');
             let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];

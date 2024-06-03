@@ -61,7 +61,7 @@ Route::post('/update-status-checkbox/{IDRegistrasiRelawan}', [RiwayatRelawanCont
 
 
 // Route untuk menampilkan form buat kegiatan donasi
-Route::get('/buat-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'show'])->name('buat_kegiatan_donasi.show');
+Route::get('/buat-kegiatan-donasi/{id}', [BuatKegiatanDonasiController::class, 'show'])->name('buat_kegiatan_donasi.show');
 
 // Route untuk menyimpan data kegiatan donasi
 Route::post('/simpan-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'store'])->name('buat_kegiatan_donasi.store');

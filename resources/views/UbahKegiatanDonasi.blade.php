@@ -358,15 +358,22 @@ body {
                     <input type="hidden" name="deskripsiJenisDonasi" id="deskripsiJenisDonasiInput" value="{{ $kegiatanDonasi->DeskripsiJenisDonasi }}">
                 </div>
 
+
                 <div class="detail-row">
                     <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('lokasiKegiatanInput', this.innerText)">{{ $kegiatanDonasi->LokasiKegiatanDonasi }}</div>
-                    <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ $kegiatanDonasi->LokasiKegiatanDonasi }}">
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                        {{ $kegiatanDonasi->LokasiKegiatanDonasi  }}
+                    </div>
+                    <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ $kegiatanDonasi->LokasiKegiatanDonasi  }}">
                 </div>
 
                 <div class="detail-row">
-                    <div class="detail-label">Lokasi pada Google Maps</div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('linkGoogleMapsInput', this.innerText)">{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}</div>
+                    <div class="detail-label">Lokasi pada Google Maps
+                        {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
+                    </div>
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                        {{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}
+                    </div>
                     <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}">
                 </div>
 

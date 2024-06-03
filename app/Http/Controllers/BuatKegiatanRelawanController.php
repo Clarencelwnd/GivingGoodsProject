@@ -19,7 +19,7 @@ class BuatKegiatanRelawanController extends Controller
        public function store(Request $request)
        {
         $validatedData = $request->validate([
-               'namaKegiatan' => 'required|string|max:255',
+               'namaKegiatan' => 'required|string|max:255|unique:kegiatan_relawan,NamaKegiatanRelawan',
                'deskripsiKegiatan' => 'required|string|max:255',
                'tglMulai' => 'required|date',
                'tglSelesai' => 'required|date',
