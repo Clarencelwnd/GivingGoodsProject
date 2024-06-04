@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\buatKegiatanController;
+use App\Http\Controllers\generalPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailKegiatanDonasiController;
 use App\Http\Controllers\DetailKegiatanRelawanController;
@@ -75,3 +77,20 @@ Route::get('/buat-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class,
 // Route untuk menyimpan data kegiatan donasi
 Route::post('/simpan-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
 
+// Route::get('/templatePage', [generalPageController::class, 'displayTemplatePage']);
+
+// GENERAL PAGES
+Route::get('/generalPage/viewAllKegiatan', [generalPageController::class, 'displayGeneralPage'])->name('viewAllKegiatan');
+Route::get('/generalPage/viewAllKegiatanDonasi', [generalPageController::class, 'viewAllKegiatanDonasi'])->name('viewAllKegiatanDonasi');
+Route::get('/generalPage/viewAllKegiatanRelawan', [generalPageController::class, 'viewAllKegiatanRelawan'])->name('viewAllKegiatanRelawan');
+
+//SEARCH
+Route::get('/search', [generalPageController::class, 'search'])->name('search');
+
+// DUMMY PAGES
+Route::get('/dummyProfile', [generalPageController::class, 'displayDummyProfilePage'])->name('dummyProfile');
+Route::get('/dummyBuatKegiatanRelawan', [buatKegiatanController::class, 'displayDummyBuatRelawanPage'])->name('dummyBuatRelawan');
+Route::get('/dummyBuatKegiatanDonasi', [buatKegiatanController::class, 'displayDummyBuatDonasiPage'])->name('dummyBuatDonasi');
+
+//FILTER
+Route::get('/filter', [generalPageController::class, 'filterStatusKegiatan'])->name('filterStatus');
