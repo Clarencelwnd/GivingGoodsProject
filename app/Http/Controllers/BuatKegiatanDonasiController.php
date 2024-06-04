@@ -26,7 +26,7 @@ class BuatKegiatanDonasiController extends Controller
        // Menyimpan data kegiatan donasi ke database
        public function store(Request $request)
        {
-           $request->validate([
+        $validatedData = $request->validate([
                'namaKegiatan' => 'required|string|max:255|unique:kegiatan_donasi,NamaKegiatanDonasi',
                'deskripsiKegiatan' => 'required|string|max:255',
                'tglMulai' => 'required|date',
@@ -37,6 +37,7 @@ class BuatKegiatanDonasiController extends Controller
                'linkGoogleMaps' => 'required|string|max:255',
                'fotoKegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
                'jasaAmbilBarang' => 'required|string|max:255',
+               'IDPantiSosial' => 'required|integer|exists:panti_sosial,IDPantiSosial',
            ]);
 
 
@@ -49,9 +50,9 @@ class BuatKegiatanDonasiController extends Controller
                // Mendapatkan URL gambar
                $fotoKegiatanUrl = asset('storage/uploads/' . $fileName);
            }
-
+        if ($validatedData) {
            KegiatanDonasi::create([
-               'IDPantiSosial' => 1, // Sesuaikan dengan IDPantiSosial yang sesuai
+               'IDPantiSosial' => $request->IDPantiSosial,
                'GambarKegiatanDonasi' => $fotoKegiatanUrl,
                'NamaKegiatanDonasi' => $request->namaKegiatan,
                'DeskripsiKegiatanDonasi' => $request->deskripsiKegiatan,
@@ -65,8 +66,11 @@ class BuatKegiatanDonasiController extends Controller
                'StatusKegiatanDonasi' => 'Aktif', // Sesuaikan dengan status yang sesuai
            ]);
 
-           return redirect()->route('buat_kegiatan_donasi.show')->with('success', 'Kegiatan donasi berhasil dibuat.');
-       }
+           return redirect()->route('buat_kegiatan_donasi.show')->with('success', 'Kegiatan relawan berhasil dibuat.');
+        } else {
+            return redirect()->back()->withErrors($validatedData)->withInput();
+        }
+   }
 
 
 }

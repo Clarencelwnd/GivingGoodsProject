@@ -70,7 +70,7 @@ Route::post('/simpan-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'st
 
 
 // Route untuk menampilkan form buat kegiatan donasi
-Route::get('/buat-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'show'])->name('buat_kegiatan_relawan.show');
+Route::get('/buat-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class, 'show'])->name('buat_kegiatan_relawan.show');
 
 // Route untuk menyimpan data kegiatan donasi
 Route::post('/simpan-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');

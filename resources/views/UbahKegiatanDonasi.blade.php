@@ -100,9 +100,8 @@ body {
     }
 .detail-row {
     display: flex;
-    margin-bottom: 10px;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .detail-label {
@@ -279,18 +278,22 @@ body {
         width: 20%;
     }
 
-    .cancel-btn {
-        color: #007C92;
-        background-color: white;
-        border: 2px solid #007C92;
-        border-radius: 5px;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        margin-right: 20px;
-        width: 20%;
-    }
+    a.cancel-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #007C92;
+    background-color: white;
+    border: 2px solid #007C92;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 20px;
+    width: 20%;
+    text-align: center;
+    box-sizing: border-box;
+}
 
 
 </style>
@@ -378,14 +381,16 @@ body {
                 </div>
 
                 <div class="button-container">
-                    <button class="cancel-btn" type="button" onclick="tutupPopup()">Batal</button>
+                    <a href="{{ route('kegiatan-relawan.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}" class="cancel-btn">
+                        Batal
+                    </a>
                     <button class="save-btn" type="button" onclick="tampilkanPopup()">Simpan Perubahan</button>
                 </div>
             </div>
 
         <div class="donor-history">
             <h2>Riwayat Donatur</h2>
-            <button class="view-history-btn-disabled">Lihat Riwayat Donatur</button>
+            <button class="view-history-btn-disabled" type="button" disabled>Lihat Riwayat Donatur</button>
         </div>
     </div>
 

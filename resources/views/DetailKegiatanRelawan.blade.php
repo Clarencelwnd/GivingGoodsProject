@@ -123,9 +123,8 @@ body {
 }
 .detail-row {
     display: flex;
-    margin-bottom: 10px;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .detail-label {
@@ -312,7 +311,7 @@ body {
                 <h1>{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
-                <a href="{{ route('ubah-kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+                <a href="{{ route('ubah-kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}" style="text-decoration: none;">
                     <button class="edit-btn">Ubah Kegiatan</button>
                 </a>
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
@@ -345,7 +344,7 @@ body {
             </div>
             <div class="detail-row">
                 <div class="detail-label">Jumlah Relawan yang <br> Dibutuhkan</div>
-                <div class="detail-info">{{ $kegiatanRelawan->JumlahRelawanDibutuhkan }}</div>
+                <div class="detail-info">{{ $kegiatanRelawan->JumlahRelawanDibutuhkan }} orang</div>
             </div>
             <div class="detail-row">
                 <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>

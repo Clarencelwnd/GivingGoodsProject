@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Models\KegiatanRelawan;
+use App\Models\Models\PantiSosial;
 
 class BuatKegiatanRelawanController extends Controller
 {
 
       // Menampilkan form buat kegiatan donasi
-      public function show()
+      public function show($id)
       {
-          return view('BuatKegiatanRelawan');
+          $pantiSosial = PantiSosial::find($id);
+
+          if (!$pantiSosial) {
+              return redirect()->back()->with('error', 'Panti Sosial tidak ditemukan');
+          }
+
+          return view('BuatKegiatanRelawan', compact('pantiSosial'));
       }
 
 
@@ -34,6 +41,7 @@ class BuatKegiatanRelawanController extends Controller
                'persyaratan' => 'required|string|max:255',
                'kontakSpesifik' => 'required|string|max:255',
                'jenisRelawan' => 'required|string|max:255',
+               'IDPantiSosial' => 'required|integer|exists:panti_sosial,IDPantiSosial',
            ]);
 
            $fotoKegiatanUrl = null;
@@ -49,7 +57,7 @@ class BuatKegiatanRelawanController extends Controller
               // Cek apakah data valid atau tidak
     if ($validatedData) {
         KegiatanRelawan::create([
-            'IDPantiSosial' => 1, // Sesuaikan dengan IDPantiSosial yang sesuai
+            'IDPantiSosial' => $request->IDPantiSosial,
             'GambarKegiatanRelawan' => $fotoKegiatanUrl,
             'NamaKegiatanRelawan' => $request->namaKegiatan,
             'DeskripsiKegiatanRelawan' => $request->deskripsiKegiatan,

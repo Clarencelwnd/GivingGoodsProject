@@ -123,9 +123,8 @@ body {
 }
 .detail-row {
     display: flex;
-    margin-bottom: 10px;
     justify-content: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .detail-label {
@@ -324,7 +323,7 @@ body {
                 <h1>{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
             <div class="buttons">
-                <a href="{{ route('ubah-kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
+                <a href="{{ route('ubah-kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}" style="text-decoration: none;">
                 <button class="edit-btn">Ubah Kegiatan</button>
                 </a>
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
