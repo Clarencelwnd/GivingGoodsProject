@@ -1,0 +1,152 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.btn{
+    /* width: 100%; */
+    border-radius:5px;
+    font-size: 13px;
+}
+
+/* LEFT SIDE  */
+
+.left{
+    padding-right: 25px;
+    padding-top:50px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.left-title{
+    color: #006374;
+    margin-bottom: 30px;
+}
+
+.profile-pict{
+    /* width: 150px;
+    height: 150px; */
+    width: 80%;
+    height: 40%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+#btn-choose-photo, #btn-change-password, #btn-history{
+    width: 100%;
+    color: #007C92;
+    border: 1px solid #006374;
+    margin-bottom: 15px;
+    pointer-events: none;
+}
+
+#btn-logout{
+    width: 100%;
+    background: #B7342C;
+    color: #FDFFFE;
+    pointer-events: none;
+}
+
+/* RIGHT SIDE  */
+
+.right{
+    height: 100vh;
+    padding-top: 50px;
+    padding-left: 25px;
+    overflow-y: auto;
+}
+
+/* RIGHT SIDE MAIN TABLE  */
+
+.main-table{
+    width: 100%;
+}
+
+table, td, tr{
+    border: none;
+}
+
+td, tr{
+    padding-bottom: 20px;
+}
+
+.form-control{
+    background-color: #F0F0F0;
+}
+
+input.form-control:focus{
+    box-shadow: none;
+}
+
+.left-column-mt, .form-control{
+    color: #006374;
+}
+
+.left-column-mt{
+    font-weight: 500;
+}
+
+.right-column-mt{
+    border-radius: 5px;
+    height: 40%;
+    padding-left: 10px;
+    width: 100%;
+}
+
+#btn-save{
+    margin-left: 20px;
+    background: #00AF71;
+    color: #FDFFFE;
+    min-width: 30%;
+}
+
+#btn-save:hover{
+    font-weight: 500;
+    background: #009B65;
+    color: #FDFFFE;
+}
+
+#btn-back{
+    min-width: 10%;
+    color: #007C92;
+    border: 1px solid #007C92;
+}
+
+#btn-back:hover{
+    font-weight: 500;
+    background: #E6E7E6;
+    color: #007C92;
+}
+
+/* RESPONSIVE  */
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .profile-pict{
+        max-width: 100%;
+        max-height: 20%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .profile-pict{
+        max-width: 35%;
+        max-height: 35%;
+    }
+}
