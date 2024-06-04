@@ -28,7 +28,7 @@
         {{-- RIGHT SIDE  --}}
         <div class="right col-lg-10 d-none d-md-block">
             <div class="row g-0">
-                <form action="{{route('edit_profile_logic', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
+                <form action="{{route('edit_profile_logic.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                     @csrf
                     <table class="main-table">
                         <tr class="form-group">
@@ -123,7 +123,7 @@
                     {{-- BUTTON  --}}
                     <div class="row justify-content-end" id="button-style">
                         <div class="col-2">
-                            <a href="{{route('profile', ['id'=>$id])}}" class="btn btn-block" id="btn-back">Batal</a>
+                            <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-back">Batal</a>
                         </div>
                         <div class="col-3">
                             <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-save">
@@ -147,7 +147,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="{{route('edit_schedule_logic', ['id'=>$id])}}" method="post">
+                                    <form action="{{route('edit_schedule_logic.panti_sosial', ['id'=>$id])}}" method="post">
                                         @csrf
                                         <table class="set-schedule-table">
                                             <thead>

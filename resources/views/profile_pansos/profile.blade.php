@@ -19,12 +19,12 @@
         <div class="left col-sm-2 d-none d-md-block">
             <h4 class="left-title fw-semibold justify-content-center">Pengaturan</h4>
             <img class="profile-pict" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
-            <form id="photo" action="{{route('edit_photo_logic', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
+            <form id="photo" action="{{route('edit_photo_logic.panti_sosial', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="LogoPantiSosial" id="input_photo" class="file-choose-photo" onchange="document.getElementById('photo').submit()">
                 <button type="button" for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
             </form>
-            <a href="{{route('change_password', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
+            <a href="{{route('change_password.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
             <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
         </div>
 
@@ -42,7 +42,7 @@
 
             <div class="row g-0">
                 <div class="col-lg-3 d-none d-md-block">
-                    <a href="{{route('edit_profile', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
+                    <a href="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                 </div>
                 <table class="main-table">
                     <tr>
@@ -144,7 +144,7 @@
                             <button type="button" class="btn" id="btn-back" data-bs-dismiss="modal">Kembali</button>
                         </div>
                         <div class="col-profile">
-                            <button  onclick="window.location.href='{{route('logout')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
+                            <button  onclick="window.location.href='{{route('logout.panti_sosial')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
                         </div>
                     </div>
                 </div>

@@ -72,7 +72,7 @@ class ProfileController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        return redirect()->route('profile', ['id'=>$id]);
+        return redirect()->route('profile.panti_sosial', ['id'=>$id]);
     }
 
     public function edit_schedule_logic(Request $request, $id){
@@ -151,7 +151,7 @@ class ProfileController extends Controller
         $detailPansos->LogoPantiSosial = $logo_panti_sosial;
         $detailPansos->save();
 
-        return redirect()->route('profile',['id'=>$id]);
+        return redirect()->route('profile.panti_sosial',['id'=>$id]);
     }
 
     public function change_password_view($id){

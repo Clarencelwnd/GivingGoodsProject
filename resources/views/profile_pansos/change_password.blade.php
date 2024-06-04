@@ -15,13 +15,13 @@
     <div class="card justify-content-center">
         <div class="card-header">
             <p class="position">Profil > Ubah Kata Sandi</p>
-            <a class="btn-back" href="{{route('profile', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
+            <a class="btn-back" href="{{route('profile.panti_sosial', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
             <h5 class="title">Ubah Kata Sandi</h5>
         </div>
         <div class="card-body">
             <div class="desc-change-pass1">Atur ulang kata sandi</div>
             <div class="desc-change-pass2" >Buat kata sandi baru yang kuat untuk akunmu</div>
-            <form action="{{route('change_password_logic', ['id'=>$id])}}" class= "form" role="form" autocomplete="off" method="post">
+            <form action="{{route('change_password_logic.panti_sosial', ['id'=>$id])}}" class= "form" role="form" autocomplete="off" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="password" id="password">Kata Sandi Baru</label>
@@ -64,7 +64,7 @@
                             <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
                         </div>
                         <div class="col-profile">
-                            <button  onclick="window.location.href='{{route('profile', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
+                            <button  onclick="window.location.href='{{route('profile.panti_sosial', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
                         </div>
                     </div>
                 </div>
