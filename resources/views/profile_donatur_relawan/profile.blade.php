@@ -23,7 +23,12 @@
                 <form id="photo" action="{{route('edit_photo_logic.donatur_relawan', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="FotoDonaturRelawan" id="input_photo" class="file-choose-photo" onchange="document.getElementById('photo').submit()">
-                    <button type="button" for="FotoDonaturRelawan" class="btn btn-block" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
+                    @error('FotoDonaturRelawan')
+                    <label class="error-msg invalid-feedback fw-normal lh-1">
+                        {{$message}}
+                    </label>
+                    @enderror
+                    <button type="button" for="FotoDonaturRelawan" class="btn btn-block @error('FotoDonaturRelawan') is-invalid @enderror" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
                 </form>
                 <a href="{{route('change_password.donatur_relawan', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
                 <a href="#" class="btn btn-block" id="btn-history">Riwayat Kegiatan</a>

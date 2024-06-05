@@ -43,11 +43,11 @@
 }
 
 .profile-pict{
-    width: 80%;
+    width: 100%;
     height: 40%;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 #btn-choose-photo, #btn-change-password, #btn-history, #btn-back{
@@ -76,6 +76,12 @@
 #btn-logout:hover, #btn-yes-logout:hover{
     background: #A42E28;
     font-weight: 500;
+}
+
+.error-msg{
+    margin-bottom: 10px;
+    font-size: 12px;
+    display: block;
 }
 
 /* RIGHT SIDE  */

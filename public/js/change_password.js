@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Menutup modal setelah 2 detik
         setTimeout(function() {
             successModal.hide();
+            // window.location.href = url;
         }, 2000);
     }
 });
