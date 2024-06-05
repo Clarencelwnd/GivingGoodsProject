@@ -87,11 +87,8 @@
 
 .title {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row;
-    font-size: 40px;
-    font-weight: 600;
-    color: #006374;
 }
 
 .title img {
