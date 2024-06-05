@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dr-detail-kegiatan-relawan', [drDetailKegiatanRelawanController::class, 'show']);
+Route::get('/dr-detail-kegiatan-relawan/{id}', [drDetailKegiatanRelawanController::class, 'show']);
