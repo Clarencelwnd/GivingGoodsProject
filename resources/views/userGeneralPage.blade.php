@@ -12,14 +12,26 @@
     <div class="img-container">
         <div class="image-wrapper">
             <img id="background-image" src="{{ asset('Image/general/userGeneralPageBackground.jpg') }}" alt="">
-            <div class="overlay"></div>
+            <div class="overlay">
+                <div class="overlay-text">
+                    <h6 id="overlay-text-title">Bersatu untuk Kebaikan</h6>
+                    <p id="overlay-text-description">
+                        GivingGoods adalah platform online yang menghubungkan para donatur dan relawan
+                        <br>dengan berbagai kegiatan sosial di Indonesia. Bersama-sama, mari buat perbedaan
+                        <br>yang nyata dalam hidup orang lain.
+                    </p>
+                    <button class="btn btn-primary" type="button" id="lihatSemuaKegiatan-btn">
+                       Lihat Semua Kegiatan
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="contents">
         <div class="donasi-barang">
-            <div class="d-flex header-donasi-barang align-content-center">
-                    <h4 id="donasi-barang-title">Donasikan Barangmu</h4>
+            <div class="mt-8 mb-3 d-flex header-donasi-barang align-content-center">
+                    <h4 class="header-title">Donasikan Barangmu</h4>
                 <div>
                     <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
                 </div>
@@ -30,17 +42,21 @@
 
         <div class="kegiatan-relawan">
             <div class="d-flex header-kegiatan-relawan align-content-center">
-                <h4>Ikuti Kegiatan Relawan</h4>
-                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+                <h4 class="header-title">Ikuti Kegiatan Relawan</h4>
+                <div>
+                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+                </div>
             </div>
 
             @include('components.cardKegiatan')
         </div>
 
         <div class="baca-artikel">
-            <div class="d-flex artikel-subheader align-content-center">
-                <h4>Baca Artikel</h4>
-                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+            <div class="mt-5 mb-3 d-flex header-baca-artikel align-content-center">
+                <h4 class="header-title">Baca Artikel</h4>
+                <div>
+                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+                </div>
             </div>
 
             <a href="{{ route('displayDetailArtikel') }}" class="text-decoration-none text-dark">
