@@ -1,4 +1,4 @@
-@extends('templateDonaturRelawan')
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Daftar Artikel')
 
@@ -6,6 +6,7 @@
     @parent
     <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userGeneralPage.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/components/cardKegiatan.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -37,7 +38,21 @@
                 </div>
             </div>
 
-            @include('components.cardKegiatan')
+            <div class="cardsKegiatanDonasi-container">
+                @foreach ($kegiatanDonasi as $donasi)
+                    <div class="card card-kegiatanDonasi" style="width: 16rem;">
+                        <img src="{{ asset($donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
+                        <div class="card-body card-kegiatan">
+                        <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
+                        <p class="card-text" id="card-jenisDonasi">{{ $donasi->JenisDonasiDibutuhkan }}</p>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text" id="card-namaPanti">{{ $donasi->IDPantiSosial }}</p>
+                            <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                        </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <div class="kegiatan-relawan">
@@ -48,7 +63,21 @@
                 </div>
             </div>
 
-            @include('components.cardKegiatan')
+            <div class="cardsKegiatanRelawan-container">
+                @foreach ($kegiatanRelawan as $relawan)
+                    <div class="card card-kegiatanRelawan" style="width: 16rem;">
+                        <img src="{{ asset($donasi->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                        <div class="card-body card-kegiatan">
+                            <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
+                            <p class="card-text">{{ $relawan->JenisKegiatanRelawan }}</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text">{{ $relawan->IDPantiSosial }}</p>
+                                <p class="card-text">{{ $relawan->jarak }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <div class="baca-artikel">
