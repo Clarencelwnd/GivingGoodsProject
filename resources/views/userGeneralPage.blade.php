@@ -5,34 +5,42 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/userGeneralPage.css') }}">
 @endsection
 
 @section('content')
-    {{-- <div class="container"> --}}
-        {{-- <img id="background-image" src="{{ asset('Image/general/userGeneralPageBackground.jpg') }}" alt=""> --}}
-    {{-- </div> --}}
+    <div class="img-container">
+        <div class="image-wrapper">
+            <img id="background-image" src="{{ asset('Image/general/userGeneralPageBackground.jpg') }}" alt="">
+            <div class="overlay"></div>
+        </div>
+    </div>
 
     <div class="contents">
         <div class="donasi-barang">
-            <div>
-                <h4>Donasikan Barangmu</h4>
-                <img src="{{ asset('Image/general/back.png') }}" alt="next button">
+            <div class="d-flex header-donasi-barang align-content-center">
+                    <h4 id="donasi-barang-title">Donasikan Barangmu</h4>
+                <div>
+                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
+                </div>
             </div>
 
             @include('components.cardKegiatan')
-
-
         </div>
 
         <div class="kegiatan-relawan">
-            <h4>Ikuti Kegiatan Relawan</h4>
-            <img src="{{ asset('Image/general/back.png') }}" alt="next button">
+            <div class="d-flex header-kegiatan-relawan align-content-center">
+                <h4>Ikuti Kegiatan Relawan</h4>
+                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+            </div>
+
+            @include('components.cardKegiatan')
         </div>
 
         <div class="baca-artikel">
-            <div class="artikel-subheader">
+            <div class="d-flex artikel-subheader align-content-center">
                 <h4>Baca Artikel</h4>
-                <img src="{{ asset('Image/general/back.png') }}" alt="next button">
+                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
             </div>
 
             <a href="{{ route('displayDetailArtikel') }}" class="text-decoration-none text-dark">
