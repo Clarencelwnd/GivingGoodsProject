@@ -53,6 +53,30 @@ class ProfileController extends Controller
     }
 
     public function edit_profile_logic(Request $request, $id){
+        $validator = Validator::make($request->all(),[
+            'NamaPantiSosial' => 'required',
+            'DeskripsiPantiSosial' => 'required|max:300',
+            'NomorTeleponPantiSosial' => 'required|regex:/^\+628\d{9,11}$/',
+            'AlamatPantiSosial' => 'required|max:450',
+            'LinkGoogleMapsPantiSosial' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//',
+        ],
+        [
+            'NamaPantiSosial.required' => 'Nama panti sosial wajib diisi.',
+            'DeskripsiPantiSosial.required' => 'Deskripsi panti sosial wajib diisi.',
+            'DeskripsiPantiSosial.max' => 'Deskripsi panti sosial maksimal berisi 300 karakter.',
+            'NomorTeleponPantiSosial.required' => "Nomor handphone panti sosial wajib diisi.",
+            'NomorTeleponPantiSosial.regex' => 'Nomor handphone panti sosial wajib berisi angka yang dimulai dengan +62 diikuti dengan 10 - 12 digit',
+            'AlamatPantiSosial.required' => 'Alamat panti sosial wajib diisi.',
+            'AlamatPantiSosial.max' => 'Alamat panti sosial maksimal berisi 450 karakter.',
+            'LinkGoogleMapsPantiSosial.required' => 'Link google maps alamat panti sosial wajib diisi.',
+            'LinkGoogleMapsPantiSosial.regex' => 'Link Google Maps wajib dengan format: "https://maps.app.goo.gl/"'
+        ]);
+
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         // update tabel pansos
         PantiSosial::where('IDPantiSosial', $id)->update(
             [
@@ -72,11 +96,11 @@ class ProfileController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        return redirect()->route('profile.panti_sosial', ['id'=>$id]);
+        return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
     public function edit_schedule_logic(Request $request, $id){
-        // variabel yan gdibutuhkan
+        // variabel yang dibutuhkan
         $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
         $rules = [];
 
@@ -101,7 +125,6 @@ class ProfileController extends Controller
 
         // menjalankan error
         if($validator->fails()){
-            // dd($validator);
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -122,7 +145,7 @@ class ProfileController extends Controller
             );
         }
 
-        return redirect()->back();
+        return redirect()->route('edit_profile.panti_sosial', ['id'=>$id]);
     }
 
     public function edit_photo_logic(Request $request, $id){

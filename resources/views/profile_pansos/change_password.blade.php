@@ -12,10 +12,9 @@
     <link rel="stylesheet" href="{{asset('css/change_password.css')}}">
 </head>
 <body>
-    <div class="card justify-content-center">
+    <div class="card container justify-content-center">
         <div class="card-header">
             <p class="position">Profil > Ubah Kata Sandi</p>
-            <a class="btn-back" href="{{route('profile.panti_sosial', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
             <h5 class="title">Ubah Kata Sandi</h5>
         </div>
         <div class="card-body">
@@ -80,17 +79,9 @@
                     <div class="modal-header text-center border-0">
                         <h5 class="modal-title w-100" id="successModalLabel">Berhasil Diubah</h5>
                     </div>
-                    {{-- <div class="modal-body">
-                        Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
+                    <div class="modal-body">
+                        <img src="{{asset('Image/general/success.png')}}" alt="">
                     </div>
-                    <div class="row modal-footer align-content-center justify-content-center border-0">
-                        <div class="col-change">
-                            <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
-                        </div>
-                        <div class="col-profile">
-                            <button  onclick="window.location.href='{{route('profile', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
-                        </div>
-                    </div> --}}
                 </div>
                 </div>
             </div>
@@ -98,6 +89,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @if(session('success'))
+        <script> var url = "{{route('profile.panti_sosial', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/change_password.js') }}"></script>
     @endif
 </body>
