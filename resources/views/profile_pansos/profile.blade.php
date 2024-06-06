@@ -1,7 +1,3 @@
-@php
-    use Carbon\Carbon;
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
