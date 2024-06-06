@@ -65,7 +65,7 @@
                             <tr>
                                 <td class="left-column-mt col-lg-4">Nomor Handphone</td>
                                 <td class="right-column-mt col-lg-5">
-                                    <input class= "form-control @error('NomorTeleponPantiSosial') is-invalid @enderror" type="text" name="NomorTeleponPantiSosial" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}">
+                                    <input class= "form-control @error('NomorTeleponPantiSosial') is-invalid @enderror" type="text" name="NomorTeleponPantiSosial" placeholder="+62812345678910" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}">
                                     @error('NomorTeleponPantiSosial')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
                                             {{$message}}
@@ -80,7 +80,7 @@
                             <tr>
                                 <td class="left-column-mt col-lg-4">Alamat Lengkap</td>
                                 <td class="small-text-above col-lg-5">
-                                    <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kab., Kec., Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
+                                    <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
                                     @error('AlamatPantiSosial')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
                                             {{$message}}
@@ -105,7 +105,14 @@
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4">Media Sosial</td>
-                                <td class="right-column-mt col-lg-5"><textarea class= "form-control" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: linkprofile, Facebook: linkprofile">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea></td>
+                                <td class="right-column-mt col-lg-5">
+                                    <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: linkprofile; Facebook: linkprofile;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
+                                    @error('MediaSosialPantiSosial')
+                                        <div class="error-msg invalid-feedback fw-normal lh-1">
+                                            {{$message}}
+                                        </div>
+                                    @enderror
+                                </td>
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4">Jam Operasional</td>

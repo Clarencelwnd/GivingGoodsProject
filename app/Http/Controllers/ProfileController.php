@@ -33,7 +33,17 @@ class ProfileController extends Controller
             }
         }
 
-        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos'));
+        // pisah array media_sosial dan link_profile
+        $mediaSosialPantiSosial = explode(';', $detailPansos->MediaSosialPantiSosial);
+        foreach ($mediaSosialPantiSosial as $medsospantisosial) {
+            $partition = explode(': ', $medsospantisosial, 2);
+            if(count($partition) === 2){
+                $media_sosial[] = $partition[0];
+                $link_profile[] = $partition[1];
+            }
+        };
+
+        return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos', 'media_sosial', 'link_profile'));
     }
 
     public function edit_view($id){
@@ -59,6 +69,7 @@ class ProfileController extends Controller
             'NomorTeleponPantiSosial' => 'required|regex:/^\+628\d{9,11}$/',
             'AlamatPantiSosial' => 'required|max:450',
             'LinkGoogleMapsPantiSosial' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//',
+            'MediaSosialPantiSosial' => 'regex:/^(?=.*:)(?=.*;).+$/'
         ],
         [
             'NamaPantiSosial.required' => 'Nama panti sosial wajib diisi.',
@@ -69,9 +80,15 @@ class ProfileController extends Controller
             'AlamatPantiSosial.required' => 'Alamat panti sosial wajib diisi.',
             'AlamatPantiSosial.max' => 'Alamat panti sosial maksimal berisi 450 karakter.',
             'LinkGoogleMapsPantiSosial.required' => 'Link google maps alamat panti sosial wajib diisi.',
-            'LinkGoogleMapsPantiSosial.regex' => 'Link Google Maps wajib dengan format: "https://maps.app.goo.gl/"'
+            'LinkGoogleMapsPantiSosial.regex' => 'Link google maps wajib dengan format -> https://maps.app.goo.gl/',
+            'MediaSosialPantiSosial.regex' => 'Harap isi dengan format -> Media Sosial: Link Profile Panti Sosial;'
         ]);
 
+        if(substr_count($request->input('MediaSosialPantiSosial'), ':') !== substr_count($request->input('MediaSosialPantiSosial'), ';')){
+            $validator->after(function ($validator){
+                $validator->errors()->add('MediaSosialPantiSosial', 'Harap isi dengan format -> Media Sosial: Link Profile Panti Sosial;');
+            });
+        }
 
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();

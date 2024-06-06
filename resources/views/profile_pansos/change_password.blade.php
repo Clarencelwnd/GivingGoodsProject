@@ -40,7 +40,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="save-cancel d-flex justify-content-end">
+                <div class="d-flex justify-content-end" id="button-style">
                     <a data-bs-toggle="modal" data-bs-target="#exitChangePasswordModal" class="btn btn-cancel" id="exitChangePassword">Batal</a>
                     <button type="submit" class="btn" id="btn-save">Simpan Perubahan </button>
                 </div>
