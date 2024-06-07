@@ -237,7 +237,7 @@
             <div class="text">{{ $kegiatanRelawan->JenisKegiatanRelawan }}</div>
         </div>
 
-        <a href="#" class="button">Ikut Kegiatan</a>
+        <a href="{{ route('daftarKegiatanRelawan', ['idKegiatanRelawan' => $kegiatanRelawan->IDKegiatanRelawan, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button">Ikut Kegiatan</a>
 
         <div class="question-contact-container">
             <div class="question">Punya Pertanyaan?</div>
