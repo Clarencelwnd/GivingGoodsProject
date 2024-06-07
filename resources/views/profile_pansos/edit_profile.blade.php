@@ -56,7 +56,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="col-lg-5 small-text">maks. 300 kata</td>
+                                <td class="col-lg-5 small-text">maks. 300 karakter</td>
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4" id="EmailPantiSosial">Email</td>
@@ -78,7 +78,10 @@
                                 <td class="right-column-mt col-lg-5"><input class= "form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}" placeholder="www.websitepantisosial.com"></td>
                             </tr>
                             <tr>
-                                <td class="left-column-mt col-lg-4">Alamat Lengkap</td>
+                                <td class="left-column-mt col-lg-4">
+                                    Alamat Lengkap
+                                    <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                                </td>
                                 <td class="small-text-above col-lg-5">
                                     <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
                                     @error('AlamatPantiSosial')
@@ -90,10 +93,13 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td class="col-lg-5 small-text">maks. 450 kata</td>
+                                <td class="col-lg-5 small-text">maks. 450 karakter</td>
                             </tr>
                             <tr>
-                                <td class="left-column-mt col-lg-4">Lokasi pada Google Maps</td>
+                                <td class="left-column-mt col-lg-4">
+                                    Lokasi pada Google Maps
+                                    <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                                </td>
                                 <td class="right-column-mt col-lg-5">
                                     <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://maps.app.goo.gl/linkGoogleMaps">
                                     @error('LinkGoogleMapsPantiSosial')
@@ -117,14 +123,19 @@
                             <tr>
                                 <td class="left-column-mt col-lg-4">Jam Operasional</td>
                                 <td class="right-column-mt col-lg-5" id="jam-operasional">
-                                    @if (!($senin = $jadwalPansos->firstWhere('Hari', 'Senin')))
-                                        <a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn" id="btn-jam-operasional">Atur Jam Operasional</a>
+                                    @if (!($jadwalPansos->firstWhere('Hari', 'Senin')))
+                                        <a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional" id="btn-schedule">Atur Jam Operasional</a>
+                                        @error('buttonClicked')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     @else
                                         <table class="schedule-table">
                                             <tr>
                                                 <td></td>
                                                 <td></td>
-                                                <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#scheduleModal" id="btn-img"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
+                                                <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn-img" id="btn-schedule"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
                                             </tr>
                                             @php
                                                 $index = 0;
@@ -218,17 +229,13 @@
                                                             <td class="row-sst"><label for="hari-{{strtolower($day)}}" id="day">{{ucwords($day)}}</label></td>
                                                             <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jadwal['jamBuka']}}"></td>
                                                             <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}">
-                                                                {{-- @error('jam-tutup-{{strtolower($day)}}')
-                                                                    <label class="error-msg invalid-feedback fw-normal lh-1">
-                                                                        {{$message}}
-                                                                    </label>
-                                                                @enderror --}}
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                             <div class="row modal-footer d-flex justify-content-end border-0">
+                                                <input type="hidden" id="buttonClicked" name="buttonClicked" value="0">
                                                 <button type="submit" class="btn" id="btn-save-schedule">Simpan</button>
                                             </div>
                                         </form>
@@ -247,10 +254,26 @@
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header text-center border-0">
-                        <h5 class="modal-title w-100" id="successModalLabel">Berhasil Diubah</h5>
+                        <h5 class="modal-title w-100" id="successModalLabel">Berhasil Mengubah Profil</h5>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="successModalBody">
                         <img src="{{asset('Image/general/success.png')}}" alt="">
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {{-- MODAL INFORMATION --}}
+        <div class="container">
+            <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
+                    </div>
+                    <div class="modal-body" id="informationModalBody">
+                        Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini. Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
                     </div>
                 </div>
                 </div>

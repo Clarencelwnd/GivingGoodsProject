@@ -78,12 +78,6 @@
     font-weight: 500;
 }
 
-.error-msg{
-    margin-bottom: 10px;
-    font-size: 12px;
-    display: block;
-}
-
 /* RIGHT SIDE  */
 
 .right{
@@ -98,7 +92,6 @@
     color: #FFFFFF;
     margin-bottom: 20px;
     width: 30%;
-    /* font-size: 13px; */
 }
 
 #btn-edit:hover{
@@ -108,13 +101,18 @@
 
 /* RIGHT SIDE MAIN TABLE  */
 
+.error-msg{
+    margin-bottom: 10px;
+    font-size: 12px;
+    display: block;
+}
+
 table, td, tr{
     border: none;
 }
 
 td, tr{
     padding-bottom: 20px;
-    /* padding-right: 10%; */
 }
 
 td{
@@ -130,10 +128,14 @@ td{
 }
 
 .right-column-mt{
-    /* padding-left: 50%; */
     word-wrap: break-word;
     word-break: break-all;
-    /* padding-right: 10%; */
+}
+
+#inf-address{
+    margin-left: 5px;
+    cursor: pointer;
+    width: 5%;
 }
 
 /* RIGHT SIDE SCHEDULE TABLE  */
@@ -151,7 +153,6 @@ td{
 /* MODAL  */
 .modal-body{
     word-wrap: break-word;
-    word-break: break-all;
 }
 
 .col-change{
@@ -164,6 +165,17 @@ td{
 
 #btn-back{
     border: 1px solid #007C92;
+}
+
+#informationModalLabel{
+    color: #152F44;
+    font-weight: 500;
+}
+
+#informationModalBody{
+    text-align: justify;
+    color: #1C3F5B;
+    font-size: smaller;
 }
 
 /* RESPONSIVE  */

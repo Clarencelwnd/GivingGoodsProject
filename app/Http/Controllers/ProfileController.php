@@ -63,6 +63,7 @@ class ProfileController extends Controller
     }
 
     public function edit_profile_logic(Request $request, $id){
+        dd($request->input('buttonClicked'));
         $validator = Validator::make($request->all(),[
             'NamaPantiSosial' => 'required',
             'DeskripsiPantiSosial' => 'required|max:300',
@@ -76,7 +77,7 @@ class ProfileController extends Controller
             'DeskripsiPantiSosial.required' => 'Deskripsi panti sosial wajib diisi.',
             'DeskripsiPantiSosial.max' => 'Deskripsi panti sosial maksimal berisi 300 karakter.',
             'NomorTeleponPantiSosial.required' => "Nomor handphone panti sosial wajib diisi.",
-            'NomorTeleponPantiSosial.regex' => 'Nomor handphone panti sosial wajib berisi angka yang dimulai dengan +62 diikuti dengan 10 - 12 digit',
+            'NomorTeleponPantiSosial.regex' => 'Nomor handphone panti sosial wajib berisi angka yang dimulai dengan +62 diikuti dengan 10 - 12 digit.',
             'AlamatPantiSosial.required' => 'Alamat panti sosial wajib diisi.',
             'AlamatPantiSosial.max' => 'Alamat panti sosial maksimal berisi 450 karakter.',
             'LinkGoogleMapsPantiSosial.required' => 'Link google maps alamat panti sosial wajib diisi.',
@@ -90,6 +91,11 @@ class ProfileController extends Controller
             });
         }
 
+        if((!JadwalOperasional::where('IDPantiSosial', $id)->where('Hari', 'Senin')->exists()) && ($request->input('buttonClicked') === "0")){
+            $validator->after(function ($validator){
+                $validator->errors()->add('buttonClicked', 'tes');
+            });
+        }
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }

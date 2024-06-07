@@ -77,7 +77,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header text-center border-0">
-                        <h5 class="modal-title w-100" id="successModalLabel">Berhasil Diubah</h5>
+                        <h5 class="modal-title w-100" id="successModalLabel">Berhasil Mengubah Kata Sandi</h5>
                     </div>
                     <div class="modal-body">
                         <img src="{{asset('Image/general/success.png')}}" alt="">

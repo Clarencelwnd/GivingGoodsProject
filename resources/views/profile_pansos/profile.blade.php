@@ -68,11 +68,17 @@
                             <td class="right-column-mt col-lg-5"> {{$detailPansos->WebsitePantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Alamat Lengkap</td>
+                            <td class="left-column-mt col-lg-4">
+                                Alamat Lengkap
+                                <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                            </td>
                             <td class="right-column-mt col-lg-5"> {{$detailPansos->AlamatPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Lokasi pada Google Maps</td>
+                            <td class="left-column-mt col-lg-4">
+                                Lokasi pada Google Maps
+                                <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                            </td>
                             <td class="right-column-mt col-lg-5"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
                         </tr>
                         <tr>
@@ -155,8 +161,23 @@
                     </div>
                 </div>
             </div>
-        </div>
 
+            {{-- MODAL INFORMATION --}}
+            <div class="container">
+                <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-center">
+                        <div class="modal-header text-center border-0">
+                            <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
+                        </div>
+                        <div class="modal-body" id="informationModalBody">
+                            Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini. Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{{ asset('js/profile.js') }}"></script>

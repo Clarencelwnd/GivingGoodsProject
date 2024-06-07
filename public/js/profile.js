@@ -1,5 +1,12 @@
-function openModalView1() {
+// MODAL LOGOUT
+function openModalLogout() {
     const modalView = document.getElementById("btn-logout");
+    modalView.display='block';
+}
+
+// MODAL INFORMATION
+function openModalInformation() {
+    const modalView = document.getElementById("inf-address");
     modalView.display='block';
 }
 

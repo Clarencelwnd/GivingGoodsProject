@@ -7,7 +7,7 @@
     font-size: 13px;
 }
 
-.close, #btn-img{
+.close, .btn-img{
     cursor: pointer;
 }
 
@@ -114,14 +114,15 @@ input.form-control:focus{
     background-color: #FFFFFF;
 }
 
-#btn-jam-operasional{
+.btn-jam-operasional{
     /* padding-left: 10px; */
     background: #007C92;
     color: #FFFFFF;
     width: 50%;
 }
 
-#btn-jam-operasional:hover{
+.btn-jam-operasional:hover{
+    color: #FFFFFF;
     background: #017286;
     font-weight: 600;
 }
@@ -198,8 +199,14 @@ input[readonly]{
     color: #007C92;
 }
 
-/* MODAL  */
-.modal-title{
+#inf-address{
+    margin-left: 5px;
+    cursor: pointer;
+    width: 5%;
+}
+
+/* MODAL JADWAL OPERASIONAL*/
+#scheduleModalLabel{
     color: #1C3F5B;
     font-weight: 600;
 }
@@ -217,6 +224,27 @@ th{
 .row-sst{
     padding: 10px;
     text-align: center;
+}
+
+/* MODAL SUCCESSFULLY UPDATE PROFILE */
+#successModalLabel{
+    color: #1C3F5B;
+}
+
+/* MODAL INFORMATION  */
+#informationModalLabel{
+    color: #152F44;
+    font-weight: 500;
+}
+
+#informationModalBody{
+    text-align: justify;
+    color: #1C3F5B;
+    font-size: smaller;
+}
+
+.modal-body{
+    word-wrap: break-word;
 }
 
 /* RESPONSIVE  */
