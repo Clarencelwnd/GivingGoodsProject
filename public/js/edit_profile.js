@@ -7,7 +7,7 @@ function openScheduleModalView() {
 document.addEventListener('DOMContentLoaded', function() {
 
     // MODAL SUCCESFULLY UPDATE PROFILE
-    if (document.getElementById('successModal')) {
+    if(document.getElementById('successModal')) {
         // Menampilkan modal
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
@@ -18,11 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = url;
         }, 1000);
     }
-
-    // VALIDATION INPUT SCHEDULE
-    document.getElementById('btn-save-schedule').addEventListener('click', function() {
-        document.getElementById('buttonClicked').value = "1";
-    });
 });
 
 // MODAL INFORMATION
@@ -30,8 +25,3 @@ function openModalInformation() {
     const modalView = document.getElementById("inf-address");
     modalView.display='block';
 }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-
-});

@@ -112,7 +112,7 @@
                             <tr>
                                 <td class="left-column-mt col-lg-4">Media Sosial</td>
                                 <td class="right-column-mt col-lg-5">
-                                    <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: linkprofile; Facebook: linkprofile;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
+                                    <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: @username; Facebook: @username;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
                                     @error('MediaSosialPantiSosial')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
                                             {{$message}}
@@ -124,8 +124,8 @@
                                 <td class="left-column-mt col-lg-4">Jam Operasional</td>
                                 <td class="right-column-mt col-lg-5" id="jam-operasional">
                                     @if (!($jadwalPansos->firstWhere('Hari', 'Senin')))
-                                        <a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional" id="btn-schedule">Atur Jam Operasional</a>
-                                        @error('buttonClicked')
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional @error('btn-schedule') is-invalid @enderror" id="btn-schedule" name="btn-schedule">Atur Jam Operasional</button>
+                                        @error('btn-schedule')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
                                                 {{ $message }}
                                             </div>
@@ -173,6 +173,12 @@
                                                 @endphp
                                             @endwhile
                                         </table>
+                                        <input type="hidden" name="btn-schedule" class="@error('btn-schedule') is-invalid @enderror">
+                                        @error('btn-schedule')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
                                     @endif
                                 </td>
                             </tr>
@@ -227,15 +233,17 @@
                                                     @foreach ($jadwalHari as $day => $jadwal)
                                                         <tr>
                                                             <td class="row-sst"><label for="hari-{{strtolower($day)}}" id="day">{{ucwords($day)}}</label></td>
-                                                            <td class="row-sst"><input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jadwal['jamBuka']}}"></td>
-                                                            <td class="row-sst"><input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}">
+                                                            <td class="row-sst">
+                                                                <input type="time" id="jam-buka-{{strtolower($day)}}" name="jam-buka-{{strtolower($day)}}" value="{{$jadwal['jamBuka']}}">
+                                                            </td>
+                                                            <td class="row-sst">
+                                                                <input type="time" id="jam-tutup-{{strtolower($day)}}" name="jam-tutup-{{strtolower($day)}}" value="{{$jadwal['jamTutup']}}">
                                                             </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                             <div class="row modal-footer d-flex justify-content-end border-0">
-                                                <input type="hidden" id="buttonClicked" name="buttonClicked" value="0">
                                                 <button type="submit" class="btn" id="btn-save-schedule">Simpan</button>
                                             </div>
                                         </form>

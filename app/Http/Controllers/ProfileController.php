@@ -29,6 +29,8 @@ class ProfileController extends Controller
         foreach ($jadwalPansos as $jadwal) {
             if($jadwal->JamBukaPantiSosial){
                 $jadwal->JamBukaPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamBukaPantiSosial)->format('H:i');
+            }
+            if($jadwal->JamTutupPantiSosial){
                 $jadwal->JamTutupPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamTutupPantiSosial)->format('H:i');
             }
         }
@@ -55,7 +57,11 @@ class ProfileController extends Controller
         foreach ($jadwalPansos as $jadwal) {
             if($jadwal->JamBukaPantiSosial){
                 $jadwal->JamBukaPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamBukaPantiSosial)->format('H:i');
+            }
+            if($jadwal->JamTutupPantiSosial){
                 $jadwal->JamTutupPantiSosial = Carbon::createFromFormat('H:i:s', $jadwal->JamTutupPantiSosial)->format('H:i');
+            }else{
+
             }
         }
 
@@ -63,7 +69,7 @@ class ProfileController extends Controller
     }
 
     public function edit_profile_logic(Request $request, $id){
-        dd($request->input('buttonClicked'));
+
         $validator = Validator::make($request->all(),[
             'NamaPantiSosial' => 'required',
             'DeskripsiPantiSosial' => 'required|max:300',
@@ -82,7 +88,7 @@ class ProfileController extends Controller
             'AlamatPantiSosial.max' => 'Alamat panti sosial maksimal berisi 450 karakter.',
             'LinkGoogleMapsPantiSosial.required' => 'Link google maps alamat panti sosial wajib diisi.',
             'LinkGoogleMapsPantiSosial.regex' => 'Link google maps wajib dengan format -> https://maps.app.goo.gl/',
-            'MediaSosialPantiSosial.regex' => 'Harap isi dengan format -> Media Sosial: Link Profile Panti Sosial;'
+            'MediaSosialPantiSosial.regex' => 'Apabila media sosial lebih dari satu, harap pisahkan hanya dengan spasi -> Media Sosial: Username Panti Sosial; Media Sosial: Username Panti Sosial;'
         ]);
 
         if(substr_count($request->input('MediaSosialPantiSosial'), ':') !== substr_count($request->input('MediaSosialPantiSosial'), ';')){
@@ -91,14 +97,29 @@ class ProfileController extends Controller
             });
         }
 
-        if((!JadwalOperasional::where('IDPantiSosial', $id)->where('Hari', 'Senin')->exists()) && ($request->input('buttonClicked') === "0")){
-            $validator->after(function ($validator){
-                $validator->errors()->add('buttonClicked', 'tes');
-            });
+        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
+        foreach($days as $day){
+            $jadwal = $jadwalPansos->where('Hari', $day)->first();
+
+            // Memastikan entri jadwal operasional tersedia untuk setiap hari
+            if(!($jadwal || $jadwal->JamBukaPantiSosial || $jadwal->JamTutupPantiSosial)){
+                $validator->after(function ($validator){
+                    $validator->errors()->add('btn-schedule', 'Jadwal operasional belum dilengkapi.');
+                });
+            }
+            else{
+                if($jadwal->JamBukaPantiSosial > $jadwal->JamTutupPantiSosial){
+                    $validator->after(function($validator){
+                        $validator->errors()->add('btn-schedule', 'Jam buka panti sosial harus lebih awal daripada jam tutup panti sosial.');
+                    });
+                };
+            };
         }
+
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
-        }
+        };
 
         // update tabel pansos
         PantiSosial::where('IDPantiSosial', $id)->update(
@@ -123,33 +144,9 @@ class ProfileController extends Controller
     }
 
     public function edit_schedule_logic(Request $request, $id){
+
         // variabel yang dibutuhkan
         $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
-        $rules = [];
-
-        // penentuan rules
-        foreach($days as $day){
-            $rules["jam-buka-".strtolower($day)] = 'required|date_format:H:i';
-            $rules["jam-tutup-".strtolower($day)] = 'required|date_format:H:i';
-        }
-
-        $validator = Validator::make($request->all(), $rules);
-
-        // error message
-        $validator->after(function($validator) use($request, $days){
-            foreach($days as $day){
-                $jamBuka = $request->input("jam-buka-".strtolower($day));
-                $jamTutup = $request->input("jam-tutup-".strtolower($day));
-                if($jamBuka > $jamTutup){
-                    $validator->errors()->add("jam-tutup-".strtolower($day), "Jam tidak sesuai.");
-                }
-            }
-        });
-
-        // menjalankan error
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
 
         // buat/masukkan data baru
         foreach ($days as $day) {
