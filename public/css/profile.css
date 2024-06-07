@@ -10,9 +10,9 @@
 
 /* INFORMATION */
 
-#information-icon{
-    width: 40px;
-    height: 40px;
+.information-icon{
+    width: 5%;
+    height: 100%;
     margin-right: 20px;
 }
 
@@ -20,7 +20,7 @@
     display: inline-flex;
     flex-direction: row;
     font-size: 16px;
-    width: 80%
+    width: 100%;
 }
 
 .alert p{
@@ -78,12 +78,6 @@
     font-weight: 500;
 }
 
-.error-msg{
-    margin-bottom: 10px;
-    font-size: 12px;
-    display: block;
-}
-
 /* RIGHT SIDE  */
 
 .right{
@@ -98,7 +92,6 @@
     color: #FFFFFF;
     margin-bottom: 20px;
     width: 30%;
-    /* font-size: 13px; */
 }
 
 #btn-edit:hover{
@@ -108,6 +101,12 @@
 
 /* RIGHT SIDE MAIN TABLE  */
 
+.error-msg{
+    margin-bottom: 10px;
+    font-size: 12px;
+    display: block;
+}
+
 table, td, tr{
     border: none;
 }
@@ -116,12 +115,26 @@ td, tr{
     padding-bottom: 20px;
 }
 
+td{
+    padding-right: 10%;
+}
+
 .left-column-mt, .right-column-mt{
     color: #006374;
 }
 
 .left-column-mt{
     font-weight: 500;
+}
+
+.right-column-mt{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#inf-address{
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 /* MODAL  */
@@ -139,6 +152,17 @@ td, tr{
 
 #btn-back{
     border: 1px solid #007C92;
+}
+
+#informationModalLabel{
+    color: #152F44;
+    font-weight: 500;
+}
+
+#informationModalBody{
+    text-align: justify;
+    color: #1C3F5B;
+    font-size: smaller;
 }
 
 

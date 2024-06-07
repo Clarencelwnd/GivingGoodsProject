@@ -1,11 +1,11 @@
-// MODAL EXIT CHANGE PASSWORD
-function openExitChangePasswordModalView() {
-    const modalView = document.getElementById("exitChangePassword");
-    modalView.display='block';
-}
-
-// MODAL SUCCESSFULLY CHANGE PASSWORD
+// MODAL SUCCESFULLY UPDATE PROFILE
 document.addEventListener('DOMContentLoaded', function() {
+    const datePicker = document.getElementById('datepicker');
+    datePicker.addEventListener('change', function(){
+        this.value;
+    })
+
+
     if (document.getElementById('successModal')) {
         // Menampilkan modal
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
@@ -18,4 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 });
+
+// MODAL INFORMATION
+function openModalInformation() {
+    const modalView = document.getElementById("inf-address");
+    modalView.display='block';
+}
+
 

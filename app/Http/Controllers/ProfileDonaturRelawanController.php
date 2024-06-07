@@ -37,6 +37,32 @@ class ProfileDonaturRelawanController extends Controller
     }
 
     public function edit_profile_logic(Request $request, $id){
+        // dd($request->input('TanggalLahirDonaturRelawan'));
+        $validator = Validator::make($request->all(),[
+            'NamaDonaturRelawan' => 'required',
+            'TanggalLahirDonaturRelawan' => 'required',
+            'JenisKelaminDonaturRelawan' => ['required', 'regex:/^(Laki-laki|Perempuan)$/'],
+            'NomorTeleponDonaturRelawan' => 'required|regex:/^\+628\d{9,11}$/',
+            'AlamatDonaturRelawan' => 'required|max:450',
+            'LinkGoogleMapsDonaturRelawan' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//'
+        ],
+        [
+            'NamaDonaturRelawan.required' => 'Nama donatur atau relawan wajib diisi.',
+            'TanggalLahirDonaturRelawan.required' => 'Tanggal lahir donatur atau relawan wajib diisi.',
+            'JenisKelaminDonaturRelawan.required' => 'Jenis kelamin donatur atau relawan wajib diisi.',
+            'JenisKelaminDonaturRelawan.regex' => 'Jenis kelamin donatur atau relawan hanya bisa diisi dengan Laki-laki atau Perempuan.',
+            'NomorTeleponDonaturRelawan.required' => 'Nomor handphone donatur atau relawan wajib diisi.',
+            'NomorTeleponDonaturRelawan.regex' => 'Nomor handphone donatur atau relawan wajib berisi angka yang dimulai dengan +62 diikuti dengan 10 - 12 digit.',
+            'AlamatDonaturRelawan.required' => 'Alamat donatur atau relawan wajib diisi.',
+            'AlamatDonaturRelawan.max' => 'Alamat donatur atau relawan maksimal berisi 450 karakter.',
+            'LinkGoogleMapsDonaturRelawan.required' => 'Link google maps alamat donatur atau relawan wajib diisi.',
+            'LinkGoogleMapsDonaturRelawan.regex' => 'Link google maps wajib dengan format -> https://maps.app.goo.gl/'
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         // update tabel pansos
         DonaturAtauRelawan::where('IDDonaturRelawan', $id)->update(
             [
@@ -54,7 +80,7 @@ class ProfileDonaturRelawanController extends Controller
         $user->email = $request->input('email');
         $user->save();
 
-        return redirect()->route('profile.donatur_relawan', ['id'=>$id]);
+        return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
     public function edit_photo_logic(Request $request, $id){

@@ -1,7 +1,3 @@
-@php
-    use Carbon\Carbon;
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +20,9 @@
                     @csrf
                     <input type="file" name="FotoDonaturRelawan" id="input_photo" class="file-choose-photo" onchange="document.getElementById('photo').submit()">
                     @error('FotoDonaturRelawan')
-                    <label class="error-msg invalid-feedback fw-normal lh-1">
-                        {{$message}}
-                    </label>
+                        <label class="error-msg invalid-feedback fw-normal lh-1">
+                            {{$message}}
+                        </label>
                     @enderror
                     <button type="button" for="FotoDonaturRelawan" class="btn btn-block @error('FotoDonaturRelawan') is-invalid @enderror" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
                 </form>
@@ -37,42 +33,46 @@
 
             <div class="right col-sm-9">
                 @if (!$detailDR->LinkGoogleMapsDonaturRelawan)
-                <div class="container information-button">
                     <div class="row">
                         <div class="alert alert-light" role="alert">
-                            <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
+                            <img class="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
                             <p>Lengkapi profil Anda untuk pengalaman yang lebih baik.</p>
                         </div>
                     </div>
-                </div>
                 @endif
 
                 <div class="row">
                     <a href="{{route('edit_profile.donatur_relawan', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                     <table class="main-table">
                         <tr>
-                            <td class="left-column-mt">Nama Lengkap</td>
-                            <td class="right-column-mt"> {{$detailDR->NamaDonaturRelawan}}</td>
+                            <td class="left-column-mt col-lg-4">Nama Lengkap</td>
+                            <td class="right-column-mt col-lg-5"> {{$detailDR->NamaDonaturRelawan}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt">Tanggal Lahir</td>
-                            <td class="right-column-mt"> {{$detailDR->TanggalLahirDonaturRelawan}}</td>
+                            <td class="left-column-mt col-lg-4">Tanggal Lahir</td>
+                            <td class="right-column-mt col-lg-5"> {{$detailDR->TanggalLahirDonaturRelawan}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt">Jenis Kelamin</td>
-                            <td class="right-column-mt"> {{$detailDR->JenisKelaminDonaturRelawan}}</td>
+                            <td class="left-column-mt col-lg-4">Jenis Kelamin</td>
+                            <td class="right-column-mt col-lg-5"> {{$detailDR->JenisKelaminDonaturRelawan}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt">Email</td>
-                            <td class="right-column-mt"> {{$userDR->email}}</td>
+                            <td class="left-column-mt col-lg-4">Email</td>
+                            <td class="right-column-mt col-lg-5"> {{$userDR->email}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt">Alamat Lengkap</td>
-                            <td class="right-column-mt"> {{$detailDR->AlamatDonaturRelawan}}</td>
+                            <td class="left-column-mt col-lg-4">
+                                Alamat Lengkap
+                                <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                            </td>
+                            <td class="right-column-mt col-lg-5"> {{$detailDR->AlamatDonaturRelawan}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt">Lokasi pada Google Maps</td>
-                            <td class="right-column-mt"> {{$detailDR->LinkGoogleMapsDonaturRelawan}}</td>
+                            <td class="left-column-mt col-lg-4">
+                                Lokasi pada Google Maps
+                                <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                            </td>
+                            <td class="right-column-mt col-lg-5"> {{$detailDR->LinkGoogleMapsDonaturRelawan}}</td>
                         </tr>
                     </table>
                 </div>
@@ -84,7 +84,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content text-center">
                         <div class="modal-header text-center border-0">
-                            <h5 class="modal-title w-100" id="logoutModalLabel">Keluar dari Akun</h5>
+                            <h6 class="modal-title w-100" id="logoutModalLabel">Keluar dari Akun</h6>
                         </div>
                         <div class="modal-body">
                             Apakah Anda yakin ingin keluar dari Akun Anda?
@@ -96,6 +96,22 @@
                             <div class="col-profile">
                                 <button  onclick="window.location.href='{{route('logout.donatur_relawan')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
                             </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- MODAL INFORMATION --}}
+            <div class="container">
+                <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-center">
+                        <div class="modal-header text-center border-0">
+                            <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
+                        </div>
+                        <div class="modal-body" id="informationModalBody">
+                            Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini. Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
                         </div>
                     </div>
                     </div>
