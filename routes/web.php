@@ -15,7 +15,7 @@ Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGene
 //Daftar Artikel
 Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])->name('displayDaftarArtikel');
 //Detail Artikel
-Route::get('/daftarArtikel/artikel1', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
+Route::get('daftarArtikel/artikel1', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
 //Detail Artikel 2
 Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 

@@ -1,4 +1,4 @@
-@extends('templateDonaturRelawan')
+@extends('generalPageDonaturRelawan.templateDonaturRelawan')
 
 @section('title', 'Artikel')
 
