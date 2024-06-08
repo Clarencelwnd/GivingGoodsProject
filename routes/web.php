@@ -23,3 +23,5 @@ Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailA
 //Daftar Kegiatan
 Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
 
+//Search
+Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');

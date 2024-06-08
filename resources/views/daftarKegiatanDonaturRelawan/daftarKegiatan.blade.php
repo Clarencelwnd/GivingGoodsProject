@@ -12,7 +12,7 @@
 
 @section('content')
     {{-- SEARCH BAR --}}
-    <form action="#" method="GET">
+    <form action="{{ route('daftarKegiatan.search') }}" method="GET">
         <div class="col-md-11 searchbar">
             <div class="d-flex form-inputs">
                 <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama panti sosial, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">
@@ -56,7 +56,7 @@
                             @endif
                         </p>
                         <div class="d-flex justify-content-between">
-                            <p class="card-text" id="card-namaPanti">Nama panti sosial</p>
+                            <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
                             <p class="card-text" id="card-jenisDonasi">Jarak</p>
                         </div>
                     </div>
