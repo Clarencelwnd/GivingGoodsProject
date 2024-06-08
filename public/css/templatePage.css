@@ -1,0 +1,239 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#main {
+    flex: 1;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #00849B;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #FDFFFE;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+    font-weight:600;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.contact-us{
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #FDFFFE;
+    display: block;
+    transition: 0.3s;
+    margin-top: 480px;
+}
+
+#content-contact-us p{
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.openbtn {
+    font-size: 40px;
+    cursor: pointer;
+    color: #00744C;
+    padding-right: 15px ;
+    border: none;
+    background-color: transparent;
+}
+
+#logoImage {
+    width: 54px;
+    height: 56px;
+}
+
+#organization-profile{
+    width: 32px;
+    height: 32px;
+    margin-right: 5px; /* Adjust as needed */
+}
+
+#organization-name {
+    margin: 0;
+}
+
+#givingGoodsTitle {
+    color: #00744C;
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+.website-title {
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    display: inline-flex;
+}
+
+/* DROPDOWN */
+#dropdownOrganizationName {
+    border: 0px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.dropdown-item{
+    color: #007C92;
+}
+
+.dropdown a{
+    width: auto;
+}
+
+.dropdown-toggle{
+    display: flex;
+    align-items: center;
+}
+
+.dropdown .dropdown-toggle:focus,
+.dropdown .dropdown-toggle:active,
+.dropdown .dropdown-toggle:focus-visible {
+    outline: none !important;
+    box-shadow: none !important; /* Remove any default box-shadow */
+}
+
+.dropdown-toggle img{
+    margin-right: 10px;
+}
+
+.dropdown-toggle p {
+    margin: 0;
+}
+
+#keluarAkun{
+    color: #A22E27;
+}
+
+
+
+#main {
+    transition: margin-left .5s;
+}
+
+footer .text-muted{
+    color: #00744C;
+}
+
+/* HEADER MODAL */
+.modal-backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+.modal-footer{
+    gap: 30px;
+}
+
+.btn-kembali{
+    padding: 5px 40px 5px 40px;
+    color: #007C92;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px #007C92 solid;
+}
+
+.btn-kembali:hover{
+    padding: 5px 40px 5px 40px;
+    color: #007C92;
+    font-size: 16px;
+    font-weight: 600;
+    border: 1.5px #007C92 solid;
+}
+
+.btn-keluar{
+    padding: 5px 40px 5px 40px;
+    color: #FDFFFE;
+    font-size: 16px;
+    font-weight: 500;
+    background: #B7342C;
+    border-radius: 5px;
+}
+
+.btn-keluar:hover{
+    padding: 5px 40px 5px 40px;
+    color: #FDFFFE;
+    font-size: 16px;
+    font-weight: 600;
+    background: #B7342C;
+    border-radius: 5px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 15px;
+    }
+    .sidebar a {
+        font-size: 18px;
+    }
+}
+
+
+/* STATUS */
+.badge-custom {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    width: auto;
+    height: 100%;
+    padding: 3px 25px;
+    border-radius: 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+ .statusAkanDatang {
+    background: #898989;
+    color: white;
+}
+
+.statusSedangBerlangsung {
+    background: #F3A229;
+    color: white;
+}
+
+.statusSelesai {
+    background: #16B364;
+    color: white;
+}
