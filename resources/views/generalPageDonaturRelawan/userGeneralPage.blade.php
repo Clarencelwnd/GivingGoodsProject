@@ -9,10 +9,22 @@
 @endsection
 
 @section('content')
+
     <div class="img-container">
         <div class="image-wrapper">
             <img id="background-image" src="{{ asset('Image/general/userGeneralPageBackground.jpg') }}" alt="">
+
             <div class="overlay">
+                {{-- INFORMATION BUTTON --}}
+                <div class="container information-button">
+                    <div class="row justify-content-center">
+                        <div class="alert alert-light text-center" role="alert" onclick="window.location.href='#'">
+                            <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
+                            <p>Lengkapi profil Anda untuk pengalaman yang lebih baik.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="overlay-text">
                     <h6 id="overlay-text-title">Bersatu untuk Kebaikan</h6>
                     <p id="overlay-text-description">
