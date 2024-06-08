@@ -11,15 +11,23 @@ class UserGeneralPageController extends Controller
     public function displayUserGeneralPage(){
       $kegiatanDonasi = KegiatanDonasi::take(5)->get();
       $kegiatanRelawan = KegiatanRelawan::take(5)->get();
-      return view('generalPageDonaturRelawan/userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan'));
+
+      $jenisDonasiIcons = [
+        'alat_tulis' => 'Image/donasi/alat_tulis.png',
+        'buku' => 'Image/donasi/buku.png',
+        'keperluan_rumah' => 'Image/donasi/keperluan_rumah.png',
+        'mainan' => 'Image/donasi/mainan.png',
+        'makanan' => 'Image/donasi/makanan.png',
+        'obat' => 'Image/donasi/obat.png',
+        'pakaian' => 'Image/donasi/pakaian.png',
+        'keperluan_ibadah' => 'Image/donasi/perlengkapan_ibadah.png',
+        'sepatu' => 'Image/donasi/sepatu.png',
+        'keperluan_mandi' => 'Image/donasi/toiletries.png'
+      ];
+
+      return view('generalPageDonaturRelawan/userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons'));
     }
 
-    public function displayKegiatanImage(Request $request, $id){
-        $original_name = $request->file('GambarKegiatanRelawan')->getClientOriginalName();
-        $request->file('GambarKegiatanRelawan')->storeAs('public/Profile', $original_name);
-        $gambarKegiatanRelawan = 'storage/Profile/' . $original_name;
-        return view('generalPageDonaturRelawan.userGeneralPage', compact('gambarKegiatanRelawan'));
-    }
 
 
 }
