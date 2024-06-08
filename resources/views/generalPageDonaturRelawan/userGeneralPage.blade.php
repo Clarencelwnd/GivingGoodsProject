@@ -1,12 +1,11 @@
 @extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
-@section('title', 'Daftar Artikel')
+@section('title', 'Halaman Utama')
 
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userGeneralPage.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/components/cardKegiatan.css') }}"> --}}
 @endsection
 
 @section('content')
@@ -46,7 +45,7 @@
                         <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
                         <p class="card-text" id="card-jenisDonasi">{{ $donasi->JenisDonasiDibutuhkan }}</p>
                         <div class="d-flex justify-content-between">
-                            <p class="card-text" id="card-namaPanti">{{ $donasi->IDPantiSosial }}</p>
+                            <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
                             <p class="card-text" id="card-jenisDonasi">Jarak</p>
                         </div>
                         </div>
@@ -66,13 +65,13 @@
             <div class="cardsKegiatanRelawan-container">
                 @foreach ($kegiatanRelawan as $relawan)
                     <div class="card card-kegiatanRelawan" style="width: 16rem;">
-                        <img src="{{ asset($donasi->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                        <img src="{{ asset($relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                         <div class="card-body card-kegiatan">
                             <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
                             <p class="card-text">{{ $relawan->JenisKegiatanRelawan }}</p>
                             <div class="d-flex justify-content-between">
-                                <p class="card-text">{{ $relawan->IDPantiSosial }}</p>
-                                <p class="card-text">{{ $relawan->jarak }}</p>
+                                <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text">jarak</p>
                             </div>
                         </div>
                     </div>

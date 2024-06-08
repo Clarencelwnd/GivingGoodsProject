@@ -15,9 +15,11 @@ class UserGeneralPageController extends Controller
     }
 
     public function displayKegiatanImage(Request $request, $id){
-        $kegiatanDonasi = KegiatanDonasi::find($id);
-
-        return view('generalPageDonaturRelawan.userGeneralPage', ['kegiatanDonasi' => $kegiatanDonasi]);
+        $original_name = $request->file('GambarKegiatanRelawan')->getClientOriginalName();
+        $request->file('GambarKegiatanRelawan')->storeAs('public/Profile', $original_name);
+        $gambarKegiatanRelawan = 'storage/Profile/' . $original_name;
+        return view('generalPageDonaturRelawan.userGeneralPage', compact('gambarKegiatanRelawan'));
     }
+
 
 }
