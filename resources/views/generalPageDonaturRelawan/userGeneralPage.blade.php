@@ -60,6 +60,7 @@
                                 $donasiTypes = explode('; ', $donasi->JenisDonasiDibutuhkan);
                                 $donasiTypes = array_slice($donasiTypes, 0, 5);
                             @endphp
+                            Jenis Donasi: 
                             @foreach ($donasiTypes as $type)
                                 @if(array_key_exists($type, $jenisDonasiIcons))
                                     <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
@@ -93,7 +94,7 @@
                         <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                         <div class="card-body card-kegiatan">
                             <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
-                            <p class="card-text">{{ $relawan->JenisKegiatanRelawan }}</p>
+                            <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
                             <div class="d-flex justify-content-between">
                                 <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
                                 <p class="card-text">jarak</p>

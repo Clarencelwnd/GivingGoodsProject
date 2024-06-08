@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DaftarKegiatanController;
 use App\Http\Controllers\UserGeneralPage;
 use App\Http\Controllers\UserGeneralPageController;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,6 @@ Route::get('daftarArtikel/artikel1', [ArtikelController::class, 'displayDetailAr
 //Detail Artikel 2
 Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 
+//Daftar Kegiatan
+Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
 
