@@ -27,7 +27,7 @@
                     <button type="button" for="FotoDonaturRelawan" class="btn btn-block @error('FotoDonaturRelawan') is-invalid @enderror" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
                 </form>
                 <a href="{{route('change_password.donatur_relawan', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
-                <a href="#" class="btn btn-block" id="btn-history">Riwayat Kegiatan</a>
+                <a href="{{route('riwayat_kegiatan', ['id'=>$id])}}" class="btn btn-block" id="btn-history">Riwayat Kegiatan</a>
                 <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
             </div>
 

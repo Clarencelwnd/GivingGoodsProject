@@ -1,0 +1,106 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.card{
+    margin-top: 2%;
+    border: none;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.btn{
+    border-radius:5px;
+    font-size: 13px;
+}
+
+/* CARD HEADER  */
+
+.card-header{
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.position{
+    color: #1C3F5B;
+    font-size: x-small;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.back{
+    text-decoration: none;
+    color: #007C92;
+    font-size: small;
+}
+
+.title{
+    margin-top: 20px;
+    font-weight: 600;
+    color: #007C92;
+    margin-bottom: 0px;
+}
+
+/* CARD BODY  */
+
+.card-body{
+    margin-top: 0px;
+}
+
+.row{
+    padding-left: 12px;
+}
+
+.btn-filter, .btn-filter:hover{
+    border: 1px solid #00744C;
+    color: #00744C;
+}
+
+.btn-filter.selected{
+    background-color: #D9F6EC;
+    border: none;
+    color: #00744C;
+}
+
+#btn-donasi, #btn-relawan, #btn-donasi-diterima, #btn-relawan-diterima, #btn-relawan-ditolak{
+    margin-left: 16px;
+}
+
+#sub-filter{
+    margin-top: 15px;
+}
+
+.btn-sub-filter, .btn-sub-filter:hover{
+    border: 1px solid #00849B;
+    color: #00849B;
+}
+
+.btn-sub-filter.selected{
+    background-color: #D9F2F6;
+    border: none;
+    color: #00849B;
+}
+
+
+/* RESPONSIVE  */
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}

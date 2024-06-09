@@ -140,6 +140,10 @@ class ProfileDonaturRelawanController extends Controller
         return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
+    public function riwayat_kegiatan_view($id){
+        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id'));
+    }
+
     public function logout(){
         Auth::logout();
         Cookie::queue(Cookie::forget('email'));
