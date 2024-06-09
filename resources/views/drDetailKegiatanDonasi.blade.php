@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Kegiatan Relawan</title>
+    <title>Detail Kegiatan Donasi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,7 +25,7 @@
             margin-top: 20px;
         }
         .section{
-            padding-bottom: 30px;
+            padding-bottom: 40px;
         }
         .subtitle {
             font-size: 32px;
@@ -173,6 +173,38 @@
 }
 
 
+.detail-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.detail-info-jenis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.donation-options img {
+    height: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donation-options img.selected {
+    background-color: #B0ECD7;
+}
+
+.detail-label{
+    color: #1C3F5B;
+    font-weight: 600;
+    font-size: 26px;
+}
+
+
     </style>
 </head>
 <body>
@@ -208,9 +240,28 @@
 
         <div class="section">
             <div class="subtitle">Kebutuhan Jenis Donasi
-                <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
             </div>
-            <div class="text">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
+            <div class="detail-row">
+                <div class="detail-label">Jenis Donasi
+                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
+                </div>
+                <div class="detail-info-jenis">
+                    <div class="donation-options">
+                    @php
+                        // Memisahkan string menjadi array
+                        $jenisDonasiArray = explode(',', $kegiatanDonasi->JenisDonasiDibutuhkan);
+                    @endphp
+                    @foreach($jenisDonasiArray as $jenisDonasi)
+                        @php
+                            // Menghapus spasi dan mengonversi ke huruf kecil
+                            $namaFile = strtolower(str_replace(' ', '_', trim($jenisDonasi))) . '.png';
+                        @endphp
+                        <img src="{{ asset('image/donasi/' . $namaFile) }}" alt="{{ $jenisDonasi }}" height="20px">
+                    @endforeach
+                    </div>
+                </div>
+            </div>
+            <div class="text">Jenis Donasi yang Dibutuhkan: </div>
         </div>
 
 
