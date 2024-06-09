@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\DonaturAtauRelawan;
 use App\Models\JadwalOperasional;
 use App\Models\PantiSosial;
+use App\Models\RegistrasiDonatur;
 use App\Models\RegistrasiRelawan;
+use App\Models\KegiatanDonasi;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -141,7 +143,35 @@ class ProfileDonaturRelawanController extends Controller
     }
 
     public function riwayat_kegiatan_view($id){
-        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id'));
+        $registrasiDonatur = RegistrasiDonatur::where('IDDonaturRelawan', $id)->get();
+        if($registrasiDonatur){
+            $kegiatanDonasi = [];
+            foreach ($registrasiDonatur as $registDonatur) {
+                $kegiatanDonasi[] = $registDonatur->kegiatanDonasi()->get();
+            }
+            $pantiSosialDonasi = [];
+            foreach($kegiatanDonasi as $kegDonasi){
+                foreach ($kegDonasi as $kegiatan) {
+                    $pantiSosialDonasi[] = $kegiatan->PantiSosial;
+                }
+            }
+        }
+
+        $registrasiRelawan = RegistrasiRelawan::where('IDDonaturRelawan', $id)->get();
+        if($registrasiRelawan){
+            $kegiatanRelawan = [];
+            foreach ($registrasiRelawan as $registRelawan) {
+                $kegiatanRelawan[] = $registRelawan->kegiatanRelawan()->get();
+            }
+            $pantiSosialRelawan = [];
+            foreach($kegiatanDonasi as $kegDonasi){
+                foreach ($kegDonasi as $kegiatan) {
+                    $pantiSosialRelawan[] = $kegiatan->PantiSosial;
+                }
+            }
+        }
+
+        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'kegiatanDonasi', 'pantiSosialDonasi', 'registrasiRelawan', 'kegiatanRelawan', 'pantiSosialRelawan'));
     }
 
     public function logout(){

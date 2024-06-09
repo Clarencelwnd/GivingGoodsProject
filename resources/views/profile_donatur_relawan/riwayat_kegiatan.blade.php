@@ -12,28 +12,59 @@
     <link rel="stylesheet" href="{{asset('css/riwayat_kegiatan.css')}}">
 </head>
 <body>
-    <div class="card container justify-content-center">
-        <div class="card-header">
+    <div class="card main container justify-content-center">
+        <div class="card-header main">
             <p class="position">Profil > Riwayat Kegiatan</p>
             <a class="back" href="{{route('profile.donatur_relawan', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
             <h5 class="title">Riwayat Kegiatan</h5>
         </div>
-        <div class="card-body">
+        <div class="card-body main">
             <div class="row d-flex justify-content-start">
                 <button type="button" class="col-auto btn btn-filter selected" data-filter="semua" id="btn-semua">Semua</button>
                 <button type="button" class="col-auto btn btn-filter" data-filter="donasi" id="btn-donasi">Donasi</button>
                 <button type="button" class="col-auto btn btn-filter" data-filter="relawan" id="btn-relawan">Relawan</button>
             </div>
             <div class="row d-flex justify-content-start" id="sub-filter"></div>
-            <div id="data_container">
+            <div id="card kegiatan container justify-content-center">
+                @foreach ($registrasiDonatur as $registDonatur)
+                    <div class="card-header">
+                        {{$registDonatur->TanggalDonasi}}
+                        @foreach ($kegiatanDonasi as $kegDonasi)
+                            @foreach ($kegDonasi as $kegiatan)
+                            {{$kegiatan->NamaKegiatanDonasi}}
+                            @endforeach
+                        @endforeach
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                @endforeach
+                {{-- <div class="card-header">
+                    @foreach ($registrasiDonatur as $registDonatur)
+                        {{$registDonatur->TanggalDonasi}}
+                    @endforeach
+                    @foreach ($kegiatanDonasi as $kegDonasi)
+                        @foreach ($kegDonasi as $kegiatan)
+                            {{$kegiatan->NamaKegiatanDonasi}}
+                        @endforeach
+                    </div>
+                    <div class="card-body">
+                        @foreach ($pantiSosialDonasi as $pansos)
+                            {{$pansos->NamaPantiSosial}}
+                        @endforeach
+                        @foreach ($registrasiDonatur as $registDonatur)
+                            {{$registDonatur->JenisDonasiDidonasikan}}
+                        @endforeach
+                    </div>
+                @endforeach --}}
                 <!-- Contoh data -->
-                <div class="data-item semua">Item Semua 1</div>
+                {{-- <div class="data-item semua">Item Semua 1</div>
                 <div class="data-item semua">Item Semua 2</div>
                 <div class="data-item semua donasi sedang_diproses">Donasi Sedang Diproses 1</div>
                 <div class="data-item semua donasi donasi_diterima">Donasi Diterima 1</div>
                 <div class="data-item semua relawan menunggu_konfirmasi">Relawan Menunggu Konfirmasi 1</div>
                 <div class="data-item semua relawan relawan_diterima">Relawan Diterima 1</div>
-                <div class="data-item semua relawan relawan_ditolak">Relawan Ditolak 1</div>
+                <div class="data-item semua relawan relawan_ditolak">Relawan Ditolak 1</div> --}}
             </div>
         </div>
 
