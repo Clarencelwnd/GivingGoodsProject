@@ -143,35 +143,37 @@ class ProfileDonaturRelawanController extends Controller
     }
 
     public function riwayat_kegiatan_view($id){
-        $registrasiDonatur = RegistrasiDonatur::where('IDDonaturRelawan', $id)->get();
-        if($registrasiDonatur){
-            $kegiatanDonasi = [];
-            foreach ($registrasiDonatur as $registDonatur) {
-                $kegiatanDonasi[] = $registDonatur->kegiatanDonasi()->get();
-            }
-            $pantiSosialDonasi = [];
-            foreach($kegiatanDonasi as $kegDonasi){
-                foreach ($kegDonasi as $kegiatan) {
-                    $pantiSosialDonasi[] = $kegiatan->PantiSosial;
-                }
-            }
-        }
+        // $registrasiDonatur = RegistrasiDonatur::where('IDDonaturRelawan', $id)->get();
+        // if($registrasiDonatur){
+        //     $kegiatanDonasi = [];
+        //     foreach ($registrasiDonatur as $registDonatur) {
+        //         $kegiatanDonasi[] = $registDonatur->kegiatanDonasi()->get();
+        //     }
+        //     $pantiSosialDonasi = [];
+        //     foreach($kegiatanDonasi as $kegDonasi){
+        //         foreach ($kegDonasi as $kegiatan) {
+        //             $pantiSosialDonasi[] = $kegiatan->PantiSosial;
+        //         }
+        //     }
+        // }
 
-        $registrasiRelawan = RegistrasiRelawan::where('IDDonaturRelawan', $id)->get();
-        if($registrasiRelawan){
-            $kegiatanRelawan = [];
-            foreach ($registrasiRelawan as $registRelawan) {
-                $kegiatanRelawan[] = $registRelawan->kegiatanRelawan()->get();
-            }
-            $pantiSosialRelawan = [];
-            foreach($kegiatanDonasi as $kegDonasi){
-                foreach ($kegDonasi as $kegiatan) {
-                    $pantiSosialRelawan[] = $kegiatan->PantiSosial;
-                }
-            }
-        }
+        // $registrasiRelawan = RegistrasiRelawan::where('IDDonaturRelawan', $id)->get();
+        // if($registrasiRelawan){
+        //     $kegiatanRelawan = [];
+        //     foreach ($registrasiRelawan as $registRelawan) {
+        //         $kegiatanRelawan[] = $registRelawan->kegiatanRelawan()->get();
+        //     }
+        //     $pantiSosialRelawan = [];
+        //     foreach($kegiatanDonasi as $kegDonasi){
+        //         foreach ($kegDonasi as $kegiatan) {
+        //             $pantiSosialRelawan[] = $kegiatan->PantiSosial;
+        //         }
+        //     }
+        // }
 
-        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'kegiatanDonasi', 'pantiSosialDonasi', 'registrasiRelawan', 'kegiatanRelawan', 'pantiSosialRelawan'));
+        $donations = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
+        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'donations'));
+        // return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'kegiatanDonasi', 'pantiSosialDonasi', 'registrasiRelawan', 'kegiatanRelawan', 'pantiSosialRelawan'));
     }
 
     public function logout(){

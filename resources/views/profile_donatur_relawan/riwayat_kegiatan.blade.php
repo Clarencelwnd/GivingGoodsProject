@@ -26,7 +26,19 @@
             </div>
             <div class="row d-flex justify-content-start" id="sub-filter"></div>
             <div id="card kegiatan container justify-content-center">
-                @foreach ($registrasiDonatur as $registDonatur)
+                <div class="container">
+                    @foreach($donations as $donation)
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $donation->kegiatanDonasi->NamaKegiatanDonasi }}</h5>
+                                <p class="card-text">Tanggal Donasi: {{ $donation->TanggalDonasi }}</p>
+                                <p class="card-text">Panti Sosial: {{ $donation->kegiatanDonasi->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text">Jenis Donasi: {{ $donation->JenisDonasiDidonasikan }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                {{-- @foreach ($registrasiDonatur as $registDonatur)
                     <div class="card-header">
                         {{$registDonatur->TanggalDonasi}}
                         @foreach ($kegiatanDonasi as $kegDonasi)
@@ -38,7 +50,7 @@
                     <div class="card-body">
 
                     </div>
-                @endforeach
+                @endforeach --}}
                 {{-- <div class="card-header">
                     @foreach ($registrasiDonatur as $registDonatur)
                         {{$registDonatur->TanggalDonasi}}
