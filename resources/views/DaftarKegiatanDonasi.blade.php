@@ -158,7 +158,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-
+    width: 100%;
+    margin-bottom: 15px;
+}
 .selected-item {
     margin-right: 10px;
     border: 1px solid #006374;
@@ -191,12 +193,12 @@
         <!-- Subtitles and Input Fields -->
         <div class="input-container">
             <div class="subtitle">Nama Donatur</div>
-            <input type="text" class="input-field" name="nama_relawan" id="nama_relawan_field" value="{{ $donaturRelawan->NamaDonaturRelawan }}" readonly style="background-color: #f0f0f0;">
+            <input type="text" class="input-field" name="nama_donatur" id="nama_donatur_field" value="{{ $donaturRelawan->NamaDonaturRelawan }}" readonly style="background-color: #f0f0f0;">
         </div>
 
         <div class="input-container">
             <div class="subtitle">No HP Donatur</div>
-            <input type="text" class="input-field" name="no_hp_relawan" id="no_hp_relawan_field" value="{{ $donaturRelawan->NomorTeleponDonaturRelawan }}" readonly style="background-color: #f0f0f0;">
+            <input type="text" class="input-field" name="no_hp_donatur" id="no_hp_donatur_field" value="{{ $donaturRelawan->NomorTeleponDonaturRelawan }}" readonly style="background-color: #f0f0f0;">
         </div>
 
         <div class="input-container">
@@ -204,18 +206,18 @@
             <div class="dropdown">
                 <div id="selected-options"></div>
                 <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" readonly>
-                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow" alt="Dropdown Arrow">
-                <div class="dropdown-content" id="dropdown_content">
-                    <div class="dropdown-item" onclick="selectOption('Pakaian')"><span>Pakaian</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Makanan')"><span>Makanan</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Obat-obatan')"><span>Obat-obatan</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Buku-buku')"><span>Buku-buku</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Keperluan Ibadah')"><span>Keperluan Ibadah</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Mainan')"><span>Mainan</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Perlengkapan Mandi')"><span>Perlengkapan Mandi</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Keperluan Rumah')"><span>Keperluan Rumah</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Alat Tulis')"><span>Alat Tulis</span></div>
-                    <div class="dropdown-item" onclick="selectOption('Sepatu')"><span>Sepatu</span></div>
+                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow">
+                <div class="dropdown-content" id="dropdown_content_jenis">
+                    <div class="dropdown-item" onclick="selectOptionJenis('Pakaian')"><span>Pakaian</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Makanan')"><span>Makanan</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Obat-obatan')"><span>Obat-obatan</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Buku-buku')"><span>Buku-buku</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Keperluan Ibadah')"><span>Keperluan Ibadah</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Mainan')"><span>Mainan</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Perlengkapan Mandi')"><span>Perlengkapan Mandi</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Keperluan Rumah')"><span>Keperluan Rumah</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Alat Tulis')"><span>Alat Tulis</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('Sepatu')"><span>Sepatu</span></div>
                 </div>
             </div>
         </div>
@@ -271,9 +273,9 @@
 
             <div class="time-picker-container">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
-                <input type="text" class="input-field" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan">
+                <input type="text" class="input-field" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field">
                 <span style="padding-bottom: 10px; padding-left: 15px;  padding-right: 15px;"> - </span>
-                <input type="text" class="input-field" name="jam_selesai_kegiatan" id="jam_selesai_kegiatan">
+                <input type="text" class="input-field" name="jam_selesai_kegiatan" id="jam_selesai_kegiatan_field">
             </div>
 
         </div>
@@ -281,14 +283,18 @@
         <a href="#" class="button" onclick="event.preventDefault(); submitForm()">Lanjut</a>
 
         <!-- Form Hidden Fields -->
-        <form id="submit-form" action="{{ route('storeDaftarKegiatanRelawan') }}" method="POST" style="display: none;">
+        <form id="submit-form" action="{{ route('storeDaftarKegiatanDonasi') }}" method="POST" style="display: none;">
             @csrf
-            <input type="hidden" name="nama_relawan" id="nama_relawan">
-            <input type="hidden" name="no_hp_relawan" id="no_hp_relawan">
-            <input type="hidden" name="alasan_relawan" id="alasan_relawan">
+            <input type="hidden" name="nama_donatur" id="nama_donatur">
+            <input type="hidden" name="no_hp_donatur" id="no_hp_donatur">
+            <input type="hidden" name="jenis_donasi" id="jenis_donasi">
+            <input type="hidden" name="deskripsi_barang" id="deskripsi_barang">
+            <input type="hidden" name="pengiriman_barang" id="pengiriman_barang">
             <input type="hidden" name="tanggal_kegiatan" id="tanggal_kegiatan">
-            <input type="hidden" name="IDKegiatanRelawan" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
-            <input type="hidden" name="IDDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
+            <input type="hidden" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan">
+            <input type="hidden" name="jam_selesai_kegiatan" id="jam_selesai_kegiatan">
+            <input type="hidden" name="IDKegiatanRelawan" id="id_kegiatan_relawan" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
+            <input type="hidden" name="IDDonaturRelawan" id="id_donatur_relawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
         </form>
 
     </div>
@@ -299,29 +305,45 @@
             dateFormat: "Y-m-d",
         });
 
-        flatpickr('#jam_mulai_kegiatan', {
+        flatpickr('#jam_mulai_kegiatan_field', {
             enableTime: true,
             noCalendar: true,
             dateFormat: "H:i",
         });
 
 
-        flatpickr('#jam_selesai_kegiatan', {
+        flatpickr('#jam_selesai_kegiatan_field', {
             enableTime: true,
             noCalendar: true,
             dateFormat: "H:i",
         });
 
         function submitForm() {
-            document.getElementById('nama_relawan').value = document.getElementById('nama_relawan_field').value;
-            document.getElementById('no_hp_relawan').value = document.getElementById('no_hp_relawan_field').value;
-            document.getElementById('alasan_relawan').value = document.getElementById('alasan_relawan_field').value;
-            document.getElementById('tanggal_kegiatan').value = document.getElementById('date-picker').value;
+            // Menampilkan nilai input sebelum mengirimkan formulir
+            console.log("Nama Donatur:", document.getElementById('nama_donatur_field').value);
+            console.log("No HP Donatur:", document.getElementById('no_hp_donatur_field').value);
+            console.log("Jenis Donasi:", document.getElementById('jenis_donasi_field').value);
+            console.log("Deskripsi Barang Donasi:", document.getElementById('deskripsi_barang_field').value);
+            console.log("Pengiriman Barang:", document.getElementById('pengiriman_barang_field').value);
+            console.log("Tanggal Kegiatan:", document.getElementById('tanggal_kegiatan').value);
+            console.log("Jam Mulai Kegiatan:", document.getElementById('jam_mulai_kegiatan').value);
+            console.log("Jam Selesai Kegiatan:", document.getElementById('jam_selesai_kegiatan').value);
 
+              // Copy values from visible input fields to hidden input fields
+            document.getElementById('nama_donatur').value = document.getElementById('nama_donatur_field').value;
+            document.getElementById('no_hp_donatur').value = document.getElementById('no_hp_donatur_field').value;
+            document.getElementById('jenis_donasi').value = document.getElementById('jenis_donasi_field').value;
+            document.getElementById('deskripsi_barang').value = document.getElementById('deskripsi_barang_field').value;
+            document.getElementById('pengiriman_barang').value = document.getElementById('pengiriman_barang_field').value;
+            document.getElementById('tanggal_kegiatan').value = document.getElementById('date-picker').value;
+            document.getElementById('jam_mulai_kegiatan').value = document.getElementById('jam_mulai_kegiatan_field').value;
+            document.getElementById('jam_selesai_kegiatan').value = document.getElementById('jam_selesai_kegiatan_field').value;
+
+            // Submit the form
             document.getElementById('submit-form').submit();
         }
 
-        document.getElementById('pengiriman_barang_field').addEventListener('click', toggleDropdown);
+document.getElementById('pengiriman_barang_field').addEventListener('click', toggleDropdown);
 document.getElementById('dropdown_arrow').addEventListener('click', toggleDropdown);
 
 function toggleDropdown() {
@@ -355,7 +377,37 @@ window.onclick = function(event) {
 }
 
 
-function selectOption(option) {
+
+document.getElementById('jenis_donasi_field').addEventListener('click', toggleDropdownJenis);
+document.getElementById('dropdown_arrow_jenis').addEventListener('click', toggleDropdownJenis);
+
+
+function toggleDropdownJenis() {
+    let dropdown = document.getElementById('dropdown_content_jenis');
+    let arrow = document.getElementById('dropdown_arrow_jenis');
+    if (dropdown.style.display === "block") {
+        dropdown.style.display = "none";
+        arrow.style.transform = "rotate(0deg)";
+    } else {
+        dropdown.style.display = "block";
+        arrow.style.transform = "rotate(180deg)";
+    }
+}
+
+
+window.onclick = function(event) {
+    if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
+        let dropdown = document.getElementById('dropdown_content_jenis');
+        let arrow = document.getElementById('dropdown_arrow_jenis');
+        if (dropdown.style.display === "block") {
+            dropdown.style.display = "none";
+            arrow.style.transform = "rotate(0deg)";
+        }
+    }
+}
+
+
+function selectOptionJenis(option) {
     // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
     var selectedDiv = document.createElement("div");
     selectedDiv.className = "selected-item";

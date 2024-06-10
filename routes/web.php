@@ -7,6 +7,9 @@ use App\Http\Controllers\SummaryDaftarRelawanController;
 
 use App\Http\Controllers\drDetailKegiatanDonasiController;
 use App\Http\Controllers\DaftarKegiatanDonasiController;
+use App\Http\Controllers\SummaryDaftarDonasiController;
+
+
 
 
 
@@ -32,3 +35,6 @@ Route::post('/store-daftar-relawan', [SummaryDaftarRelawanController::class, 'st
 Route::get('/dr-detail-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [drDetailKegiatanDonasiController::class, 'show']);
 
 Route::get('/daftar-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [DaftarKegiatanDonasiController::class, 'show'])->name('daftarKegiatanDonasi');
+Route::post('/store-daftar-kegiatan-donasi', [DaftarKegiatanDonasiController::class, 'store'])->name('storeDaftarKegiatanDonasi');
+
+Route::get('/summary-daftar-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [SummaryDaftarDonasiController::class, 'show'])->name('summaryDaftarDonasi');

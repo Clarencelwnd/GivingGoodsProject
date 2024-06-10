@@ -24,6 +24,29 @@ class DaftarKegiatanDonasiController extends Controller
     }
 
 
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'nama_donatur' => 'required',
+            'no_hp_donatur' => 'required',
+            'jenis_donasi' => 'required',
+            'deskripsi_barang_donasi' => 'required',
+            'pengiriman_barang' => 'required',
+            'tanggal_kegiatan' => 'required',
+            'jam_mulai_kegiatan' => 'required',
+            'jam_selesai_kegiatan' => 'required',
+        ]);
+
+        // Simpan data ke dalam session
+        $request->session()->put('daftar_donasi', $validatedData);
+
+        return redirect()->route('summaryDaftarDonasi', [
+            'idKegiatanDonasi' => $request->IDKegiatanDonasi,
+            'idDonaturRelawan' => $request->IDDonaturRelawan
+        ]);
+
+    }
+
 
 
 }
