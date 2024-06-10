@@ -25,3 +25,6 @@ Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarK
 
 //Search
 Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');
+
+//Side bar
+Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');

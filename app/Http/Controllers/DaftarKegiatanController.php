@@ -15,6 +15,11 @@ use Illuminate\Support\Collection;
 
 class DaftarKegiatanController extends Controller
 {
+
+    public function displaySideBar(){
+        return view('components.filterSideBar');
+    }
+    
     public function displayDaftarKegiatan(){
         $perPage = 12;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();

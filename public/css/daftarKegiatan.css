@@ -47,7 +47,7 @@ html, body {
 }
 
 .card {
-    width: 100%;
+    width: 90%;
     height: 25rem; /* Fixed height for the card */
     display: flex;
     flex-direction: column;
