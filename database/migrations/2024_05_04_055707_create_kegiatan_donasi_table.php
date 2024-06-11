@@ -20,6 +20,8 @@ return new class extends Migration
             $table->date('TanggalKegiatanDonasiSelesai');
             $table->string('LokasiKegiatanDonasi', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
+            $table->string('DeskripsiJenisDonasi', 255);
+            $table->string('JasaPickup', 255);
             $table->timestamps();
         });
     }

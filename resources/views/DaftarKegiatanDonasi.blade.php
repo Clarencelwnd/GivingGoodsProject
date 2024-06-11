@@ -240,7 +240,9 @@
                 <div class="dropdown-content" id="dropdown_content">
                     <div class="dropdown-item" onclick="selectOption('Antar sendiri')">Antar sendiri</div>
                     <div class="dropdown-item" onclick="selectOption('Menggunakan jasa pengiriman (Gosend/Grab Express/Lalamove/dll..)')">Menggunakan jasa pengiriman (Gosend/Grab Express/Lalamove/dll..)</div>
-                    <div class="dropdown-item" onclick="selectOption('Menggunakan jasa pickup panti sosial')">Menggunakan jasa pickup panti sosial</div>
+                    @if ($kegiatanDonasi->JasaPickup === 'Ya, kami memiliki jasa pickup')
+                        <div class="dropdown-item" onclick="selectOption('Menggunakan jasa pickup panti sosial')">Menggunakan jasa pickup panti sosial</div>
+                    @endif
                 </div>
             </div>
         </div>
