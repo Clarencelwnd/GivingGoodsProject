@@ -1,5 +1,11 @@
 // SELECTED FILTER BUTTON
 document.addEventListener('DOMContentLoaded', function() {
+    let kegiatan = document.querySelectorAll('.kegiatan[data-status-kegiatan]');
+    kegiatan.forEach(function(element){
+        let statusKegiatan = element.getAttribute('data-status-kegiatan');
+        element.classList.add(statusKegiatan);
+    });
+
     const filterButtons = document.querySelectorAll('.btn-filter');
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -63,7 +69,6 @@ function filterData(filterType, subFilterValue) {
     const dataItems = document.querySelectorAll('.data-item');
 
     dataItems.forEach(item => {
-        // Cek apakah item sesuai dengan filterType dan subFilterValue
         if ((filterType === 'semua' || item.classList.contains(filterType)) &&
             (subFilterValue === null || item.classList.contains(subFilterValue))) {
             item.classList.add('active');

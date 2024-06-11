@@ -143,37 +143,61 @@ class ProfileDonaturRelawanController extends Controller
     }
 
     public function riwayat_kegiatan_view($id){
-        // $registrasiDonatur = RegistrasiDonatur::where('IDDonaturRelawan', $id)->get();
-        // if($registrasiDonatur){
-        //     $kegiatanDonasi = [];
-        //     foreach ($registrasiDonatur as $registDonatur) {
-        //         $kegiatanDonasi[] = $registDonatur->kegiatanDonasi()->get();
-        //     }
-        //     $pantiSosialDonasi = [];
-        //     foreach($kegiatanDonasi as $kegDonasi){
-        //         foreach ($kegDonasi as $kegiatan) {
-        //             $pantiSosialDonasi[] = $kegiatan->PantiSosial;
-        //         }
-        //     }
-        // }
+        // ambil data registrasi
+        $registrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
+        $registrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
 
-        // $registrasiRelawan = RegistrasiRelawan::where('IDDonaturRelawan', $id)->get();
-        // if($registrasiRelawan){
-        //     $kegiatanRelawan = [];
-        //     foreach ($registrasiRelawan as $registRelawan) {
-        //         $kegiatanRelawan[] = $registRelawan->kegiatanRelawan()->get();
-        //     }
-        //     $pantiSosialRelawan = [];
-        //     foreach($kegiatanDonasi as $kegDonasi){
-        //         foreach ($kegDonasi as $kegiatan) {
-        //             $pantiSosialRelawan[] = $kegiatan->PantiSosial;
-        //         }
-        //     }
-        // }
+        // format tanggal dan gambar donasi
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
+        $FotoDonasi = [
+            'pakaian' => 'Image/donasi/pakaian.png',
+            'sepatu' => 'Image/donasi/sepatu.png',
+            'mainan' => 'Image/donasi/mainan.png',
+            'keperluan_ibadah' => 'Image/donasi/perlengkapan_ibadah.png',
+            'buku' => 'Image/donasi/buku.png',
+            'makanan' => 'Image/donasi/makanan.png',
+            'obat' => 'Image/donasi/obat.png',
+            'keperluan_mandi' => 'Image/donasi/toiletries.png',
+            'keperluan_rumah' => 'Image/donasi/keperluan_rumah.png',
+            'alat_tulis' => 'Image/donasi/alat_tulis.png'
+        ];
+        foreach ($registrasiDonatur as $registDonatur) {
+            $partitionTanggalDonasi = explode('-', $registDonatur->TanggalDonasi);
+            $registDonatur->setAttribute('FormatTanggalDonasi', $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
 
-        $donations = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
-        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'donations'));
-        // return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'kegiatanDonasi', 'pantiSosialDonasi', 'registrasiRelawan', 'kegiatanRelawan', 'pantiSosialRelawan'));
+            $donasiItems = explode(',', $registDonatur->JenisDonasiDidonasikan);
+            foreach ($donasiItems as $donasi) {
+                $donasi = trim($donasi);
+                }
+            $registDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
+                return[
+                    'jenis' => $jenis,
+                    'image' => $FotoDonasi[$jenis],
+                ];
+            }, $donasiItems));
+        }
+
+        // format tanggal relawan
+        foreach ($registrasiRelawan as $registRelawan) {
+            $partitionTanggalMulai = explode('-', $registRelawan->TanggalKegiatanMulaiRelawan);
+            $partitionTanggalSelesai = explode('-', $registRelawan->TanggalKegiatanSelesaiRelawan);
+            $registRelawan->setAttribute('FormatTanggalRelawan', $partitionTanggalMulai[2] . ' ' . $bulan[$partitionTanggalMulai[1]] . ' ' . $partitionTanggalMulai[0] . ' - ' . $partitionTanggalSelesai[2] . ' ' . $bulan[$partitionTanggalSelesai[1]] . ' ' . $partitionTanggalSelesai[0]);
+        }
+
+        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
     }
 
     public function logout(){
