@@ -89,6 +89,12 @@
     margin-bottom: 15px;
 }
 
+.important-text-note {
+    color: #006374;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
 .tips .text {
     color: #163249;
     font-size: 20px;
@@ -279,7 +285,7 @@
 
         <div class="note">
             <div class="important-title">Catatan Penting !</div>
-            <div class="important-text">Pastikan Anda mencatat informasi ini dengan baik untuk memudahkan koordinasi dan komunikasi Anda sebagai relawan dengan penyelenggara kegiatan.</div>
+            <div class="important-text-note">Pastikan Anda mencatat informasi ini dengan baik untuk memudahkan koordinasi dan komunikasi Anda sebagai relawan dengan penyelenggara kegiatan.</div>
             <div class="important-text">Berikut adalah informasi mengenai panti sosial yang Anda tuju untuk kegiatan relawan:</div>
             <div class="section">
                 <div class="subtitle">Nama Penyelenggara</div>
@@ -299,7 +305,7 @@
             </div>
             <div class="tips">
                 <div class="text">
-                    Tips:
+                    <span style="font-weight: 800">Tips:</span>
                     <ul>
                         <li>Anda dapat menyimpan informasi ini di notes ponsel Anda atau di tempat yang mudah diakses.</li>
                         <li>Anda juga dapat membuat screenshot dari informasi ini untuk disimpan di galeri foto Anda.</li>
@@ -335,8 +341,8 @@
                 <div id="popup">
                     <h3 style="color: #1C3F5B; font-size: 26px; font-weight: 600;">Terima kasih telah berbagi kebaikan!</h3>
                     <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #1C3F5B;">Kami sangat menghargai dukungan Anda. <br> <br>
-                        Pihak Panti Sosial Sejati telah kami informasikan. <br> <br>
-                        Untuk informasi lebih lanjut, mohon tunggu untuk dihubungi atau jangan ragu <br> untuk menghubungi langsung melalui <span style="font-weight: 600;">08123123123</span>.</p>
+                        Pihak {{ $kegiatanRelawan->pantiSosial->NamaPantiSosial }} telah kami informasikan. <br> <br>
+                        Untuk informasi lebih lanjut, mohon tunggu untuk dihubungi atau jangan ragu <br> untuk menghubungi langsung melalui <span style="font-weight: 600;">{{ $kegiatanRelawan->pantiSosial->NomorTeleponPantiSosial }}</span>.</p>
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
                         <button class="btn-primary" style="font-weight: 600; font-size: 16px;" onclick="closePopup()">OK</button>
                     </div>

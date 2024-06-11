@@ -89,6 +89,13 @@
     margin-bottom: 15px;
 }
 
+.important-text-note {
+    color: #006374;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
 .tips .text {
     color: #163249;
     font-size: 20px;
@@ -227,6 +234,18 @@
     background-color: #00AF71;
     color: #FFFFFF;
 }
+
+.text div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text div span {
+    width: 120px;
+    display: inline-block;
+    margin-right: 10px;
+}
 </style>
 <body>
     <div class="container">
@@ -237,9 +256,9 @@
             <h1>Daftar Kegiatan</h1>
         </div>
 
-        <form action="{{ route('storeSummaryDaftarRelawan') }}" method="POST">
+        <form action="{{ route('storeSummaryDaftarDonasi') }}" method="POST">
             @csrf
-            <input type="hidden" name="idKegiatanRelawan" value="{{ $kegiatanRelawan->IDKegiatanRelawan }}">
+            <input type="hidden" name="idKegiatanRelawan" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
             <input type="hidden" name="idDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
 
         <div class="info-container">
@@ -251,19 +270,24 @@
 
         <div class="section">
             <div class="subtitle">Nama Relawan</div>
-            <div class="text">{{ $data['nama_relawan'] }}</div>
+            <div class="text">{{ $data['nama_donatur'] }}</div>
         </div>
         <div class="section">
             <div class="subtitle">Nomor HP Relawan</div>
-            <div class="text">{{ $data['no_hp_relawan'] }}</div>
+            <div class="text">{{ $data['no_hp_donatur'] }}</div>
         </div>
         <div class="section">
-            <div class="subtitle">Jenis Kegiatan Relawan</div>
-            <div class="text">{{ $kegiatanRelawan->JenisKegiatanRelawan }}</div>
+            <div class="subtitle">Jenis Donasi</div>
+            <div class="text">{{ $data['jenis_donasi'] }}</div>
         </div>
         <div class="section">
-            <div class="subtitle">Alasan Menjadi Relawan</div>
-            <div class="text">{{ $data['alasan_relawan'] }}</div>
+            <div class="subtitle">Deskripsi Donasi</div>
+            <div class="text">{{ $data['deskripsi_barang'] }}</div>
+        </div>
+
+        <div class="section">
+            <div class="subtitle">Pengiriman Barang</div>
+            <div class="text">{{ $data['pengiriman_barang'] }}</div>
         </div>
         <div class="section">
             <div class="subtitle">Jam & Tanggal Kegiatan</div>
@@ -273,33 +297,50 @@
             </div>
             <div class="flex-row">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" height="24px">
-                <div class="text">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}</div>
+                <div class="text">{{ $data['jam_mulai_kegiatan'] ?? 'Tunggu info lebih lanjut dari panti sosial' }}</div>
             </div>
         </div>
 
         <div class="note">
             <div class="important-title">Catatan Penting !</div>
-            <div class="important-text">Pastikan Anda mencatat informasi ini dengan baik untuk memudahkan koordinasi dan komunikasi Anda sebagai relawan dengan penyelenggara kegiatan.</div>
-            <div class="important-text">Berikut adalah informasi mengenai panti sosial yang Anda tuju untuk kegiatan relawan:</div>
+            <div class="important-text-note">
+                @if ($data['pengiriman_barang'] == 'Antar sendiri')
+                    Pastikan Anda mencatat informasi ini dengan baik untuk memudahkan proses pengiriman.
+                @elseif ($data['pengiriman_barang'] == 'Menggunakan jasa pengiriman (Gosend/Grab Express/Lalamove/dll..)')
+                    Pastikan Anda mencatat informasi ini dengan baik untuk memudahkan proses pengiriman donasi Anda dengan kurir. Jangan lupa untuk menginfokan panti sosial berkaitan dengan nomor resi atau link tracking pengiriman donasi.
+                @elseif ($data['pengiriman_barang'] == 'Menggunakan jasa pickup panti sosial')
+                    Pihak Panti Sosial akan menghubungi Anda terkait waktu untuk melakukan pickup barang donasi. Mohon untuk menunggu informasi lebih lanjut.
+                @endif
+            </div>
+            <div class="important-text">Berikut adalah informasi mengenai panti sosial yang Anda tuju untuk menyalurkan donasi Anda:</div>
             <div class="section">
-                <div class="subtitle">Nama Penyelenggara</div>
-                <div class="text">{{ $kegiatanRelawan->pantiSosial->NamaPantiSosial }}</div>
+                <div class="subtitle">Nama Panti Sosial</div>
+                <div class="text">{{ $kegiatanDonasi->pantiSosial->NamaPantiSosial }}</div>
             </div>
             <div class="section">
-                <div class="subtitle">Kontak Penyelenggara</div>
-                <div class="text">{{ $kegiatanRelawan->pantiSosial->NomorTeleponPantiSosial }}</div>
+                <div class="subtitle">Kontak Panti Sosial</div>
+                <div class="text">{{ $kegiatanDonasi->pantiSosial->NomorTeleponPantiSosial }}</div>
             </div>
             <div class="section">
-                <div class="subtitle">Lokasi Kegiatan Relawan</div>
-                <div class="text">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
+                <div class="subtitle">Alaman Panti Sosial</div>
+                <div class="text">{{ $kegiatanDonasi->pantiSosial->AlamatPantiSosial }}</div>
             </div>
             <div class="section">
-                <div class="subtitle">Persyaratan dan Instruksi yang perlu diikuti</div>
-                <div class="text">{{ $kegiatanRelawan->SyaratDanInstruksiKegiatanRelawan }}</div>
+                <div class="subtitle">Jam Operasional</div>
+                <div class="text">
+                    @foreach($kegiatanDonasi->PantiSosial->JadwalOperasional->groupBy('Hari') as $hari => $jadwals)
+                    <div>
+                        <span>{{ $hari }}&nbsp;:</span>
+                        @foreach($jadwals as $jadwal)
+                            {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
+                        @endforeach
+                    </div>
+                @endforeach
+                </div>
             </div>
             <div class="tips">
                 <div class="text">
-                    Tips:
+                   <span style="font-weight: 800">Tips:</span>
                     <ul>
                         <li>Anda dapat menyimpan informasi ini di notes ponsel Anda atau di tempat yang mudah diakses.</li>
                         <li>Anda juga dapat membuat screenshot dari informasi ini untuk disimpan di galeri foto Anda.</li>
@@ -335,8 +376,8 @@
                 <div id="popup">
                     <h3 style="color: #1C3F5B; font-size: 26px; font-weight: 600;">Terima kasih telah berbagi kebaikan!</h3>
                     <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #1C3F5B;">Kami sangat menghargai dukungan Anda. <br> <br>
-                        Pihak Panti Sosial Sejati telah kami informasikan. <br> <br>
-                        Untuk informasi lebih lanjut, mohon tunggu untuk dihubungi atau jangan ragu <br> untuk menghubungi langsung melalui <span style="font-weight: 600;">08123123123</span>.</p>
+                        Pihak {{ $kegiatanDonasi->pantiSosial->NamaPantiSosial }} telah kami informasikan. <br> <br>
+                        Sebelum melakukan donasi, mohon tunggu untuk dihubungi atau jangan ragu <br> untuk menghubungi langsung melalui <span style="font-weight: 600;">{{ $kegiatanDonasi->pantiSosial->NomorTeleponPantiSosial }}</span>.</p>
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
                         <button class="btn-primary" style="font-weight: 600; font-size: 16px;" onclick="closePopup()">OK</button>
                     </div>

@@ -85,6 +85,10 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
+.input-field[disabled] {
+    background-color: #F0F0F0;  /* Lighter background color for disabled input */
+    cursor: not-allowed;  /* Change cursor to indicate it's disabled */
+}
 
         .button {
             display: block;
@@ -274,8 +278,6 @@
             <div class="time-picker-container">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
                 <input type="text" class="input-field" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field">
-                <span style="padding-bottom: 10px; padding-left: 15px;  padding-right: 15px;"> - </span>
-                <input type="text" class="input-field" name="jam_selesai_kegiatan" id="jam_selesai_kegiatan_field">
             </div>
 
         </div>
@@ -292,9 +294,8 @@
             <input type="hidden" name="pengiriman_barang" id="pengiriman_barang">
             <input type="hidden" name="tanggal_kegiatan" id="tanggal_kegiatan">
             <input type="hidden" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan">
-            <input type="hidden" name="jam_selesai_kegiatan" id="jam_selesai_kegiatan">
-            <input type="hidden" name="IDKegiatanRelawan" id="id_kegiatan_relawan" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
-            <input type="hidden" name="IDDonaturRelawan" id="id_donatur_relawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
+            <input type="hidden" name="IDKegiatanDonasi" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
+            <input type="hidden" name="IDDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
         </form>
 
     </div>
@@ -311,23 +312,7 @@
             dateFormat: "H:i",
         });
 
-
-        flatpickr('#jam_selesai_kegiatan_field', {
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-        });
-
         function submitForm() {
-            // Menampilkan nilai input sebelum mengirimkan formulir
-            console.log("Nama Donatur:", document.getElementById('nama_donatur_field').value);
-            console.log("No HP Donatur:", document.getElementById('no_hp_donatur_field').value);
-            console.log("Jenis Donasi:", document.getElementById('jenis_donasi_field').value);
-            console.log("Deskripsi Barang Donasi:", document.getElementById('deskripsi_barang_field').value);
-            console.log("Pengiriman Barang:", document.getElementById('pengiriman_barang_field').value);
-            console.log("Tanggal Kegiatan:", document.getElementById('tanggal_kegiatan').value);
-            console.log("Jam Mulai Kegiatan:", document.getElementById('jam_mulai_kegiatan').value);
-            console.log("Jam Selesai Kegiatan:", document.getElementById('jam_selesai_kegiatan').value);
 
               // Copy values from visible input fields to hidden input fields
             document.getElementById('nama_donatur').value = document.getElementById('nama_donatur_field').value;
@@ -337,7 +322,6 @@
             document.getElementById('pengiriman_barang').value = document.getElementById('pengiriman_barang_field').value;
             document.getElementById('tanggal_kegiatan').value = document.getElementById('date-picker').value;
             document.getElementById('jam_mulai_kegiatan').value = document.getElementById('jam_mulai_kegiatan_field').value;
-            document.getElementById('jam_selesai_kegiatan').value = document.getElementById('jam_selesai_kegiatan_field').value;
 
             // Submit the form
             document.getElementById('submit-form').submit();
@@ -362,6 +346,15 @@ function selectOption(value) {
     document.getElementById('pengiriman_barang_field').value = value;
     document.getElementById('dropdown_content').style.display = "none";
     document.getElementById('dropdown_arrow').style.transform = "rotate(0deg)";
+
+      // Disable jam_mulai_kegiatan_field if 'Menggunakan jasa pickup panti sosial' is selected
+      let jamMulaiKegiatanField = document.getElementById('jam_mulai_kegiatan_field');
+    if (value === 'Menggunakan jasa pickup panti sosial') {
+        jamMulaiKegiatanField.disabled = true;
+        jamMulaiKegiatanField.value = '';  // Clear the value
+    } else {
+        jamMulaiKegiatanField.disabled = false;
+    }
 }
 
 // Close the dropdown if the user clicks outside of it
@@ -407,7 +400,32 @@ window.onclick = function(event) {
 }
 
 
+// function selectOptionJenis(option) {
+//     // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
+//     var selectedDiv = document.createElement("div");
+//     selectedDiv.className = "selected-item";
+//     selectedDiv.innerHTML = option + '<img src="{{ asset('image/general/close.png') }}" class="close-btn" alt="Close Icon" onclick="removeOption(this)">';
+
+//     // Menambahkan div baru ke dalam div untuk menampilkan opsi yang dipilih
+//     document.getElementById('selected-options').appendChild(selectedDiv);
+
+//     // Menambahkan opsi yang dipilih ke input field
+//     var currentOption = document.getElementById('jenis_donasi_field').value;
+//     if (currentOption.length > 0) {
+//         document.getElementById('jenis_donasi_field').value += ', ' + option;
+//     } else {
+//         document.getElementById('jenis_donasi_field').value = option;
+//     }
+// }
+
+
 function selectOptionJenis(option) {
+    // Periksa apakah opsi sudah ada di selected-options
+    var currentOptions = document.getElementById('jenis_donasi_field').value.split(', ');
+    if (currentOptions.includes(option) && document.getElementById('jenis_donasi_field').value !== "") {
+        return; // Jika opsi sudah ada, hentikan fungsi
+    }
+
     // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
     var selectedDiv = document.createElement("div");
     selectedDiv.className = "selected-item";
@@ -425,6 +443,7 @@ function selectOptionJenis(option) {
     }
 }
 
+
 function removeOption(element) {
     // Menghapus div yang berisi opsi yang dipilih
     var selectedDiv = element.parentNode;
@@ -438,6 +457,8 @@ function removeOption(element) {
     });
     document.getElementById('jenis_donasi_field').value = updatedOptions.join(', ');
 }
+
+
 
 
     </script>

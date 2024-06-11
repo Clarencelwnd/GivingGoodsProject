@@ -10,7 +10,7 @@ class RegistrasiDonatur extends Model
     protected $table = 'registrasi_donatur';
     protected $primaryKey = 'IDRegistrasiDonatur';
     protected $fillable = [
-        'IDDonaturRelawan', 'IDKegiatanDonasi', 'StatusRegistrasiDonatur', 'JenisDonasiDidonasikan', 'DeskripsiBarangDonasi', 'TanggalDonasi', 'JamDonasi',
+        'IDDonaturRelawan', 'IDKegiatanDonasi', 'StatusRegistrasiDonatur', 'JenisDonasiDidonasikan', 'DeskripsiBarangDonasi', 'TanggalDonasi', 'JamDonasi', 'PengirimanBarang'
     ];
 
     public function donaturRelawan(){

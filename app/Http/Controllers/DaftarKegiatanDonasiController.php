@@ -26,15 +26,15 @@ class DaftarKegiatanDonasiController extends Controller
 
     public function store(Request $request)
     {
+        // Validasi dasar tanpa jam_mulai_kegiatan
         $validatedData = $request->validate([
             'nama_donatur' => 'required',
             'no_hp_donatur' => 'required',
             'jenis_donasi' => 'required',
-            'deskripsi_barang_donasi' => 'required',
+            'deskripsi_barang' => 'required',
             'pengiriman_barang' => 'required',
             'tanggal_kegiatan' => 'required',
-            'jam_mulai_kegiatan' => 'required',
-            'jam_selesai_kegiatan' => 'required',
+            'jam_mulai_kegiatan' => ($request->pengiriman_barang !== 'Menggunakan jasa pickup panti sosial') ? 'required' : '',
         ]);
 
         // Simpan data ke dalam session
@@ -44,8 +44,8 @@ class DaftarKegiatanDonasiController extends Controller
             'idKegiatanDonasi' => $request->IDKegiatanDonasi,
             'idDonaturRelawan' => $request->IDDonaturRelawan
         ]);
-
     }
+
 
 
 
