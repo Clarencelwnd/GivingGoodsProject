@@ -172,6 +172,11 @@
     padding-left: 20px;
 }
 
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
 
     </style>
 </head>
@@ -212,7 +217,12 @@
 
         <div class="section">
             <div class="subtitle">Lokasi Kegiatan Relawan</div>
-            <div class="text">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
+            <div class="flex-row">
+                <div class="text" style="padding-right: 12px;">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
+                <a href="#">
+                    <img src="{{ asset('image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
+                </a>
+            </div>
         </div>
 
         <div class="section">

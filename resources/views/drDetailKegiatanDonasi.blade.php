@@ -203,6 +203,11 @@
     font-weight: 600;
     font-size: 26px;
 }
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
 
 
     </style>
@@ -230,7 +235,12 @@
 
         <div class="section">
             <div class="subtitle">Lokasi Kegiatan Donasi</div>
-            <div class="text">{{ $kegiatanDonasi->LokasiKegiatanDonasi }}</div>
+            <div class="flex-row">
+                <div class="text" style="padding-right: 12px;">{{ $kegiatanDonasi->LokasiKegiatanDonasi }}</div>
+                <a href="#">
+                    <img src="{{ asset('image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
+                </a>
+            </div>
         </div>
 
         <div class="section">

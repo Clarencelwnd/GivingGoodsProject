@@ -85,6 +85,17 @@
     border-radius: 5px;
     box-sizing: border-box;
 }
+
+.input-field-date-time {
+    background-color: #E0E0E0 ;
+    width: 80%;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
 .input-field[disabled] {
     background-color: #F0F0F0;  /* Lighter background color for disabled input */
     cursor: not-allowed;  /* Change cursor to indicate it's disabled */
@@ -170,7 +181,7 @@
     border: 1px solid #006374;
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: #E0F2F1;
+    /* background-color: #E0F2F1; */
     color: #006374;
     font-size: 16px;
     font-weight: 500;
@@ -274,12 +285,12 @@
         <div class="time-date-container">
             <div class="date-picker-container">
                 <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
-                <input type="text" id="date-picker" class="input-field" name="tanggal_kegiatan">
+                <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan">
             </div>
 
             <div class="time-picker-container">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
-                <input type="text" class="input-field" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field">
+                <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field">
             </div>
 
         </div>
@@ -329,77 +340,77 @@
             document.getElementById('submit-form').submit();
         }
 
-document.getElementById('pengiriman_barang_field').addEventListener('click', toggleDropdown);
-document.getElementById('dropdown_arrow').addEventListener('click', toggleDropdown);
+            document.getElementById('pengiriman_barang_field').addEventListener('click', toggleDropdown);
+            document.getElementById('dropdown_arrow').addEventListener('click', toggleDropdown);
 
-function toggleDropdown() {
-    let dropdown = document.getElementById('dropdown_content');
-    let arrow = document.getElementById('dropdown_arrow');
-    if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-        arrow.style.transform = "rotate(0deg)";
-    } else {
-        dropdown.style.display = "block";
-        arrow.style.transform = "rotate(180deg)";
-    }
-}
+            function toggleDropdown() {
+                let dropdown = document.getElementById('dropdown_content');
+                let arrow = document.getElementById('dropdown_arrow');
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                    arrow.style.transform = "rotate(0deg)";
+                } else {
+                    dropdown.style.display = "block";
+                    arrow.style.transform = "rotate(180deg)";
+                }
+            }
 
-function selectOption(value) {
-    document.getElementById('pengiriman_barang_field').value = value;
-    document.getElementById('dropdown_content').style.display = "none";
-    document.getElementById('dropdown_arrow').style.transform = "rotate(0deg)";
+            function selectOption(value) {
+                document.getElementById('pengiriman_barang_field').value = value;
+                document.getElementById('dropdown_content').style.display = "none";
+                document.getElementById('dropdown_arrow').style.transform = "rotate(0deg)";
 
-      // Disable jam_mulai_kegiatan_field if 'Menggunakan jasa pickup panti sosial' is selected
-      let jamMulaiKegiatanField = document.getElementById('jam_mulai_kegiatan_field');
-    if (value === 'Menggunakan jasa pickup panti sosial') {
-        jamMulaiKegiatanField.disabled = true;
-        jamMulaiKegiatanField.value = '';  // Clear the value
-    } else {
-        jamMulaiKegiatanField.disabled = false;
-    }
-}
+                // Disable jam_mulai_kegiatan_field if 'Menggunakan jasa pickup panti sosial' is selected
+                let jamMulaiKegiatanField = document.getElementById('jam_mulai_kegiatan_field');
+                if (value === 'Menggunakan jasa pickup panti sosial') {
+                    jamMulaiKegiatanField.disabled = true;
+                    jamMulaiKegiatanField.value = '';  // Clear the value
+                } else {
+                    jamMulaiKegiatanField.disabled = false;
+                }
+            }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
-        let dropdown = document.getElementById('dropdown_content');
-        let arrow = document.getElementById('dropdown_arrow');
-        if (dropdown.style.display === "block") {
-            dropdown.style.display = "none";
-            arrow.style.transform = "rotate(0deg)";
-        }
-    }
-}
-
-
-
-document.getElementById('jenis_donasi_field').addEventListener('click', toggleDropdownJenis);
-document.getElementById('dropdown_arrow_jenis').addEventListener('click', toggleDropdownJenis);
+            // Close the dropdown if the user clicks outside of it
+            window.onclick = function(event) {
+                if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
+                    let dropdown = document.getElementById('dropdown_content');
+                    let arrow = document.getElementById('dropdown_arrow');
+                    if (dropdown.style.display === "block") {
+                        dropdown.style.display = "none";
+                        arrow.style.transform = "rotate(0deg)";
+                    }
+                }
+            }
 
 
-function toggleDropdownJenis() {
-    let dropdown = document.getElementById('dropdown_content_jenis');
-    let arrow = document.getElementById('dropdown_arrow_jenis');
-    if (dropdown.style.display === "block") {
-        dropdown.style.display = "none";
-        arrow.style.transform = "rotate(0deg)";
-    } else {
-        dropdown.style.display = "block";
-        arrow.style.transform = "rotate(180deg)";
-    }
-}
+
+            document.getElementById('jenis_donasi_field').addEventListener('click', toggleDropdownJenis);
+            document.getElementById('dropdown_arrow_jenis').addEventListener('click', toggleDropdownJenis);
 
 
-window.onclick = function(event) {
-    if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
-        let dropdown = document.getElementById('dropdown_content_jenis');
-        let arrow = document.getElementById('dropdown_arrow_jenis');
-        if (dropdown.style.display === "block") {
-            dropdown.style.display = "none";
-            arrow.style.transform = "rotate(0deg)";
-        }
-    }
-}
+            function toggleDropdownJenis() {
+                let dropdown = document.getElementById('dropdown_content_jenis');
+                let arrow = document.getElementById('dropdown_arrow_jenis');
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                    arrow.style.transform = "rotate(0deg)";
+                } else {
+                    dropdown.style.display = "block";
+                    arrow.style.transform = "rotate(180deg)";
+                }
+            }
+
+
+            window.onclick = function(event) {
+                if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
+                    let dropdown = document.getElementById('dropdown_content_jenis');
+                    let arrow = document.getElementById('dropdown_arrow_jenis');
+                    if (dropdown.style.display === "block") {
+                        dropdown.style.display = "none";
+                        arrow.style.transform = "rotate(0deg)";
+                    }
+                }
+            }
 
 
 // function selectOptionJenis(option) {
@@ -421,45 +432,62 @@ window.onclick = function(event) {
 // }
 
 
-function selectOptionJenis(option) {
-    // Periksa apakah opsi sudah ada di selected-options
-    var currentOptions = document.getElementById('jenis_donasi_field').value.split(', ');
-    if (currentOptions.includes(option) && document.getElementById('jenis_donasi_field').value !== "") {
-        return; // Jika opsi sudah ada, hentikan fungsi
-    }
+            function selectOptionJenis(option) {
+                // Periksa apakah opsi sudah ada di selected-options
+                var currentOptions = document.getElementById('jenis_donasi_field').value.split(', ');
+                if (currentOptions.includes(option) && document.getElementById('jenis_donasi_field').value !== "") {
+                    return; // Jika opsi sudah ada, hentikan fungsi
+                }
 
-    // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
-    var selectedDiv = document.createElement("div");
-    selectedDiv.className = "selected-item";
-    selectedDiv.innerHTML = option + '<img src="{{ asset('image/general/close.png') }}" class="close-btn" alt="Close Icon" onclick="removeOption(this)">';
+                // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
+                var selectedDiv = document.createElement("div");
+                selectedDiv.className = "selected-item";
+                selectedDiv.innerHTML = option + '<img src="{{ asset('image/general/close.png') }}" class="close-btn" alt="Close Icon" style="padding-left: 10px;" onclick="removeOption(this)">';
 
-    // Menambahkan div baru ke dalam div untuk menampilkan opsi yang dipilih
-    document.getElementById('selected-options').appendChild(selectedDiv);
+                // Menambahkan div baru ke dalam div untuk menampilkan opsi yang dipilih
+                document.getElementById('selected-options').appendChild(selectedDiv);
 
-    // Menambahkan opsi yang dipilih ke input field
-    var currentOption = document.getElementById('jenis_donasi_field').value;
-    if (currentOption.length > 0) {
-        document.getElementById('jenis_donasi_field').value += ', ' + option;
-    } else {
-        document.getElementById('jenis_donasi_field').value = option;
-    }
-}
+                // Menambahkan opsi yang dipilih ke input field
+                var currentOption = document.getElementById('jenis_donasi_field').value;
+                if (currentOption.length > 0) {
+                    document.getElementById('jenis_donasi_field').value += ', ' + option;
+                } else {
+                    document.getElementById('jenis_donasi_field').value = option;
+                }
+
+                adjustArrowPadding();
+            }
 
 
-function removeOption(element) {
-    // Menghapus div yang berisi opsi yang dipilih
-    var selectedDiv = element.parentNode;
-    selectedDiv.parentNode.removeChild(selectedDiv);
+            function removeOption(element) {
+                // Menghapus div yang berisi opsi yang dipilih
+                var selectedDiv = element.parentNode;
+                selectedDiv.parentNode.removeChild(selectedDiv);
 
-    // Menghapus opsi yang dipilih dari input field
-    var optionToRemove = element.parentNode.textContent.trim();
-    var currentOptions = document.getElementById('jenis_donasi_field').value.split(', ');
-    var updatedOptions = currentOptions.filter(function(option) {
-        return option !== optionToRemove;
-    });
-    document.getElementById('jenis_donasi_field').value = updatedOptions.join(', ');
-}
+                // Menghapus opsi yang dipilih dari input field
+                var optionToRemove = element.parentNode.textContent.trim();
+                var currentOptions = document.getElementById('jenis_donasi_field').value.split(', ');
+                var updatedOptions = currentOptions.filter(function(option) {
+                    return option !== optionToRemove;
+                });
+                document.getElementById('jenis_donasi_field').value = updatedOptions.join(', ');
 
+                adjustArrowPadding();
+            }
+
+
+            // Fungsi untuk menyesuaikan padding atas arrow
+            function adjustArrowPadding() {
+                let selectedOptions = document.getElementById('selected-options');
+                let arrow = document.getElementById('dropdown_arrow_jenis');
+                if (selectedOptions.children.length > 0) {
+                    // Jika ada opsi yang dipilih, tambahkan padding atas pada arrow
+                    arrow.style.marginTop = '35px';
+                } else {
+                    // Jika tidak ada opsi yang dipilih, hapus padding atas pada arrow
+                    arrow.style.marginTop = '0';
+                }
+            }
 
 
 

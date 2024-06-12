@@ -10,6 +10,7 @@ use App\Http\Controllers\DaftarKegiatanDonasiController;
 use App\Http\Controllers\SummaryDaftarDonasiController;
 
 
+use App\Http\Controllers\PagePanSosController;
 
 
 
@@ -39,4 +40,9 @@ Route::post('/store-daftar-kegiatan-donasi', [DaftarKegiatanDonasiController::cl
 
 Route::get('/summary-daftar-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [SummaryDaftarDonasiController::class, 'show'])->name('summaryDaftarDonasi');
 Route::post('/store-daftar-donasi', [SummaryDaftarDonasiController::class, 'store'])->name('storeSummaryDaftarDonasi');
+
+
+Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
+
+
 
