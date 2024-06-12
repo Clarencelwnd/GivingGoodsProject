@@ -1,0 +1,86 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.card.container{
+    margin-top: 2%;
+    border: none;
+}
+
+/* CARD HEADER  */
+.card-header{
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.position{
+    color: #1C3F5B;
+    font-size: x-small;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.card-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.title{
+    text-decoration: none;
+    color: #007C92;
+    font-size: large;
+    font-weight: 600;
+}
+
+.label-status-kegiatan{
+    background-color: #00AF71;
+    color: #FDFFFE;
+    border-radius: 5px;
+    font-size: small;
+}
+
+/* CARD BODY  */
+.card-body{
+    margin-top: 0px;
+}
+
+.caption{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+.content{
+    margin-top: 3px;
+    color: #006374;
+    font-size: small;
+}
+
+.gambar{
+    width: 20px;
+    height: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* RESPONSIVE  */
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+}

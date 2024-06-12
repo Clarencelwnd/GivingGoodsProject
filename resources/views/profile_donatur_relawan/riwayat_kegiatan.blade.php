@@ -32,7 +32,7 @@
             @endif
             @if ($registrasiDonatur)
                 @foreach($registrasiDonatur as $key => $registDonatur)
-                    <div class="data-item semua donasi card kegiatan container justify-content-center" data-status-kegiatan="{{$registDonatur->StatusRegistrasiDonatur}}" data-url="{{route('detail_riwayat_kegiatan', ['id1' => $id, 'id2' => $registDonatur->IDRegistrasiDonatur])}}">
+                    <div class="data-item semua donasi card kegiatan container justify-content-center" data-status-kegiatan="{{$registDonatur->StatusRegistrasiDonatur}}" data-url="{{route('detail_riwayat_kegiatan_donasi', ['id1' => $id, 'id2' => $registDonatur->IDRegistrasiDonatur])}}">
                         <div class="card-header kegiatan">
                             <div class="row mt-1 mb-2">
                                 <div class="col-auto label-donasi-relawan">Donasi</div>
@@ -53,7 +53,7 @@
             @endif
             @if ($registrasiRelawan)
                 @foreach($registrasiRelawan as $registRelawan)
-                    <div class="data-item semua relawan card kegiatan container justify-content-center" data-status-kegiatan="{{$registRelawan->StatusRegistrasiRelawan}}" data-url="{{route('detail_riwayat_kegiatan', ['id1'=>$id, 'id2'=> $registRelawan->IDRegistrasiRelawan])}}">
+                    <div class="data-item semua relawan card kegiatan container justify-content-center" data-status-kegiatan="{{$registRelawan->StatusRegistrasiRelawan}}" data-url="{{route('detail_riwayat_kegiatan_relawan', ['id1'=>$id, 'id2'=> $registRelawan->IDRegistrasiRelawan])}}">
                         <div class="card-header kegiatan">
                             <div class="row mt-1 mb-2">
                                 <div class="col-auto label-donasi-relawan">Relawan</div>

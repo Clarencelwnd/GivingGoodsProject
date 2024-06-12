@@ -15,7 +15,8 @@ Route::post('/edit_photo/donatur_relawan/{id}', [ProfileDonaturRelawanController
 Route::get('/change_password/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'change_password_view'])->name('change_password.donatur_relawan');
 Route::post('/change_password/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'change_password_logic'])->name('change_password_logic.donatur_relawan');
 Route::get('/riwayat_kegiatan/{id}', [ProfileDonaturRelawanController::class, 'riwayat_kegiatan'])->name('riwayat_kegiatan');
-Route::get('/detail_riwayat_kegiatan/{id1}/{id2}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan'])->name('detail_riwayat_kegiatan');
+Route::get('/detail_riwayat_kegiatan/donasi/{id1}/{id2}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_donasi'])->name('detail_riwayat_kegiatan_donasi');
+Route::get('/detail_riwayat_kegiatan/relawan/{id1}/{id2}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
 Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
 
