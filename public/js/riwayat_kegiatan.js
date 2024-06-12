@@ -6,6 +6,13 @@ document.addEventListener('DOMContentLoaded', function() {
         element.classList.add(statusKegiatan);
     });
 
+    document.addEventListener('click', function(e) {
+        let card = e.target.closest('.data-item');
+        if (card) {
+            window.location.href = card.getAttribute('data-url');
+        }
+    });
+
     const filterButtons = document.querySelectorAll('.btn-filter');
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -64,6 +71,10 @@ function updateSubFilter(button) {
     filterData(filterType, subFilterValue);
 }
 
+// function redirectToURL() {
+
+// }
+
 // SHOW DATA
 function filterData(filterType, subFilterValue) {
     const dataItems = document.querySelectorAll('.data-item');
@@ -79,4 +90,3 @@ function filterData(filterType, subFilterValue) {
         }
     });
 }
-

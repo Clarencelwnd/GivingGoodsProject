@@ -2,19 +2,26 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.card.main{
+.card.main.container{
     margin-top: 2%;
     border: none;
 }
 
-.card.kegiatan{
+.card.kegiatan.container{
     border-top: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-.card.blank{
+.card.kegiatan.container:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card.container.blank{
     border: none;
     height: 50vh;
 }

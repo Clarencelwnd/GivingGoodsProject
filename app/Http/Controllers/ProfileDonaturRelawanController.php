@@ -142,7 +142,7 @@ class ProfileDonaturRelawanController extends Controller
         return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
-    public function riwayat_kegiatan_view($id){
+    public function riwayat_kegiatan($id){
         // ambil data registrasi
         $registrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
         $registrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
@@ -179,9 +179,6 @@ class ProfileDonaturRelawanController extends Controller
             $registDonatur->setAttribute('FormatTanggalDonasi', $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
 
             $donasiItems = explode(',', $registDonatur->JenisDonasiDidonasikan);
-            foreach ($donasiItems as $donasi) {
-                $donasi = trim($donasi);
-                }
             $registDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
                 return[
                     'jenis' => $jenis,
@@ -198,6 +195,62 @@ class ProfileDonaturRelawanController extends Controller
         }
 
         return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
+    }
+
+    public function detail_riwayat_kegiatan_donasi($id1, $id2){
+        $detailRegistrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDRegistrasiDonatur', $id2)->first();
+        $detailRegistrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDRegistrasiRelawan', $id2)->first();
+
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
+        $hari = [
+            'Sunday' => 'Minggu',
+            'Monday' => 'Senin',
+            'Tuesday' => 'Selasa',
+            'Wednesday' => 'Rabu',
+            'Thursday' => 'Kamis',
+            'Friday' => 'Jumat',
+            'Saturday' => 'Sabtu'
+        ];
+        $FotoDonasi = [
+            'pakaian' => 'Image/donasi/pakaian.png',
+            'sepatu' => 'Image/donasi/sepatu.png',
+            'mainan' => 'Image/donasi/mainan.png',
+            'keperluan_ibadah' => 'Image/donasi/perlengkapan_ibadah.png',
+            'buku' => 'Image/donasi/buku.png',
+            'makanan' => 'Image/donasi/makanan.png',
+            'obat' => 'Image/donasi/obat.png',
+            'keperluan_mandi' => 'Image/donasi/toiletries.png',
+            'keperluan_rumah' => 'Image/donasi/keperluan_rumah.png',
+            'alat_tulis' => 'Image/donasi/alat_tulis.png'
+        ];
+        $tanggal = $detailRegistrasiDonatur ? $detailRegistrasiDonatur : $detailRegistrasiRelawan;
+        $hariIndo = $hari[Carbon::parse($tanggal)->format('l')];
+
+        
+        $partitionTanggalDonasi = explode('-', $detailRegistrasiDonatur->TanggalDonasi);
+        $detailRegistrasiDonatur->setAttribute('FormatTanggalDonasi', $hariIndo . ', ' . $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
+        $detailRegistrasiDonatur->JamDonasi = Carbon::createFromFormat('H:i:s', $detailRegistrasiDonatur->JamDonasi)->format('H:i');
+        $donasiItems = explode(',', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
+        $detailRegistrasiDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
+            return[
+                'jenis' => $jenis,
+                'image' => $FotoDonasi[$jenis],
+            ];
+        }, $donasiItems));
+        return view('profile_donatur_relawan/detail_riwayat_kegiatan', compact('id1', 'id2', 'detailRegistrasiDonatur'));
     }
 
     public function logout(){
