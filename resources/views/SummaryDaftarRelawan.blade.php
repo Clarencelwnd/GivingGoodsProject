@@ -89,7 +89,7 @@
             </div>
         </div>
 
-        <div class="container-help-platform">
+        <div class="container-help-platform" id="container-help-platform">
             <div class="header">
                 <div class="text-help">Bantu GivingGoods Terus Berkembang!</div>
                 <div class="arrow" onclick="toggleDropdown()">&#x25BC;</div>
@@ -133,6 +133,7 @@
         @endif
 
     <script>
+
          function toggleDropdown() {
             const dropdown = document.querySelector('.dropdown-content');
             const arrow = document.querySelector('.arrow');

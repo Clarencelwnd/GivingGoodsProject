@@ -55,8 +55,6 @@ public function store(Request $request)
         'StatusRegistrasiRelawan' => 'Menunggu Konfirmasi', // Default status
         'AlasanRegistrasiRelawan' => $alasanRelawan,
         'TanggalKehadiranRelawan' => $tanggalKegiatan,
-        'JamMulaiRelawan' => $kegiatanRelawan->JamMulaiKegiatanRelawan,
-        'JamSelesaiRelawan' => $kegiatanRelawan->JamSelesaiKegiatanRelawan,
     ]);
 
     // Hapus data dari session

@@ -58,6 +58,7 @@ body {
     font-size: 16px;
 }
 
+
 .info-text {
     color: #898989;
     font-weight: 400;
@@ -99,12 +100,15 @@ body {
 
 }
 
-.input-field {
+.input-field-date-time {
     background-color: #E0E0E0;
     width: 100%;
     padding: 10px;
     border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
     border-radius: 5px;
+    box-sizing: border-box;
 }
 
 .button {

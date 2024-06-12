@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('StatusRegistrasiRelawan', 20);
             $table->string('AlasanRegistrasiRelawan', 255);
             $table->date('TanggalKehadiranRelawan');
-            $table->time('JamMulaiRelawan');
-            $table->time('JamSelesaiRelawan');
             $table->timestamps();
         });
     }

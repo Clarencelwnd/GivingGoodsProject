@@ -49,12 +49,12 @@
         <div class="time-date-container">
             <div class="date-picker-container">
                 <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
-                <input type="text" id="date-picker" class="input-field" name="tanggal_kegiatan">
+                <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan">
             </div>
 
             <div class="time-picker-container">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
-                <input type="text" class="input-field" name="jam_kegiatan" value="{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}" readonly>
+                <input type="text" class="input-field-date-time" name="jam_kegiatan" value="{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}" readonly style="background-color: #f0f0f0;">
             </div>
         </div>
 
