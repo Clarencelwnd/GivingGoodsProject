@@ -42,6 +42,8 @@ Route::get('/summary-daftar-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [Summ
 Route::post('/store-daftar-donasi', [SummaryDaftarDonasiController::class, 'store'])->name('storeSummaryDaftarDonasi');
 
 
+
+// ====== Page Panti Sosial ======
 Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
 
 

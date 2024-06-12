@@ -11,14 +11,12 @@ class drDetailKegiatanRelawanController extends Controller
 {
     public function show($idKegiatanRelawan, $idDonaturRelawan)
     {
-        // Ambil data kegiatan relawan berdasarkan ID
         $kegiatanRelawan = KegiatanRelawan::find($idKegiatanRelawan);
 
         if (!$kegiatanRelawan) {
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        // Ambil data donatur/relawan berdasarkan ID
         $donaturRelawan = DonaturAtauRelawan::find($idDonaturRelawan);
 
         if (!$donaturRelawan) {

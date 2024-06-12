@@ -18,15 +18,12 @@ class DaftarKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan atau Donatur tidak ditemukan');
         }
 
-        // Kemudian Anda bisa melakukan operasi yang diperlukan dengan data yang Anda miliki
-
         return view('DaftarKegiatanDonasi', compact('kegiatanDonasi', 'donaturRelawan'));
     }
 
 
     public function store(Request $request)
     {
-        // Validasi dasar tanpa jam_mulai_kegiatan
         $validatedData = $request->validate([
             'nama_donatur' => 'required',
             'no_hp_donatur' => 'required',

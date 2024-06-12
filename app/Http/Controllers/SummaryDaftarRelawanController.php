@@ -42,10 +42,8 @@ public function store(Request $request)
     $idKegiatanRelawan = $request->input('idKegiatanRelawan');
     $idDonaturRelawan = $request->input('idDonaturRelawan');
 
-    // Ambil data kegiatan relawan dari database
     $kegiatanRelawan = KegiatanRelawan::find($idKegiatanRelawan);
 
-    // Jika data kegiatan tidak ditemukan, redirect kembali dengan pesan error
     if (!$kegiatanRelawan) {
         return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
     }
@@ -64,7 +62,6 @@ public function store(Request $request)
     // Hapus data dari session
     // $request->session()->forget(['daftar_relawan']);
 
-    // Redirect ke halaman tertentu setelah menyimpan data
     // return redirect()->route('halaman-tertentu')->with('success', 'Registrasi berhasil disimpan');
     return redirect()->back()->with('success', 'Registrasi berhasil disimpan');
 

@@ -12,21 +12,17 @@ class SummaryDaftarDonasiController extends Controller
 {
     public function show(Request $request, $idKegiatanDonasi, $idDonaturRelawan)
     {
-        // Cari data kegiatan relawan berdasarkan ID
         $kegiatanDonasi = KegiatanDonasi::find($idKegiatanDonasi);
 
-        // Cari data donatur relawan berdasarkan ID
         $donaturRelawan = DonaturAtauRelawan::find($idDonaturRelawan);
 
-        // Jika data kegiatan atau donatur tidak ditemukan, redirect kembali dengan pesan error
         if (!$kegiatanDonasi || !$donaturRelawan) {
             return redirect()->back()->with('error', 'Kegiatan atau Donatur tidak ditemukan');
         }
 
-        // Ambil data dari session jika ada
+        // Ambil data dari session
         $data = $request->session()->get('daftar_donasi');
 
-        // Kirim data ke view SummaryDaftarRelawan
         return view('SummaryDaftarDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'data'));
     }
 
@@ -40,10 +36,8 @@ public function store(Request $request)
     $idKegiatanDonasi = $request->input('idKegiatanRelawan');
     $idDonaturRelawan = $request->input('idDonaturRelawan');
 
-    // Ambil data kegiatan donasi dari database
     $kegiatanDonasi = KegiatanDonasi::find($idKegiatanDonasi);
 
-    // Jika data kegiatan donasi tidak ditemukan, redirect kembali dengan pesan error
     if (!$kegiatanDonasi) {
         return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
     }
@@ -52,11 +46,11 @@ public function store(Request $request)
     RegistrasiDonatur::create([
         'IDDonaturRelawan' => $idDonaturRelawan,
         'IDKegiatanDonasi' => $idKegiatanDonasi,
-        'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi', // Default status
+        'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi',
         'JenisDonasiDidonasikan' => $data['jenis_donasi'],
         'DeskripsiBarangDonasi' => $data['deskripsi_barang'],
         'TanggalDonasi' => $data['tanggal_kegiatan'],
-        'JamDonasi' => $data['jam_mulai_kegiatan'], // Assuming jam mulai kegiatan is the jam donasi
+        'JamDonasi' => $data['jam_mulai_kegiatan'],
         'PengirimanBarang' => $data['pengiriman_barang'],
     ]);
 

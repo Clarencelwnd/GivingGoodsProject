@@ -5,195 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Pendaftaran Donasi</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <style>
-        /* Gaya CSS di sini */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        .container {
-    padding: 40px 70px;
-}
-
-.title {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding-bottom: 50px;
-}
-
-.title img {
-    display: flex;
-    padding-top: 10px;
-    padding-right: 10px;
-}
-.title h1 {
-    font-weight: 600;
-    color: #007C92;
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-        .input-container{
-            padding-bottom: 20px;
-        }
-        .subtitle {
-            color: #193952;
-            font-weight: 400;
-            font-size: 24px;
-            padding-bottom: 20px;
-        }
-        .subtitle-time-date {
-            color: #193952;
-            font-weight: 400;
-            font-size: 24px;
-            padding-top: 20px;
-        }
-        .info-text {
-            color: #898989;
-            font-weight: 400;
-            font-size: 22px;
-            padding: 15px 0px;
-        }
-        .time-date-container {
-    display: flex;
-    padding-top: 30px;
-}
-
-.date-picker-container, .time-picker-container {
-    display: flex;
-    align-items: center;
-    padding-right: 300px;
-}
-
-.icon {
-    margin-right: 10px;
-    margin-bottom: 10px;
-    height: 24px;
-
-}
-
-.input-field {
-    background-color: #E0E0E0 ;
-    width: 100%;
-    padding: 10px;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.input-field-date-time {
-    background-color: #E0E0E0 ;
-    width: 80%;
-    padding: 10px;
-    border: none;
-    font-size: 20px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-.input-field[disabled] {
-    background-color: #F0F0F0;  /* Lighter background color for disabled input */
-    cursor: not-allowed;  /* Change cursor to indicate it's disabled */
-}
-
-        .button {
-            display: block;
-            width: 100%;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 32px;
-            color: white;
-            font-weight: 600;
-            background-color: #00C27E;
-            border: none;
-            border-radius: 5px;
-            margin-top: 40px;
-            text-decoration: none;
-            margin-bottom: 40px;
-        }
-.dropdown {
-    position: relative;
-}
-.arrow {
-    position: absolute;
-    right: 10px;
-    top: 20%;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #FDFFFE;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 2px;
-}
-
-.dropdown-item {
-    padding: 10px;
-    color: #193952;
-    font-weight: 400;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.dropdown-item:hover {
-    background-color: #f1f1f1;
-}
-
-.text-instruction{
-    color: #898989;
-    font-weight: 400;
-    font-size: 22px;
-}
-
-.text-instruction div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.text-instruction div span {
-    width: 120px;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-
-#selected-options {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-bottom: 15px;
-}
-.selected-item {
-    margin-right: 10px;
-    border: 1px solid #006374;
-    padding: 5px 10px;
-    border-radius: 5px;
-    /* background-color: #E0F2F1; */
-    color: #006374;
-    font-size: 16px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-}
-
-.close-btn {
-    margin-left: 5px;
-    cursor: pointer;
-}
-    </style>
+    <link href="{{ asset('css/DaftarKegiatanDonasi.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/DaftarKegiatanDonasi.js') }}"></script>
 </head>
 <body>
 
@@ -205,7 +18,6 @@
             <h1>Daftar Kegiatan</h1>
         </div>
 
-        <!-- Subtitles and Input Fields -->
         <div class="input-container">
             <div class="subtitle">Nama Donatur</div>
             <input type="text" class="input-field" name="nama_donatur" id="nama_donatur_field" value="{{ $donaturRelawan->NamaDonaturRelawan }}" readonly style="background-color: #f0f0f0;">
@@ -327,7 +139,6 @@
 
         function submitForm() {
 
-              // Copy values from visible input fields to hidden input fields
             document.getElementById('nama_donatur').value = document.getElementById('nama_donatur_field').value;
             document.getElementById('no_hp_donatur').value = document.getElementById('no_hp_donatur_field').value;
             document.getElementById('jenis_donasi').value = document.getElementById('jenis_donasi_field').value;
@@ -336,7 +147,6 @@
             document.getElementById('tanggal_kegiatan').value = document.getElementById('date-picker').value;
             document.getElementById('jam_mulai_kegiatan').value = document.getElementById('jam_mulai_kegiatan_field').value;
 
-            // Submit the form
             document.getElementById('submit-form').submit();
         }
 
@@ -411,25 +221,6 @@
                     }
                 }
             }
-
-
-// function selectOptionJenis(option) {
-//     // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
-//     var selectedDiv = document.createElement("div");
-//     selectedDiv.className = "selected-item";
-//     selectedDiv.innerHTML = option + '<img src="{{ asset('image/general/close.png') }}" class="close-btn" alt="Close Icon" onclick="removeOption(this)">';
-
-//     // Menambahkan div baru ke dalam div untuk menampilkan opsi yang dipilih
-//     document.getElementById('selected-options').appendChild(selectedDiv);
-
-//     // Menambahkan opsi yang dipilih ke input field
-//     var currentOption = document.getElementById('jenis_donasi_field').value;
-//     if (currentOption.length > 0) {
-//         document.getElementById('jenis_donasi_field').value += ', ' + option;
-//     } else {
-//         document.getElementById('jenis_donasi_field').value = option;
-//     }
-// }
 
 
             function selectOptionJenis(option) {
