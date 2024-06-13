@@ -25,6 +25,14 @@
     margin-bottom: 20px;
 }
 
+.back-column{
+    padding: 0px;
+}
+
+.gambar-back{
+    width: 20px;
+}
+
 .title{
     text-decoration: none;
     color: #007C92;

@@ -51,6 +51,14 @@
     font-size: small;
 }
 
+.back-column{
+    padding: 0px;
+}
+
+.gambar-back{
+    width: 20px;
+}
+
 .title{
     margin-top: 20px;
     font-weight: 600;

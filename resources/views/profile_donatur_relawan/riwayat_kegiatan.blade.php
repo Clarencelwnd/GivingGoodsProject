@@ -15,7 +15,16 @@
     <div class="card main container justify-content-center">
         <div class="card-header main">
             <p class="position">Profil > Riwayat Kegiatan</p>
-            <a class="back" href="{{route('profile.donatur_relawan', ['id'=>$id])}}">&lt; Kembali ke Profil</a>
+            <div class="row">
+                <div class="col-auto back-column">
+                    <a class="back" href="{{route('profile.donatur_relawan', ['id'=>$id])}}">
+                        <img class="gambar-back" src="{{asset('Image/general/back.png')}}" alt="">
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <a class="back" href="{{route('profile.donatur_relawan', ['id'=>$id])}}">Kembali ke Profil</a>
+                </div>
+            </div>
             <h5 class="title">Riwayat Kegiatan</h5>
         </div>
         <div class="card-body main">

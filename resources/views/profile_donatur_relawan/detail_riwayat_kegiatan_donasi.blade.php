@@ -16,8 +16,15 @@
         <div class="card-header">
             <p class="position">Profil > Riwayat Kegiatan > {{$detailRegistrasiDonatur->kegiatanDonasi->NamaKegiatanDonasi}}</p>
             <div class="row card-title">
-                <div class="col">
-                    <a class="title" href="{{route('riwayat_kegiatan', ['id'=>$id1])}}">&lt; {{$detailRegistrasiDonatur->kegiatanDonasi->NamaKegiatanDonasi}}</a>
+                <div class="col row">
+                    <div class="col-auto back-column">
+                        <a class="title" href="{{route('riwayat_kegiatan', ['id'=>$id1])}}">
+                            <img class="gambar-back" src="{{asset('Image/general/back.png')}}" alt="">
+                        </a>
+                    </div>
+                    <div class="col-auto">
+                        <a class="title" href="{{route('riwayat_kegiatan', ['id'=>$id1])}}">{{$detailRegistrasiDonatur->kegiatanDonasi->NamaKegiatanDonasi}}</a>
+                    </div>
                 </div>
                 <div class="col-auto label-status-kegiatan d-flex justify-content-end align-items-center">
                     @if ($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'sedang_diproses')
