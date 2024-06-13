@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('DeskripsiBarangDonasi', 255);
             $table->date('TanggalDonasi');
             $table->time('JamDonasi');
+            $table->string('StatusDihubungi', 20);
             $table->timestamps();
         });
     }

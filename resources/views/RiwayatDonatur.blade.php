@@ -64,7 +64,22 @@
                                 </form>
                             </td>
                             <td>
-                                <input type="checkbox" name="sudah_dihubungi[]" value="1" style="transform: scale(1.5);">
+                                <form id="checkbox-form-{{ $registrasi->IDRegistrasiDonatur }}" action="{{ route('update-status-checkbox-donatur', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
+                                    @csrf
+                                    <input id="sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiDonatur }}" type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);" @if($registrasi->StatusDihubungi == 'Sudah') checked @endif>
+                                </form>
+                                <script>
+                                    var checkbox = document.getElementById('sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiDonatur }}');
+                                    checkbox.addEventListener('change', function() {
+                                        document.getElementById('checkbox-form-{{ $registrasi->IDRegistrasiDonatur }}').submit();
+                                    });
+
+                                    // Set checkbox checked status based on server response
+                                    var status = "{{ $registrasi->StatusDihubungi }}";
+                                    if (status === 'Sudah') {
+                                        checkbox.checked = true;
+                                    }
+                                </script>
                             </td>
                             <td>
                                 <button class="btn-detail"

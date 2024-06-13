@@ -29,11 +29,11 @@ Route::put('/update-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::clas
 
 
 
-Route::get('/registrasi-donatur/{id}', [RiwayatDonaturController::class, 'index'])->name('riwayat-donatur.index');
+Route::get('/riwayat-donatur/{id}', [RiwayatDonaturController::class, 'index'])->name('riwayat-donatur.index');
 
 Route::post('/update-status/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatus'])->name('update-status');
 
-
+Route::post('/update-status-checkbox-donatur/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-donatur');
 
 
 
@@ -48,12 +48,12 @@ Route::put('/update-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::cl
 
 
 
-Route::get('/registrasi-relawan/{id}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');
+Route::get('/riwayat-relawan/{id}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');
 
 Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
 
 
-Route::post('/update-status-checkbox/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox');
+Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
 
 
 

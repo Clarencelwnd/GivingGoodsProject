@@ -18,6 +18,7 @@ class RegistrasiDonaturSeeder extends Seeder
                 'DeskripsiBarangDonasi' => 'baju 5 pcs, celana 5 pcs, pensil 10 kotak',
                 'TanggalDonasi' => '2024-05-15',
                 'JamDonasi' => '09:30:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 2,
@@ -27,6 +28,7 @@ class RegistrasiDonaturSeeder extends Seeder
                 'DeskripsiBarangDonasi' => 'paramex 5 kotak',
                 'TanggalDonasi' => '2024-06-10',
                 'JamDonasi' => '11:45:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 3,
@@ -36,6 +38,7 @@ class RegistrasiDonaturSeeder extends Seeder
                 'DeskripsiBarangDonasi' => 'Mainan anak',
                 'TanggalDonasi' => '2024-07-20',
                 'JamDonasi' => '14:20:00',
+                'StatusDihubungi' => 'Belum',
             ],
             [
                 'IDDonaturRelawan' => 2,
@@ -45,6 +48,7 @@ class RegistrasiDonaturSeeder extends Seeder
                 'DeskripsiBarangDonasi' => 'Buku pelajaran',
                 'TanggalDonasi' => '2024-07-20',
                 'JamDonasi' => '14:15:00',
+                'StatusDihubungi' => 'Belum',
             ],
         ]);
     }
