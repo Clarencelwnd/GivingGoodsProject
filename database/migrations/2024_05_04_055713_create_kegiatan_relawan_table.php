@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('LinkGoogleMapsLokasiKegiatanRelawan', 255);
             $table->string('KriteriaRelawan', 255);
             $table->string('SyaratDanInstruksiKegiatanRelawan', 255);
-            $table->string('KontakKegiatanRelawan', 255);
+            $table->string('KontakKegiatanRelawan', 255)->nullable();
             $table->timestamps();
         });
     }
