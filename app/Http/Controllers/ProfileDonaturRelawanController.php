@@ -178,7 +178,7 @@ class ProfileDonaturRelawanController extends Controller
             $partitionTanggalDonasi = explode('-', $registDonatur->TanggalDonasi);
             $registDonatur->setAttribute('FormatTanggalDonasi', $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
 
-            $donasiItems = explode(',', $registDonatur->JenisDonasiDidonasikan);
+            $donasiItems = explode(';', $registDonatur->JenisDonasiDidonasikan);
             $registDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
                 return[
                     'jenis' => $jenis,
@@ -242,7 +242,7 @@ class ProfileDonaturRelawanController extends Controller
 
         $detailRegistrasiDonatur->JamMulaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiDonatur->JamDonasi)->format('H:i');
 
-        $donasiItems = explode(',', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
+        $donasiItems = explode(';', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
         $detailRegistrasiDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
             return[
                 'jenis' => $jenis,
