@@ -31,7 +31,10 @@
 
         <div class="input-container">
             <div class="subtitle">Alasan Menjadi Relawan</div>
-            <input type="text" class="input-field" name="alasan_relawan" id="alasan_relawan_field">
+            <input type="text" class="input-field" name="alasan_relawan" id="alasan_relawan_field" value="{{ old('alasan_relawan') }}">
+            @error('alasan_relawan')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <div class="subtitle-time-date">Ketersedian Waktu Untuk Bergabung</div>
@@ -47,9 +50,14 @@
         </div>
 
         <div class="time-date-container">
-            <div class="date-picker-container">
-                <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
-                <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan">
+            <div class="input-container">
+                <div class="date-picker-container">
+                    <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
+                    <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}">
+                </div>
+                @error('tanggal_kegiatan')
+                    <div class="error-message">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="time-picker-container">

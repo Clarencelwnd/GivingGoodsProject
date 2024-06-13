@@ -32,7 +32,7 @@
             <div class="subtitle">Jenis Donasi</div>
             <div class="dropdown">
                 <div id="selected-options"></div>
-                <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" readonly>
+                <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly>
                 <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow">
                 <div class="dropdown-content" id="dropdown_content_jenis">
                     <div class="dropdown-item" onclick="selectOptionJenis('Pakaian')"><span>Pakaian</span></div>
@@ -47,18 +47,24 @@
                     <div class="dropdown-item" onclick="selectOptionJenis('Sepatu')"><span>Sepatu</span></div>
                 </div>
             </div>
+            @if ($errors->has('jenis_donasi'))
+                <div class="error-message">{{ $errors->first('jenis_donasi') }}</div>
+            @endif
         </div>
 
 
         <div class="input-container">
             <div class="subtitle">Deskripsi Barang Donasi</div>
-            <input type="text" class="input-field" name="deskripsi_barang" id="deskripsi_barang_field">
+            <input type="text" class="input-field" name="deskripsi_barang" id="deskripsi_barang_field" value="{{ old('deskripsi_barang') }}">
+            @if ($errors->has('deskripsi_barang'))
+                <div class="error-message">{{ $errors->first('deskripsi_barang') }}</div>
+            @endif
         </div>
 
         <div class="input-container">
             <div class="subtitle">Pengiriman barang menggunakan?</div>
             <div class="dropdown">
-                <input type="text" class="input-field" name="pengiriman_barang" id="pengiriman_barang_field" readonly>
+                <input type="text" class="input-field" name="pengiriman_barang" id="pengiriman_barang_field" value="{{ old('pengiriman_barang') }}" readonly>
                 <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow" alt="Dropdown Arrow">
                 <div class="dropdown-content" id="dropdown_content">
                     <div class="dropdown-item" onclick="selectOption('Antar sendiri')">Antar sendiri</div>
@@ -68,6 +74,9 @@
                     @endif
                 </div>
             </div>
+            @if ($errors->has('pengiriman_barang'))
+                <div class="error-message">{{ $errors->first('pengiriman_barang') }}</div>
+            @endif
         </div>
 
         <div class="input-container">
@@ -95,14 +104,24 @@
 
 
         <div class="time-date-container">
-            <div class="date-picker-container">
-                <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
-                <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan">
+            <div class="input-container">
+                <div class="date-picker-container">
+                    <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
+                    <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}">
+                </div>
+                @if ($errors->has('tanggal_kegiatan'))
+                    <div class="error-message">{{ $errors->first('tanggal_kegiatan') }}</div>
+                @endif
             </div>
 
-            <div class="time-picker-container">
-                <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
-                <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field">
+            <div class="input-container">
+                <div class="time-picker-container">
+                    <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
+                    <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field" value="{{ old('jam_mulai_kegiatan') }}">
+                </div>
+                @if ($errors->has('jam_mulai_kegiatan'))
+                    <div class="error-message">{{ $errors->first('jam_mulai_kegiatan') }}</div>
+                @endif
             </div>
 
         </div>
