@@ -25,13 +25,13 @@
             </button>
             <div class="collapse filter-section" id="jenisKegiatanCollapse">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="jenisKegiatanDonasi">
+                    <input class="form-check-input jenis-kegiatan-checkbox" type="checkbox" value="" id="jenisKegiatanDonasi">
                     <label class="form-check-label" for="jenisKegiatanDonasi">
                         Donasi
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="jenisKegiatanRelawan">
+                    <input class="form-check-input jenis-kegiatan-checkbox" type="checkbox" value="" id="jenisKegiatanRelawan">
                     <label class="form-check-label" for="jenisKegiatanRelawan">
                         Relawan
                     </label>
