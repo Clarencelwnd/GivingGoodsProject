@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     let kegiatan = document.querySelectorAll('.kegiatan[data-status-kegiatan]');
     kegiatan.forEach(function(element){
-        let statusKegiatan = element.getAttribute('data-status-kegiatan');
+        let statusKegiatan = element.getAttribute('data-status-kegiatan').replace(/\s+/g, '-');
         element.classList.add(statusKegiatan);
     });
 
@@ -50,7 +50,7 @@ function updateSubFilters(filterType) {
         `;
     } else if (filterType === 'relawan') {
         subFilterOptions = `
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="menunggu_konfirmasi" class="col-auto btn btn-sub-filter" id="btn-menunggu konfirmasi">Menunggu Konfirmasi</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="menunggu_konfirmasi" class="col-auto btn btn-sub-filter" id="btn-menunggu-konfirmasi">Menunggu Konfirmasi</button>
             <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="relawan_diterima" class="col-auto btn btn-sub-filter" id="btn-relawan-diterima">Relawan Diterima</button>
             <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="relawan_ditolak" class="col-auto btn btn-sub-filter" id="btn-relawan-ditolak">Relawan Ditolak</button>
         `;
@@ -70,10 +70,6 @@ function updateSubFilter(button) {
 
     filterData(filterType, subFilterValue);
 }
-
-// function redirectToURL() {
-
-// }
 
 // SHOW DATA
 function filterData(filterType, subFilterValue) {

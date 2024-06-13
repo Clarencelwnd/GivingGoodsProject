@@ -178,7 +178,7 @@ class ProfileDonaturRelawanController extends Controller
             $partitionTanggalDonasi = explode('-', $registDonatur->TanggalDonasi);
             $registDonatur->setAttribute('FormatTanggalDonasi', $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
 
-            $donasiItems = explode(';', $registDonatur->JenisDonasiDidonasikan);
+            $donasiItems = explode(',', $registDonatur->JenisDonasiDidonasikan);
             $registDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
                 return[
                     'jenis' => $jenis,
@@ -241,7 +241,7 @@ class ProfileDonaturRelawanController extends Controller
 
         $detailRegistrasiDonatur->JamDonasi = Carbon::createFromFormat('H:i:s', $detailRegistrasiDonatur->JamDonasi)->format('H:i');
 
-        $donasiItems = explode(';', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
+        $donasiItems = explode(',', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
         $detailRegistrasiDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
             return[
                 'jenis' => $jenis,
@@ -282,9 +282,9 @@ class ProfileDonaturRelawanController extends Controller
         $partitionTanggalRelawan = explode('-', $detailRegistrasiRelawan->TanggalKehadiranRelawan);
         $detailRegistrasiRelawan->setAttribute('FormatTanggalRelawan', $hariIndoRelawan . ', ' . $partitionTanggalRelawan[2] . ' ' . $bulan[$partitionTanggalRelawan[1]] . ' ' . $partitionTanggalRelawan[0]);
 
-        $detailRegistrasiRelawan->JamMulaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->JamMulaiRelawan)->format('H:i');
-        $detailRegistrasiRelawan->JamSelesaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->JamSelesaiRelawan)->format('H:i');
-        $detailRegistrasiRelawan->setAttribute('FormatJamRelawan', $detailRegistrasiRelawan->JamMulaiRelawan . '-' . $detailRegistrasiRelawan->JamSelesaiRelawan);
+        $detailRegistrasiRelawan->kegiatanRelawan->JamMulaiKegiatanRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->kegiatanRelawan->JamMulaiKegiatanRelawan)->format('H:i');
+        $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan)->format('H:i');
+        $detailRegistrasiRelawan->setAttribute('FormatJamRelawan', $detailRegistrasiRelawan->kegiatanRelawan->JamMulaiKegiatanRelawan . '-' . $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan);
 
         return view('profile_donatur_relawan/detail_riwayat_kegiatan_relawan', compact('id1', 'id2', 'detailRegistrasiRelawan'));
     }

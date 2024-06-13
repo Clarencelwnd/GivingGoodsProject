@@ -27,9 +27,9 @@
                     </div>
                 </div>
                 <div class="col-auto label-status-kegiatan d-flex justify-content-end align-items-center">
-                    @if ($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'sedang_diproses')
+                    @if ($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'Menunggu Konfirmasi')
                         Sedang Diproses
-                    @elseif($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'donasi_diterima')
+                    @elseif($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'Donasi Diterima')
                         Donasi Diterima
                     @endif
                 </div>
@@ -73,7 +73,7 @@
             </div>
             <br>
             <div class="caption">Deskripsi Donasi</div>
-            <div class="content">tes</div>
+            <div class="content">{{$detailRegistrasiDonatur->DeskripsiBarangDonasi}}</div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
