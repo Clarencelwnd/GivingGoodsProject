@@ -14,7 +14,7 @@ class RegistrasiDonaturSeeder extends Seeder
                 'IDDonaturRelawan' => 1,
                 'IDKegiatanDonasi' => 1,
                 'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi',
-                'JenisDonasiDidonasikan' => 'pakaian;alat tulis;sepatu',
+                'JenisDonasiDidonasikan' => 'pakaian;alat_tulis;sepatu',
                 'DeskripsiBarangDonasi' => 'baju 5 pcs, celana 5 pcs, pensil 10 kotak, sepatu 5 pasang',
                 'PengirimanBarang' => 'Antar sendiri',
                 'TanggalDonasi' => '2024-05-15',
