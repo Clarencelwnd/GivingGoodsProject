@@ -46,6 +46,7 @@
                         @error('namaKegiatan')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
+                        <div class="hint-text">maks. 5 kata</div>
                     </div>
                 </div>
 
@@ -62,6 +63,7 @@
                         @error('fotoKegiatan')
                             <div class="error-message-upload">{{ $message }}</div>
                         @enderror
+                        <div style="padding-top: 10px;" class="hint-text">maks. 1 foto</div>
                     </div>
                 </div>
 
@@ -76,6 +78,7 @@
                         @error('deskripsiKegiatan')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
+                        <div class="hint-text">maks. 200 kata</div>
                     </div>
                 </div>
 
@@ -138,6 +141,7 @@
                         @if ($errors->has('deskripsiJenisDonasi'))
                             <div class="error-message">{{ $errors->first('deskripsiJenisDonasi') }}</div>
                         @endif
+                        <div class="hint-text">maks. 200 kata</div>
                     </div>
                 </div>
 
