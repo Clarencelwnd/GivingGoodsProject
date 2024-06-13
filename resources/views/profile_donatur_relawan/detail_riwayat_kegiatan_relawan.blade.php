@@ -64,7 +64,7 @@
                     <img class="gambar" src="{{asset('Image/general/time.png')}}" alt="">
                 </div>
                 <div class="col-auto content">
-                    {{$detailRegistrasiRelawan->JamMulaiRelawan}}
+                    {{$detailRegistrasiRelawan->FormatJamRelawan}}
                 </div>
             </div>
             <br>

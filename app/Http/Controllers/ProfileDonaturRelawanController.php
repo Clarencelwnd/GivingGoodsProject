@@ -189,9 +189,8 @@ class ProfileDonaturRelawanController extends Controller
 
         // format tanggal relawan
         foreach ($registrasiRelawan as $registRelawan) {
-            $partitionTanggalMulai = explode('-', $registRelawan->TanggalKegiatanMulaiRelawan);
-            $partitionTanggalSelesai = explode('-', $registRelawan->TanggalKegiatanSelesaiRelawan);
-            $registRelawan->setAttribute('FormatTanggalRelawan', $partitionTanggalMulai[2] . ' ' . $bulan[$partitionTanggalMulai[1]] . ' ' . $partitionTanggalMulai[0] . ' - ' . $partitionTanggalSelesai[2] . ' ' . $bulan[$partitionTanggalSelesai[1]] . ' ' . $partitionTanggalSelesai[0]);
+            $partitionTanggalKehadiran = explode('-', $registRelawan->TanggalKehadiranRelawan);
+            $registRelawan->setAttribute('FormatTanggalRelawan', $partitionTanggalKehadiran[2] . ' ' . $bulan[$partitionTanggalKehadiran[1]] . ' ' . $partitionTanggalKehadiran[0]);
         }
 
         return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
@@ -240,7 +239,7 @@ class ProfileDonaturRelawanController extends Controller
         $partitionTanggalDonasi = explode('-', $detailRegistrasiDonatur->TanggalDonasi);
         $detailRegistrasiDonatur->setAttribute('FormatTanggalDonasi', $hariIndoDonatur . ', ' . $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0]);
 
-        $detailRegistrasiDonatur->JamMulaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiDonatur->JamDonasi)->format('H:i');
+        $detailRegistrasiDonatur->JamDonasi = Carbon::createFromFormat('H:i:s', $detailRegistrasiDonatur->JamDonasi)->format('H:i');
 
         $donasiItems = explode(';', $detailRegistrasiDonatur->JenisDonasiDidonasikan);
         $detailRegistrasiDonatur->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
@@ -279,11 +278,13 @@ class ProfileDonaturRelawanController extends Controller
             'Friday' => 'Jumat',
             'Saturday' => 'Sabtu'
         ];
-        $hariIndoRelawan = $hari[Carbon::parse($detailRegistrasiRelawan->TanggalKegiatanMulaiRelawan)->format('l')];
-        $partitionTanggalRelawan = explode('-', $detailRegistrasiRelawan->TanggalKegiatanMulaiRelawan);
+        $hariIndoRelawan = $hari[Carbon::parse($detailRegistrasiRelawan->TanggalKehadiranRelawan)->format('l')];
+        $partitionTanggalRelawan = explode('-', $detailRegistrasiRelawan->TanggalKehadiranRelawan);
         $detailRegistrasiRelawan->setAttribute('FormatTanggalRelawan', $hariIndoRelawan . ', ' . $partitionTanggalRelawan[2] . ' ' . $bulan[$partitionTanggalRelawan[1]] . ' ' . $partitionTanggalRelawan[0]);
 
         $detailRegistrasiRelawan->JamMulaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->JamMulaiRelawan)->format('H:i');
+        $detailRegistrasiRelawan->JamSelesaiRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->JamSelesaiRelawan)->format('H:i');
+        $detailRegistrasiRelawan->setAttribute('FormatJamRelawan', $detailRegistrasiRelawan->JamMulaiRelawan . '-' . $detailRegistrasiRelawan->JamSelesaiRelawan);
 
         return view('profile_donatur_relawan/detail_riwayat_kegiatan_relawan', compact('id1', 'id2', 'detailRegistrasiRelawan'));
     }
