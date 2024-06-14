@@ -16,10 +16,8 @@ return new class extends Migration
             $table->foreign('IDKegiatanRelawan')->references('IDKegiatanRelawan')->on('kegiatan_relawan');
             $table->string('StatusRegistrasiRelawan', 20);
             $table->string('AlasanRegistrasiRelawan', 255);
-            $table->date('TanggalKegiatanMulaiRelawan');
-            $table->date('TanggalKegiatanSelesaiRelawan');
-            $table->time('JamMulaiRelawan');
-            $table->time('JamSelesaiRelawan');
+            $table->date('TanggalKehadiranRelawan');
+            $table->string('StatusDihubungi', 10);
             $table->timestamps();
         });
     }
