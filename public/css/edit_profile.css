@@ -1,0 +1,280 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.btn{
+    border-radius:5px;
+    font-size: 13px;
+}
+
+.close, .btn-img{
+    cursor: pointer;
+}
+
+/* LEFT SIDE  */
+
+.left{
+    padding-right: 25px;
+    padding-top: 50px;
+    overflow: hidden;
+    height: 100vh;
+}
+
+.left-title{
+    color: #006374;
+    margin-bottom: 30px;
+}
+
+.profile-pict{
+    width: 100%;
+    height: 40%;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+#btn-choose-photo, #btn-change-password{
+    width: 100%;
+    color: #007C92;
+    border: 1px solid #006374;
+    margin-bottom: 15px;
+    pointer-events: none;
+}
+
+#btn-logout{
+    width: 100%;
+    background: #B7342C;
+    color: #FDFFFE;
+    pointer-events: none;
+}
+
+/* RIGHT SIDE  */
+
+.right{
+    height: 100vh;
+    padding-top: 50px;
+    padding-left: 25px;
+    overflow-y: auto;
+}
+
+/* RIGHT SIDE MAIN TABLE  */
+
+.main-table{
+    width: 100%;
+}
+
+table, td, tr{
+    border: none;
+}
+
+tr{
+    padding-bottom: 20px;
+}
+
+.small-text{
+    font-size: xx-small;
+    padding-bottom: 20px;
+    padding-left: 10px;
+}
+
+.small-text-above{
+    border-radius: 5px;
+    width: 100%;
+    height: 40%;
+    padding-left: 10px;
+}
+
+.form-control{
+    background-color: #F0F0F0;
+    color: #1C3F5B;
+}
+
+input.form-control:focus{
+    box-shadow: none;
+}
+
+.left-column-mt, .right-column-mt{
+    color: #006374;
+    padding-bottom: 20px;
+}
+
+.left-column-mt{
+    font-weight: 500;
+}
+
+.right-column-mt{
+    border-radius: 5px;
+    width: 100%;
+    height: 40%;
+    padding-left: 10px;
+}
+
+#jam-operasional{
+    padding-left: 10px;
+    background-color: #FFFFFF;
+}
+
+.btn-jam-operasional{
+    /* padding-left: 10px; */
+    background: #007C92;
+    color: #FFFFFF;
+    width: 50%;
+}
+
+.btn-jam-operasional:hover{
+    color: #FFFFFF;
+    background: #017286;
+    font-weight: 600;
+}
+
+.error-msg{
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+#NomorRegistrasiPantiSosial, #EmailPantiSosial{
+    color: #989898;
+}
+
+input[readonly]{
+    pointer-events: none;
+    color: #706D6D;
+}
+
+/* RIGHT SIDE SCHEDULE TABLE  */
+
+.schedule-table{
+    width: 100%;
+    border: 1px solid;
+    border-spacing: 50px;
+}
+
+.row-st{
+    padding-left: 10px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.img-cell{
+    text-align: right;
+    padding-right: 10px;
+}
+
+.img{
+    width: 20px;
+}
+
+#button-style{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#btn-save, #btn-save-schedule{
+    background: #00AF71;
+    color: #FDFFFE;
+    width: 30%;
+
+}
+
+#btn-save{
+    margin-left: 20px;
+}
+
+#btn-save:hover, #btn-save-schedule:hover{
+    font-weight: 500;
+    background: #009B65;
+    color: #FDFFFE;
+}
+
+#btn-back{
+    color: #007C92;
+    border: 1px solid #007C92;
+    width: 15%;
+}
+
+#btn-back:hover{
+    font-weight: 500;
+    background: #E6E7E6;
+    color: #007C92;
+}
+
+#inf-address{
+    margin-left: 5px;
+    cursor: pointer;
+    width: 5%;
+}
+
+/* MODAL JADWAL OPERASIONAL*/
+#scheduleModalLabel{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+.modal-description{
+    color: #CB3A31;
+}
+
+th{
+    color: #007C92;
+    font-weight: 600;
+    padding: 20px;
+}
+
+.row-sst{
+    padding: 10px;
+    text-align: center;
+}
+
+/* MODAL SUCCESSFULLY UPDATE PROFILE */
+#successModalLabel{
+    color: #1C3F5B;
+}
+
+/* MODAL INFORMATION  */
+#informationModalLabel{
+    color: #152F44;
+    font-weight: 500;
+}
+
+#informationModalBody{
+    text-align: justify;
+    color: #1C3F5B;
+    font-size: smaller;
+}
+
+.modal-body{
+    word-wrap: break-word;
+}
+
+/* RESPONSIVE  */
+
+@media only screen and (min-width: 768px) {
+    .container {
+        max-width: 960px;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+
+    .profile-pict{
+        max-width: 100%;
+        max-height: 20%;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .container {
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .profile-pict{
+        max-width: 35%;
+        max-height: 35%;
+    }
+}
