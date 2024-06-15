@@ -10,6 +10,10 @@
 </head>
 <body>
 
+    @extends('templateDonaturRelawan')
+
+
+    @section('content')
     <div class="container">
 
         <div class="title">
@@ -144,7 +148,7 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script>
         flatpickr("#date-picker", {
             dateFormat: "Y-m-d",
@@ -297,10 +301,10 @@
                     // Jika tidak ada opsi yang dipilih, hapus padding atas pada arrow
                     arrow.style.marginTop = '0';
                 }
-            }
-
-
+            }s
 
     </script>
+
+@endsection
 </body>
 </html>

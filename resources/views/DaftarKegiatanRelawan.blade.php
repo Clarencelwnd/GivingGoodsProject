@@ -10,7 +10,9 @@
 
 </head>
 <body>
+    @extends('templateDonaturRelawan')
 
+    @section('content')
     <div class="container">
 
         <div class="title">
@@ -81,6 +83,7 @@
 
     </div>
 
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         flatpickr("#date-picker", {
@@ -97,5 +100,7 @@
             document.getElementById('submit-form').submit();
         }
     </script>
+
+@endsection
 </body>
 </html>

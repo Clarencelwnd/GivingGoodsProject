@@ -9,6 +9,9 @@
 </head>
 <body>
 
+    @extends('templateDonaturRelawan')
+
+    @section('content')
 <div class="container">
     <div class="title">
         <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
@@ -118,7 +121,6 @@
     </div>
 </div>
 
-
 <script>
             function showDonationPopup() {
                     document.getElementById('donation-popup-container').style.display = 'flex';
@@ -128,5 +130,7 @@
                     document.getElementById('donation-popup-container').style.display = 'none';
                 }
 </script>
+
+@endsection
 </body>
 </html>

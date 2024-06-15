@@ -8,8 +8,11 @@
     <link href="{{ asset('css/SummaryDaftarDonasi.css') }}" rel="stylesheet">
     <script src="{{ asset('js/SummaryDaftarDonasi.js') }}"></script>
 </head>
-
 <body>
+
+    @extends('templateDonaturRelawan')
+
+    @section('content')
     <div class="container">
 
         <div class="title">
@@ -132,7 +135,6 @@
     </form>
     </div>
 
-
 {{-- POPUP TERIMAKASIH --}}
         <div id="popup-container" style="display: none;">
                 <div id="popup">
@@ -168,5 +170,7 @@
         document.getElementById('popup-container').style.display = 'none';
     }
     </script>
+
+@endsection
 </body>
 </html>

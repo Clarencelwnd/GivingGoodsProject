@@ -62,6 +62,8 @@ Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])
 Route::get('/detailArtikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 
 
+
+// ====== Profile ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');
 Route::get('/edit_profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'edit_view'])->name('edit_profile.donatur_relawan');
 Route::post('/edit_profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'edit_profile_logic'])->name('edit_profile_logic.donatur_relawan');

@@ -8,6 +8,9 @@
 </head>
 <body>
 
+    @extends('templateDonaturRelawan')
+
+    @section('content')
 <div class="container">
     <h1 class="faq-title">Frequently Asked Questions</h1>
 
@@ -229,6 +232,7 @@
     </div>
 </div>
 
+
 <script>
     const faqQuestions = document.querySelectorAll('.faq-question-content');
 
@@ -239,6 +243,7 @@
         });
     });
 </script>
+@endsection
 
 </body>
 </html>

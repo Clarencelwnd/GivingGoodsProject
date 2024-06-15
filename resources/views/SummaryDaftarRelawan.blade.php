@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    @extends('templateDonaturRelawan')
+
+    @section('content')
     <div class="container">
 
         <div class="title">
@@ -131,7 +134,6 @@
             });
         </script>
         @endif
-
     <script>
 
          function toggleDropdown() {
@@ -147,5 +149,7 @@
         document.getElementById('popup-container').style.display = 'none';
     }
     </script>
+
+@endsection
 </body>
 </html>
