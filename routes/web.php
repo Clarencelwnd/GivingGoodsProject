@@ -51,6 +51,7 @@ Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosContro
 
 
 
+// ====== Artikel ======
 //Daftar Artikel
 Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])->name('displayDaftarArtikel');
 
