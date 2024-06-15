@@ -26,7 +26,6 @@
         @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
 
 
-
         <div class="daftarKegiatanContents container">
             <h4 id="daftar-kegiatan-title">Daftar Kegiatan</h4>
             {{-- CARDS --}}
@@ -34,7 +33,8 @@
                 @foreach ($activities as $activity)
                 <div class="col-md-4 mb-5 activity-card"
                      data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
-                     data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}">
+                     data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
+                     data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
                     <div class="card">
                         @if (isset($activity->NamaKegiatanRelawan))
                             <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
@@ -46,10 +46,19 @@
                             <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
                             <p class="card-text" id="card-jenisDonasi">
                                 @if (isset($activity->NamaKegiatanRelawan))
-                                    <p class="card-text">Jenis relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+                                    <p class="card-text">Jenis relawan:
+                                        @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
+                                            Bencana Alam
+                                        @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
+                                            Darurat Bencana
+                                        @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
+                                            Seni Budaya
+                                        @else
+                                            {{ $activity->JenisKegiatanRelawan }}
+                                        @endif
+                                    </p>
                                 @elseif (isset($activity->NamaKegiatanDonasi))
                                     @php
-                                    //to rewrite to ,
                                         $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
                                         $donasiTypes = array_slice($donasiTypes, 0, 5);
                                     @endphp

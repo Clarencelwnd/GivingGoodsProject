@@ -47,10 +47,18 @@ document.addEventListener('DOMContentLoaded', function() {
             .filter(checkbox => checkbox.checked)
             .map(checkbox => checkbox.id.replace('jenisRelawan', '').toLowerCase());
 
+            console.log('Selected Kegiatan Types:', selectedKegiatanTypes);
+            console.log('Selected Donasi Types:', selectedDonasiTypes);
+            console.log('Selected Relawan Types:', selectedRelawanTypes);
+
         activityCards.forEach(card => {
             const cardKegiatanType = card.getAttribute('data-jenis-kegiatan').toLowerCase();
             const cardDonasiTypes = card.getAttribute('data-jenis-donasi').toLowerCase().split(' ');
             const cardRelawanTypes = card.getAttribute('data-jenis-relawan').toLowerCase().split(' ');
+
+                console.log('Selected Kegiatan Types:', selectedKegiatanTypes);
+                console.log('Selected Donasi Types:', selectedDonasiTypes);
+                console.log('Selected Relawan Types:', selectedRelawanTypes);
 
             const matchesKegiatan = selectedKegiatanTypes.length === 0 || selectedKegiatanTypes.includes(cardKegiatanType);
             const matchesDonasi = selectedDonasiTypes.length === 0 || selectedDonasiTypes.some(type => cardDonasiTypes.includes(type));
@@ -58,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (matchesKegiatan && matchesDonasi && matchesRelawan) {
                 card.style.display = 'block';
-            } else {
+            }else {
                 card.style.display = 'none';
             }
         });
@@ -84,6 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listener for relawan checkboxes
     relawanCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                document.getElementById('jenisKegiatanRelawan').checked = true;
+            }
             filterActivities();
         });
     });

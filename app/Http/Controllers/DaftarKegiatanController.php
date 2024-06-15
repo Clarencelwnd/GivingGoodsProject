@@ -44,8 +44,8 @@ class DaftarKegiatanController extends Controller
                 'keperluan_mandi' => 'Image/donasi/toiletries.png'
             ];
 
-            $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan Mandi', 'Obat', 'Keperluan Rumah', 'Buku', 'Alat Tulis', 'Keperluan Ibadah', 'Mainan'];
-            $jenisRelawanList = ['Bencana Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat Bencana', 'Seni       Budaya'];
+            $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan_Mandi', 'Obat', 'Keperluan_Rumah', 'Buku', 'Alat_Tulis', 'Keperluan_Ibadah', 'Mainan'];
+            $jenisRelawanList = ['Bencana_Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat_Bencana', 'Seni_Budaya'];
 
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
@@ -103,8 +103,8 @@ class DaftarKegiatanController extends Controller
             'keperluan_mandi' => 'Image/donasi/toiletries.png'
         ];
 
-        $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan Mandi', 'Obat', 'Keperluan Rumah', 'Buku', 'Alat Tulis', 'Keperluan Ibadah', 'Mainan'];
-        $jenisRelawanList = ['BencanaAlam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'DaruratBencana', 'SeniBudaya'];
+        $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan_Mandi', 'Obat', 'Keperluan_Rumah', 'Buku', 'Alat_Tulis', 'Keperluan_Ibadah', 'Mainan'];
+        $jenisRelawanList = ['Bencana_Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat_Bencana', 'Seni_Budaya'];
 
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
@@ -121,7 +121,7 @@ class DaftarKegiatanController extends Controller
         );
 
         return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
-            'activities' => $paginator, 
+            'activities' => $paginator,
             'jenisDonasiIcons' => $jenisDonasiIcons,
             'search' => $search,
             'jenisDonasiList' => $jenisDonasiList,

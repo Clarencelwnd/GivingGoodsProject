@@ -44,11 +44,21 @@
                 <img class="dropdown-img" src="{{ asset('Image/general/drop.png') }}" alt="" width="15px" height="15px" class="float-end">
             </button>
             <div class="collapse filter-section" id="jenisDonasiCollapse">
-                @foreach(['Makanan', 'Pakaian', 'Keperluan Mandi', 'Obat', 'Keperluan Rumah', 'Buku', 'Alat Tulis', 'Keperluan Ibadah', 'Mainan'] as $jenisDonasiDibutuhkan)
+                @foreach($jenisDonasiList as $jenisDonasiDibutuhkan)
                     <div class="form-check">
                         <input class="form-check-input jenis-donasi-checkbox" type="checkbox" value="" id="jenisDonasi{{ $jenisDonasiDibutuhkan }}">
                         <label class="form-check-label" for="jenisDonasi{{ $jenisDonasiDibutuhkan }}">
-                            {{ $jenisDonasiDibutuhkan }}
+                            @if ($jenisDonasiDibutuhkan == "Keperluan_Mandi")
+                                Keperluan Mandi
+                            @elseif ($jenisDonasiDibutuhkan == "Keperluan_Rumah")
+                                Keperluan Rumah
+                            @elseif ($jenisDonasiDibutuhkan == "Alat_Tulis")
+                                Alat Tulis
+                            @elseif ($jenisDonasiDibutuhkan == "Keperluan_Ibadah")
+                                Keperluan Ibadah
+                            @else
+                                {{ $jenisDonasiDibutuhkan }}
+                            @endif
                         </label>
                     </div>
                 @endforeach
@@ -60,11 +70,19 @@
                 <img class="dropdown-img" src="{{ asset('Image/general/drop.png') }}" alt="" width="15px" height="15px" class="float-end">
             </button>
             <div class="collapse filter-section" id="jenisKegiatanRelawanCollapse">
-                @foreach(['Bencana Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat Bencana', 'Seni Budaya'] as $jenisRelawan)
+                @foreach($jenisRelawanList as $jenisRelawan)
                     <div class="form-check">
-                        <input class="form-check-input jenis-relawan-checkbox" type="checkbox" value="" id="jenisKegiatanRelawan">
-                        <label class="form-check-label" for="jenisKegiatanRelawan">
-                            {{ $jenisRelawan }}
+                        <input class="form-check-input jenis-relawan-checkbox" type="checkbox" value="" id="jenisRelawan{{ $jenisRelawan }}">
+                        <label class="form-check-label" for="jenisRelawan{{ $jenisRelawan }}">
+                            @if ($jenisRelawan == "Bencana_Alam")
+                                Bencana Alam
+                            @elseif ($jenisRelawan == "Darurat_Bencana")
+                                Darurat Bencana
+                            @elseif ($jenisRelawan == "Seni_Budaya")
+                                Seni Budaya
+                            @else
+                                {{ $jenisRelawan }}
+                            @endif
                         </label>
                     </div>
                 @endforeach
