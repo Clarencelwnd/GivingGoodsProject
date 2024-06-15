@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string('StatusRegistrasiDonatur', 20);
             $table->string('JenisDonasiDidonasikan', 255);
             $table->string('DeskripsiBarangDonasi', 255);
+            $table->string('PengirimanBarang', 255);
             $table->date('TanggalDonasi');
             $table->time('JamDonasi')->nullable();
-            $table->string('PengirimanBarang', 255);
+            $table->string('StatusDihubungi', 10);
             $table->timestamps();
         });
     }

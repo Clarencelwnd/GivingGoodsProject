@@ -16,9 +16,9 @@ return new class extends Migration
             $table->date('TanggalLahirDonaturRelawan');
             $table->string('JenisKelaminDonaturRelawan', 10)->nullable();
             $table->string('NomorTeleponDonaturRelawan', 15);
-            $table->string('AlamatDonaturRelawan', 255)->nullable();
-            $table->string('LinkGoogleMapsDonaturRelawan', 600)->nullable();
-            $table->string('FotoDonaturRelawan', 255)->nullable();
+            $table->text('AlamatDonaturRelawan')->nullable();
+            $table->string('LinkGoogleMapsDonaturRelawan', 255)->nullable();
+            $table->string('FotoDonaturRelawan', 255);
             $table->timestamps();
         });
     }

@@ -16,12 +16,12 @@ return new class extends Migration
             $table->string('NamaKegiatanDonasi', 255);
             $table->string('DeskripsiKegiatanDonasi', 255);
             $table->string('JenisDonasiDibutuhkan', 255);
+            $table->string('DeskripsiJenisDonasi', 255);
             $table->date('TanggalKegiatanDonasiMulai');
             $table->date('TanggalKegiatanDonasiSelesai');
-            $table->string('LokasiKegiatanDonasi', 255);
+            $table->text('LokasiKegiatanDonasi', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanDonasi', 255);
-            $table->string('DeskripsiJenisDonasi', 255);
-            $table->string('JasaPickup', 255);
+            $table->string('JasaPickup', 55);
             $table->timestamps();
         });
     }

@@ -14,21 +14,23 @@ class RegistrasiDonaturSeeder extends Seeder
                 'IDDonaturRelawan' => 1,
                 'IDKegiatanDonasi' => 1,
                 'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi',
-                'JenisDonasiDidonasikan' => 'pakaian; alat tulis',
-                'DeskripsiBarangDonasi' => 'baju 5 pcs, celana 5 pcs, pensil 10 kotak',
+                'JenisDonasiDidonasikan' => 'pakaian,alat_tulis,sepatu',
+                'DeskripsiBarangDonasi' => 'baju 5 pcs, celana 5 pcs, pensil 10 kotak, sepatu 5 pasang',
+                'PengirimanBarang' => 'Antar sendiri',
                 'TanggalDonasi' => '2024-05-15',
                 'JamDonasi' => '09:30:00',
-                'PengirimanBarang' => 'Antar Sendiri',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 2,
                 'StatusRegistrasiDonatur' => 'Donasi Diterima',
-                'JenisDonasiDidonasikan' => 'obat',
-                'DeskripsiBarangDonasi' => 'paramex 5 kotak',
+                'JenisDonasiDidonasikan' => 'obat,alat_tulis',
+                'DeskripsiBarangDonasi' => 'paramex 5 kotak, pensil 100 pcs',
+                'PengirimanBarang' => 'Antar sendiri',
                 'TanggalDonasi' => '2024-06-10',
                 'JamDonasi' => '11:45:00',
-                'PengirimanBarang' => 'Pickup oleh pansos',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 3,
@@ -36,9 +38,10 @@ class RegistrasiDonaturSeeder extends Seeder
                 'StatusRegistrasiDonatur' => 'Menunggu Konfirmasi',
                 'JenisDonasiDidonasikan' => 'mainan',
                 'DeskripsiBarangDonasi' => 'Mainan anak',
+                'PengirimanBarang' => 'Antar sendiri',
                 'TanggalDonasi' => '2024-07-20',
                 'JamDonasi' => '14:20:00',
-                'PengirimanBarang' => 'Antar Sendiri',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 2,
@@ -46,9 +49,10 @@ class RegistrasiDonaturSeeder extends Seeder
                 'StatusRegistrasiDonatur' => 'Donasi Diterima',
                 'JenisDonasiDidonasikan' => 'buku',
                 'DeskripsiBarangDonasi' => 'Buku pelajaran',
+                'PengirimanBarang' => 'Antar sendiri',
                 'TanggalDonasi' => '2024-07-20',
                 'JamDonasi' => '14:15:00',
-                'PengirimanBarang' => 'Menggunakan Kurir',
+                'StatusDihubungi' => 'Belum'
             ],
         ]);
     }
