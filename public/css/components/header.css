@@ -1,0 +1,43 @@
+hr{
+    width: 100%;
+    height: 1px;
+    background-color: #DFDFDF;
+}
+
+#logoImg{
+    margin-left: 0.75em;
+}
+
+#profileDropdown{
+    margin-right: 1.5em;
+}
+
+#dropdownUserName{
+    font-size: 18px;
+    font-weight: 500;
+    color: #00AF71;
+}
+
+#kegiatanDropdown{
+    font-size: 18px;
+    margin-left: 50px;
+    font-weight: 500
+}
+
+#artikelButton{
+    font-size: 18px;
+    margin-left: 40px;
+    font-weight: 500
+}
+
+#forumButton{
+    font-size: 18px;
+    margin-left: 40px;
+    font-weight: 500
+}
+
+#faqButton{
+    font-size: 18px;
+    margin-left: 40px;
+    font-weight: 500
+}

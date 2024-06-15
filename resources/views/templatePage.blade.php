@@ -18,11 +18,10 @@
 </head>
 
 <body>
-    @include('components.sideBar')
-
+    @include('components.header')
+    <hr>
     @section('header')
     <div id="main">
-        @include('components.header')
         @yield('content')
         @yield('pagination')
     </div>

@@ -14,15 +14,13 @@ class KomentarForumController extends Controller
             'KomentarForum' => 'required|string|max:255'
         ]);
 
-         // Create a new comment entry
          KomentarForum::create([
             'IDForum' => $request->IDForum,
-            'IDDonaturRelawanPengomentarForum' => 1, // Dummy pengomentar forum
+            'IDDonaturRelawanPengomentarForum' => 1,
             'KomentarForum' => $request->KomentarForum,
-            'TanggalKomentarForum' => now(), // or another date format you prefer
+            'TanggalKomentarForum' => now(),
         ]);
 
-        // Redirect back to the forum details
         return redirect()->route('displayDetailForum', $request->IDForum)->with('success', 'Comment added successfully.');
     }
 }

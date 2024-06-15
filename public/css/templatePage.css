@@ -2,39 +2,15 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-.sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #00849B;
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
 }
 
-.sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #FDFFFE;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidebar a:hover {
-    color: #f1f1f1;
-    font-weight:600;
-}
-
-.sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+#main {
+    flex: 1;
 }
 
 .contact-us{
@@ -143,7 +119,6 @@ footer .text-muted{
 .modal-backdrop{
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 
 .modal-footer{
     gap: 30px;

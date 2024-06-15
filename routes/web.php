@@ -29,7 +29,6 @@ Route::get('/dummyBuatKegiatanDonasi', [buatKegiatanController::class, 'displayD
 //FILTER
 Route::get('/filter', [generalPageController::class, 'filterStatusKegiatan'])->name('filterStatus');
 
-
 //FORUM
 Route::get('/daftarForum', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
 Route::post('/daftarForum', [forumController::class, 'buatForum'])->name('buatForum');
