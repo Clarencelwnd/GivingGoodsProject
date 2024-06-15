@@ -26,6 +26,7 @@
         @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
 
 
+
         <div class="daftarKegiatanContents container">
             <h4 id="daftar-kegiatan-title">Daftar Kegiatan</h4>
             {{-- CARDS --}}
