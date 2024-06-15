@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('NomorRegistrasiPantiSosial', 255);
             $table->string('DokumenValiditasPantiSosial', 255);
             $table->string('DeskripsiPantiSosial', 255)->nullable();
-            $table->string('NomorTeleponPantiSosial', 15); 
+            $table->string('NomorTeleponPantiSosial', 15);
             $table->string('WebsitePantiSosial', 255)->nullable();
             $table->string('AlamatPantiSosial', 255)->nullable();
-            $table->string('LinkGoogleMapsPantiSosial', 255)->nullable();
+            $table->string('LinkGoogleMapsPantiSosial', 600)->nullable();
             $table->string('MediaSosialPantiSosial', 255)->nullable();
             $table->string('LogoPantiSosial', 255)->nullable();
             $table->timestamps();

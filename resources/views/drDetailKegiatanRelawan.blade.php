@@ -46,9 +46,16 @@
             <div class="subtitle">Lokasi Kegiatan Relawan</div>
             <div class="flex-row">
                 <div class="text" style="padding-right: 12px;">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
-                <a href="#">
+                <a href="{{ $kegiatanRelawan->LinkGoogleMapsLokasiKegiatanRelawan }}">
                     <img src="{{ asset('image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
                 </a>
+            </div>
+            <div class="text" style="font-size: 20px">
+                @if(isset($jarakKm))
+                    <p>{{ number_format($jarakKm, 2) }} km dari tempat anda</p>
+                @else
+                    <p>koordinat tidak valid.</p>
+                @endif
             </div>
         </div>
 
