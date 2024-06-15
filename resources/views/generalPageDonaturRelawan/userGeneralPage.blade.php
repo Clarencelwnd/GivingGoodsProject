@@ -58,7 +58,7 @@
                         <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
                         <p class="card-text" id="card-jenisDonasi">
                             @php
-                                $donasiTypes = explode('; ', $donasi->JenisDonasiDibutuhkan);
+                                $donasiTypes = explode(',', $donasi->JenisDonasiDibutuhkan);
                                 $donasiTypes = array_slice($donasiTypes, 0, 5);
                             @endphp
                             Jenis Donasi:
