@@ -48,3 +48,8 @@ Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosContro
 
 
 
+
+
+Route::get('/FAQ', function () {
+    return view('FAQ');
+});
