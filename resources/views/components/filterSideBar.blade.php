@@ -25,13 +25,13 @@
             </button>
             <div class="collapse filter-section" id="jenisKegiatanCollapse">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="jenisKegiatanDonasi">
+                    <input class="form-check-input jenis-kegiatan-checkbox" type="checkbox" id="jenisKegiatanDonasi">
                     <label class="form-check-label" for="jenisKegiatanDonasi">
                         Donasi
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="jenisKegiatanRelawan">
+                    <input class="form-check-input jenis-kegiatan-checkbox" type="checkbox" id="jenisKegiatanRelawan">
                     <label class="form-check-label" for="jenisKegiatanRelawan">
                         Relawan
                     </label>
@@ -60,10 +60,10 @@
                 <img class="dropdown-img" src="{{ asset('Image/general/drop.png') }}" alt="" width="15px" height="15px" class="float-end">
             </button>
             <div class="collapse filter-section" id="jenisKegiatanRelawanCollapse">
-                @foreach(['BencanaAlam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'DaruratBencana', 'SeniBudaya'] as $jenisRelawan)
+                @foreach(['Bencana Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat Bencana', 'Seni Budaya'] as $jenisRelawan)
                     <div class="form-check">
-                        <input class="form-check-input jenis-relawan-checkbox" type="checkbox" value="" id="jenisRelawan{{ $jenisRelawan }}">
-                        <label class="form-check-label" for="jenisRelawan{{ $jenisRelawan }}">
+                        <input class="form-check-input jenis-relawan-checkbox" type="checkbox" value="" id="jenisKegiatanRelawan">
+                        <label class="form-check-label" for="jenisKegiatanRelawan">
                             {{ $jenisRelawan }}
                         </label>
                     </div>

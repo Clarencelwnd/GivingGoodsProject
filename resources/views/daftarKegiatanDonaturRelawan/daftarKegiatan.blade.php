@@ -23,7 +23,9 @@
     </form>
 
     <div class="contentContainer">
-        @include('components.filterSideBar')
+        @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
+
+      
 
         <div class="daftarKegiatanContents container">
             <h4 id="daftar-kegiatan-title">Daftar Kegiatan</h4>
@@ -31,11 +33,9 @@
             <div class="row" id="activity-cards">
                 @foreach ($activities as $activity)
                 <div class="col-md-4 mb-5 activity-card"
-                     {{-- data-type="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"> --}}
                      data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
-                     data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode('; ', $activity->JenisDonasiDibutuhkan)) : '' }}"
-                     data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode('; ', $activity->JenisKegiatanRelawan)) : '' }}">
-        
+                     {{-- to change to , for explode --}}
+                     data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode('; ', $activity->JenisDonasiDibutuhkan)) : '' }}">
                     <div class="card">
                         @if (isset($activity->NamaKegiatanRelawan))
                             <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
@@ -50,6 +50,7 @@
                                     <p class="card-text">Jenis relawan: {{ $activity->JenisKegiatanRelawan }}</p>
                                 @elseif (isset($activity->NamaKegiatanDonasi))
                                     @php
+                                    //to rewrite to ,
                                         $donasiTypes = explode('; ', $activity->JenisDonasiDibutuhkan);
                                         $donasiTypes = array_slice($donasiTypes, 0, 5);
                                     @endphp

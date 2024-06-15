@@ -15,11 +15,10 @@ use Illuminate\Support\Collection;
 
 class DaftarKegiatanController extends Controller
 {
-
     public function displaySideBar(){
         return view('components.filterSideBar');
     }
-    
+
     public function displayDaftarKegiatan(){
         $perPage = 12;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
@@ -45,6 +44,9 @@ class DaftarKegiatanController extends Controller
                 'keperluan_mandi' => 'Image/donasi/toiletries.png'
             ];
 
+            $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan Mandi', 'Obat', 'Keperluan Rumah', 'Buku', 'Alat Tulis', 'Keperluan Ibadah', 'Mainan'];
+            $jenisRelawanList = ['Bencana Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat Bencana', 'Seni       Budaya'];
+
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
 
@@ -59,7 +61,12 @@ class DaftarKegiatanController extends Controller
             ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        return view('daftarKegiatanDonaturRelawan.daftarKegiatan', ['activities'=> $paginator, 'jenisDonasiIcons'=>$jenisDonasiIcons]);
+        return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
+            'activities'=> $paginator,
+            'jenisDonasiIcons'=>$jenisDonasiIcons,
+            'jenisDonasiList' => $jenisDonasiList,
+            'jenisRelawanList' => $jenisRelawanList
+        ]);
     }
 
     public function search(Request $request) {
@@ -67,10 +74,8 @@ class DaftarKegiatanController extends Controller
         $perPage = 12;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
-        //Search based on panti sosial IDs
         $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
 
-        // Fetch activities based on the search query
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
             ->where('NamaKegiatanRelawan', 'like', '%' . $search . '%')
             ->orWhereIn('IDPantiSosial', $pantiSosialIds)
@@ -98,6 +103,9 @@ class DaftarKegiatanController extends Controller
             'keperluan_mandi' => 'Image/donasi/toiletries.png'
         ];
 
+        $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan Mandi', 'Obat', 'Keperluan Rumah', 'Buku', 'Alat Tulis', 'Keperluan Ibadah', 'Mainan'];
+        $jenisRelawanList = ['BencanaAlam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'DaruratBencana', 'SeniBudaya'];
+
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
 
@@ -113,9 +121,11 @@ class DaftarKegiatanController extends Controller
         );
 
         return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
-            'activities' => $paginator,
+            'activities' => $paginator, 
             'jenisDonasiIcons' => $jenisDonasiIcons,
-            'search' => $search // to preserve the search query in the view
+            'search' => $search,
+            'jenisDonasiList' => $jenisDonasiList,
+            'jenisRelawanList' => $jenisRelawanList
         ]);
     }
 
