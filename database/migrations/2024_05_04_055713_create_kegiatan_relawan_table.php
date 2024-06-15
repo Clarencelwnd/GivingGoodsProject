@@ -22,7 +22,7 @@ return new class extends Migration
             $table->time('JamMulaiKegiatanRelawan');
             $table->time('JamSelesaiKegiatanRelawan');
             $table->integer('JumlahRelawanDibutuhkan');
-            $table->string('LokasiKegiatanRelawan', 255);
+            $table->text('LokasiKegiatanRelawan', 255);
             $table->string('LinkGoogleMapsLokasiKegiatanRelawan', 255);
             $table->string('KriteriaRelawan', 255);
             $table->string('SyaratDanInstruksiKegiatanRelawan', 255);
