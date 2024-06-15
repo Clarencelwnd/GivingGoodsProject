@@ -14,6 +14,9 @@
 
 </head>
 <body>
+    @php
+        $PantiSosial = \App\Models\PantiSosial::find($id);
+    @endphp
     <header class="p-3 mb-3 border-bottom">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -30,16 +33,17 @@
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
-                    OCG Saving The Ocean
+                    {{-- OCG Saving The Ocean --}}
+                    {{$PantiSosial->NamaPantiSosial}}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start">
-                  <li><a class="dropdown-item" href="#">Pengaturan</a></li>
+                  <li><a class="dropdown-item" href="{{route('profile.panti_sosial',['id' => $id])}}">Pengaturan</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li>
                     <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
                   </li>
                 </ul>
-            </div> 
+            </div>
 
 
             <!-- MODAL -->

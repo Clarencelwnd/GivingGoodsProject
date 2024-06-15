@@ -13,12 +13,7 @@ use Illuminate\Support\Collection;
 
 class generalPageController extends Controller
 {
-    // NOT USED
-    // public function displayTemplatePage(){
-    //     return view('templatePage');
-    // }
-
-    public function displayGeneralPage(){
+    public function displayGeneralPage($id){
         $perPage = 5;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
@@ -45,7 +40,7 @@ class generalPageController extends Controller
             ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        return view('generalPage', ['activities'=> $paginator]);
+        return view('generalPage', ['activities'=> $paginator, 'id'=>$id]);
     }
 
     public function displayDummyProfilePage(){
@@ -83,7 +78,7 @@ class generalPageController extends Controller
                 ->withCount('registrasiDonatur')
                 ->orderBy('created_at', 'desc')
                 ->get();
-          
+
         } else {
             $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
                 ->orderBy('created_at', 'desc')

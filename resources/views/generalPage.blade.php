@@ -35,7 +35,7 @@
         <ul class="nav justify-content-start">
             <div class="nav-items">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('viewAllKegiatan') }}">All</a>
+                    <a class="nav-link active" href="{{ route('viewAllKegiatan', ['id'=>$id]) }}">All</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="{{ route('viewAllKegiatanRelawan') }}">Kegiatan Relawan</a>

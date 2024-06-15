@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 // Route::get('/templatePage', [generalPageController::class, 'displayTemplatePage']);
 
-Route::get('/generalPage/viewAllKegiatan', [generalPageController::class, 'displayGeneralPage'])->name('viewAllKegiatan');
+Route::get('/generalPage/viewAllKegiatan/{id}', [generalPageController::class, 'displayGeneralPage'])->name('viewAllKegiatan');
 Route::get('/generalPage/viewAllKegiatanDonasi', [generalPageController::class, 'viewAllKegiatanDonasi'])->name('viewAllKegiatanDonasi');
 Route::get('/generalPage/viewAllKegiatanRelawan', [generalPageController::class, 'viewAllKegiatanRelawan'])->name('viewAllKegiatanRelawan');
 
