@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\ProfileDonaturRelawanController;
 use App\Http\Controllers\drDetailKegiatanRelawanController;
 use App\Http\Controllers\DaftarKegiatanRelawanController;
@@ -16,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-//Halaman utama
-Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
 
 //Halaman utama
 Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
