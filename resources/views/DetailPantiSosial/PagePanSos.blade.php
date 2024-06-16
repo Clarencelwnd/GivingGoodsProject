@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Panti Sosial</title>
-    <link href="{{ asset('css/PagePanSos.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/PagePanSos.js') }}"></script>
+    <link href="{{ asset('css/DetailPantiSosial/PagePanSos.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/DetailPantiSosial/PagePanSos.js') }}"></script>
 </head>
 <body>
     <div class="container">

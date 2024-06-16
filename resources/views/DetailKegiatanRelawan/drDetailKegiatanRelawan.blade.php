@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Kegiatan Relawan</title>
-    <link href="{{ asset('css/drDetailKegiatanRelawan.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/drDetailKegiatanRelawan.js') }}"></script>
+    <link href="{{ asset('css/DetailKegiatanRelawan/drDetailKegiatanRelawan.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/DetailKegiatanRelawan/drDetailKegiatanRelawan.js') }}"></script>
 </head>
 <body>
 

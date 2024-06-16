@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detail Kegiatan Donasi</title>
-    <link href="{{ asset('css/drDetailKegiatanDonasi.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/drDetailKegiatanDonasi.js') }}"></script>
+    <link href="{{ asset('css/DetailKegiatanDonasi/drDetailKegiatanDonasi.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/DetailKegiatanDonasi/drDetailKegiatanDonasi.js') }}"></script>
 </head>
 <body>
     @extends('templateDonaturRelawan')
-
 
     @section('content')
 <div class="container">

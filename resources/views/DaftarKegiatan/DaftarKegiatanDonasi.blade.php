@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Pendaftaran Donasi</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link href="{{ asset('css/DaftarKegiatanDonasi.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/DaftarKegiatanDonasi.js') }}"></script>
+    <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanDonasi.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/Artikel/DaftarKegiatanDonasi.js') }}"></script>
 </head>
 <body>
 

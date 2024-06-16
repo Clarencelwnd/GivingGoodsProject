@@ -18,7 +18,7 @@ class DaftarKegiatanRelawanController extends Controller
             return redirect()->back()->with('error', 'Kegiatan atau Donatur tidak ditemukan');
         }
 
-        return view('DaftarKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan'));
+        return view('DaftarKegiatan.DaftarKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan'));
     }
 
 

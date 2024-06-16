@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions</title>
-    <link href="{{ asset('css/faq.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/FAQ/faq.css') }}" rel="stylesheet">
 </head>
 <body>
 

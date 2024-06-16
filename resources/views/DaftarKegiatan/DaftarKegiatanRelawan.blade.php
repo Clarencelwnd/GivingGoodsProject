@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Pendaftaran Relawan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <link href="{{ asset('css/DaftarKegiatanRelawan.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/DaftarKegiatanRelawan.js') }}"></script>
+    <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanRelawan.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/Artikel/DaftarKegiatanRelawan.js') }}"></script>
 
 </head>
 <body>

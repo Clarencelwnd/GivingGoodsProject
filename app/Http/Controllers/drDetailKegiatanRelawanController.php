@@ -42,7 +42,7 @@ class drDetailKegiatanRelawanController extends Controller
                 );
             }
 
-        return view('drDetailKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'jarakKm'));
+        return view('DetailKegiatanRelawan.drDetailKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'jarakKm'));
     }
 
 

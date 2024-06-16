@@ -27,7 +27,7 @@ class ProfileDonaturRelawanController extends Controller
         $detailDR = DonaturAtauRelawan::find($id);
         $userDR = $detailDR->User;
 
-        return view('profile_donatur_relawan/profile', compact('id', 'detailDR', 'userDR'));
+        return view('ProfileDonaturRelawan.profile', compact('id', 'detailDR', 'userDR'));
     }
 
     public function edit_view($id){
@@ -35,7 +35,7 @@ class ProfileDonaturRelawanController extends Controller
         $detailDR = DonaturAtauRelawan::find($id);
         $userDR = $detailDR->User;
 
-        return view('profile_donatur_relawan/edit_profile', compact('id', 'detailDR', 'userDR'));
+        return view('ProfileDonaturRelawan.edit_profile', compact('id', 'detailDR', 'userDR'));
     }
 
     public function edit_profile_logic(Request $request, $id){
@@ -115,7 +115,7 @@ class ProfileDonaturRelawanController extends Controller
     }
 
     public function change_password_view($id){
-        return view('profile_donatur_relawan/change_password', compact('id'));
+        return view('ProfileDonaturRelawan.change_password', compact('id'));
     }
 
     public function change_password_logic(Request $request, $id){
@@ -193,7 +193,7 @@ class ProfileDonaturRelawanController extends Controller
             $registRelawan->setAttribute('FormatTanggalRelawan', $partitionTanggalKehadiran[2] . ' ' . $bulan[$partitionTanggalKehadiran[1]] . ' ' . $partitionTanggalKehadiran[0]);
         }
 
-        return view('profile_donatur_relawan/riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
+        return view('ProfileDonaturRelawan.riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
     }
 
     public function detail_riwayat_kegiatan_donasi($id1, $id2){
@@ -249,7 +249,7 @@ class ProfileDonaturRelawanController extends Controller
             ];
         }, $donasiItems));
 
-        return view('profile_donatur_relawan/detail_riwayat_kegiatan_donasi', compact('id1', 'id2', 'detailRegistrasiDonatur'));
+        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_donasi', compact('id1', 'id2', 'detailRegistrasiDonatur'));
     }
 
     public function detail_riwayat_kegiatan_relawan($id1, $id2){
@@ -286,13 +286,13 @@ class ProfileDonaturRelawanController extends Controller
         $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan)->format('H:i');
         $detailRegistrasiRelawan->setAttribute('FormatJamRelawan', $detailRegistrasiRelawan->kegiatanRelawan->JamMulaiKegiatanRelawan . '-' . $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan);
 
-        return view('profile_donatur_relawan/detail_riwayat_kegiatan_relawan', compact('id1', 'id2', 'detailRegistrasiRelawan'));
+        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_relawan', compact('id1', 'id2', 'detailRegistrasiRelawan'));
     }
 
     public function logout(){
         Auth::logout();
         Cookie::queue(Cookie::forget('email'));
         Cookie::queue(Cookie::forget('password'));
-        return view('profile_donatur_relawan/dummy_home_page_not_login');
+        return view('ProfileDonaturRelawan.dummy_home_page_not_login');
     }
 }

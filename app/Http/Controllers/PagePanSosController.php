@@ -23,7 +23,7 @@ class PagePanSosController extends Controller
         // Mengambil kegiatan donasi dengan IDPantiSosial yang sesuai
         $kegiatanDonasi = KegiatanDonasi::where('IDPantiSosial', $IDPantiSosial)->get();
 
-        return view('PagePanSos', compact('pantiSosial', 'donaturRelawan', 'kegiatanRelawan', 'kegiatanDonasi'));
+        return view('DetailPantiSosial.PagePanSos', compact('pantiSosial', 'donaturRelawan', 'kegiatanRelawan', 'kegiatanDonasi'));
     }
 
 

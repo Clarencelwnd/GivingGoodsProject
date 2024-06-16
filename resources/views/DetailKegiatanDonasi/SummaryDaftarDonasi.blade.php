@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Summary Daftar Donasi</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="{{ asset('css/SummaryDaftarDonasi.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/SummaryDaftarDonasi.js') }}"></script>
+    <link href="{{ asset('css/DetailKegiatanDonasi/SummaryDaftarDonasi.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/DetailKegiatanDonasi/SummaryDaftarDonasi.js') }}"></script>
 </head>
 <body>
 
