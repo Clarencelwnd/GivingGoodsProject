@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\buatKegiatanController;
+use App\Http\Controllers\forumController;
 use App\Http\Controllers\generalPageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KomentarForumController;
+use App\Models\KomentarForum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailKegiatanDonasiController;
 use App\Http\Controllers\DetailKegiatanRelawanController;
@@ -110,3 +113,10 @@ Route::get('/buat-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class,
 // Route untuk menyimpan data kegiatan donasi
 Route::post('/simpan-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
 
+
+
+//FORUM
+Route::get('/daftarForum', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum', [forumController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{id}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
