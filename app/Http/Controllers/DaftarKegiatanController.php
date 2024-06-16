@@ -71,22 +71,60 @@ class DaftarKegiatanController extends Controller
 
     public function search(Request $request) {
         $search = $request->input('search');
+        $filters = $request->only(['jenis_kegiatan', 'jenis_donasi']);
 
-        $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
+        // $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
+        $pantiSosial = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->first();
+
+         // Fetch activities related to the Panti Sosial
+        if ($pantiSosial) {
+            $pantiSosialIds = [$pantiSosial->IDPantiSosial];
+        } else {
+            $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
+        }
+
+        // $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+        //     ->where('NamaKegiatanRelawan', 'like', '%' . $search . '%')
+        //     ->orWhereIn('IDPantiSosial', $pantiSosialIds)
+        //     ->orWhere('JenisKegiatanRelawan', 'like', '%' . $search . '%')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
+
+        // $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+        //     ->where('NamaKegiatanDonasi', 'like', '%' . $search . '%')
+        //     ->orWhereIn('IDPantiSosial', $pantiSosialIds)
+        //     ->orWhere('JenisDonasiDibutuhkan', 'like', '%' . $search . '%')
+        //     ->orderBy('created_at', 'desc')
+        //     ->get();
 
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
-            ->where('NamaKegiatanRelawan', 'like', '%' . $search . '%')
-            ->orWhereIn('IDPantiSosial', $pantiSosialIds)
-            ->orWhere('JenisKegiatanRelawan', 'like', '%' . $search . '%')
-            ->orderBy('created_at', 'desc')
-            ->get();
+        ->where(function($query) use ($search, $pantiSosialIds) {
+            $query->where('NamaKegiatanRelawan', 'like', '%' . $search . '%')
+                  ->orWhereIn('IDPantiSosial', $pantiSosialIds)
+                  ->orWhere('JenisKegiatanRelawan', 'like', '%' . $search . '%');
+        });
 
-        $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
-            ->where('NamaKegiatanDonasi', 'like', '%' . $search . '%')
-            ->orWhereIn('IDPantiSosial', $pantiSosialIds)
-            ->orWhere('JenisDonasiDibutuhkan', 'like', '%' . $search . '%')
-            ->orderBy('created_at', 'desc')
-            ->get();
+    $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+        ->where(function($query) use ($search, $pantiSosialIds) {
+            $query->where('NamaKegiatanDonasi', 'like', '%' . $search . '%')
+                  ->orWhereIn('IDPantiSosial', $pantiSosialIds)
+                  ->orWhere('JenisDonasiDibutuhkan', 'like', '%' . $search . '%');
+        });
+
+         // Apply filters if provided
+         if (isset($filters['jenis_kegiatan'])) {
+            $kegiatanRelawan->whereIn('JenisKegiatanRelawan', $filters['jenis_kegiatan']);
+            $kegiatanDonasi->whereIn('JenisDonasiDibutuhkan', $filters['jenis_kegiatan']);
+        }
+        if (isset($filters['jenis_donasi'])) {
+            $kegiatanDonasi->whereIn('JenisDonasiDibutuhkan', $filters['jenis_donasi']);
+        }
+        if (isset($filters['jenis_kegiatan_relawan'])) {
+            $kegiatanRelawan->whereIn('JenisKegiatanRelawan', $filters['jenis_kegiatan_relawan']);
+        }
+
+    $kegiatanRelawan = $kegiatanRelawan->orderBy('created_at', 'desc')->get();
+    $kegiatanDonasi = $kegiatanDonasi->orderBy('created_at', 'desc')->get();
 
         $jenisDonasiIcons = [
             'alat_tulis' => 'Image/donasi/alat_tulis.png',
@@ -116,13 +154,6 @@ class DaftarKegiatanController extends Controller
         $paginator = new LengthAwarePaginator($currentPageItems, $sorted->count(), $perPage, $currentPage, [
             'path' => LengthAwarePaginator::resolveCurrentPath()
         ]);
-        // $paginator = new LengthAwarePaginator(
-        //     $sorted->forPage($currentPage, $perPage),
-        //     $sorted->count(),
-        //     $perPage,
-        //     $currentPage,
-        //     ['path' => LengthAwarePaginator::resolveCurrentPath()]
-        // );
 
         $view = $request->input('view', 'daftarKegiatanDonaturRelawan.daftarKegiatan');
 
@@ -130,8 +161,10 @@ class DaftarKegiatanController extends Controller
             'activities' => $paginator,
             'jenisDonasiIcons' => $jenisDonasiIcons,
             'search' => $search,
+            'filters' => $filters,
             'jenisDonasiList' => $jenisDonasiList,
-            'jenisRelawanList' => $jenisRelawanList
+            'jenisRelawanList' => $jenisRelawanList,
+            'pantiSosial' => $pantiSosial
         ]);
     }
 

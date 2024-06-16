@@ -11,9 +11,19 @@ html, body {
     overflow-x: hidden;
 }
 
+/* CONTENTS */
 .contentContainer{
     display: flex;
-    align-items: stretch;
+    flex-direction: row;
+}
+
+.contentContainerSearched{
+    flex: 1;
+    margin-left: 2rem;
+}
+
+.pantiSosialCardResult{
+    margin-top: 3rem;
 }
 
 #daftar-kegiatan-title{

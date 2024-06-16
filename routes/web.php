@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DaftarKegiatanController;
+use App\Http\Controllers\PantiSosialController;
 use App\Http\Controllers\UserGeneralPage;
 use App\Http\Controllers\UserGeneralPageController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +29,6 @@ Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftar
 
 //Side bar
 Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
+
+//Search Panti Sosial
+Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
