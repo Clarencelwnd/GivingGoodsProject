@@ -6,6 +6,7 @@
     @parent
     <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userGeneralPage.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 @endsection
 
 @section('content')
@@ -57,9 +58,10 @@
                         <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
                         <p class="card-text" id="card-jenisDonasi">
                             @php
-                                $donasiTypes = explode('; ', $donasi->JenisDonasiDibutuhkan);
+                                $donasiTypes = explode(',', $donasi->JenisDonasiDibutuhkan);
                                 $donasiTypes = array_slice($donasiTypes, 0, 5);
                             @endphp
+                            Jenis Donasi:
                             @foreach ($donasiTypes as $type)
                                 @if(array_key_exists($type, $jenisDonasiIcons))
                                     <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
@@ -93,7 +95,7 @@
                         <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                         <div class="card-body card-kegiatan">
                             <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
-                            <p class="card-text">{{ $relawan->JenisKegiatanRelawan }}</p>
+                            <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
                             <div class="d-flex justify-content-between">
                                 <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
                                 <p class="card-text">jarak</p>

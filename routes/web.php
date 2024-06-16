@@ -8,6 +8,8 @@ use App\Http\Controllers\DaftarKegiatanDonasiController;
 use App\Http\Controllers\SummaryDaftarDonasiController;
 use App\Http\Controllers\PagePanSosController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DaftarKegiatanController;
+use App\Http\Controllers\PantiSosialController;
 use App\Http\Controllers\UserGeneralPage;
 use App\Http\Controllers\UserGeneralPageController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +58,18 @@ Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])
 //Detail Artikel 2
 Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 
+//Daftar Kegiatan
+Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
+
+
+//Search
+Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');
+
+//Side bar
+Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
+
+//Search Panti Sosial
+// Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
 
 // ====== Profile ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');
@@ -73,3 +87,4 @@ Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, '
 
 // DUMMY
 Route::get('/home_page', [ProfileDonaturRelawanController::class, 'home_page'])->name('home_page');
+

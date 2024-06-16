@@ -1,0 +1,117 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* CONTENTS */
+.contentContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+.contentContainerSearched{
+    flex: 1;
+    margin-left: 2rem;
+}
+
+.pantiSosialCardResult{
+    margin-top: 3rem;
+}
+
+#daftar-kegiatan-title{
+    margin-top: 45px;
+    margin-left: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    padding-right: 10px;
+    color: #006374;
+    margin-bottom: 50px;
+}
+
+/* SEARCH BAR */
+.searchbar{
+    width: 100px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+#placeholder-text{
+    background-color: #FAFAFA;
+    color: rgba(60, 60, 67, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+.cardsKegiatan{
+    margin-left: 30px;
+    margin-bottom: 70px;
+}
+
+.card {
+    width: 90%;
+    height: 25rem; /* Fixed height for the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-img-top {
+    height: 14rem; /* Fixed height for the image */
+    object-fit: cover;
+}
+
+.card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* PANTI SOSIAL CARD */
+.organization-card{
+    display: flex;
+    gap: 25px;
+    padding: 15px 20px 15px 20px;
+}
+
+#namaPantiSosialCard{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+#alamatPantiSosialCard{
+    color: #1C3F5B;
+    font-weight: 400;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+}
+
+#pantiSosialPicture{
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
+
+#jenisDonasiIcons{
+    padding-right: 10px;
+    width: 30px;
+    height: 18px;
+}

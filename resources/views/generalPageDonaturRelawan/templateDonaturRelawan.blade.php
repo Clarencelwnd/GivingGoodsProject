@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/templatePage.css') }}">
     @show
 
-    <script src="{{ asset('js/templatePage.js') }}"></script>
+    <script src="{{ asset('js/.js') }}"></script>
 </head>
 
 <body>
@@ -24,6 +24,7 @@
     @section('header')
     <div id="main">
         @yield('content')
+        @yield('pagination')
     </div>
 
     @include('components.footer')
