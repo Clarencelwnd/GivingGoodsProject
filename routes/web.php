@@ -18,15 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Halaman utama
+//=== HALAMAN UTAMA ====
 Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
 
+//FAQ
 Route::get('/FAQ', function () {
     return view('FAQ.FAQ');
 });
 
-
-// ====== Kegiatan Relawan ======
+// ====== KEGIATAN RELAWAN ======
 Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show']);
 
 Route::get('/daftar-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [DaftarKegiatanRelawanController::class, 'show'])->name('daftarKegiatanRelawan');
@@ -60,7 +60,6 @@ Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailA
 
 //Daftar Kegiatan
 Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
-
 
 //Search
 Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');

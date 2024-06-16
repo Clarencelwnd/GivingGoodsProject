@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="{{ asset('css/daftarArtikelPage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/userGeneralPage.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('lihatSemuaKegiatan-btn').addEventListener('click', function() {
+            window.location.href = "{{ route('displayDaftarKegiatan') }}";
+        });
+    </script>
 @endsection
 
 @section('content')
@@ -34,7 +39,7 @@
                         <br>yang nyata dalam hidup orang lain.
                     </p>
                     <button class="btn btn-primary" type="button" id="lihatSemuaKegiatan-btn">
-                       Lihat Semua Kegiatan
+                        Lihat Semua Kegiatan
                     </button>
                 </div>
             </div>
@@ -44,10 +49,12 @@
     <div class="contents">
         <div class="donasi-barang">
             <div class="mt-8 mb-3 d-flex header-donasi-barang align-content-center">
-                    <h4 class="header-title">Donasikan Barangmu</h4>
-                <div>
-                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
-                </div>
+                <a href="{{ route('displayDaftarKegiatan') }}" class="header-donasi-barang">
+                        <h4 class="header-title">Donasikan Barangmu</h4>
+                    <div>
+                        <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
+                    </div>
+                </a>
             </div>
 
             <div class="cardsKegiatanDonasi-container">
@@ -83,10 +90,12 @@
 
         <div class="kegiatan-relawan">
             <div class="d-flex header-kegiatan-relawan align-content-center">
-                <h4 class="header-title">Ikuti Kegiatan Relawan</h4>
-                <div>
-                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
-                </div>
+                <a href="{{ route('displayDaftarKegiatan') }}" class="header-kegiatan-relawan">
+                    <h4 class="header-title">Ikuti Kegiatan Relawan</h4>
+                    <div>
+                        <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+                    </div>
+                </a>
             </div>
 
             <div class="cardsKegiatanRelawan-container">
@@ -107,10 +116,12 @@
         </div>
 
         <div class="mt-5 mb-3 d-flex header-baca-artikel align-content-center">
-            <h4 class="header-title">Baca Artikel</h4>
-            <div>
-                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
-            </div>
+            <a href="{{ route('displayDaftarArtikel') }}" class="header-baca-artikel">
+                <h4 class="header-title">Baca Artikel</h4>
+                <div>
+                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
+                </div>
+            </a>
         </div>
 
         <div class="baca-artikel">

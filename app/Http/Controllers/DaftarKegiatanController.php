@@ -61,7 +61,7 @@ class DaftarKegiatanController extends Controller
             ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
+        return view('DaftarKegiatanDonaturRelawan.daftarKegiatan', [
             'activities'=> $paginator,
             'jenisDonasiIcons'=>$jenisDonasiIcons,
             'jenisDonasiList' => $jenisDonasiList,
@@ -148,7 +148,7 @@ class DaftarKegiatanController extends Controller
         $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan_Mandi', 'Obat', 'Keperluan_Rumah', 'Buku', 'Alat_Tulis', 'Keperluan_Ibadah', 'Mainan'];
         $jenisRelawanList = ['Bencana_Alam', 'Pendidikan', 'Kesehatan', 'Lingkungan', 'Teknologi', 'Masyarakat', 'Darurat_Bencana', 'Seni_Budaya'];
 
-        return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
+        return view('DaftarKegiatanDonaturRelawan.daftarKegiatan', [
             'activities' => $paginator,
             'search' => $search,
             'filters' => $filters,

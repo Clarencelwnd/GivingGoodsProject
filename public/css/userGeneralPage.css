@@ -136,6 +136,11 @@ html, body {
     align-items: center;
     padding-top: 30px;
     margin-bottom: 25px;
+    width: auto;
+}
+
+.header-kegiatan-relawan a{
+  text-decoration: none;
 }
 
 .header-donasi-barang{
@@ -143,6 +148,11 @@ html, body {
     align-self: center;
     padding-top: 30px;
     margin-bottom: 25px;
+    width: auto;
+}
+
+.header-donasi-barang a{
+    text-decoration: none;
 }
 
 .baca-artikel{
@@ -154,6 +164,11 @@ html, body {
     display: flex;
     align-self: center;
     margin-bottom: 25px;
+    width: auto;
+}
+
+.header-baca-artikel a{
+    text-decoration: none;
 }
 
 #donasi-barang-title{
