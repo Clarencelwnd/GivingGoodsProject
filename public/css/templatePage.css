@@ -2,6 +2,17 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#main {
+    flex: 1;
+}
+
 .sidebar {
     height: 100%;
     width: 0;
@@ -130,9 +141,10 @@
     color: #A22E27;
 }
 
+
+
 #main {
     transition: margin-left .5s;
-    padding: 16px;
 }
 
 footer .text-muted{

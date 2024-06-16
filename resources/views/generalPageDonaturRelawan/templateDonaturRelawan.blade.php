@@ -18,14 +18,12 @@
 </head>
 
 <body>
-    {{-- @include('components.sideBar') --}}
+    @include('components.header')
+    <hr>
 
     @section('header')
     <div id="main">
-        @include('components.header')
-        <hr>
         @yield('content')
-        {{-- @yield('pagination') --}}
     </div>
 
     @include('components.footer')

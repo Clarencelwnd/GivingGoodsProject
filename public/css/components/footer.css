@@ -1,4 +1,6 @@
 #footerContainer{
+    margin-top: auto;
+    margin-bottom: 0px;
     width: 100vw;
     background: #00AF71;
 }

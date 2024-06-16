@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
 </head>
 <body>
-    <div id="footerContainer" class="container-fluid text-white">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+    <div id="footerContainer" class="text-white">
+        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 my-5">
             <div class="generalFooterTitle">
                 <img src="{{ asset('Image/general/logo.png') }}" alt="logoImage" width="76">
                 <p id="title">GivingGoods</p>

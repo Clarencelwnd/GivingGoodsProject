@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileDonaturRelawanController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\drDetailKegiatanRelawanController;
 use App\Http\Controllers\DaftarKegiatanRelawanController;
 use App\Http\Controllers\SummaryDaftarRelawanController;
@@ -10,10 +9,19 @@ use App\Http\Controllers\DaftarKegiatanDonasiController;
 use App\Http\Controllers\SummaryDaftarDonasiController;
 use App\Http\Controllers\PagePanSosController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\UserGeneralPage;
+use App\Http\Controllers\UserGeneralPageController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Halaman utama
+Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
+
+//Halaman utama
+Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
 
 Route::get('/FAQ', function () {
     return view('FAQ.FAQ');
@@ -50,7 +58,7 @@ Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])
 //Detail Artikel 1
 Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
 //Detail Artikel 2
-Route::get('/detailArtikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
+Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 
 
 // ====== Profile ======
