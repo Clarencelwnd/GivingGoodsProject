@@ -89,10 +89,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardDonasiTypes = card.getAttribute('data-jenis-donasi').toLowerCase().split(' ');
             const cardRelawanTypes = card.getAttribute('data-jenis-relawan').toLowerCase().split(' ');
 
-
             const matchesKegiatan = selectedKegiatanTypes.length === 0 || selectedKegiatanTypes.includes(cardKegiatanType);
             const matchesDonasi = selectedDonasiTypes.length === 0 || selectedDonasiTypes.some(type => cardDonasiTypes.includes(type));
-            const matchesRelawan = selectedRelawanTypes.length === 0 || selectedRelawanTypes.some(type => cardDonasiTypes.includes(type));// Corrected variable name
+            const matchesRelawan = selectedRelawanTypes.length === 0 || selectedRelawanTypes.some(type => cardRelawanTypes.includes(type));// Corrected variable name
 
             if (matchesKegiatan && matchesDonasi && matchesRelawan) {
                 card.style.display = 'block';
@@ -137,9 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners for relawan checkboxes
     relawanCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
-            if (checkbox.checked) {
-                document.getElementById('jenisKegiatanRelawan').checked = true;
-            }
             filterActivities();
         });
     });

@@ -19,41 +19,6 @@
         </div>
 
         <div class="panti-sosial-activities">
-            <h4>Kegiatan Donasi</h4>
-            <div class="row">
-                @foreach ($kegiatanDonasi as $donasi)
-                    <div class="col-md-4 mb-5 activity-card">
-                        <div class="card">
-                            <img src="{{ asset('Image/kegiatan/' . $donasi->GambarKegiatanDonasi) }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $donasi->NamaKegiatanDonasi }}</h5>
-                                <p class="card-text">{{ $donasi->DeskripsiKegiatanDonasi }}</p>
-                                <p class="card-text">Jenis Donasi: {{ $donasi->JenisDonasiDibutuhkan }}</p>
-                                <p class="card-text">Tanggal Mulai: {{ $donasi->TanggalKegiatanDonasiMulai }}</p>
-                                <p class="card-text">Tanggal Selesai: {{ $donasi->TanggalKegiatanDonasiSelesai }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            <h4>Kegiatan Relawan</h4>
-            <div class="row">
-                @foreach ($kegiatanRelawan as $relawan)
-                    <div class="col-md-4 mb-5 activity-card">
-                        <div class="card">
-                            <img src="{{ asset('Image/kegiatan/' . $relawan->GambarKegiatanRelawan) }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
-                                <p class="card-text">{{ $relawan->DeskripsiKegiatanRelawan }}</p>
-                                <p class="card-text">Jenis Kegiatan: {{ $relawan->JenisKegiatanRelawan }}</p>
-                                <p class="card-text">Tanggal Mulai: {{ $relawan->TanggalKegiatanRelawanMulai }}</p>
-                                <p class="card-text">Tanggal Selesai: {{ $relawan->TanggalKegiatanRelawanSelesai }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
         </div>
     </div>
 @endsection

@@ -171,7 +171,7 @@
         <div class="collapse filter-section" id="jenisKegiatanRelawanCollapse">
             @foreach($jenisRelawanList as $jenisRelawan)
                 <div class="form-check">
-                    <input class="form-check-input jenis-relawan-checkbox" type="checkbox" name="jenis_kegiatan_relawan[]" value="{{ $jenisRelawan }}" id="jenisRelawan{{ $jenisRelawan }}" {{ in_array($jenisRelawan, request('jenis_kegiatan_relawan', [])) ? 'checked' : '' }}>
+                    <input class="form-check-input jenis-relawan-checkbox" type="checkbox" name="jenisRelawan[]" value="{{ $jenisRelawan }}" id="jenisRelawan{{ $jenisRelawan }}" {{ in_array($jenisRelawan, request('jenis_kegiatan_relawan', [])) ? 'checked' : '' }}>
                     <label class="form-check-label" for="jenisRelawan{{ $jenisRelawan }}">
                         @if ($jenisRelawan == "Bencana_Alam")
                             Bencana Alam
