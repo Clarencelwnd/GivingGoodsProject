@@ -24,6 +24,7 @@
     @section('header')
     <div id="main">
         @yield('content')
+        @yield('pagination')
     </div>
 
     @include('components.footer')

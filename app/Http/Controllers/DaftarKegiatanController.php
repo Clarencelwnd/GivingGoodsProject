@@ -20,7 +20,7 @@ class DaftarKegiatanController extends Controller
     }
 
     public function displayDaftarKegiatan(){
-        $perPage = 12;
+        $perPage = 9;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
@@ -71,8 +71,6 @@ class DaftarKegiatanController extends Controller
 
     public function search(Request $request) {
         $search = $request->input('search');
-        $perPage = 12;
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
         $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
 
@@ -112,15 +110,23 @@ class DaftarKegiatanController extends Controller
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
 
-        $paginator = new LengthAwarePaginator(
-            $sorted->forPage($currentPage, $perPage),
-            $sorted->count(),
-            $perPage,
-            $currentPage,
-            ['path' => LengthAwarePaginator::resolveCurrentPath()]
-        );
+        $perPage = 9;
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $currentPageItems = $sorted->slice(($currentPage - 1) * $perPage, $perPage)->all();
+        $paginator = new LengthAwarePaginator($currentPageItems, $sorted->count(), $perPage, $currentPage, [
+            'path' => LengthAwarePaginator::resolveCurrentPath()
+        ]);
+        // $paginator = new LengthAwarePaginator(
+        //     $sorted->forPage($currentPage, $perPage),
+        //     $sorted->count(),
+        //     $perPage,
+        //     $currentPage,
+        //     ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        // );
 
-        return view('daftarKegiatanDonaturRelawan.daftarKegiatan', [
+        $view = $request->input('view', 'daftarKegiatanDonaturRelawan.daftarKegiatan');
+
+        return view($view, [
             'activities' => $paginator,
             'jenisDonasiIcons' => $jenisDonasiIcons,
             'search' => $search,
@@ -129,4 +135,10 @@ class DaftarKegiatanController extends Controller
         ]);
     }
 
+    private function addPaginationLinks($activities){
+        $links = $activities->links();
+        Paginator::useBootstrap();
+        $links->withPath('');
+        return $links;
+    }
 }
