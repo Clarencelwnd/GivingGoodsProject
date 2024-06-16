@@ -19,6 +19,7 @@ Route::get('/FAQ', function () {
     return view('FAQ.FAQ');
 });
 
+
 // ====== Kegiatan Relawan ======
 Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show']);
 
@@ -41,6 +42,7 @@ Route::post('/store-daftar-donasi', [SummaryDaftarDonasiController::class, 'stor
 
 // ====== Page Panti Sosial ======
 Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
+
 
 // ====== Artikel ======
 //Daftar Artikel
