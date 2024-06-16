@@ -1,0 +1,202 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    padding: 40px 70px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding-bottom: 50px;
+}
+
+.title img {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.title h1 {
+    font-weight: 600;
+    color: #007C92;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.input-container {
+    padding-bottom: 20px;
+}
+
+.subtitle {
+    color: #193952;
+    font-weight: 400;
+    font-size: 24px;
+    padding-bottom: 20px;
+}
+
+.subtitle-time-date {
+    color: #193952;
+    font-weight: 400;
+    font-size: 24px;
+    padding-top: 20px;
+}
+
+.info-text {
+    color: #898989;
+    font-weight: 400;
+    font-size: 22px;
+    padding: 15px 0px;
+}
+
+.time-date-container {
+    display: flex;
+    padding-top: 30px;
+}
+
+.date-picker-container,
+.time-picker-container {
+    display: flex;
+    align-items: center;
+    padding-right: 300px;
+}
+
+.icon {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 24px;
+
+}
+
+.input-field {
+    background-color: #E0E0E0;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-field-date-time {
+    background-color: #E0E0E0;
+    width: 80%;
+    padding: 10px;
+    border: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.input-field[disabled] {
+    background-color: #F0F0F0;
+    cursor: not-allowed;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 32px;
+    color: white;
+    font-weight: 600;
+    background-color: #00C27E;
+    border: none;
+    border-radius: 5px;
+    margin-top: 40px;
+    text-decoration: none;
+    margin-bottom: 40px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    right: 10px;
+    top: 20%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FDFFFE;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 2px;
+}
+
+.dropdown-item {
+    padding: 10px;
+    color: #193952;
+    font-weight: 400;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.text-instruction {
+    color: #898989;
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.text-instruction div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-instruction div span {
+    width: 120px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+#selected-options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.selected-item {
+    margin-right: 10px;
+    border: 1px solid #006374;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #006374;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+.close-btn {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
