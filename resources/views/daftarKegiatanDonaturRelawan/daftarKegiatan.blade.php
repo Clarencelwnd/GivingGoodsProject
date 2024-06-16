@@ -33,11 +33,14 @@
              {{-- Display Panti Sosial card if exists --}}
              <div class="pantiSosialCardResult">
                  @if (isset($pantiSosial))
-                 <div class="panti-sosial-card mb-5">
+                 <div class="panti-sosial-card mb-2">
                      <div class="card">
-                         <div class="card-body">
-                             <h5 class="card-title">{{ $pantiSosial->NamaPantiSosial }}</h5>
-                             <p class="card-text">{{ $pantiSosial->Alamat }}</p>
+                         <div class="organization-card">
+                            <img src="{{ asset('Image/general/dummy_profile_pict.png') }}" alt="panti-sosial-picture" id="pantiSosialPicture" class="rounded-circle">
+                            <div class="organization-information">
+                                <h5 class="card-title" id="namaPantiSosialCard">{{ $pantiSosial->NamaPantiSosial }}</h5>
+                                <p class="card-text" id="alamatPantiSosialCard">{{ $pantiSosial->AlamatPantiSosial }}</p>
+                            </div>
                          </div>
                      </div>
                  </div>

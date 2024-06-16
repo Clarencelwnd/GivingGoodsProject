@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 class PantiSosialController extends Controller
 {
 
-    public function displaySearchResult($id){
-        $pantiSosial = PantiSosial::findOrFail($id);
-        $kegiatanDonasi = KegiatanDonasi::where('IDPantiSosial', $id)->get();
-        $kegiatanRelawan = KegiatanRelawan::where('IDPantiSosial', $id)->get();
+    // public function displaySearchResult($id){
+    //     $pantiSosial = PantiSosial::findOrFail($id);
+    //     $kegiatanDonasi = KegiatanDonasi::where('IDPantiSosial', $id)->get();
+    //     $kegiatanRelawan = KegiatanRelawan::where('IDPantiSosial', $id)->get();
 
-        return view('daftarKegiatanDonaturRelawan.searchPantiSosial', compact('pantiSosial', 'kegiatanDonasi', 'kegiatanRelawan'));
-    }
+    //     return view('daftarKegiatanDonaturRelawan.searchPantiSosial', compact('pantiSosial', 'kegiatanDonasi', 'kegiatanRelawan'));
+    // }
 }

@@ -31,4 +31,4 @@ Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftar
 Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
 
 //Search Panti Sosial
-Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
+// Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');

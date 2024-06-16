@@ -76,6 +76,23 @@ html, body {
     justify-content: space-between;
 }
 
+/* PANTI SOSIAL CARD */
+.organization-card{
+    display: flex;
+    gap: 25px;
+    padding: 15px 20px 15px 20px;
+}
+
+#namaPantiSosialCard{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+#alamatPantiSosialCard{
+    color: #1C3F5B;
+    font-weight: 400;
+}
+
 .card-title {
     font-size: 1.25rem;
     white-space: nowrap;
@@ -87,6 +104,11 @@ html, body {
     margin-bottom: 0.5rem;
 }
 
+#pantiSosialPicture{
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+}
 
 #jenisDonasiIcons{
     padding-right: 10px;
