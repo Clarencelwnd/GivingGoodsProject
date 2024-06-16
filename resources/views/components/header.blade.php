@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start mt-2 mx-3">
-        <a href="#" class="d-block me-4">
+        <a href="{{ route('displayUserGeneralPage') }}" class="d-block me-4">
             <img id="logoImg" src="{{asset('Image/general/logo.png')}}" alt="logo" width="70">
           </a>
 
@@ -24,27 +24,16 @@
                     Kegiatan
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Jadi Relawan</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Donasi Barang</a></li>
+                    <li><a class="dropdown-item" href="{{ route('displayDaftarKegiatan') }}" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('displayDaftarKegiatan') }}" style="color: #007C92;">Jadi Relawan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('displayDaftarKegiatan') }}" style="color: #007C92;">Donasi Barang</a></li>
                 </ul>
             </li>
-            <li><a href="#" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
+            <li><a href="{{ route('displayDaftarArtikel') }}" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
             <li><a href="#" id="forumButton" class="nav-link px-2" style="color: #00925F;">Forum</a></li>
-            <li><a href="#" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
+            <li><a href="{{ route('displayFAQ') }}" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
         </ul>
 
-
-        {{-- <div class="dropdown text-end">
-            <a href="#" class="d-block text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color: #00925F;">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle me-2">
-                John
-            </a>
-            <ul class="dropdown-menu text-small">
-                <li><a class="dropdown-item" href="#" style="color: #007C92;">Pengaturan</a></li>
-                <li><a class="dropdown-item" href="#" style="color: #007C92;">Keluar Akun</a></li>
-            </ul>
-        </div> --}}
         <div id="profileDropdown" class="dropdown text-end">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" style="color: #00AF71;" id="dropdownUserName" data-bs-toggle="dropdown" aria-expanded="false" style="color: #00925F;">
                 <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">

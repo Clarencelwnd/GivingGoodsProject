@@ -19,12 +19,10 @@ Route::get('/', function () {
 });
 
 //=== HALAMAN UTAMA ====
-Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
+Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage'])->name('displayUserGeneralPage');
 
 //FAQ
-Route::get('/FAQ', function () {
-    return view('FAQ.FAQ');
-});
+Route::get('/FAQ', [UserGeneralPageController::class, 'displayFAQ'])->name('displayFAQ');
 
 // ====== KEGIATAN RELAWAN ======
 Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show']);
@@ -70,7 +68,7 @@ Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->nam
 //Search Panti Sosial
 // Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
 
-// ====== Profile ======
+// ====== PROFILE ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');
 Route::get('/edit_profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'edit_view'])->name('edit_profile.donatur_relawan');
 Route::post('/edit_profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'edit_profile_logic'])->name('edit_profile_logic.donatur_relawan');

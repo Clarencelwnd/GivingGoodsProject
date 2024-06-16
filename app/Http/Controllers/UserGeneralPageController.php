@@ -28,6 +28,8 @@ class UserGeneralPageController extends Controller
       return view('generalPageDonaturRelawan/userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons'));
     }
 
-
+    public function displayFAQ(){
+        return view('FAQ.FAQ');
+    }
 
 }

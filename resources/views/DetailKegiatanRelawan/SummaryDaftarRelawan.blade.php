@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    @extends('templateDonaturRelawan')
+    @extends('generalPageDonaturRelawan.templateDonaturRelawan')
 
     @section('content')
     <div class="container">
