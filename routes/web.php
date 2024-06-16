@@ -24,8 +24,11 @@ Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGene
 //FAQ
 Route::get('/FAQ', [UserGeneralPageController::class, 'displayFAQ'])->name('displayFAQ');
 
+//DAFTAR KEGIATAN
+Route::get('/daftar-kegiatan/{id}', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
+
 // ====== KEGIATAN RELAWAN ======
-Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show']);
+Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show'])->name('detailKegiatanRelawan');
 
 Route::get('/daftar-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [DaftarKegiatanRelawanController::class, 'show'])->name('daftarKegiatanRelawan');
 Route::post('/store-daftar-kegiatan-relawan', [DaftarKegiatanRelawanController::class, 'store'])->name('storeDaftarKegiatanRelawan');
@@ -35,7 +38,7 @@ Route::post('/store-daftar-relawan', [SummaryDaftarRelawanController::class, 'st
 
 
 // ====== Kegiatan Donasi ======
-Route::get('/dr-detail-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [drDetailKegiatanDonasiController::class, 'show']);
+Route::get('/dr-detail-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [drDetailKegiatanDonasiController::class, 'show'])->name('detailKegiatanDonasi');
 
 Route::get('/daftar-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [DaftarKegiatanDonasiController::class, 'show'])->name('daftarKegiatanDonasi');
 Route::post('/store-daftar-kegiatan-donasi', [DaftarKegiatanDonasiController::class, 'store'])->name('storeDaftarKegiatanDonasi');
@@ -55,9 +58,6 @@ Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])
 Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
 //Detail Artikel 2
 Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
-
-//Daftar Kegiatan
-Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
 
 //Search
 Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');

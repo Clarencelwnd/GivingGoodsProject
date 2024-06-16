@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         document.getElementById('lihatSemuaKegiatan-btn').addEventListener('click', function() {
-            window.location.href = "{{ route('displayDaftarKegiatan') }}";
+            window.location.href = "#";
         });
     </script>
 @endsection
@@ -49,7 +49,7 @@
     <div class="contents">
         <div class="donasi-barang">
             <div class="mt-8 mb-3 d-flex header-donasi-barang align-content-center">
-                <a href="{{ route('displayDaftarKegiatan') }}" class="header-donasi-barang">
+                <a href="#" class="header-donasi-barang">
                         <h4 class="header-title">Donasikan Barangmu</h4>
                     <div>
                         <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">

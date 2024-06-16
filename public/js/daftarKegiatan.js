@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(e) {
+        let card = e.target.closest('.data-item');
+        if (card) {
+            window.location.href = card.getAttribute('data-url');
+        }
+    });
+    
     const kegiatanCheckboxes = document.querySelectorAll('.jenis-kegiatan-checkbox');
     const donasiCheckboxes = document.querySelectorAll('.jenis-donasi-checkbox');
     const relawanCheckboxes = document.querySelectorAll('.jenis-relawan-checkbox');

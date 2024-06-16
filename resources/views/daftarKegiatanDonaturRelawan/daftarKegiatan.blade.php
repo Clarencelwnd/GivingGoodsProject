@@ -57,52 +57,65 @@
                          data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
                          data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
                          data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
-                        <div class="card">
-                            @if (isset($activity->NamaKegiatanRelawan))
-                                <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
-                            @elseif (isset($activity->NamaKegiatanDonasi))
-                                <img src="{{ asset('Image/kegiatanDonasi/'.$activity->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
-                            @endif
 
-                            <div class="card-body card-kegiatan">
-                                <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
-                                <p class="card-text" id="card-jenisDonasi">
-                                    @if (isset($activity->NamaKegiatanRelawan))
-                                        <p class="card-text">Jenis relawan:
-                                            @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
-                                                Bencana Alam
-                                            @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
-                                                Darurat Bencana
-                                            @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
-                                                Seni Budaya
-                                            @else
-                                                {{ $activity->JenisKegiatanRelawan }}
-                                            @endif
+                         {{-- KEGIATAN RELAWAN CARD --}}
+                         @if (isset($activity->NamaKegiatanRelawan))
+                                <div class="card" data-url="{{route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' =>$id])}}">
+                                    <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+
+                                    <div class="card-body card-kegiatan">
+                                        <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan}}</h5>
+                                        <p class="card-text" id="card-jenisDonasi">
+                                                <p class="card-text">Jenis relawan:
+                                                    @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
+                                                        Bencana Alam
+                                                    @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
+                                                        Darurat Bencana
+                                                    @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
+                                                        Seni Budaya
+                                                    @else
+                                                        {{ $activity->JenisKegiatanRelawan }}
+                                                    @endif
+                                                </p>
                                         </p>
-                                    @elseif (isset($activity->NamaKegiatanDonasi))
-                                        @php
-                                            $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
-                                            $donasiTypes = array_slice($donasiTypes, 0, 5);
-                                        @endphp
-                                        Jenis Donasi:
-                                        @foreach ($donasiTypes as $type)
-                                            @if(array_key_exists($type, $jenisDonasiIcons))
-                                                <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
-                                            @else
-                                                {{ $type }}
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                </p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
-                                    <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                                        <div class="d-flex justify-content-between">
+                                            <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                            <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        @endif
+                        {{-- KEGIATAN DONASI CARD --}}
+                        @if (isset($activitiy->NamaKegiatanDonasi))
+                            <div class="card" data-url="{{route('detailKegiatanDonasi', ['idKegiatanRelawan' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id])}}">
+                                <img src="{{ asset('Image/kegiatanDonasi/'.$activity->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
+
+                                <div class="card-body card-kegiatan">
+                                    <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanDonasi }}</h5>
+                                    <p class="card-text" id="card-jenisDonasi">
+                                            @php
+                                                $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
+                                                $donasiTypes = array_slice($donasiTypes, 0, 5);
+                                            @endphp
+                                            Jenis Donasi:
+                                            @foreach ($donasiTypes as $type)
+                                                @if(array_key_exists($type, $jenisDonasiIcons))
+                                                    <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
+                                                @else
+                                                    {{ $type }}
+                                                @endif
+                                            @endforeach
+                                    </p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                        <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
-                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
     </div>
