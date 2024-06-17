@@ -4,9 +4,7 @@
 
 @section('stylesheets')
     @parent
-    {{-- <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/daftarForumPage.css') }}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
     <script src="{{ asset('js/forumPage.js') }}"></script>
 @endsection
 

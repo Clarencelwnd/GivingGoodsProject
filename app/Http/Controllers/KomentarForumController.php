@@ -14,7 +14,7 @@ class KomentarForumController extends Controller
             'KomentarForum' => 'required|string|max:255'
         ]);
 
-        $idForum = $request->IDForum;
+        // $idForum = $request->IDForum;
 
          // Create a new comment entry
          KomentarForum::create([
@@ -25,6 +25,6 @@ class KomentarForumController extends Controller
         ]);
 
         // Redirect back to the forum details
-        return redirect()->route('displayDetailForum', ['idDonaturRelawan' => $idDonaturRelawan, 'idForum' => $idForum])->with('success', 'Comment added successfully.');
+        return redirect()->route('displayDetailForum', ['idDonaturRelawan' => $idDonaturRelawan, 'idForum' => $request->IDForum])->with('success', 'Comment added successfully.');
     }
 }
