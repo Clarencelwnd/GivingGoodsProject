@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\KegiatanRelawan;
-use App\Models\Models\PantiSosial;
+use App\Models\KegiatanRelawan;
+use App\Models\PantiSosial;
 
 class BuatKegiatanRelawanController extends Controller
 {

@@ -32,7 +32,7 @@ class forumController extends Controller
 
     public function displayDetailForum($idDonaturRelawan, $idForum){
         $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($idForum);
-        return view('detailForum',['id' => $idDonaturRelawan, 'forum' => $forum]);
+        return view('detailForum',['id' => $idDonaturRelawan, 'forum' => $forum, 'idForum' => $idForum]);
     }
 
 }

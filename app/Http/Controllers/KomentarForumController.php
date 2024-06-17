@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class KomentarForumController extends Controller
 {
-    public function storeKomentar(Request $request, $id){
+    public function storeKomentar(Request $request, $idDonaturRelawan){
         $request->validate([
             'IDForum' => 'required|exists:forum,IDForum',
             'KomentarForum' => 'required|string|max:255'
@@ -19,12 +19,12 @@ class KomentarForumController extends Controller
          // Create a new comment entry
          KomentarForum::create([
             'IDForum' => $request->IDForum,
-            'IDPantiSosialPembuatForum' => $id, // Dummy pengomentar forum
+            'IDPantiSosialPembuatForum' => $idDonaturRelawan, // Dummy pengomentar forum
             'KomentarForum' => $request->KomentarForum,
             'TanggalKomentarForum' => now(), // or another date format you prefer
         ]);
 
         // Redirect back to the forum details
-        return redirect()->route('displayDetailForum', compact('id', 'idForum'))->with('success', 'Comment added successfully.');
+        return redirect()->route('displayDetailForum', ['idDonaturRelawan' => $idDonaturRelawan, 'idForum' => $idForum])->with('success', 'Comment added successfully.');
     }
 }

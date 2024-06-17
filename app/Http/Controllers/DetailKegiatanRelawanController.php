@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\KegiatanRelawan;
+use App\Models\KegiatanRelawan;
 
 class DetailKegiatanRelawanController extends Controller
 {
