@@ -15,9 +15,6 @@ use App\Http\Controllers\RiwayatRelawanController;
 use App\Http\Controllers\BuatKegiatanDonasiController;
 use App\Http\Controllers\BuatKegiatanRelawanController;
 
-
-
-
 Route::get('/', function () {
     return view('welcome');
 });
