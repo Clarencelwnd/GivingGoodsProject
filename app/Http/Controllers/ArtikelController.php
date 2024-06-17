@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 class ArtikelController extends Controller
 {
     public function displayDaftarArtikel(){
-        return view('Artikel.daftarArtikel');
+        return view('daftarArtikel');
     }
 
     public function displayDetailArtikel(){
-        return view('Artikel.detailArtikel');
+        return view('detailArtikel');
     }
 
     public function displayDetailArtikel2(){
-        return view('Artikel.detailArtikel2');
+        return view('detailArtikel2');
     }
 }
