@@ -42,7 +42,7 @@
                 <h5 class="modal-title w-100" id="buatDiskusiModalLabel">Buat Diskusi Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ route('buatForum') }}" method="POST">
+            <form action="{{ route('buatForum', ['id' => $id]) }}" method="POST">
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">

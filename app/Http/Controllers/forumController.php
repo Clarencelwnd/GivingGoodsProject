@@ -14,20 +14,20 @@ class forumController extends Controller
         return view('daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
     }
 
-    public function buatForum(Request $request){
+    public function buatForum(Request $request, $id){
         $request->validate([
             'JudulForum' => 'required|string|max:255',
             'DeskripsiForum' => 'required|string|max:255'
         ]);
 
         Forum::create([
-            'IDDonaturRelawanPembuatForum' => '1',
+            'IDPantiSosialPembuatForum' => $id,
             'JudulForum' => $request->JudulForum,
             'DeskripsiForum' => $request->DeskripsiForum,
             'TanggalBuatForum' => now()
         ]);
 
-        return redirect()->route('displayDaftarForum')->with('success', 'Forum post created successfully');
+        return redirect()->route('displayDaftarForum', compact('id'))->with('success', 'Forum post created successfully');
     }
 
     public function displayDetailForum($idDonaturRelawan, $idForum){

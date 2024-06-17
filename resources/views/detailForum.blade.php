@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="btn-forumBack mb-3">
-        <a href="{{ route('displayDaftarForum') }}" class="back-link">
+        <a href="{{ route('displayDaftarForum', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
             <p id="back-text">Kembali ke Daftar Forum</p>
         </a>
@@ -31,7 +31,7 @@
 
     {{-- Reply text area --}}
     <div class="mt-4 replyTextArea">
-        <form action="{{ route('simpanKomentar') }}" method="POST">
+        <form action="{{ route('simpanKomentar', ['id' => $id]) }}" method="POST">
             @csrf
             <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
             <textarea class="w-100 form-control" name="KomentarForum" rows="4" placeholder="Bagikan pendapatmu..." required></textarea>

@@ -80,9 +80,9 @@ Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRel
 
 // ===== FORUM =====
 Route::get('/daftarForum/{id}', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum', [forumController::class, 'buatForum'])->name('buatForum');
+Route::post('/daftarForum/{id}', [forumController::class, 'buatForum'])->name('buatForum');
 Route::get('/forum/{idDonaturRelawan}/{idForum}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::post('/komentar/{idDonaturRelawan}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
 
 // === FAQ ===
 Route::get('/faq/{id}', [generalPageController::class, 'faq'])->name('faq');
