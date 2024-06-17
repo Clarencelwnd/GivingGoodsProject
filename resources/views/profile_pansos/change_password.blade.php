@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+@extends('templatePage')
+@section('title', 'Profil Panti Sosial')
+
+@section('stylesheets')
+    @parent
     <link rel="stylesheet" href="{{asset('css/change_password.css')}}">
-</head>
-<body>
-    <div class="card container justify-content-center">
+    <script src="{{ asset('js/profile.js') }}"></script>
+@endsection
+
+@section('content')
+    <div class=" container justify-content-center">
         <div class="card-header">
             <p class="position">Profil > Ubah Kata Sandi</p>
             <h5 class="title">Ubah Kata Sandi</h5>
@@ -87,10 +83,10 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     @if(session('success'))
         <script> var url = "{{route('profile.panti_sosial', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/change_password.js') }}"></script>
     @endif
-</body>
-</html>
+
+@endsection
