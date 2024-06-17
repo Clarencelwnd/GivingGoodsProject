@@ -36,6 +36,16 @@
     font-size: 36px;
     margin-left: 50px;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#main {
+    flex: 1;
+}
 
 .contact-us{
     padding: 8px 8px 8px 32px;

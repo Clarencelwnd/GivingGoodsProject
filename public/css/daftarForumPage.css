@@ -1,0 +1,94 @@
+.daftarForum-top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#daftarForumTitle{
+  color: #006374;
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 40px;
+  margin-top: 30px;
+}
+
+#buatDiskusiBaru{
+    width: auto;
+    height: auto;
+    margin-left: 30px;
+    margin-top: 25px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #006374;
+    color: #FDFFFE;
+    border-radius: 5px;
+}
+
+/* CARDS */
+
+.card{
+    margin-bottom: 40px;
+    border-color: 2px #007C92;
+}
+
+.card-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.card-body{
+    padding-bottom: 10px;
+}
+
+#judulForum{
+    margin-bottom: 10px;
+    color:  #1C3F5B;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#tanggalBuatForum{
+    color: #1C3F5B;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#namaPembuatForum{
+    color: #00AF71;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card-text{
+    color: #006374;
+    font-size: 16px;
+}
+
+/* MODAL */
+.modalTitle, #buatDiskusiModalLabel{
+    color: #1C3F5B;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.form-control{
+    resize: none;
+}
+
+/* SUBMIT FORUM */
+.btn-submitForum, #submitForumButton{
+    padding-left: 51px;
+    padding-right: 51px;
+
+    background: #00C27E;
+    border-radius: 10px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    color: #FDFFFE;
+    font-size: 16px;
+    font-weight: 500;
+}
+

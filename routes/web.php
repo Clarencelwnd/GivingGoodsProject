@@ -15,6 +15,13 @@ use App\Http\Controllers\PagePanSosController;
 
 use App\Http\Controllers\ArtikelController;
 
+
+use App\Http\Controllers\buatKegiatanController;
+use App\Http\Controllers\forumController;
+use App\Http\Controllers\generalPageController;
+use App\Http\Controllers\KomentarForumController;
+use App\Models\KomentarForum;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -79,3 +86,9 @@ Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, '
 
 // DUMMY
 Route::get('/home_page', [ProfileDonaturRelawanController::class, 'home_page'])->name('home_page');
+
+//FORUM
+Route::get('/daftarForum', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum', [forumController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{id}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
