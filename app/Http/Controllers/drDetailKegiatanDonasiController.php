@@ -41,7 +41,7 @@ class drDetailKegiatanDonasiController extends Controller
             );
         }
 
-        return view('drDetailKegiatanDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'jarakKm'));
+        return view('DetailKegiatanDonasi.drDetailKegiatanDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'jarakKm'));
     }
 
     private function getCoordinatesFromGoogleMapsLink($googleMapsLink)

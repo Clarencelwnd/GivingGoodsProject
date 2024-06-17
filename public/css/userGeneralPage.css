@@ -1,0 +1,194 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#information-icon{
+    width: 28px;
+    height: 26px;
+    margin-right: 20px;
+}
+
+.alert{
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: row;
+    font-size: 16px;
+}
+
+.alert p{
+    color: #CB3A31;
+    margin-bottom: 0px;
+}
+
+.information-button{
+    padding-top: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Overlay Grey to block other actions when entering page for the first time */
+/* #overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(137, 137, 137, 0.54);
+    z-index: 0;
+} */
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 454px;
+    overflow: hidden;
+    margin-top: -15px;
+}
+
+#background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(128, 128, 128, 0.5); /* 50% gray overlay */
+    pointer-events: none;
+}
+
+.img-container {
+    margin: 0;
+    padding: 0 auto;
+    width: 100%;
+}
+
+.overlay-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 3rem;
+}
+
+#overlay-text-title{
+    color: #FDFFFE;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+#lihatSemuaKegiatan-btn{
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background: #006374;
+    border-radius: 5px;
+    border: 0px transparent;
+    width: 300px;
+    height: auto;
+}
+
+#overlay-text-description{
+    color: #FDFFFE;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.img-container {
+    margin: 0;
+    padding: 0;
+    max-width: 1440px;
+}
+
+.contents{
+    padding: 0 15px;
+}
+
+.artikel-subheader{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-title{
+    margin-left: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    padding-right: 10px;
+    color: #005739;
+}
+
+.header-kegiatan-relawan{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    margin-bottom: 25px;
+}
+
+.header-donasi-barang{
+    display: flex;
+    align-self: center;
+    padding-top: 30px;
+    margin-bottom: 25px;
+}
+
+.baca-artikel{
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.header-baca-artikel{
+    display: flex;
+    align-self: center;
+    margin-bottom: 25px;
+}
+
+#donasi-barang-title{
+    font-size: 25px;
+    font-weight: 600;
+    padding-right: 10px;
+    color: #005739;
+}
+
+#baca-artikel-title{
+    font-size: 25px;
+    font-weight: 600;
+    padding-right: 10px;
+    color: #005739;
+}
+
+.cardsKegiatanDonasi-container{
+    margin-left: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+.cardsKegiatanRelawan-container{
+    margin-left: 50px;
+    display: flex;
+    gap: 50px;
+}
+
+#jenisDonasiIcons{
+    padding-right: 10px;
+    width: 30px;
+    height: 18px;
+}
+
+
+
+
+

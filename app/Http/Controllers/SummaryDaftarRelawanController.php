@@ -27,9 +27,8 @@ class SummaryDaftarRelawanController extends Controller
         $data = $request->session()->get('daftar_relawan');
 
         // Kirim data ke view SummaryDaftarRelawan
-        return view('SummaryDaftarRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'data'));
+        return view('DetailKegiatanRelawan.SummaryDaftarRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'data'));
     }
-
 
 
 public function store(Request $request)

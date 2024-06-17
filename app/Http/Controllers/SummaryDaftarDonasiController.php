@@ -23,7 +23,7 @@ class SummaryDaftarDonasiController extends Controller
         // Ambil data dari session
         $data = $request->session()->get('daftar_donasi');
 
-        return view('SummaryDaftarDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'data'));
+        return view('DetailKegiatanDonasi.SummaryDaftarDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'data'));
     }
 
 
@@ -56,7 +56,6 @@ public function store(Request $request)
 
     // Hapus data dari session
     // $request->session()->forget('daftar_donasi');
-
 
     return redirect()->back()->with('success', 'Registrasi berhasil disimpan');
 }
