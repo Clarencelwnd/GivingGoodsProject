@@ -62,6 +62,7 @@ class generalPageController extends Controller
             ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
+            // dd($id);
         return view('kegiatanRelawanPage', compact('kegiatanRelawan', 'id'));
     }
 

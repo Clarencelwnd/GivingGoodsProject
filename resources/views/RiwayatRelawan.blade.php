@@ -78,7 +78,7 @@
 
 
                         <td>
-                            <form id="checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}" action="{{ route('update-status-checkbox', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
+                            <form id="checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}" action="{{ route('update-status-checkbox-relawan', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                 @csrf
                                 <input id="sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiRelawan }}" type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);" @if($registrasi->StatusDihubungi == 'Sudah') checked @endif>
                             </form>

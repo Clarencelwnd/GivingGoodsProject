@@ -15,7 +15,7 @@ class DetailKegiatanRelawanController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('DetailKegiatanRelawan', compact('kegiatanRelawan'));
+        return view('DetailKegiatanRelawan', compact('kegiatanRelawan', 'id'));
     }
 
     public function showEdit($id)
@@ -26,7 +26,7 @@ class DetailKegiatanRelawanController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('UbahKegiatanRelawan', compact('kegiatanRelawan'));
+        return view('UbahKegiatanRelawan', compact('kegiatanRelawan', 'id'));
     }
 
 
@@ -64,6 +64,6 @@ class DetailKegiatanRelawanController extends Controller
         $kegiatanRelawan = KegiatanRelawan::findOrFail($id);
         $kegiatanRelawan->delete();
 
-        return redirect()->route('kegiatan-relawan.index')->with('success', 'Kegiatan relawan berhasil dihapus.');
+        return redirect()->route('kegiatan-relawan.show', ['id' => $id])->with('success', 'Kegiatan relawan berhasil dihapus.');
     }
 }

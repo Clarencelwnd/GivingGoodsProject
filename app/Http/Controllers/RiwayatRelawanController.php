@@ -29,7 +29,7 @@ class RiwayatRelawanController extends Controller
         $jumlahKonfirmasiDiterima = RegistrasiRelawan::where('StatusRegistrasiRelawan', 'Terima')->where('IDKegiatanRelawan', $id)->count();
 
         // Kirim data ke view beserta jumlah relawan yang telah dikonfirmasi
-        return view('RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima'));
+        return view('RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima', 'id'));
     }
 
 

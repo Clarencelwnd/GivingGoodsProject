@@ -28,7 +28,7 @@ class RiwayatDonaturController extends Controller
     $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
 
     // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
-    return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima'));
+    return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima', 'id'));
 }
 
 

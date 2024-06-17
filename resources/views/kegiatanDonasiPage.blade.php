@@ -46,7 +46,7 @@
         </div>
 
         <div class="dropdown-buatKegiatan">
-            <button class="btn btn-primary" type="button" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-primary" type="button" style="margin-left: 23rem" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 Buat Kegiatan
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">

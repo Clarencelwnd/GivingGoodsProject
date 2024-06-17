@@ -10,17 +10,6 @@
 @endsection
 
 @section('content')
-<div class="sidebar">
-        <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
-        <a href="#">Kegiatan</a>
-        <a href="#">Forum</a>
-        <a href="#">FAQ</a>
-        <div class="contact-info">
-            <p>Hubungi Kami</p>
-            <p>0812-1316-1234</p>
-            <p>givinggoods@gmail.com</p>
-        </div>
-    </div>
     <div class="main-content">
         <div class="header">
             <div class="title">

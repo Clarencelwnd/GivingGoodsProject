@@ -107,50 +107,61 @@
             $registrationsCount = $activity instanceof App\Models\KegiatanRelawan ?
                 $activity->registrasiRelawan->count() :
                 $activity->registrasiDonatur->count();
+
+            // Determine the detail page route
+            $detailPageRoute = $activity instanceof App\Models\KegiatanRelawan ?
+                route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) :
+                route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]);
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="{{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donasi' }}">
-            <div class="card-body">
-                <div>
-                    @if ($registrationsCount > 0)
-                        <p class="konfirmasi-alert">Mohon Konfirmasi {{ $registrationsCount }} Calon {{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donatur' }} yang Sudah Mendaftar</p>
-                    @endif
+                @if (isset($activity->NamaKegiatanRelawan))
+                    <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+                @elseif (isset($activity->NamaKegiatanDonasi))
+                    <a href="{{ route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]) }}" style="text-decoration: none; color: inherit;">
+                @endif
+                <div class="card-body">
+                    <div>
+                        @if ($registrationsCount > 0)
+                            <p class="konfirmasi-alert">Mohon Konfirmasi {{ $registrationsCount }} Calon {{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donatur' }} yang Sudah Mendaftar</p>
+                        @endif
 
-                    <div class="card-top-info">
-                        <div class="badge-container">
-                            <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                        <div class="card-top-info">
+                            <div class="badge-container">
+                                <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                            </div>
+
+                            @if (isset($activity->NamaKegiatanRelawan))
+                                <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                            @endif
+                        </div>
+                    </div>
+
+                    <h5 class="card-title" id="namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
+
+                    <div class="card-info">
+                        <div class="card-details">
+                            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanRelawanMulai ?? $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanRelawanSelesai ?? $activity->TanggalKegiatanDonasiSelesai }}</p>
+                            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan ?? $activity->LokasiKegiatanDonasi }}</p>
+
+                            @if (isset($activity->NamaKegiatanRelawan))
+                                <p class="card-text">Jenis relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+                            @elseif (isset($activity->NamaKegiatanDonasi))
+                                <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+                            @endif
+                            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
                         </div>
 
-                        @if (isset($activity->NamaKegiatanRelawan))
-                            <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
-                        @endif
+                        <div class="jumlahDonaturRelawan">
+                            @if (isset($activity->NamaKegiatanRelawan))
+                                <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
+                            @elseif (isset($activity->NamaKegiatanDonasi))
+                                <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
-
-                <h5 class="card-title" id="namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
-
-                <div class="card-info">
-                    <div class="card-details">
-                        <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanRelawanMulai ?? $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanRelawanSelesai ?? $activity->TanggalKegiatanDonasiSelesai }}</p>
-                        <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan ?? $activity->LokasiKegiatanDonasi }}</p>
-
-                        @if (isset($activity->NamaKegiatanRelawan))
-                            <p class="card-text">Jenis relawan: {{ $activity->JenisKegiatanRelawan }}</p>
-                        @elseif (isset($activity->NamaKegiatanDonasi))
-                            <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
-                        @endif
-                        <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
-                    </div>
-
-                    <div class="jumlahDonaturRelawan">
-                        @if (isset($activity->NamaKegiatanRelawan))
-                            <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
-                        @elseif (isset($activity->NamaKegiatanDonasi))
-                            <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
-                        @endif
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
     @endforeach
 @endsection

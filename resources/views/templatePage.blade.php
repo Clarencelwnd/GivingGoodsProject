@@ -19,7 +19,7 @@
 
 <body>
     <div class="container">
-        @include('components.sideBar')
+        @include('components.sideBar', ['id' => $id])
 
         @section('header')
         <div id="main">

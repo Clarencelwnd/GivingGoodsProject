@@ -40,9 +40,9 @@ Route::post('/change_password/panti_sosial/{id}', [ProfileController::class, 'ch
 Route::get('/logout/panti_sosial', [ProfileController::class, 'logout'])->name('logout.panti_sosial');
 
 // DETAIL KEGIATAN DONASI
-Route::get('/DetailKegiatanDonasi', function () {
-    return view('DetailKegiatanDonasi');
-});
+// Route::get('/DetailKegiatanDonasi', function () {
+//     return view('DetailKegiatanDonasi');
+// });
 
 
 // ===== DETAIL KEGIATAN DONASI =====
