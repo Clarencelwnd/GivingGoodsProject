@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\buatKegiatanController;
 use App\Http\Controllers\forumController;
-use App\Http\Controllers\generalPageController;
 use App\Http\Controllers\KomentarForumController;
 use App\Models\KomentarForum;
 
@@ -26,11 +25,9 @@ Route::get('/', function () {
 });
 
 //Halaman utama
-Route::get('/halaman-utama', [UserGeneralPageController::class, 'displayUserGeneralPage']);
+Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage']);
 
-Route::get('/FAQ', function () {
-    return view('FAQ.FAQ');
-});
+Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ']);
 
 
 // ====== Kegiatan Relawan ======
@@ -96,7 +93,7 @@ Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, '
 Route::get('/home_page', [ProfileDonaturRelawanController::class, 'home_page'])->name('home_page');
 
 //FORUM
-Route::get('/daftarForum', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum', [forumController::class, 'buatForum'])->name('buatForum');
-Route::get('/forum/{id}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::get('/daftarForum/{id}', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum/{id}', [forumController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{idDonaturRelawan}/{idForum}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar/{idDonaturRelawan}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');

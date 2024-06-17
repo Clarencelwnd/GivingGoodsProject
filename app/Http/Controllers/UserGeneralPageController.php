@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserGeneralPageController extends Controller
 {
-    public function displayUserGeneralPage(){
+    public function displayUserGeneralPage($id){
       $kegiatanDonasi = KegiatanDonasi::take(5)->get();
       $kegiatanRelawan = KegiatanRelawan::take(5)->get();
 
@@ -25,9 +25,11 @@ class UserGeneralPageController extends Controller
         'keperluan_mandi' => 'Image/donasi/toiletries.png'
       ];
 
-      return view('generalPageDonaturRelawan/userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons'));
+      return view('generalPageDonaturRelawan.userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons', 'id'));
     }
 
-
+    public function FAQ($id){
+        return view('FAQ.FAQ', compact('id'));
+    }
 
 }

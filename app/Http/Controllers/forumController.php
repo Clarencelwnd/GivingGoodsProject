@@ -9,30 +9,30 @@ use Carbon\Carbon;
 
 class forumController extends Controller
 {
-    public function displayDaftarForum(){
+    public function displayDaftarForum($id){
         $daftarForum = Forum::with('donaturRelawan')->get();
-        return view('daftarForum', ['daftarForum' => $daftarForum]);
+        return view('daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
     }
 
-    public function buatForum(Request $request){
+    public function buatForum(Request $request, $id){
         $request->validate([
             'JudulForum' => 'required|string|max:255',
             'DeskripsiForum' => 'required|string|max:255'
         ]);
 
         Forum::create([
-            'IDDonaturRelawanPembuatForum' => '1',
+            'IDDonaturRelawanPembuatForum' => $id,
             'JudulForum' => $request->JudulForum,
             'DeskripsiForum' => $request->DeskripsiForum,
             'TanggalBuatForum' => now()
         ]);
 
-        return redirect()->route('displayDaftarForum')->with('success', 'Forum post created successfully');
+        return redirect()->route('displayDaftarForum', compact('id'))->with('success', 'Forum post created successfully');
     }
 
-    public function displayDetailForum($id){
+    public function displayDetailForum($idDonaturRelawan, $idForum){
         $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($id);
-        return view('detailForum',['forum' => $forum]);
+        return view('detailForum',['id' => $idDonaturRelawan, 'forum' => $forum, 'idForum' => $idForum]);
     }
 
 }

@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="{{ asset('css/components/header.css') }}">
 </head>
 <body>
+    @php
+        $DonaturRelawan = \App\Models\DonaturAtauRelawan::find($id);
+    @endphp
+
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start mt-2 mx-3">
         <a href="#" class="d-block me-4">
             <img id="logoImg" src="{{asset('Image/general/logo.png')}}" alt="logo" width="70">
@@ -30,8 +34,8 @@
                 </ul>
             </li>
             <li><a href="#" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
-            <li><a href="#" id="forumButton" class="nav-link px-2" style="color: #00925F;">Forum</a></li>
-            <li><a href="#" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
+            <li><a href="{{ route('displayDaftarForum', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="forumButton" class="nav-link px-2" style="color: #00925F;">Forum</a></li>
+            <li><a href="{{ url('/FAQ') }}" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
         </ul>
 
 
@@ -51,7 +55,7 @@
                 John
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start">
-              <li><a class="dropdown-item" href="#" style="color: #007C92;">Pengaturan</a></li>
+              <li><a class="dropdown-item" href="{{route('profile.donatur_relawan',['id' => $id])}}" style="color: #007C92;">Pengaturan</a></li>
               <li><hr class="dropdown-divider"></li>
               <li>
                 <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" style="color: #A22E27;">Keluar Akun</a></li>
