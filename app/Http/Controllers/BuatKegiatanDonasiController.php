@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\KegiatanDonasi;
-use App\Models\Models\PantiSosial;
+use App\Models\KegiatanDonasi;
+use App\Models\PantiSosial;
 
 
 class BuatKegiatanDonasiController extends Controller
@@ -19,7 +19,7 @@ class BuatKegiatanDonasiController extends Controller
               return redirect()->back()->with('error', 'Panti Sosial tidak ditemukan');
           }
 
-          return view('BuatKegiatanDonasi', compact('pantiSosial'));
+          return view('BuatKegiatanDonasi', compact('pantiSosial', 'id'));
       }
 
 

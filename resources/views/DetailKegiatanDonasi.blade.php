@@ -1,17 +1,16 @@
 <!-- resources/views/kegiatan-donasi/show.blade.php -->
+@extends('templatePage')
+@section('title', 'Detail Kegiatan Donasi')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Kegiatan Donasi</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <script src="{{ asset('js/generalPage.js') }}"></script>
     <link href="{{ asset('css/DetailKegiatanDonasi.css') }}" rel="stylesheet">
-</head>
+@endsection
 
-<body>
-    <div class="sidebar">
+@section('content')
+<div class="sidebar">
         <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
         <a href="#">Kegiatan</a>
         <a href="#">Forum</a>
@@ -151,7 +150,6 @@
                     </div>
                 </div>
 
-
         <script>
             function showPopup() {
                 document.getElementById('popup-container').style.display = 'flex';
@@ -161,17 +159,13 @@
                 document.getElementById('popup-container').style.display = 'none';
             }
 
+            function showDonationPopup() {
+                document.getElementById('donation-popup-container').style.display = 'flex';
+            }
 
-
-                function showDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'flex';
-                }
-
-                function hideDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'none';
-                }
-
+            function hideDonationPopup() {
+                document.getElementById('donation-popup-container').style.display = 'none';
+            }
         </script>
+@endsection
 
-</body>
-</html>

@@ -20,7 +20,7 @@
 </div>
 
 @foreach ($daftarForum as $forum)
-<a href="{{ route('displayDetailForum', $forum->IDForum) }}" class="text-decoration-none text-dark">
+<a href="{{ route('displayDetailForum', ['idDonaturRelawan' => $id, 'idForum' => $forum->IDForum]) }}" class="text-decoration-none text-dark">
     <div class="card w-60" id="forum-cards">
         <div class="card-body">
             <div class="card-top">

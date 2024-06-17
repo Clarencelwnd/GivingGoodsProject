@@ -58,7 +58,7 @@
                     </div>
                     <div class="modal-footer align-content-center justify-content-center border-0">
                         <button type="button" class="btn btn-kembali" data-bs-dismiss="modal">Kembali</button>
-                        <button type="button" class="btn btn-keluar">Ya, keluar</button>
+                        <button type="button" class="btn btn-keluar" onclick="window.location.href='{{route('logout.panti_sosial')}}'">Ya, keluar</button>
                     </div>
                 </div>
                 </div>

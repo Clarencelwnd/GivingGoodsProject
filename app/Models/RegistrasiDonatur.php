@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Models\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Models\DonaturAtauRelawan;
-use App\Models\Models\KegiatanDonasi;
 
 class RegistrasiDonatur extends Model
 {

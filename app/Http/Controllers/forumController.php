@@ -9,9 +9,9 @@ use Carbon\Carbon;
 
 class forumController extends Controller
 {
-    public function displayDaftarForum(){
+    public function displayDaftarForum($id){
         $daftarForum = Forum::with('donaturRelawan')->get();
-        return view('daftarForum', ['daftarForum' => $daftarForum]);
+        return view('daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
     }
 
     public function buatForum(Request $request){
@@ -30,9 +30,9 @@ class forumController extends Controller
         return redirect()->route('displayDaftarForum')->with('success', 'Forum post created successfully');
     }
 
-    public function displayDetailForum($id){
-        $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($id);
-        return view('detailForum',['forum' => $forum]);
+    public function displayDetailForum($idDonaturRelawan, $idForum){
+        $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($idForum);
+        return view('detailForum',['id' => $idDonaturRelawan, 'forum' => $forum]);
     }
 
 }

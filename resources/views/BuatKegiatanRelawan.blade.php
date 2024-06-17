@@ -1,29 +1,17 @@
 <!-- resources/views/kegiatan-donasi/show.blade.php -->
+@extends('templatePage')
+@section('title', 'Buat Kegiatan Relawan')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Kegiatan Donasi</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <script src="{{ asset('js/generalPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/BuatKegiatanRelawan.css') }}" rel="stylesheet">
-</head>
+@endsection
 
-<body>
-    <div class="sidebar">
-        <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
-        <a href="#">Kegiatan</a>
-        <a href="#">Forum</a>
-        <a href="#">FAQ</a>
-        <div class="contact-info">
-            <p>Hubungi Kami</p>
-            <p>0812-1316-1234</p>
-            <p>givinggoods@gmail.com</p>
-        </div>
-    </div>
-    <div class="main-content">
+@section('content')
+<div class="main-content">
         <div class="header">
             <div class="title">
                 <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
@@ -418,6 +406,5 @@ function updateHiddenInput(inputId, value) {
         }
 
         </script>
+@endsection
 
-</body>
-</html>

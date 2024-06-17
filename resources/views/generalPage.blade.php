@@ -13,7 +13,7 @@
     <div class="container information-button">
         <div class="overlay" id="overlay"></div>
         <div class="row justify-content-center">
-            <div class="alert alert-light text-center" role="alert" onclick="window.location.href='{{ route('dummyProfile') }}'">
+            <div class="alert alert-light text-center" role="alert" onclick="window.location.href='{{ route('profile.panti_sosial', ['id'=>$id]) }}'">
                 <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
                 <p>Lengkapi profil panti sosial untuk memberikan informasi yang lebih baik kepada calon donatur/relawan.</p>
             </div>
@@ -21,9 +21,10 @@
     </div>
 
     {{-- SEARCH BAR --}}
-    <form action="{{ route('search') }}" method="GET">
+    <form action="{{ route('search', ['id' => $id]) }}" method="GET">
         <div class="col-md-12 searchbar">
             <div class="d-flex form-inputs">
+                <input type="hidden">
                 <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama kegiatan donasi/ kegiatan relawan, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">
                 <i class="bx bx-search"></i>
             </div>
@@ -38,10 +39,10 @@
                     <a class="nav-link active" href="{{ route('viewAllKegiatan', ['id'=>$id]) }}">All</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('viewAllKegiatanRelawan') }}">Kegiatan Relawan</a>
+                    <a class="nav-link" href="{{ route('viewAllKegiatanRelawan', ['id' => $id]) }}">Kegiatan Relawan</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="{{ route('viewAllKegiatanDonasi') }}">Kegiatan Donasi</a>
+                    <a class="nav-link" href="{{ route('viewAllKegiatanDonasi', ['id' => $id]) }}">Kegiatan Donasi</a>
                     </li>
             </div>
 
@@ -50,8 +51,8 @@
                     Buat Kegiatan
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">
-                    <li><a class="dropdown-item" href="{{ route('dummyBuatRelawan') }}">Buat Kegiatan Relawan</a></li>
-                    <li><a class="dropdown-item" href="{{ route('dummyBuatDonasi') }}">Buat Kegiatan Donasi</a></li>
+                    <li><a class="dropdown-item" href="{{ route('buat_kegiatan_relawan.show', ['id' => $id]) }}">Buat Kegiatan Relawan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('buat_kegiatan_donasi.show', ['id' => $id]) }}">Buat Kegiatan Donasi</a></li>
 
                 </ul>
             </div>

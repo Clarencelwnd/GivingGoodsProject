@@ -18,10 +18,12 @@ class generalPageController extends Controller
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+            ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->get();
 
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+            ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -47,33 +49,37 @@ class generalPageController extends Controller
         return view('dummyPages.dummyProfilePage');
     }
 
-    public function viewAllKegiatanDonasi(){
+    public function viewAllKegiatanDonasi($id){
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
+            ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-        return view('kegiatanDonasiPage', compact('kegiatanDonasi'));
+        return view('kegiatanDonasiPage', compact('kegiatanDonasi', 'id'));
     }
 
-    public function viewAllKegiatanRelawan(){
+    public function viewAllKegiatanRelawan($id){
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
+            ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-        return view('kegiatanRelawanPage', compact('kegiatanRelawan'));
+        return view('kegiatanRelawanPage', compact('kegiatanRelawan', 'id'));
     }
 
-    public function search(Request $request){
+    public function search(Request $request, $id){
         $search = $request->input('search');
 
         if ($search) {
             // Search Kegiatan Relawan
-            $kegiatanRelawan = KegiatanRelawan::where('NamaKegiatanRelawan', 'like', "%$search%")
+            $kegiatanRelawan = KegiatanRelawan::where('IDPantiSosial', $id)
+                ->orWhere('NamaKegiatanRelawan', 'like', "%$search%")
                 ->orWhere('JenisKegiatanRelawan', 'like', "%$search%")
                 ->withCount('registrasiRelawan')
                 ->orderBy('created_at', 'desc')
                 ->get();
 
             // Search Kegiatan Donasi
-            $kegiatanDonasi = KegiatanDonasi::where('NamaKegiatanDonasi', 'like', "%$search%")
+            $kegiatanDonasi = KegiatanDonasi::where('IDPantiSosial', $id)
+                ->orWhere('NamaKegiatanDonasi', 'like', "%$search%")
                 ->orWhere('JenisDonasiDibutuhkan', 'like', "%$search%")
                 ->withCount('registrasiDonatur')
                 ->orderBy('created_at', 'desc')
@@ -106,10 +112,10 @@ class generalPageController extends Controller
         // Determine which view to return based on search context
         $view = $request->input('view', 'generalPage');
 
-        return view($view, ['activities' => $paginator]);
+        return view($view, ['activities' => $paginator, 'id' => $id]);
     }
 
-    public function filterStatusKegiatan(Request $request){
+    public function filterStatusKegiatan(Request $request, $id){
         $status = $request->input('status');
         $today = Carbon::today();
 
@@ -137,17 +143,17 @@ class generalPageController extends Controller
 
         if ($request->is('viewAllKegiatanRelawan')) {
             $kegiatanRelawan = $kegiatanRelawan->withCount('registrasiRelawan')->get();
-            return view('kegiatanRelawanPage', compact('kegiatanRelawan'));
+            return view('kegiatanRelawanPage', compact('kegiatanRelawan', ['id' => $id]));
 
         } else if ($request->is('viewAllKegiatanDonasi')) {
             $kegiatanDonasi = $kegiatanDonasi->withCount('registrasiDonatur')->get();
-            return view('kegiatanDonasiPage', compact('kegiatanDonasi'));
+            return view('kegiatanDonasiPage', compact('kegiatanDonasi', ['id' => $id]));
 
         } else {
             $kegiatanRelawan = $kegiatanRelawan->withCount('registrasiRelawan')->get();
             $kegiatanDonasi = $kegiatanDonasi->withCount('registrasiDonatur')->get();
             $activities = $kegiatanRelawan->merge($kegiatanDonasi);
-            return view('generalPage', compact('activities'));
+            return view('generalPage', compact('activities', ['id' => $id]));
         }
 
     }
@@ -159,5 +165,7 @@ class generalPageController extends Controller
         return $links;
     }
 
-
+    public function faq($id){
+        return view('FAQ', compact('id'));
+    }
 }

@@ -18,9 +18,8 @@ use function PHPSTORM_META\map;
 
 class ProfileController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request, $id){
         // nyari data di tabel
-        $id = $request->id;
         $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
         $detailPansos = PantiSosial::find($id);
         $userPansos = $detailPansos->User;
@@ -49,7 +48,6 @@ class ProfileController extends Controller
     }
 
     public function edit_view($id){
-        // $id = $request->id;
         $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
         $detailPansos = PantiSosial::find($id);
         $userPansos = $detailPansos->User;

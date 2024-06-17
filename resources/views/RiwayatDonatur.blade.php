@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riwayat Donatur</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@extends('templatePage')
+
+@section('title', 'Riwayat Donatur')
+
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
     <link href="{{ asset('css/RiwayatDonatur.css') }}" rel="stylesheet">
-</head>
+@endsection
 
-
-<body>
+@section('content')
     <div class="container">
 
         <div class="title-back">
@@ -100,8 +99,6 @@
         </div>
     </div>
 
-
-
     <div class="popup-overlay" id="popup">
         <div class="popup-content">
             <div class="popup-header">
@@ -128,8 +125,6 @@
         </div>
     </div>
 
-
-
     <script>
         function handleConfirmationClick(button) {
             if (!button.classList.contains('clicked')) {
@@ -151,12 +146,6 @@
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
-
     </script>
+@endsection
 
-
-<div class="footer">
-    <img src="{{ asset('image/footer/copyright.png') }}" alt="Copyright" class="copyright-image">
-</div>
-</body>
-</html>

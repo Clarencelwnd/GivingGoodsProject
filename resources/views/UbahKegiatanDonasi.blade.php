@@ -1,29 +1,18 @@
 <!-- resources/views/kegiatan-donasi/show.blade.php -->
+@extends('templatePage')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubah Kegiatan Donasi</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('title', 'Ubah Kegiatan Donasi')
+
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/UbahKegiatanDonasi.css') }}" rel="stylesheet">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+@endsection
 
-<body>
-    <div class="sidebar">
-        <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
-        <a href="#">Kegiatan</a>
-        <a href="#">Forum</a>
-        <a href="#">FAQ</a>
-        <div class="contact-info">
-            <p>Hubungi Kami</p>
-            <p>0812-1316-1234</p>
-            <p>givinggoods@gmail.com</p>
-        </div>
-    </div>
-    <div class="main-content">
+@section('content')
+<div class="main-content">
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
@@ -31,8 +20,8 @@
                 </a>
                 <h1>{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
-
         </div>
+
         <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-donasi.update', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
             @csrf
             @method('PUT')
@@ -108,7 +97,6 @@
         </div>
     </div>
 
-
         <!-- Pop-up konfirmasi -->
         <div id="popup-container" style="display: none;">
             <div id="popup">
@@ -119,9 +107,8 @@
                     <button type="submit" class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Simpan</button>
                 </div>
             </div>
-    </div>
-</form>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        </div>
+    </form>
 
     <!-- Inisialisasi Flatpickr setelah memuat perpustakaan -->
     <script>
@@ -140,25 +127,19 @@
                 }
             });
         });
-        function updateHiddenInput(inputId, text) {
-    document.getElementById(inputId).value = text;
-}
 
+    function updateHiddenInput(inputId, text) {
+        document.getElementById(inputId).value = text;
+    }
 
-        function tampilkanPopup() {
-    // Tampilkan pop-up konfirmasi
-    document.getElementById('popup-container').style.display = 'block';
-}
+    function tampilkanPopup() {
+        // Tampilkan pop-up konfirmasi
+        document.getElementById('popup-container').style.display = 'block';
+    }
 
-
-        function tutupPopup() {
-    // Sembunyikan pop-up konfirmasi
-    document.getElementById('popup-container').style.display = 'none';
-}
-
+    function tutupPopup() {
+        // Sembunyikan pop-up konfirmasi
+        document.getElementById('popup-container').style.display = 'none';
+    }
     </script>
-
-
-
-</body>
-</html>
+@endsection

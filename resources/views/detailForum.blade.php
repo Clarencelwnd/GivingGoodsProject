@@ -1,6 +1,6 @@
 @extends('templatePage')
 
-@section('title', 'Daftar Forum')
+@section('title', 'Detail Forum')
 
 @section('stylesheets')
     @parent
@@ -9,9 +9,7 @@
     <script src="{{ asset('js/generalPage.js') }}"></script>
 @endsection
 
-
 @section('content')
-
     <div class="btn-forumBack mb-3">
         <a href="{{ route('displayDaftarForum') }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">

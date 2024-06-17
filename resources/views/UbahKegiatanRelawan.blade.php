@@ -1,29 +1,17 @@
 <!-- resources/views/kegiatan-donasi/show.blade.php -->
+@extends('templatePage')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ubah Kegiatan Relawan</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@section('title', 'Ubah Kegiatan Relawan')
+
+@section('stylesheets')
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/UbahKegiatanRelawan.css') }}" rel="stylesheet">
-</head>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+@endsection
 
-<body>
-    <div class="sidebar">
-        <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
-        <a href="#">Kegiatan</a>
-        <a href="#">Forum</a>
-        <a href="#">FAQ</a>
-        <div class="contact-info">
-            <p>Hubungi Kami</p>
-            <p>0812-1316-1234</p>
-            <p>givinggoods@gmail.com</p>
-        </div>
-    </div>
-    <div class="main-content">
+@section('content')
+<div class="main-content">
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
@@ -129,11 +117,8 @@
                     <button type="submit" class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Simpan</button>
                 </div>
             </div>
-    </div>
-</form>
-
-
-           <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        </div>
+    </form>
 
         <!-- Inisialisasi Flatpickr setelah memuat perpustakaan -->
         <script>
@@ -152,23 +137,20 @@
                     }
                 });
             });
-            function updateHiddenInput(inputId, text) {
+
+    function updateHiddenInput(inputId, text) {
         document.getElementById(inputId).value = text;
     }
 
-
-            function tampilkanPopup() {
+    function tampilkanPopup() {
         // Tampilkan pop-up konfirmasi
         document.getElementById('popup-container').style.display = 'block';
     }
 
-
-            function tutupPopup() {
+    function tutupPopup() {
         // Sembunyikan pop-up konfirmasi
         document.getElementById('popup-container').style.display = 'none';
     }
 
-        </script>
-
-</body>
-</html>
+    </script>
+@endsection

@@ -1,29 +1,17 @@
 <!-- resources/views/kegiatan-donasi/show.blade.php -->
+@extends('templatePage')
+@section('title', 'Buat Kegiatan Donasi')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Kegiatan Donasi</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+@section('stylesheets')
+    @parent
+    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <script src="{{ asset('js/generalPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/BuatKegiatanDonasi.css') }}" rel="stylesheet">
-</head>
+@endsection
 
-<body>
-    <div class="sidebar">
-        <img src="{{ asset('image/general/logo2.png') }}" alt="Logo">
-        <a href="#">Kegiatan</a>
-        <a href="#">Forum</a>
-        <a href="#">FAQ</a>
-        <div class="contact-info">
-            <p>Hubungi Kami</p>
-            <p>0812-1316-1234</p>
-            <p>givinggoods@gmail.com</p>
-        </div>
-    </div>
-    <div class="main-content">
+@section('content')
+<div class="main-content">
         <div class="header">
             <div class="title">
                 <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
@@ -228,9 +216,6 @@
         </div>
     </div>
 
-
-
-
     <div id="donation-popup-container" style="display: none;">
         <div id="donation-popup">
             <div class="popup-header">
@@ -332,27 +317,6 @@ function updateHiddenInput(inputId, value) {
             updateHiddenInput('urlFotoKegiatanInput', imageURL);
         }
 
-        // function showInfoMessage(imgElement) {
-        //     const infoMessage = document.getElementById('infoMessage');
-        //     if (infoMessage.style.display === 'block') {
-        //         infoMessage.style.display = 'none';
-        //     } else {
-        //         infoMessage.style.display = 'block';
-
-        //         // Posisi pesan dekat dengan gambar yang diklik
-        //         const rect = imgElement.getBoundingClientRect();
-        //         infoMessage.style.position = 'absolute';
-        //         infoMessage.style.left = `${rect.right + 10}px`;
-        //         infoMessage.style.top = `${rect.top}px`;
-
-        //         // Tambahkan event listener untuk klik di luar pesan
-        //         document.addEventListener('click', function(event) {
-        //             if (!infoMessage.contains(event.target) && !imgElement.contains(event.target)) {
-        //                 infoMessage.style.display = 'none';
-        //             }
-        //         });
-        //     }
-        // }
         function selectDonationOption(selectedImg) {
             const jenisDonasiInput = document.getElementById('jenisDonasiInput');
             let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
@@ -368,11 +332,6 @@ function updateHiddenInput(inputId, value) {
             jenisDonasiInput.value = selectedValues.join(',');
             updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
         }
-
-
-
-
         </script>
+@endsection
 
-</body>
-</html>
