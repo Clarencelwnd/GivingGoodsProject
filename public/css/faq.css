@@ -83,10 +83,3 @@
         .faq-question.active .answer {
             display: block;
         }
-
-        .footer {
-            flex-shrink: 0; /* Mencegah footer dari penyusutan */
-            margin-top: auto; /* Memindahkan footer ke bawah */
-            text-align: center; /* Memposisikan teks di tengah */
-            padding-top: 80px;
-        }

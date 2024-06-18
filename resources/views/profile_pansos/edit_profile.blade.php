@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+@extends('templatePage')
+@section('title', 'Edit Profil')
+
+@section('stylesheets')
+    @parent
     <link rel="stylesheet" href="{{asset('css/edit_profile.css')}}">
-</head>
-<body>
-    <div class="container">
+    <script src="{{ asset('js/profile.js') }}"></script>
+@endsection
+
+@section('content')
+    {{-- <div class="container"> --}}
         <div class="row">
             {{-- LEFT SIDE  --}}
-            <div class="left col-sm-3">
+            <div class="left col-md-3">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
                 <img class="profile-pict text-center img-fluid" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
                 <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
@@ -23,173 +20,176 @@
             </div>
 
             {{-- RIGHT SIDE  --}}
-            <div class="right col-sm-9">
+            <div class="right col-md-8">
                 <div class="row">
-                    <form action="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
-                        @csrf
-                        <table class="main-table">
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Nama Panti Sosial</td>
-                                <td class="right-column-mt col-lg-5">
-                                    <input class= "form-control @error('NamaPantiSosial') is-invalid @enderror" type="text" name="NamaPantiSosial" placeholder="Nama dari panti sosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}">
-                                    @error('NamaPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4" id="NomorRegistrasiPantiSosial">Nomor Registrasi</td>
-                                <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Deskripsi</td>
-                                <td class="small-text-above col-lg-5">
-                                    <textarea class= "form-control @error('DeskripsiPantiSosial') is-invalid @enderror" type="text" name="DeskripsiPantiSosial" placeholder="Deskripsi singkat dari panti sosial">{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial ?? '')}}</textarea>
-                                    @error('DeskripsiPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="col-lg-5 small-text">maks. 300 karakter</td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4" id="EmailPantiSosial">Email</td>
-                                <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Nomor Handphone</td>
-                                <td class="right-column-mt col-lg-5">
-                                    <input class= "form-control @error('NomorTeleponPantiSosial') is-invalid @enderror" type="text" name="NomorTeleponPantiSosial" placeholder="+62812345678910" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}">
-                                    @error('NomorTeleponPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Website</td>
-                                <td class="right-column-mt col-lg-5"><input class= "form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}" placeholder="www.websitepantisosial.com"></td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">
-                                    Alamat Lengkap
-                                    <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
-                                </td>
-                                <td class="small-text-above col-lg-5">
-                                    <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
-                                    @error('AlamatPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td class="col-lg-5 small-text">maks. 450 karakter</td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">
-                                    Lokasi pada Google Maps
-                                    <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
-                                </td>
-                                <td class="right-column-mt col-lg-5">
-                                    <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://maps.app.goo.gl/linkGoogleMaps">
-                                    @error('LinkGoogleMapsPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Media Sosial</td>
-                                <td class="right-column-mt col-lg-5">
-                                    <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: @username; Facebook: @username;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
-                                    @error('MediaSosialPantiSosial')
-                                        <div class="error-msg invalid-feedback fw-normal lh-1">
-                                            {{$message}}
-                                        </div>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="left-column-mt col-lg-4">Jam Operasional</td>
-                                <td class="right-column-mt col-lg-5" id="jam-operasional">
-                                    @if (!($jadwalPansos->firstWhere('Hari', 'Senin')))
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional @error('btn-schedule') is-invalid @enderror" id="btn-schedule" name="btn-schedule">Atur Jam Operasional</button>
-                                        @error('btn-schedule')
+                    <div class="scrollable-content">
+
+                        <form action="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
+                            @csrf
+                            <table class="main-table">
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Nama Panti Sosial</td>
+                                    <td class="right-column-mt col-lg-5">
+                                        <input class= "form-control @error('NamaPantiSosial') is-invalid @enderror" type="text" name="NamaPantiSosial" placeholder="Nama dari panti sosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}">
+                                        @error('NamaPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
-                                                {{ $message }}
+                                                {{$message}}
                                             </div>
                                         @enderror
-                                    @else
-                                        <table class="schedule-table">
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn-img" id="btn-schedule"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
-                                            </tr>
-                                            @php
-                                                $index = 0;
-                                                $total = count($jadwalPansos);
-                                                $first = true;
-                                            @endphp
-                                            @while ($index < $total)
-                                                @php
-                                                    $first_day = $jadwalPansos[$index];
-                                                    $last_index = $index;
-                                                    while (($last_index < ($total - 1)) && ($jadwalPansos[$last_index+1]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamBukaPantiSosial) && ($jadwalPansos[$last_index+1]->JamTutupPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)) {
-                                                        $last_index++;
-                                                    }
-                                                    $last_day = $jadwalPansos[$last_index];
-                                                @endphp
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4" id="NomorRegistrasiPantiSosial">Nomor Registrasi</td>
+                                    <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Deskripsi</td>
+                                    <td class="small-text-above col-lg-5">
+                                        <textarea class= "form-control @error('DeskripsiPantiSosial') is-invalid @enderror" type="text" name="DeskripsiPantiSosial" placeholder="Deskripsi singkat dari panti sosial">{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial ?? '')}}</textarea>
+                                        @error('DeskripsiPantiSosial')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="col-lg-5 small-text">maks. 300 karakter</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4" id="EmailPantiSosial">Email</td>
+                                    <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Nomor Handphone</td>
+                                    <td class="right-column-mt col-lg-5">
+                                        <input class= "form-control @error('NomorTeleponPantiSosial') is-invalid @enderror" type="text" name="NomorTeleponPantiSosial" placeholder="+62812345678910" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}">
+                                        @error('NomorTeleponPantiSosial')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Website</td>
+                                    <td class="right-column-mt col-lg-5"><input class= "form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}" placeholder="www.websitepantisosial.com"></td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">
+                                        Alamat Lengkap
+                                        <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                                    </td>
+                                    <td class="small-text-above col-lg-5">
+                                        <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
+                                        @error('AlamatPantiSosial')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td class="col-lg-5 small-text">maks. 450 karakter</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">
+                                        Lokasi pada Google Maps
+                                        <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
+                                    </td>
+                                    <td class="right-column-mt col-lg-5">
+                                        <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://maps.app.goo.gl/linkGoogleMaps">
+                                        @error('LinkGoogleMapsPantiSosial')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Media Sosial</td>
+                                    <td class="right-column-mt col-lg-5">
+                                        <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: @username; Facebook: @username;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
+                                        @error('MediaSosialPantiSosial')
+                                            <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                {{$message}}
+                                            </div>
+                                        @enderror
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="left-column-mt col-lg-4">Jam Operasional</td>
+                                    <td class="right-column-mt col-lg-5" id="jam-operasional">
+                                        @if (!($jadwalPansos->firstWhere('Hari', 'Senin')))
+                                            <button type="button" data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional @error('btn-schedule') is-invalid @enderror" id="btn-schedule" name="btn-schedule">Atur Jam Operasional</button>
+                                            @error('btn-schedule')
+                                                <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        @else
+                                            <table class="schedule-table">
                                                 <tr>
-                                                    <td class="row-st">
-                                                        @if ($first_day === $last_day)
-                                                            {{$first_day->Hari}}
-                                                        @else
-                                                            {{$first_day->Hari}} - {{$last_day->Hari}}
-                                                        @endif
-                                                    </td>
-                                                    <td class="row-st"> | </td>
-                                                    <td class="row-st">
-                                                        @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
-                                                            Libur
-                                                        @else
-                                                            {{$first_day->JamBukaPantiSosial}} - {{$first_day->JamTutupPantiSosial}} WIB
-                                                        @endif
-                                                    </td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="img-cell"><a data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn-img" id="btn-schedule"><img src="{{asset('Image/general/edit.png')}}" alt="" class="img"></a></td>
                                                 </tr>
                                                 @php
-                                                    $index = $last_index+1;
+                                                    $index = 0;
+                                                    $total = count($jadwalPansos);
+                                                    $first = true;
                                                 @endphp
-                                            @endwhile
-                                        </table>
-                                        <input type="hidden" name="btn-schedule" class="@error('btn-schedule') is-invalid @enderror">
-                                        @error('btn-schedule')
-                                            <div class="error-msg invalid-feedback fw-normal lh-1">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    @endif
-                                </td>
-                            </tr>
-                        </table>
+                                                @while ($index < $total)
+                                                    @php
+                                                        $first_day = $jadwalPansos[$index];
+                                                        $last_index = $index;
+                                                        while (($last_index < ($total - 1)) && ($jadwalPansos[$last_index+1]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamBukaPantiSosial) && ($jadwalPansos[$last_index+1]->JamTutupPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)) {
+                                                            $last_index++;
+                                                        }
+                                                        $last_day = $jadwalPansos[$last_index];
+                                                    @endphp
+                                                    <tr>
+                                                        <td class="row-st">
+                                                            @if ($first_day === $last_day)
+                                                                {{$first_day->Hari}}
+                                                            @else
+                                                                {{$first_day->Hari}} - {{$last_day->Hari}}
+                                                            @endif
+                                                        </td>
+                                                        <td class="row-st"> | </td>
+                                                        <td class="row-st">
+                                                            @if ($jadwalPansos[$last_index]->JamBukaPantiSosial === $jadwalPansos[$last_index]->JamTutupPantiSosial)
+                                                                Libur
+                                                            @else
+                                                                {{$first_day->JamBukaPantiSosial}} - {{$first_day->JamTutupPantiSosial}} WIB
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    @php
+                                                        $index = $last_index+1;
+                                                    @endphp
+                                                @endwhile
+                                            </table>
+                                            <input type="hidden" name="btn-schedule" class="@error('btn-schedule') is-invalid @enderror">
+                                            @error('btn-schedule')
+                                                <div class="error-msg invalid-feedback fw-normal lh-1">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        @endif
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
 
-                        {{-- BUTTON  --}}
-                        <div class="d-flex justify-content-end" id="button-style">
-                            <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
-                            <button type="submit" class="btn" id="btn-save"> Simpan Perubahan </button>
-                        </div>
-                    </form>
+                     {{-- BUTTON  --}}
+                     <div class="d-flex justify-content-end" id="button-style">
+                        <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
+                        <button type="submit" form="editForm" class="btn" id="btn-save"> Simpan Perubahan </button>
+                    </div>
 
                     {{-- MODAL JADWAL OPERASIONAL --}}
                     <div class="container">
@@ -287,11 +287,10 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {{-- </div> --}}
+
     @if(session('success'))
         <script> var url = "{{route('profile.panti_sosial', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/edit_profile.js') }}"></script>
     @endif
-</body>
-</html>
+@endsection

@@ -167,22 +167,6 @@
     margin: 0;
 }
 
-/* FOOTER */
-.footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    width: 100%;
-    margin-top: auto; /* Pushes footer to the bottom of the page */
-}
-
-.footer-text {
-    color: #00744C;
-    text-align: center;
-    margin: 0;
-}
-
 /* BADGES */
 #badge{
    font-size: 16px;

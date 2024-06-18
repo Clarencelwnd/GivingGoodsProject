@@ -10,7 +10,7 @@
 @section('content')
     {{-- <div class="container"> --}}
         <div class="row">
-            <div class="left col-sm-3">
+            <div class="left col-md-3">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
                 <img class="profile-pict text-center img-fluid" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
                 <form id="photo" action="{{route('edit_photo_logic.panti_sosial', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
@@ -27,7 +27,7 @@
                 <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
             </div>
 
-            <div class="right col-sm-9">
+            <div class="right col-md-8">
                 @if (!$detailPansos->LinkGoogleMapsPantiSosial)
                     <div class="row">
                         <div class="alert alert-light" role="alert">

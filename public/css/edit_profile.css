@@ -12,10 +12,9 @@
 }
 
 /* LEFT SIDE  */
-
 .left{
-    padding-right: 25px;
-    padding-top: 50px;
+    padding: 20px;
+    margin-right: 10px;
     overflow: hidden;
     height: 100vh;
 }
@@ -23,13 +22,17 @@
 .left-title{
     color: #006374;
     margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .profile-pict{
-    width: 100%;
-    height: 40%;
-    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+    width: 300px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 50%;
     margin-bottom: 25px;
 }
 
@@ -49,15 +52,22 @@
 }
 
 /* RIGHT SIDE  */
-
 .right{
     height: 100vh;
-    padding-top: 50px;
-    padding-left: 25px;
+    padding: 20px;
+    margin-left: 50px;
+    padding-top: 100px;
     overflow-y: auto;
 }
 
 /* RIGHT SIDE MAIN TABLE  */
+
+.scrollable-content {
+    max-height: 500px; /* Adjust as needed */
+    overflow-y: auto;
+    padding-right: 15px; /* Adjust for scrollbar width */
+    /* Additional styling as needed */
+}
 
 .main-table{
     width: 100%;
@@ -165,7 +175,7 @@ input[readonly]{
 }
 
 #button-style{
-    padding-top: 20px;
+    margin-top: 50px;
     padding-bottom: 20px;
 }
 
