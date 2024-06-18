@@ -29,7 +29,7 @@
                 <div class="col-auto label-status-kegiatan d-flex justify-content-end align-items-center">
                     @if ($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'Menunggu Konfirmasi')
                         Sedang Diproses
-                    @elseif($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'Donasi Diterima')
+                    @elseif($detailRegistrasiDonatur->StatusRegistrasiDonatur === 'Konfirmasi Diterima')
                         Donasi Diterima
                     @endif
                 </div>

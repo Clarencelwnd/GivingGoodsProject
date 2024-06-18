@@ -29,9 +29,9 @@
                 <div class="col-auto label-status-kegiatan d-flex justify-content-end align-items-center">
                     @if ($detailRegistrasiRelawan->StatusRegistrasiRelawan === 'Menunggu Konfirmasi')
                         Menunggu Konfirmasi
-                    @elseif($detailRegistrasiRelawan->StatusRegistrasiRelawan === 'Relawan Diterima')
+                    @elseif($detailRegistrasiRelawan->StatusRegistrasiRelawan === 'Terima')
                         Relawan Diterima
-                    @elseif($detailRegistrasiRelawan->StatusRegistrasiRelawan === 'Relawan Ditolak')
+                    @elseif($detailRegistrasiRelawan->StatusRegistrasiRelawan === 'Tolak')
                         Relawan Ditolak
                     @endif
                 </div>
@@ -69,7 +69,23 @@
             </div>
             <br>
             <div class="caption">Jenis Kegiatan Relawan</div>
-            <div class="content">{{$detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan}}</div>
+            <div class="content">
+                @if ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Bencana_Alam')
+                    Bencana Alam
+                @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Lingkungan_Hidup')
+                    Lingkungan Hidup
+                @elseif ($detailRegistrasirelawan->kegiatanRelawan->JenisKegiatanRelawan === 'IT_dan_Teknologi')
+                    IT dan Teknologi
+                @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Pengembangan_Masyarakat')
+                    Pengembangan Masyarakat
+                @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Darurat_dan_Bencana')
+                    Darurat dan Bencana
+                @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Seni_dan_Budaya')
+                    Seni dan Budaya
+                @else
+                    {{$detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan}}
+                @endif
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -12,10 +12,10 @@ class KegiatanRelawanSeeder extends Seeder
         DB::table('kegiatan_relawan')->insert([
             [
                 'IDPantiSosial' => 1,
-                'GambarKegiatanRelawan' => 'gambar1.jpg',
+                'GambarKegiatanRelawan' => 'kegiatanRelawan1.jpg',
                 'NamaKegiatanRelawan' => 'Bersih-bersih Lingkungan',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan membersihkan lingkungan sekitar untuk menjaga kebersihan dan kesehatan bersama.',
-                'JenisKegiatanRelawan' => 'Bencana Alam',
+                'JenisKegiatanRelawan' => 'Bencana_Alam',
                 'TanggalKegiatanRelawanMulai' => '2024-05-20',
                 'TanggalKegiatanRelawanSelesai' => '2024-05-21',
                 'TanggalPendaftaranKegiatanDitutup' => '2024-05-18',
@@ -32,7 +32,7 @@ class KegiatanRelawanSeeder extends Seeder
             ],
             [
                 'IDPantiSosial' => 2,
-                'GambarKegiatanRelawan' => 'gambar2.jpg',
+                'GambarKegiatanRelawan' => 'kegiatanRelawan2.jpg',
                 'NamaKegiatanRelawan' => 'Mengajar Anak-anak Miskin',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan pengajaran dasar untuk anak-anak miskin di wilayah sekitar.',
                 'JenisKegiatanRelawan' => 'Pendidikan',
@@ -52,7 +52,7 @@ class KegiatanRelawanSeeder extends Seeder
             ],
             [
                 'IDPantiSosial' => 3,
-                'GambarKegiatanRelawan' => 'gambar3.jpg',
+                'GambarKegiatanRelawan' => 'kegiatanRelawan3.jpg',
                 'NamaKegiatanRelawan' => 'Pengobatan Gratis',
                 'DeskripsiKegiatanRelawan' => 'Kegiatan memberikan pelayanan pengobatan gratis kepada masyarakat yang membutuhkan.',
                 'JenisKegiatanRelawan' => 'Kesehatan',
