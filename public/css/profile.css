@@ -38,6 +38,8 @@
 .left-title{
     color: #006374;
     margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
 }
 
 .profile-pict{
@@ -80,9 +82,9 @@
 /* RIGHT SIDE  */
 .right{
     height: 100vh;
-    padding-top: 50px;
+    padding-top: 100px;
     padding-left: 25px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 #btn-edit{
@@ -150,6 +152,10 @@ td{
     word-wrap: break-word;
 }
 
+.modal-content{
+    padding: 10px;
+}
+
 .col-change{
     width: 30%;
 }
@@ -169,6 +175,7 @@ td{
 
 #informationModalBody{
     text-align: justify;
+    max-width: 500px;
     color: #1C3F5B;
     font-size: smaller;
 }

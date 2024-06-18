@@ -37,7 +37,7 @@
                     </div>
                 @endif
 
-                <div class="row" style="margin-left: 50px; overflow:hidden">
+                <div class="row container-profile" style="margin-left: 50px; overflow:hidden" >
                     <a href="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                     <table class="main-table">
                         <tr>
@@ -168,7 +168,8 @@
                             <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
                         </div>
                         <div class="modal-body" id="informationModalBody">
-                            Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini. Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
+                            Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini.
+                            <br><br> Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
                         </div>
                     </div>
                     </div>
