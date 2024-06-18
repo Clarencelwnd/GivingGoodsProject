@@ -21,13 +21,13 @@
     <div class="container" id="main">
         @include('components.sideBar', ['id' => $id])
 
-        {{-- @include('components.header') --}}
+        {{-- @include('components.header', ['id'=> $id]) --}}
         {{-- @section('header') --}}
-        {{-- <div id="main"> --}}
+        <div id="main">
             @include('components.header', ['id' => $id])
             @yield('content')
             @yield('pagination')
-        {{-- </div> --}}
+        </div>
 
         @include('components.footer')
     </div>

@@ -8,7 +8,6 @@
     <script src="{{ asset('js/forumPage.js') }}"></script>
 @endsection
 
-
 @section('content')
 <div class="daftarForum-top">
     <h6 id="daftarForumTitle">Daftar Forum</h6>

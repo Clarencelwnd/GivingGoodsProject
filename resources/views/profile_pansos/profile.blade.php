@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    {{-- <div class="container"> --}}
+    {{-- <div class="container-fluid"> --}}
         <div class="row">
             <div class="left col-md-3">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
@@ -147,10 +147,8 @@
                             Apakah Anda yakin ingin keluar dari Akun Anda?
                         </div>
                         <div class="row modal-footer align-content-center justify-content-center border-0">
-                            <div class="col-change">
+                            <div class="col">
                                 <button type="button" class="btn" id="btn-back" data-bs-dismiss="modal">Kembali</button>
-                            </div>
-                            <div class="col-profile">
                                 <button  onclick="window.location.href='{{route('logout.panti_sosial')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
                             </div>
                         </div>

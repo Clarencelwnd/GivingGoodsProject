@@ -10,7 +10,6 @@
 @section('content')
     <div class=" container justify-content-center">
         <div class="card-header">
-            <p class="position">Profil > Ubah Kata Sandi</p>
             <h5 class="title">Ubah Kata Sandi</h5>
         </div>
         <div class="card-body">
@@ -55,10 +54,8 @@
                         Kalau keluar sekarang, kata sandi yang Anda ubah tidak akan tersimpan.
                     </div>
                     <div class="row modal-footer align-content-center justify-content-center border-0">
-                        <div class="col-change">
+                        <div class="col">
                             <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
-                        </div>
-                        <div class="col-profile">
                             <button  onclick="window.location.href='{{route('profile.panti_sosial', ['id'=>$id])}}'" type="button" class="btn" id="btn-profile">Keluar</button>
                         </div>
                     </div>
