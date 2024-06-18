@@ -25,7 +25,7 @@
             {{-- RIGHT SIDE  --}}
             <div class="right col-sm-9">
                 <div class="row">
-                    <form action="{{route('edit_profile_logic.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
+                    <form action="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                         @csrf
                         <table class="main-table">
                             <tr>
