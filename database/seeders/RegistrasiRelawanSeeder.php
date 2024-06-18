@@ -21,7 +21,7 @@ class RegistrasiRelawanSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanRelawan' => 2,
-                'StatusRegistrasiRelawan' => 'Relawan Ditolak',
+                'StatusRegistrasiRelawan' => 'Tolak',
                 'AlasanRegistrasiRelawan' => 'Saya ingin berbagi ilmu kepada anak-anak.',
                 'TanggalKehadiranRelawan' => '2024-06-05',
                 'StatusDihubungi' => 'Belum'
@@ -29,7 +29,7 @@ class RegistrasiRelawanSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 3,
                 'IDKegiatanRelawan' => 1,
-                'StatusRegistrasiRelawan' => 'Relawan Diterima',
+                'StatusRegistrasiRelawan' => 'Terima',
                 'AlasanRegistrasiRelawan' => 'Saya ingin belajar menjadi relawan yang lebih baik.',
                 'TanggalKehadiranRelawan' => '2024-05-20',
                 'StatusDihubungi' => 'Belum'
@@ -37,7 +37,7 @@ class RegistrasiRelawanSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanRelawan' => 1,
-                'StatusRegistrasiRelawan' => 'Relawan Ditolak',
+                'StatusRegistrasiRelawan' => 'Tolak',
                 'AlasanRegistrasiRelawan' => 'Saya ingin menolong sesama',
                 'TanggalKehadiranRelawan' => '2024-05-20',
                 'StatusDihubungi' => 'Belum'
