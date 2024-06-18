@@ -117,7 +117,8 @@
         <div class="card w-80" data-status="{{ $status }}" data-type="{{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donasi' }}">
                 @if (isset($activity->NamaKegiatanRelawan))
                     <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
-                @elseif (isset($activity->NamaKegiatanDonasi))
+                @endif
+                @if (isset($activity->NamaKegiatanDonasi))
                     <a href="{{ route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]) }}" style="text-decoration: none; color: inherit;">
                 @endif
                 <div class="card-body">

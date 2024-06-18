@@ -15,7 +15,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('DetailKegiatanDonasi', compact('kegiatanDonasi'));
+        return view('DetailKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
     public function showEdit($id)
@@ -26,7 +26,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('UbahKegiatanDonasi', compact('kegiatanDonasi'));
+        return view('UbahKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
     public function showBuat($id)
@@ -37,7 +37,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('BuatKegiatanDonasi', compact('kegiatanDonasi'));
+        return view('BuatKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
 
@@ -71,6 +71,6 @@ class DetailKegiatanDonasiController extends Controller
         $kegiatanDonasi = KegiatanDonasi::findOrFail($id);
         $kegiatanDonasi->delete();
 
-        return redirect()->route('kegiatan-donasi.index')->with('success', 'Kegiatan Donasi berhasil dihapus.');
+        return redirect()->route('kegiatan-donasi.show', ['id' => $id])->with('success', 'Kegiatan Donasi berhasil dihapus.');
     }
 }
