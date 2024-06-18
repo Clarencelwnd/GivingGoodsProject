@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container"> --}}
         <h1 class="faq-title">Frequently Asked Questions</h1>
 
         <div class="faq-section">
@@ -223,7 +223,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 
     <script>
         const faqQuestions = document.querySelectorAll('.faq-question-content');

@@ -8,7 +8,7 @@
 @endsection
 
 @section('content')
-    <div class="container">
+    {{-- <div class="container"> --}}
         <div class="row">
             <div class="left col-sm-3">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
@@ -175,7 +175,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
 
 @endsection
 
