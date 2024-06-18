@@ -35,7 +35,7 @@
             </li>
             <li><a href="#" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
             <li><a href="{{ route('displayDaftarForum', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="forumButton" class="nav-link px-2" style="color: #00925F;">Forum</a></li>
-            <li><a href="{{ url('/FAQ') }}" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
+            <li><a href="{{ route('FAQ', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="faqButton" class="nav-link px-2" style="color: #00925F;">FAQ</a></li>
         </ul>
 
 

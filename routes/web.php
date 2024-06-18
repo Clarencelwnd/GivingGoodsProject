@@ -27,7 +27,7 @@ Route::get('/', function () {
 //Halaman utama
 Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage']);
 
-Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ']);
+Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');
 
 
 // ====== Kegiatan Relawan ======
@@ -61,6 +61,7 @@ Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])
 Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
 //Detail Artikel 2
 Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
+
 
 //Daftar Kegiatan
 Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
