@@ -20,10 +20,12 @@ class SummaryDaftarDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan atau Donatur tidak ditemukan');
         }
 
+        $id = $idDonaturRelawan;
+
         // Ambil data dari session
         $data = $request->session()->get('daftar_donasi');
 
-        return view('DetailKegiatanDonasi.SummaryDaftarDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'data'));
+        return view('DetailKegiatanDonasi.SummaryDaftarDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'data', 'id'));
     }
 
 

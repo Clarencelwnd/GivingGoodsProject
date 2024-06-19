@@ -26,15 +26,10 @@
           </a>
 
         <ul class="d-flex nav col-12 col-lg-auto me-lg-auto mb-2 mb-md-0">
-            <li id="kegiatanDropdown" class="dropdown text-end">
-                <a href="#" id="kegiatanBtn" class="nav-link px-2 text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false" style="color: #00925F;">
+            <li>
+                <a href="{{ route('displayDaftarKegiatan', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="kegiatanBtn" class="nav-link px-2" style="color: #00925F;">
                     Kegiatan
                 </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="{{ route('displayDaftarKegiatan', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
-                    <li><a class="dropdown-item"  href="#" style="color: #007C92;">Jadi Relawan</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Donasi Barang</a></li>
-                </ul>
             </li>
             <li><a href="{{ route('displayDaftarArtikel', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
             <li><a href="{{ route('displayDaftarForum', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="forumButton" class="nav-link px-2" style="color: #00925F;">Forum</a></li>
@@ -52,7 +47,7 @@
                 <li><a class="dropdown-item" href="#" style="color: #007C92;">Keluar Akun</a></li>
             </ul>
         </div> --}}
-        <div id="profileDropdown" class="dropdown text-end">
+        {{-- <div id="profileDropdown" class="dropdown text-end">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" style="color: #00AF71;" id="dropdownUserName" data-bs-toggle="dropdown" aria-expanded="false" style="color: #00925F;">
                 <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
                 John
@@ -64,9 +59,27 @@
                 <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal" style="color: #A22E27;">Keluar Akun</a></li>
               </li>
             </ul>
+        </div> --}}
+
+        <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUserName" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
+                {{-- OCG Saving The Ocean --}}
+                {{$DonaturRelawan->NamaDonaturRelawan}}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1" data-popper-placement="bottom-start">
+              <li><a class="dropdown-item" href="{{route('profile.donatur_relawan',['id' => $id])}}">Pengaturan</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a id="keluarAkun" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logoutModal">Keluar Akun</a></li>
+              </li>
+            </ul>
         </div>
     </div>
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+

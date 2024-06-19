@@ -27,6 +27,8 @@ class drDetailKegiatanRelawanController extends Controller
             return redirect()->back()->with('error', 'Donatur/relawan tidak ditemukan');
         }
 
+        $id = $idDonaturRelawan;
+
             // Ambil koordinat dari LinkGoogleMapsDonaturRelawan
             $coordinatesDonatur = $this->getCoordinatesFromGoogleMapsLink($donaturRelawan->LinkGoogleMapsDonaturRelawan);
 
@@ -42,7 +44,7 @@ class drDetailKegiatanRelawanController extends Controller
                 );
             }
 
-        return view('DetailKegiatanRelawan.drDetailKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'jarakKm'));
+        return view('DetailKegiatanRelawan.drDetailKegiatanRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'jarakKm', 'id'));
     }
 
 
