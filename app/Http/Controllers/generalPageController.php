@@ -72,16 +72,20 @@ class generalPageController extends Controller
         if ($search) {
             // Search Kegiatan Relawan
             $kegiatanRelawan = KegiatanRelawan::where('IDPantiSosial', $id)
-                ->orWhere('NamaKegiatanRelawan', 'like', "%$search%")
-                ->orWhere('JenisKegiatanRelawan', 'like', "%$search%")
+                ->where(function($query) use ($search){
+                    $query->where('NamaKegiatanRelawan', 'like', "%$search%")
+                          ->orWhere('JenisKegiatanRelawan', 'like', "%$search%");
+                })
                 ->withCount('registrasiRelawan')
                 ->orderBy('created_at', 'desc')
                 ->get();
 
             // Search Kegiatan Donasi
             $kegiatanDonasi = KegiatanDonasi::where('IDPantiSosial', $id)
-                ->orWhere('NamaKegiatanDonasi', 'like', "%$search%")
-                ->orWhere('JenisDonasiDibutuhkan', 'like', "%$search%")
+                ->where(function($query) use ($search){
+                    $query->where('NamaKegiatanDonasi', 'like', "%$search%")
+                          ->orWhere('JenisDonasiDibutuhkan', 'like', "%$search%");
+                })
                 ->withCount('registrasiDonatur')
                 ->orderBy('created_at', 'desc')
                 ->get();
