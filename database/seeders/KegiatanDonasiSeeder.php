@@ -12,7 +12,7 @@ class KegiatanDonasiSeeder extends Seeder
         DB::table('kegiatan_donasi')->insert([
             [
                 'IDPantiSosial' => 1,
-                'GambarKegiatanDonasi' => 'gambar1.jpg',
+                'GambarKegiatanDonasi' => 'kegiatanDonasi1.jpg',
                 'NamaKegiatanDonasi' => 'Bakti Sosial Anak Yatim',
                 'DeskripsiKegiatanDonasi' => 'Kegiatan untuk memberikan bantuan kepada anak yatim di sekitar wilayah kami.',
                 'JenisDonasiDibutuhkan' => 'pakaian,mainan,alat_tulis,buku',
@@ -27,7 +27,7 @@ class KegiatanDonasiSeeder extends Seeder
             ],
             [
                 'IDPantiSosial' => 2,
-                'GambarKegiatanDonasi' => 'gambar2.jpg',
+                'GambarKegiatanDonasi' => 'kegiatanDonasi2.jpg',
                 'NamaKegiatanDonasi' => 'Donasi Makanan untuk Pengungsi',
                 'DeskripsiKegiatanDonasi' => 'Kegiatan penggalangan dana untuk memberikan makanan kepada pengungsi di wilayah terdampak bencana.',
                 'JenisDonasiDibutuhkan' => 'obat',
@@ -42,7 +42,7 @@ class KegiatanDonasiSeeder extends Seeder
             ],
             [
                 'IDPantiSosial' => 3,
-                'GambarKegiatanDonasi' => 'gambar3.jpg',
+                'GambarKegiatanDonasi' => 'kegiatanDonasi3.jpg',
                 'NamaKegiatanDonasi' => 'Kampanye Donasi Pakaian',
                 'DeskripsiKegiatanDonasi' => 'Kegiatan pengumpulan pakaian untuk disalurkan kepada masyarakat yang membutuhkan.',
                 'JenisDonasiDibutuhkan' => 'keperluan_mandi,keperluan_rumah,keperluan_ibadah,makanan',
