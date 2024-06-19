@@ -15,40 +15,32 @@ class RegistrasiRelawanSeeder extends Seeder
                 'IDKegiatanRelawan' => 1,
                 'StatusRegistrasiRelawan' => 'Menunggu Konfirmasi',
                 'AlasanRegistrasiRelawan' => 'Saya ingin membantu sesama.',
-                'TanggalKegiatanMulaiRelawan' => '2024-05-20',
-                'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
-                'JamMulaiRelawan' => '08:00:00',
-                'JamSelesaiRelawan' => '14:00:00',
+                'TanggalKehadiranRelawan' => '2024-05-20',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanRelawan' => 2,
-                'StatusRegistrasiRelawan' => 'Relawan Ditolak',
+                'StatusRegistrasiRelawan' => 'Tolak',
                 'AlasanRegistrasiRelawan' => 'Saya ingin berbagi ilmu kepada anak-anak.',
-                'TanggalKegiatanMulaiRelawan' => '2024-06-05',
-                'TanggalKegiatanSelesaiRelawan' => '2024-06-05',
-                'JamMulaiRelawan' => '09:00:00',
-                'JamSelesaiRelawan' => '12:00:00',
+                'TanggalKehadiranRelawan' => '2024-06-05',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 3,
                 'IDKegiatanRelawan' => 1,
-                'StatusRegistrasiRelawan' => 'Relawan Diterima',
+                'StatusRegistrasiRelawan' => 'Terima',
                 'AlasanRegistrasiRelawan' => 'Saya ingin belajar menjadi relawan yang lebih baik.',
-                'TanggalKegiatanMulaiRelawan' => '2024-05-20',
-                'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
-                'JamMulaiRelawan' => '08:00:00',
-                'JamSelesaiRelawan' => '14:00:00',
+                'TanggalKehadiranRelawan' => '2024-05-20',
+                'StatusDihubungi' => 'Belum'
             ],
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanRelawan' => 1,
-                'StatusRegistrasiRelawan' => 'Relawan Ditolak',
+                'StatusRegistrasiRelawan' => 'Tolak',
                 'AlasanRegistrasiRelawan' => 'Saya ingin menolong sesama',
-                'TanggalKegiatanMulaiRelawan' => '2024-05-20',
-                'TanggalKegiatanSelesaiRelawan' => '2024-05-21',
-                'JamMulaiRelawan' => '08:00:00',
-                'JamSelesaiRelawan' => '14:00:00',
+                'TanggalKehadiranRelawan' => '2024-05-20',
+                'StatusDihubungi' => 'Belum'
             ],
         ]);
     }
