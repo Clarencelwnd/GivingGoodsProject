@@ -80,6 +80,10 @@ tr{
     padding-left: 10px;
 }
 
+.small-text-above textarea{
+    resize: none;
+}
+
 .form-control{
     background-color: #F0F0F0;
     color: #1C3F5B;
@@ -124,23 +128,31 @@ input[readonly]{
     padding-bottom: 20px;
 }
 
-#btn-save{
-    margin-left: 20px;
-    background: #00AF71;
-    color: #FDFFFE;
-    width: 30%;
+..actionbuttons {
+    margin-top: 20px; /* Add margin top for spacing */
 }
 
-#btn-save:hover{
-    font-weight: 500;
-    background: #009B65;
-    color: #FDFFFE;
-}
-
-#btn-back{
-    width: 15%;
+#btn-back {
     color: #007C92;
     border: 1px solid #007C92;
+    width: 30%; /* Set width for button */
+}
+
+.btn-back:hover {
+    font-weight: 500;
+    background-color: #E6E7E6;
+    color: #007C92;
+}
+
+.btn-save {
+    background-color: #00AF71 !important;
+    color: #FDFFFE;
+    width: 30%; /* Set width for button */
+}
+
+.btn-save:hover {
+    background-color: #009B65;
+    color: #FDFFFE;
 }
 
 #btn-back:hover{

@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+
+@section('title', 'Profil Pengguna')
+
+@section('stylesheets')
+    @parent
     <link rel="stylesheet" href="{{asset('css/Profile/profile.css')}}">
-</head>
-<body>
+@endsection
+
+@section('content')
     <div class="container">
         <div class="row">
             {{-- LEFT SIDE  --}}
@@ -25,13 +22,13 @@
 
             {{-- RIGHT SIDE  --}}
             <div class="right col-sm-9">
-                <div class="row">
+                <div class="row" style="margin-left: 50px; overflow:hidden" >
                     <form action="{{route('edit_profile_logic.donatur_relawan', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                         @csrf
                         <table class="main-table">
                             <tr>
                                 <td class="left-column-mt col-lg-4">Nama Lengkap</td>
-                                <td class="right-column-mt col-lg-5">
+                                <td class="right-column-mt col-lg-10">
                                     <input class= "form-control @error('NamaDonaturRelawan') is-invalid @enderror" type="text" name="NamaDonaturRelawan" placeholder="Nama dari donatur atau relawan" value="{{old('NamaDonaturRelawan', $detailDR->NamaDonaturRelawan)}}">
                                     @error('NamaDonaturRelawan')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -42,7 +39,7 @@
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4">Tanggal Lahir</td>
-                                <td class="right-column-mt col-lg-5">
+                                <td class="right-column-mt col-lg-10">
                                     <input class= "form-control @error('TanggalLahirDonaturRelawan') is-invalid @enderror" type="date" id="datepicker" name="TanggalLahirDonaturRelawan" value="{{old('TanggalLahirDonaturRelawan', $detailDR->TanggalLahirDonaturRelawan)}}">
                                     @error('TanggalLahirDonaturRelawan')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -53,7 +50,7 @@
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4">Jenis Kelamin</td>
-                                <td class="right-column-mt col-lg-5">
+                                <td class="right-column-mt col-lg-10">
                                     <input class= "form-control @error('JenisKelaminDonaturRelawan') is-invalid @enderror" type="text" name="JenisKelaminDonaturRelawan" placeholder="Laki-laki atau Perempuan" value="{{old('JenisKelaminDonaturRelawan', $detailDR->JenisKelaminDonaturRelawan)}}">
                                     @error('JenisKelaminDonaturRelawan')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -64,11 +61,11 @@
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4" id="EmailDonaturRelawan">Email</td>
-                                <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userDR->email)}}"></td>
+                                <td class="right-column-mt col-lg-10"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userDR->email)}}"></td>
                             </tr>
                             <tr>
                                 <td class="left-column-mt col-lg-4">Nomor Handphone</td>
-                                <td class="right-column-mt col-lg-5">
+                                <td class="right-column-mt col-lg-10">
                                     <input class= "form-control @error('NomorTeleponDonaturRelawan') is-invalid @enderror" type="text" name="NomorTeleponDonaturRelawan" placeholder="+62812345678910" value="{{old('NomorTeleponDonaturRelawan', $detailDR->NomorTeleponDonaturRelawan)}}">
                                     @error('NomorTeleponDonaturRelawan')
                                         <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -112,9 +109,11 @@
                         </table>
 
                         {{-- BUTTON  --}}
-                        <div class="d-flex justify-content-end" id="button-style">
-                            <a href="{{route('profile.donatur_relawan', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
-                            <button type="submit" class="btn" id="btn-save"> Simpan Perubahan </button>
+                        <div class="row mt-5 actionbuttons justify-content-end mr-3">
+                            <div class="col-md-5 d-flex justify-content-end">
+                                <a href="{{ route('profile.donatur_relawan', ['id' => $id]) }}" class="btn me-2" id="btn-back">Batal</a>
+                                <button type="submit" class="btn btn-save" id="btn-save" style="background-color:#00AF71; color:white;">Simpan Perubahan</button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -158,5 +157,4 @@
         <script> var url = "{{route('profile.donatur_relawan', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/Profile/profile.js') }}"></script>
     @endif
-</body>
-</html>
+@endsection
