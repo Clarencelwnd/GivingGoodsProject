@@ -10,7 +10,6 @@
 @endsection
 
 @section('content')
-
     <div class="img-container">
         <div class="image-wrapper">
             <img id="background-image" src="{{ asset('Image/general/userGeneralPageBackground.jpg') }}" alt="">

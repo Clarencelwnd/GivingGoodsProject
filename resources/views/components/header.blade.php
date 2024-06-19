@@ -15,13 +15,10 @@
 <body>
     @php
         $DonaturRelawan = \App\Models\DonaturAtauRelawan::find($id);
-        // $KegiatanRelawan = \App\Models\KegiatanRelawan::find($id);
-        // $KegiatanDonasi = \App\Models\KegiatanDonasi::find($id);
-
     @endphp
 
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start mt-2 mx-3">
-        <a href="#" class="d-block me-4">
+        <a href="{{ route('displayUserGeneralPage', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" class="d-block me-4">
             <img id="logoImg" src="{{asset('Image/general/logo.png')}}" alt="logo" width="70">
           </a>
 

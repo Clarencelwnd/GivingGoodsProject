@@ -13,8 +13,6 @@ use App\Http\Controllers\PantiSosialController;
 use App\Http\Controllers\UserGeneralPage;
 use App\Http\Controllers\UserGeneralPageController;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\buatKegiatanController;
 use App\Http\Controllers\forumController;
 use App\Http\Controllers\KomentarForumController;
@@ -25,7 +23,7 @@ Route::get('/', function () {
 });
 
 //Halaman utama
-Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage']);
+Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage'])->name('displayUserGeneralPage');
 Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');
 
 //Daftar Kegiatan
@@ -55,7 +53,7 @@ Route::get('/search/{id}', [DaftarKegiatanController::class, 'search'])->name('d
 Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
 
 //Search Panti Sosial
-// Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
+Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
 
 // ====== Artikel ======
 //Daftar Artikel
