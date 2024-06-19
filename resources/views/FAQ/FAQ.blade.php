@@ -244,5 +244,4 @@
 </script>
 @endsection
 
-</body>
 </html>

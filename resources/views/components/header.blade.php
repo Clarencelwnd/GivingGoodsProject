@@ -15,6 +15,9 @@
 <body>
     @php
         $DonaturRelawan = \App\Models\DonaturAtauRelawan::find($id);
+        $KegiatanRelawan = \App\Models\KegiatanRelawan::find($id);
+        $KegiatanDonasi = \App\Models\KegiatanDonasi::find($id);
+
     @endphp
 
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start mt-2 mx-3">
@@ -29,7 +32,7 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Jadi Relawan</a></li>
+                    <li><a class="dropdown-item"  href="{{ route('daftarKegiatanRelawan', ['id' => $KegiatanRelawan, 'id' => $DonaturRelawan]) }}"  style="color: #007C92;">Jadi Relawan</a></li>
                     <li><a class="dropdown-item" href="#" style="color: #007C92;">Donasi Barang</a></li>
                 </ul>
             </li>
