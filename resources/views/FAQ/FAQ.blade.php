@@ -226,9 +226,6 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <img src="image/footer/copyright.png" alt="Copyright" height="25px">
-    </div>
 </div>
 
 
