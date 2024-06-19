@@ -13,7 +13,7 @@
 
 @section('content')
     {{-- SEARCH BAR --}}
-    <form action="{{ route('daftarKegiatan.search') }}" method="GET">
+    <form action="{{ route('daftarKegiatan.search', ['id' => $id]) }}" method="GET">
         <div class="col-md-11 searchbar">
             <div class="d-flex form-inputs">
                 <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama kegiatan, nama panti sosial, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">
@@ -24,7 +24,7 @@
 
     <div class="contentContainer">
         <div>
-            <form id="filter-form" action="{{ route('daftarKegiatan.search') }}" method="GET">
+            <form id="filter-form" action="{{ route('daftarKegiatan.search', ['id' => $id]) }}" method="GET">
                 <input type="hidden" name="search" value="{{ request('search') }}">
             @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
         </div>

@@ -26,55 +26,50 @@ Route::get('/', function () {
 
 //Halaman utama
 Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage']);
-
 Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');
 
+//Daftar Kegiatan
+Route::get('/daftar-kegiatan/{id}', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
 
 // ====== Kegiatan Relawan ======
-Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show']);
-
+Route::get('/dr-detail-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [drDetailKegiatanRelawanController::class, 'show'])->name('detailKegiatanRelawan');
 Route::get('/daftar-kegiatan-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [DaftarKegiatanRelawanController::class, 'show'])->name('daftarKegiatanRelawan');
 Route::post('/store-daftar-kegiatan-relawan', [DaftarKegiatanRelawanController::class, 'store'])->name('storeDaftarKegiatanRelawan');
-
 Route::get('/summary-daftar-relawan/{idKegiatanRelawan}/{idDonaturRelawan}', [SummaryDaftarRelawanController::class, 'show'])->name('summaryDaftarRelawan');
 Route::post('/store-daftar-relawan', [SummaryDaftarRelawanController::class, 'store'])->name('storeSummaryDaftarRelawan');
 
-
 // ====== Kegiatan Donasi ======
-Route::get('/dr-detail-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [drDetailKegiatanDonasiController::class, 'show']);
-
+Route::get('/dr-detail-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [drDetailKegiatanDonasiController::class, 'show'])->name('detailKegiatanDonasi');
 Route::get('/daftar-kegiatan-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [DaftarKegiatanDonasiController::class, 'show'])->name('daftarKegiatanDonasi');
 Route::post('/store-daftar-kegiatan-donasi', [DaftarKegiatanDonasiController::class, 'store'])->name('storeDaftarKegiatanDonasi');
-
 Route::get('/summary-daftar-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [SummaryDaftarDonasiController::class, 'show'])->name('summaryDaftarDonasi');
 Route::post('/store-daftar-donasi', [SummaryDaftarDonasiController::class, 'store'])->name('storeSummaryDaftarDonasi');
 
-
-// ====== Page Panti Sosial ======
+// ====== Page Detail Panti Sosial ======
 Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
 
-
-// ====== Artikel ======
-//Daftar Artikel
-Route::get('/daftarArtikel', [ArtikelController::class, 'displayDaftarArtikel'])->name('displayDaftarArtikel');
-//Detail Artikel 1
-Route::get('/detailArtikel', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
-//Detail Artikel 2
-Route::get('/daftarArtikel/artikel2', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
-
-
-//Daftar Kegiatan
-Route::get('/daftar-kegiatan', [DaftarKegiatanController::class, 'displayDaftarKegiatan'])->name('displayDaftarKegiatan');
-
-
 //Search
-Route::get('/search', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');
+Route::get('/search/{id}', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');
 
 //Side bar
 Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
 
 //Search Panti Sosial
 // Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
+
+// ====== Artikel ======
+//Daftar Artikel
+Route::get('/daftarArtikel/{id}', [ArtikelController::class, 'displayDaftarArtikel'])->name('displayDaftarArtikel');
+//Detail Artikel 1
+Route::get('/detailArtikel/{id}', [ArtikelController::class, 'displayDetailArtikel'])->name('displayDetailArtikel');
+//Detail Artikel 2
+Route::get('/daftarArtikel/artikel2/{id}', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
+
+//FORUM
+Route::get('/daftarForum/{id}', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum/{id}', [forumController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{idDonaturRelawan}/{idForum}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar/{idDonaturRelawan}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
 
 // ====== Profile ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');
@@ -89,12 +84,7 @@ Route::get('/detail_riwayat_kegiatan/donasi/{id1}/{id2}', [ProfileDonaturRelawan
 Route::get('/detail_riwayat_kegiatan/relawan/{id1}/{id2}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
 Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
-
 // DUMMY
 Route::get('/home_page', [ProfileDonaturRelawanController::class, 'home_page'])->name('home_page');
 
-//FORUM
-Route::get('/daftarForum/{id}', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum/{id}', [forumController::class, 'buatForum'])->name('buatForum');
-Route::get('/forum/{idDonaturRelawan}/{idForum}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idDonaturRelawan}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
+
