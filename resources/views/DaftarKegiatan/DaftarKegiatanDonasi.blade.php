@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Pendaftaran Donasi</title>
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+
+@section('title', 'Formulir Daftar Donasi')
+
+@section('stylesheets')
+    @parent
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanDonasi.css') }}" rel="stylesheet">
     <script src="{{ asset('js/Artikel/DaftarKegiatanDonasi.js') }}"></script>
-</head>
-<body>
-
-    @extends('templateDonaturRelawan')
+@endsection
 
 
     @section('content')

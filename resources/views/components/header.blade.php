@@ -32,8 +32,8 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="#" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
-                    <li><a class="dropdown-item"  href="{{ route('daftarKegiatanRelawan', ['id' => $KegiatanRelawan, 'id' => $DonaturRelawan]) }}"  style="color: #007C92;">Jadi Relawan</a></li>
-                    <li><a class="dropdown-item" href="#" style="color: #007C92;">Donasi Barang</a></li>
+                    <li><a class="dropdown-item"  href="{{ route('daftarKegiatanRelawan', ['idKegiatanRelawan' => $KegiatanRelawan, 'idDonaturRelawan' => $DonaturRelawan]) }}"  style="color: #007C92;">Jadi Relawan</a></li>
+                    <li><a class="dropdown-item" href="{{ route('daftarKegiatanDonasi', ['idKegiatanDonasi' => $KegiatanDonasi, 'idDonaturRelawan' => $DonaturRelawan]) }}" style="color: #007C92;">Donasi Barang</a></li>
                 </ul>
             </li>
             <li><a href="#" id="artikelButton" class="nav-link px-2" style="color: #00925F;">Artikel</a></li>
