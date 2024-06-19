@@ -4,7 +4,6 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
-    <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
 
 @section('content')
@@ -175,6 +174,6 @@
             </div>
         </div>
     {{-- </div> --}}
-
+    <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
 

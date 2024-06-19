@@ -23,8 +23,7 @@
             <div class="right col-md-8">
                 <div class="row">
                     <div class="scrollable-content">
-
-                        <form action="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
+                        <form action="{{route('edit_profile_logic.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                             @csrf
                             <table class="main-table">
                                 <tr>
@@ -182,14 +181,15 @@
                                     </td>
                                 </tr>
                             </table>
+                            
+                            {{-- BUTTON  --}}
+                            <div class="d-flex justify-content-end" id="button-style">
+                               <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
+                               <button type="submit" form="editForm" class="btn" id="btn-save"> Simpan Perubahan </button>
+                           </div>
                         </form>
                     </div>
 
-                     {{-- BUTTON  --}}
-                     <div class="d-flex justify-content-end" id="button-style">
-                        <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
-                        <button type="submit" form="editForm" class="btn" id="btn-save"> Simpan Perubahan </button>
-                    </div>
 
                     {{-- MODAL JADWAL OPERASIONAL --}}
                     <div class="container">

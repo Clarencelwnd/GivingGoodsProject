@@ -105,32 +105,34 @@
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="Donasi">
-            <div class="card-body">
-                <div>
-                    <p class="konfirmasi-alert" >Mohon Konfirmasi 2 Calon Donatur yang Sudah Mendaftar</p>
-                    <div class="card-top-info">
-                        <div class="badge-container">
-                            <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+            <a href="{{ route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]) }}" style="text-decoration: none; color: inherit;">
+                <div class="card-body">
+                    <div>
+                        <p class="konfirmasi-alert" >Mohon Konfirmasi 2 Calon Donatur yang Sudah Mendaftar</p>
+                        <div class="card-top-info">
+                            <div class="badge-container">
+                                <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h5 class="card-title" id="namaKegiatan">{{ $activity->NamaKegiatanDonasi }}</h5>
+
+                    <div class="card-info">
+                        <div class="card-details">
+                            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
+                            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
+
+                            <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
+                            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
+                        </div>
+
+                        <div class="jumlahDonaturRelawan">
+                            <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
                         </div>
                     </div>
                 </div>
-
-                <h5 class="card-title" id="namaKegiatan">{{ $activity->NamaKegiatanDonasi }}</h5>
-
-                <div class="card-info">
-                    <div class="card-details">
-                        <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalKegiatanDonasiMulai }} - {{ $activity->TanggalKegiatanDonasiSelesai }}</p>
-                        <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanDonasi }}</p>
-
-                        <p class="card-text">Jenis donasi: {{ $activity->JenisDonasiDibutuhkan }}</p>
-                        <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->created_at }}</p>
-                    </div>
-
-                    <div class="jumlahDonaturRelawan">
-                        <p class="card-text">Donatur: {{ $activity->registrasi_donatur_count }}</p>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
     @endforeach
 @endsection

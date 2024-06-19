@@ -105,33 +105,34 @@
 
         <div class="card w-80" data-status="{{ $status }}" data-type="Relawan">
             <div class="card-body">
+                <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+                    <div>
+                        <p class="konfirmasi-alert">Mohon Konfirmasi 2 Calon Relawan yang Sudah Mendaftar</p>
 
-                <div>
-                    <p class="konfirmasi-alert">Mohon Konfirmasi 2 Calon Relawan yang Sudah Mendaftar</p>
+                        <div class="card-top-info">
+                            <div class="badge-container">
+                                <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                            </div>
 
-                    <div class="card-top-info">
-                        <div class="badge-container">
-                            <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
+                            <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                        </div>
+                    </div>
+
+                    <h5 class="card-title">{{ $activity->NamaKegiatanRelawan }}</h5>
+
+                    <div class="card-info">
+                        <div class="card-details">
+                            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
+                            <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
+                            <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
+                            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
                         </div>
 
-                        <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                        <div class="jumlahDonaturRelawan">
+                            <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
+                        </div>
                     </div>
-                </div>
-
-                <h5 class="card-title">{{ $activity->NamaKegiatanRelawan }}</h5>
-
-                <div class="card-info">
-                    <div class="card-details">
-                        <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
-                        <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
-                        <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
-                        <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
-                    </div>
-
-                    <div class="jumlahDonaturRelawan">
-                        <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     @endforeach
