@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summary Daftar Donasi</title>
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+
+@section('title', 'Summary Daftar Donasi')
+
+@section('stylesheets')
+    @parent
     <link rel="stylesheet" href="styles.css">
     <link href="{{ asset('css/DetailKegiatanDonasi/SummaryDaftarDonasi.css') }}" rel="stylesheet">
     <script src="{{ asset('js/DetailKegiatanDonasi/SummaryDaftarDonasi.js') }}"></script>
-</head>
-<body>
+@endsection
 
-    @extends('templateDonaturRelawan')
 
     @section('content')
     <div class="container">
@@ -172,5 +170,4 @@
     </script>
 
 @endsection
-</body>
 </html>
