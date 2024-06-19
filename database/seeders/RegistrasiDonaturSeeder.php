@@ -24,7 +24,7 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 2,
-                'StatusRegistrasiDonatur' => 'Donasi Diterima',
+                'StatusRegistrasiDonatur' => 'Konfirmasi Diterima',
                 'JenisDonasiDidonasikan' => 'obat,alat_tulis',
                 'DeskripsiBarangDonasi' => 'paramex 5 kotak, pensil 100 pcs',
                 'PengirimanBarang' => 'Antar sendiri',
@@ -46,7 +46,7 @@ class RegistrasiDonaturSeeder extends Seeder
             [
                 'IDDonaturRelawan' => 2,
                 'IDKegiatanDonasi' => 1,
-                'StatusRegistrasiDonatur' => 'Donasi Diterima',
+                'StatusRegistrasiDonatur' => 'Konfirmasi Diterima',
                 'JenisDonasiDidonasikan' => 'buku',
                 'DeskripsiBarangDonasi' => 'Buku pelajaran',
                 'PengirimanBarang' => 'Antar sendiri',

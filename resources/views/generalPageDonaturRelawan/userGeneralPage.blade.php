@@ -59,33 +59,34 @@
 
             <div class="cardsKegiatanDonasi-container">
                 @foreach ($kegiatanDonasi as $donasi)
-                    <div class="card card-kegiatanDonasi" style="width: 16rem;">
-                        <img src="{{ asset('Image/kegiatanDonasi/'.$donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
-                        <div class="card-body card-kegiatan">
-                        <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
-                        <p class="card-text" id="card-jenisDonasi">
-                            @php
-                                $donasiTypes = explode(',', $donasi->JenisDonasiDibutuhkan);
-                                $donasiTypes = array_slice($donasiTypes, 0, 5);
-                            @endphp
-                            Jenis Donasi:
-                            @foreach ($donasiTypes as $type)
-                                @if(array_key_exists($type, $jenisDonasiIcons))
-                                    <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
-                                @else
-                                    {{ $type }}
-                                @endif
-                            @endforeach
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
-                            <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $donasi->IDKegiatanDonasi, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                        <div class="card card-kegiatanDonasi" style="width: 16rem;">
+                            <img src="{{ asset('Image/kegiatanDonasi/'.$donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            <div class="card-body card-kegiatan">
+                            <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
+                            <p class="card-text" id="card-jenisDonasi">
+                                @php
+                                    $donasiTypes = explode(',', $donasi->JenisDonasiDibutuhkan);
+                                    $donasiTypes = array_slice($donasiTypes, 0, 5);
+                                @endphp
+                                Jenis Donasi:
+                                @foreach ($donasiTypes as $type)
+                                    @if(array_key_exists($type, $jenisDonasiIcons))
+                                        <img id="jenisDonasiIcons" src="{{ asset($jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
+                                    @else
+                                        {{ $type }}
+                                    @endif
+                                @endforeach
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                            </div>
+                            </div>
                         </div>
-                        </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
-
         </div>
 
         <div class="kegiatan-relawan">
@@ -100,19 +101,22 @@
 
             <div class="cardsKegiatanRelawan-container">
                 @foreach ($kegiatanRelawan as $relawan)
-                    <div class="card card-kegiatanRelawan" style="width: 16rem;">
-                        <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
-                        <div class="card-body card-kegiatan">
-                            <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
-                            <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
-                                <p class="card-text">jarak</p>
+                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $relawan->IDKegiatanRelawan, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                        <div class="card card-kegiatanRelawan" style="width: 16rem;">
+                            <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            <div class="card-body card-kegiatan">
+                                <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
+                                <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
+                                    <p class="card-text">jarak</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
+
         </div>
 
         <div class="mt-5 mb-3 d-flex header-baca-artikel align-content-center">
@@ -125,7 +129,7 @@
         </div>
 
         <div class="baca-artikel">
-            <a href="{{ route('displayDetailArtikel') }}" class="text-decoration-none text-dark">
+            <a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="text-decoration-none text-dark">
                 <div class="card" id="forum-cards" style="width: 35rem; margin-left:50px;">
                     <div class="card-body">
                     <h5 class="card-title" id="judulForum">Manfaat Donasi</h5>
@@ -148,12 +152,12 @@
                             Dengan menerima donasi, pihak panti sosial dapat memperluas area bahkan membuka panti sosial di lokasi lainnya. Artinya, panti sosial bisa membantu lebih banyak orang lagi yang membutuhkan. Hal ini akan secara umum meningkatkan kesejahteraan masyarakat karena semakin berkurangnya jumlah individu yang tidak mendapatkan perawatan atau dukungan layak.
                         </div>
                     </div>
-                    <a href="#" class="card-link" style="text-decoration:underline; color:  #1C3F5B;">Baca lebih lengkap</a>
+                    <a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="card-link" style="text-decoration:underline; color:  #1C3F5B;">Baca lebih lengkap</a>
                     </div>
                 </div>
             </a>
 
-            <a href="{{ route('displayDetailArtikel2') }}" class="text-decoration-none text-dark">
+            <a href="{{ route('displayDetailArtikel2', ['id' => $id]) }}" class="text-decoration-none text-dark">
                 <div class="card" id="forum-cards" style="width: 35rem; margin-left:50px;">
                     <div class="card-body">
                     <h5 class="card-title" id="judulForum">Melakukan Donasi secara Online</h5>
@@ -164,7 +168,7 @@
                             Mengetahui hal tersebut, GivingGoods hadir dengan sangat memperhatikan keamanan dan kenyamanan pengguna dalam melakukan donasi. Kami berusaha menjaga kepercayaan calon donatur atau relawan dengan memastikan bahwa panti sosial yang membutuhkan pada website kami adalah panti sosial resmi yang terdaftar di pemerintahan. Selain itu, pengguna juga dapat melihat detail informasi dari panti sosial yang akan mereka bantu. GivingGoods juga menyediakan alur pendaftaran donasi yang mudah, sehingga pengguna dapat merasa nyaman.
                         </div>
                     </div>
-                    <a href="{{ route('displayDetailArtikel2') }}" class="card-link" style="text-decoration:underline; color:  #1C3F5B;">Baca lebih lengkap</a>
+                    <a href="{{ route('displayDetailArtikel2', ['id' => $id]) }}" class="card-link" style="text-decoration:underline; color:  #1C3F5B;">Baca lebih lengkap</a>
                     </div>
                 </div>
             </a>

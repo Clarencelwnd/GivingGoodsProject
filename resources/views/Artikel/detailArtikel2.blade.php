@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="btn-articleBack mb-3">
-    <a href="{{ route('displayDaftarArtikel') }}" class="back-link">
+    <a href="{{ route('displayDaftarArtikel', ['id' => $id]) }}" class="back-link">
         <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
         <p class="judulArtikel-text">Melakukan Donasi Secara Online</p>
     </a>

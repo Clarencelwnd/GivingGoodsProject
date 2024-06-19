@@ -20,6 +20,7 @@ class DaftarKegiatanController extends Controller
     }
 
     public function displayDaftarKegiatan($id){
+    public function displayDaftarKegiatan($id){
         $perPage = 9;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
 
@@ -66,7 +67,7 @@ class DaftarKegiatanController extends Controller
             'jenisDonasiIcons'=>$jenisDonasiIcons,
             'jenisDonasiList' => $jenisDonasiList,
             'jenisRelawanList' => $jenisRelawanList,
-            'id'=>$id
+            'id' => $id
         ]);
     }
 

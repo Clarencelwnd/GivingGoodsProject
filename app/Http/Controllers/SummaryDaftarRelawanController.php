@@ -23,11 +23,12 @@ class SummaryDaftarRelawanController extends Controller
             return redirect()->back()->with('error', 'Kegiatan atau Donatur tidak ditemukan');
         }
 
+        $id = $idDonaturRelawan;
         // Ambil data dari session jika ada
         $data = $request->session()->get('daftar_relawan');
 
         // Kirim data ke view SummaryDaftarRelawan
-        return view('DetailKegiatanRelawan.SummaryDaftarRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'data'));
+        return view('DetailKegiatanRelawan.SummaryDaftarRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'data', 'id'));
     }
 
 

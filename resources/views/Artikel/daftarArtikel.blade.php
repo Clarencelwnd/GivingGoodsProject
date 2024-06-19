@@ -13,7 +13,7 @@
     <h6 id="daftarForumTitle">Daftar Forum</h6>
 </div>
 
-<a href="{{ route('displayDetailArtikel') }}" class="text-decoration-none text-dark">
+<a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="text-decoration-none text-dark">
     <div class="card" style="width: 1248px; margin-left:80px" id="artikel-cards">
         <div class="card-body">
             <div class="card-top">
@@ -42,7 +42,7 @@
     </div>
 </a>
 
-<a href="{{ route('displayDetailArtikel2') }}" class="text-decoration-none text-dark">
+<a href="{{ route('displayDetailArtikel2', ['id' => $id]) }}" class="text-decoration-none text-dark">
     <div class="card" style="width: 1248px; margin-left:80px" id="artikel-cards">
         <div class="card-body">
             <div class="card-top">

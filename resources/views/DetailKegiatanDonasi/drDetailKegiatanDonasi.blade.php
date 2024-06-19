@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Kegiatan Donasi</title>
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+
+@section('title', 'Detail Kegiatan Donasi')
+
+@section('stylesheets')
+    @parent
     <link href="{{ asset('css/DetailKegiatanDonasi/drDetailKegiatanDonasi.css') }}" rel="stylesheet">
     <script src="{{ asset('js/DetailKegiatanDonasi/drDetailKegiatanDonasi.js') }}"></script>
-</head>
-<body>
-    @extends('generalPageDonaturRelawan.templateDonaturRelawan')
+@endsection
+
 
     @section('content')
 <div class="container">
@@ -128,6 +127,4 @@
                 }
 </script>
 @endsection
-
-</body>
 </html>

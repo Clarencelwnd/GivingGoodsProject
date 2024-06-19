@@ -1,14 +1,14 @@
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Panti Sosial</title>
+@section('title', 'Detail Panti Sosial')
+
+@section('stylesheets')
+    @parent
     <link href="{{ asset('css/DetailPantiSosial/PagePanSos.css') }}" rel="stylesheet">
     <script src="{{ asset('js/DetailPantiSosial/PagePanSos.js') }}"></script>
-</head>
-<body>
+@endsection
+
+@section('content')
     <div class="container">
         <div class="info-container">
             <img src="{{ asset('image/login_reset_password/' . $pantiSosial->LogoPantiSosial) }}" class="donation-icon" alt="Logo Panti Sosial">
@@ -56,5 +56,5 @@
             </div>
         </div>
     </div>
-</body>
+    @endsection
 </html>

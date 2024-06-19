@@ -2,17 +2,6 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-#main {
-    flex: 1;
-}
-
 .sidebar {
     height: 100%;
     width: 0;
@@ -47,6 +36,16 @@ body {
     font-size: 36px;
     margin-left: 50px;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+#main {
+    flex: 1;
+}
 
 .contact-us{
     padding: 8px 8px 8px 32px;
@@ -80,7 +79,7 @@ body {
 #organization-profile{
     width: 32px;
     height: 32px;
-    margin-right: 5px;
+    margin-right: 5px; /* Adjust as needed */
 }
 
 #organization-name {
@@ -141,10 +140,9 @@ body {
     color: #A22E27;
 }
 
-
-
 #main {
     transition: margin-left .5s;
+    padding: 16px;
 }
 
 footer .text-muted{
