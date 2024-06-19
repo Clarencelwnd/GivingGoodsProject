@@ -32,7 +32,7 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><a class="dropdown-item" href="{{ route('displayDaftarKegiatan', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" style="color: #007C92;">Lihat Daftar Kegiatan</a></li>
-                    <li><a class="dropdown-item"  href="#"  style="color: #007C92;">Jadi Relawan</a></li>
+                    <li><a class="dropdown-item"  href="#" style="color: #007C92;">Jadi Relawan</a></li>
                     <li><a class="dropdown-item" href="#" style="color: #007C92;">Donasi Barang</a></li>
                 </ul>
             </li>
