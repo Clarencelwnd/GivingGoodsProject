@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 //Halaman utama
-Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage']);
+Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage'])->name('halamanUtama');
 Route::get('/FAQ/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');
 
 //Daftar Kegiatan

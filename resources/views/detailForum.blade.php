@@ -1,12 +1,11 @@
-@extends('templatePage')
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Daftar Forum')
 
 @section('stylesheets')
     @parent
-    {{-- <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/detailForumPage.css') }}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
+    <script src="{{ asset('js/forumPage.js') }}"></script>
 @endsection
 
 

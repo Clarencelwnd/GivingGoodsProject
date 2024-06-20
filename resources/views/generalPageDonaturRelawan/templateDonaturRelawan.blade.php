@@ -12,9 +12,10 @@
     <title>@yield('title')</title>
     @section('stylesheets')
         <link rel="stylesheet" href="{{ asset('css/templatePage.css') }}">
+        <script src="{{ asset('js/templatePage.js') }}"></script>
     @show
 
-    {{-- <script src="{{ asset('js/templatePage.js') }}"></script> --}}
+    
 </head>
 
 <body>

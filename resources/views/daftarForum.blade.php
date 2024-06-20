@@ -1,4 +1,4 @@
-@extends('templatePage')
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Daftar Forum')
 

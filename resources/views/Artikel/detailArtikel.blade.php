@@ -4,7 +4,6 @@
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/Artikel/daftarArtikelPage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Artikel/detailArtikelPage.css') }}">
 @endsection
 
