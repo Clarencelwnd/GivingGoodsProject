@@ -4,7 +4,6 @@
 
 @section('stylesheets')
     @parent
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/Profile/change_password.css')}}">
 @endsection
 
@@ -34,7 +33,7 @@
                         </div>
                     @enderror
                 </div>
-                <div class="d-flex justify-content-end mb-3" id="button-style">
+                <div class="d-flex justify-content-end" id="button-style">
                     <a data-bs-toggle="modal" data-bs-target="#exitChangePasswordModal" class="btn btn-cancel" id="exitChangePassword">Batal</a>
                     <button type="submit" class="btn" id="btn-save">Simpan Perubahan </button>
                 </div>
@@ -81,7 +80,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @if(session('success'))
         <script> var url = "{{route('profile.donatur_relawan', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/Profile/change_password.js') }}"></script>
