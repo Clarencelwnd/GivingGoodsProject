@@ -4,7 +4,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{asset('css/edit_profile.css')}}">
-    <script src="{{ asset('js/profile.js') }}"></script>
+    {{-- <script src="{{ asset('js/profile.js') }}"></script> --}}
 @endsection
 
 @section('content')
@@ -181,11 +181,11 @@
                                     </td>
                                 </tr>
                             </table>
-                            
+
                             {{-- BUTTON  --}}
                             <div class="d-flex justify-content-end" id="button-style">
                                <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
-                               <button type="submit" form="editForm" class="btn" id="btn-save"> Simpan Perubahan </button>
+                               <button type="submit" class="btn" id="btn-save"> Simpan Perubahan </button>
                            </div>
                         </form>
                     </div>

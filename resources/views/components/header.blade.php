@@ -32,7 +32,7 @@
 
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownOrganizationName" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" id="organization-profile" alt="mdo" class="rounded-circle">
+                    <img src="{{asset($PantiSosial->LogoPantiSosial)}}" id="organization-profile" alt="mdo" class="rounded-circle">
                     {{-- OCG Saving The Ocean --}}
                     {{$PantiSosial->NamaPantiSosial}}
                 </a>
