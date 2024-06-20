@@ -102,13 +102,19 @@ class ProfileDonaturRelawanController extends Controller
 
         $original_name = $request->file('FotoDonaturRelawan')->getClientOriginalName();
         $original_ext = $request->file('FotoDonaturRelawan')->getClientOriginalExtension();
-        $foto_donatur_relawan_name = $original_name . time() . '.' . $original_ext;
+        // $foto_donatur_relawan_name = $original_name . time() . '.' . $original_ext;
+        $foto_donatur_relawan_name = time() . '_' . $original_name . '.' . $original_ext;
 
-        $request->file('FotoDonaturRelawan')->storeAs('public/Profile', $foto_donatur_relawan_name);
-        $foto_donatur_relawan = 'storage/Profile/' . $foto_donatur_relawan_name;
+
+        // $request->file('FotoDonaturRelawan')->storeAs('public/Profile', $foto_donatur_relawan_name);
+        $request->file('FotoDonaturRelawan')->storeAs('uploads', $foto_donatur_relawan_name, 'public');
+
+        // $foto_donatur_relawan = 'storage/Profile/' . $foto_donatur_relawan_name;
+        $foto_donatur_relawan_url = asset('storage/uploads/' . $foto_donatur_relawan_name);
+
 
         $detailDR = DonaturAtauRelawan::find($id);
-        $detailDR->FotoDonaturRelawan = $foto_donatur_relawan;
+        $detailDR->FotoDonaturRelawan = $foto_donatur_relawan_url;
         $detailDR->save();
 
         return redirect()->route('profile.donatur_relawan',['id'=>$id]);
