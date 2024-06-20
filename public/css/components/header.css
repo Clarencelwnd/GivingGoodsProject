@@ -12,6 +12,23 @@ hr{
     margin-left: 0.75em;
 }
 
+#profileDropdown{
+    margin-right: 1.5em;
+}
+
+#dropdownUserName{
+    font-size: 18px;
+    font-weight: 500;
+    color: #00AF71;
+    margin-right: 3rem;
+}
+
+#kegiatanDropdown{
+    font-size: 18px;
+    margin-left: 50px;
+    font-weight: 500
+}
+
 #artikelButton, #kegiatanBtn
 {
     font-size: 18px;

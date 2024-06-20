@@ -9,7 +9,6 @@
 }
 
 /* INFORMATION */
-
 .information-icon{
     width: 5%;
     height: 100%;
@@ -29,7 +28,6 @@
 }
 
 /* LEFT SIDE  */
-
 .left{
     padding-right: 25px;
     padding-top:50px;
@@ -79,10 +77,9 @@
 }
 
 /* RIGHT SIDE  */
-
 .right{
     height: 100vh;
-    padding-top: 50px;
+    padding-top: 100px;
     padding-left: 25px;
     overflow-y: auto;
 }

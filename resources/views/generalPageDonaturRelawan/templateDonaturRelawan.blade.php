@@ -15,7 +15,7 @@
         <script src="{{ asset('js/templatePage.js') }}"></script>
     @show
 
-    
+
 </head>
 
 <body>
