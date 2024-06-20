@@ -31,7 +31,7 @@
 
     {{-- Reply text area --}}
     <div class="mt-4 replyTextArea">
-        <form action="{{ route('simpanKomentar', ['idDonaturRelawan' => $id]) }}" method="POST">
+        <form action="{{ route('simpanKomentar', ['idPantiSosial' => $id]) }}" method="POST">
             @csrf
             <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
             <textarea class="w-100 form-control" name="KomentarForum" rows="4" placeholder="Bagikan pendapatmu..." required></textarea>

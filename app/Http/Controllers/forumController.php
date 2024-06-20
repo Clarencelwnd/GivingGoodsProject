@@ -30,9 +30,9 @@ class forumController extends Controller
         return redirect()->route('displayDaftarForum', compact('id'))->with('success', 'Forum post created successfully');
     }
 
-    public function displayDetailForum($idDonaturRelawan, $idForum){
+    public function displayDetailForum($idPantiSosial, $idForum){
         $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($idForum);
-        return view('detailForum',['id' => $idDonaturRelawan, 'forum' => $forum, 'idForum' => $idForum]);
+        return view('detailForum',['id' => $idPantiSosial, 'forum' => $forum, 'idForum' => $idForum]);
     }
 
 }
