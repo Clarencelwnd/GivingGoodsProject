@@ -21,9 +21,8 @@ use function PHPSTORM_META\map;
 
 class ProfileDonaturRelawanController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request, $id){
         // nyari data di tabel
-        $id = $request->id;
         $detailDR = DonaturAtauRelawan::find($id);
         $userDR = $detailDR->User;
 

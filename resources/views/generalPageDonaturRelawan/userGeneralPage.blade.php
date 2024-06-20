@@ -19,10 +19,12 @@
                 {{-- INFORMATION BUTTON --}}
                 <div class="container information-button">
                     <div class="row justify-content-center">
-                        <div class="alert alert-light text-center" role="alert" onclick="window.location.href='#'">
-                            <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
-                            <p>Lengkapi profil Anda untuk pengalaman yang lebih baik.</p>
-                        </div>
+                        @if (!$donaturRelawan->LinkGoogleMapsDonaturRelawan)
+                            <div class="alert alert-light text-center" role="alert" onclick="window.location.href='{{ route('profile.donatur_relawan', ['id' => $id]) }}'">
+                                <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
+                                <p>Lengkapi profil Anda untuk pengalaman yang lebih baik.</p>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -33,7 +35,7 @@
                         <br>dengan berbagai kegiatan sosial di Indonesia. Bersama-sama, mari buat perbedaan
                         <br>yang nyata dalam hidup orang lain.
                     </p>
-                    <button class="btn btn-primary" type="button" id="lihatSemuaKegiatan-btn">
+                    <button class="btn btn-primary" onclick="window.location.href='{{route('displayDaftarKegiatan', ['id' => $id])}}'"  type="button" id="lihatSemuaKegiatan-btn">
                        Lihat Semua Kegiatan
                     </button>
                 </div>
@@ -43,7 +45,7 @@
 
     <div class="contents">
         <div class="donasi-barang">
-            <div class="mt-8 mb-3 d-flex header-donasi-barang align-content-center">
+            <div class="mt-2 mb-3 d-flex header-donasi-barang align-content-center">
                     <h4 class="header-title">Donasikan Barangmu</h4>
                 <div>
                     <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
@@ -83,7 +85,7 @@
         </div>
 
         <div class="kegiatan-relawan">
-            <div class="d-flex header-kegiatan-relawan align-content-center">
+            <div class="mt-2 d-flex header-kegiatan-relawan align-content-center">
                 <h4 class="header-title">Ikuti Kegiatan Relawan</h4>
                 <div>
                     <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
@@ -110,7 +112,7 @@
 
         </div>
 
-        <div class="mt-5 mb-3 d-flex header-baca-artikel align-content-center">
+        <div class="mt-2 d-flex header-baca-artikel align-content-center">
             <h4 class="header-title">Baca Artikel</h4>
             <div>
                 <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">

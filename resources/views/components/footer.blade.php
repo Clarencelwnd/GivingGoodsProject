@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
 </head>
 <body>
+    @php
+        $DonaturRelawan = \App\Models\DonaturAtauRelawan::find($id);
+    @endphp
     <div id="footerContainer" class="text-white">
         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 my-5">
             <div class="generalFooterTitle">
@@ -25,10 +28,10 @@
             <div class="col mb-3 quickLinkDiv">
                 <h5>Quick Links</h5>
                 <ul class="nav flex-column quickLinks">
-                    <li class="nav-item mb-2 "><a href="#" id="kegiatanLink">Kegiatan</a></li>
-                    <li class="nav-item mb-2 "><a href="#" id="artikelLink">Artikel</a></li>
-                    <li class="nav-item mb-2 "><a href="#" id="forumLink">Forum</a></li>
-                    <li class="nav-item mb-2 "><a href="#" id="faqLink">FAQ</a></li>
+                    <li class="nav-item mb-2 "><a href="{{ route('displayDaftarKegiatan', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="kegiatanLink">Kegiatan</a></li>
+                    <li class="nav-item mb-2 "><a href="{{ route('displayDaftarArtikel', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="artikelLink">Artikel</a></li>
+                    <li class="nav-item mb-2 "><a href="{{ route('displayDaftarForum', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="forumLink">Forum</a></li>
+                    <li class="nav-item mb-2 "><a href="{{ route('FAQ', ['id' => $DonaturRelawan->IDDonaturRelawan]) }}" id="faqLink">FAQ</a></li>
                 </ul>
             </div>
 
