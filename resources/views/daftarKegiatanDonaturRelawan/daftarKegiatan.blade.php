@@ -56,6 +56,11 @@
                          data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
                          data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
                          data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
+                         @if (isset($activity->NamaKegiatanDonasi))
+                            <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                        @elseif (isset($activity->NamaKegiatanRelawan))
+                            <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                        @endif
                         <div class="card">
                             @if (isset($activity->NamaKegiatanRelawan))
                                 <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
@@ -99,6 +104,7 @@
                                 </div>
                             </div>
                         </div>
+                    </a>
                     </div>
                     @endforeach
                 </div>
