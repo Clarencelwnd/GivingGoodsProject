@@ -127,9 +127,9 @@
     @endsection
 
 
-{{-- @section('pagination')
+@section('pagination')
     <div class="pagination-container">
 
         {{ $activities->appends(request()->input())->links('components.pagination') }}
     </div>
-@endsection --}}
+@endsection
