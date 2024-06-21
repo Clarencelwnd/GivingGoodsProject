@@ -4,14 +4,13 @@
 
 @section('stylesheets')
     @parent
-
     <link rel="stylesheet" href="{{asset('css/Profile/change_password.css')}}">
 @endsection
 
 @section('content')
     <div class="container">
         <div class="card-body">
-            <div class="desc-change-pass1">Ubah Kata Sandi</div>
+            <h2 class="desc-change-pass1">Ubah Kata Sandi</h2>
             <div class="desc-change-pass2">Atur ulang kata sandi</div>
             <div class="desc-change-pass3" >Buat kata sandi baru yang kuat untuk akunmu</div>
             <form action="{{route('change_password_logic.donatur_relawan', ['id'=>$id])}}" class= "form" role="form" autocomplete="off" method="post">

@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="daftarForum-top">
-    <h6 id="daftarForumTitle">Daftar Forum</h6>
+    <h2 id="daftarForumTitle">Daftar Forum</h2>
     <button class="btn" id="buatDiskusiBaru" data-bs-toggle="modal" data-bs-target="#buatDiskusiModal">
         Buat Diskusi Baru
     </button>

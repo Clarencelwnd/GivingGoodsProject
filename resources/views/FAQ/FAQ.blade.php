@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="faq-title">Frequently Asked Questions</h1>
+    <h2 class="faq-title">Frequently Asked Questions</h2>
     <div class="faq-section">
         <h2 class="faq-subtitle">Terkait Donatur/Relawan</h2>
         <div class="faq-question">

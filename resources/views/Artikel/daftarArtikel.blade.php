@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="daftarArtikel-top">
-    <h6 id="daftarArtikelTitle">Daftar Artikel</h6>
+    <h2 id="daftarArtikelTitle">Daftar Artikel</h2>
 </div>
 
 <a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="text-decoration-none text-dark">

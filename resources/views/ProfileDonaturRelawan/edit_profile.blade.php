@@ -12,7 +12,7 @@
 <div class="container">
     {{-- LEFT SIDE  --}}
     <div class="left col-sm-2">
-        <h4 class="left-title fw-semibold">Pengaturan</h4>
+        <h2 class="left-title fw-semibold">Pengaturan</h2>
         <img class="profile-pict text-center" src="{{asset($detailDR->FotoDonaturRelawan)}}" alt="">
         <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
         <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>

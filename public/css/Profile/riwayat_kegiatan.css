@@ -3,8 +3,11 @@
 }
 
 .card.main.container{
-    margin-top: 2%;
+    /* margin-top: 2%; */
     border: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 .card.kegiatan.container{
@@ -60,9 +63,10 @@
 }
 
 .title{
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: 600;
     color: #007C92;
+    margin-bottom: 20px;
 }
 
 /* MAIN-CARD BODY  */
@@ -71,7 +75,7 @@
     margin-top: 0px;
 }
 
-.row{
+.row-riwayat{
     padding-left: 12px;
 }
 

@@ -200,8 +200,8 @@ class ProfileDonaturRelawanController extends Controller
         return view('ProfileDonaturRelawan.riwayat_kegiatan', compact('id', 'registrasiDonatur', 'registrasiRelawan'));
     }
 
-    public function detail_riwayat_kegiatan_donasi($id1, $id2){
-        $detailRegistrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDRegistrasiDonatur', $id2)->first();
+    public function detail_riwayat_kegiatan_donasi($idDonaturRelawan, $idRegistrasiDonasi){
+        $detailRegistrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDRegistrasiDonatur', $idRegistrasiDonasi)->first();
 
         $bulan = [
             '01' => 'Januari',
@@ -253,11 +253,12 @@ class ProfileDonaturRelawanController extends Controller
             ];
         }, $donasiItems));
 
-        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_donasi', compact('id1', 'id2', 'detailRegistrasiDonatur'));
+        $id = $idDonaturRelawan;
+        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_donasi', compact('id', 'idRegistrasiDonasi', 'detailRegistrasiDonatur'));
     }
 
-    public function detail_riwayat_kegiatan_relawan($id1, $id2){
-        $detailRegistrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDRegistrasiRelawan', $id2)->first();
+    public function detail_riwayat_kegiatan_relawan($idDonaturRelawan, $idRegistrasiRelawan){
+        $detailRegistrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDRegistrasiRelawan', $idRegistrasiRelawan)->first();
 
         $bulan = [
             '01' => 'Januari',
@@ -290,7 +291,9 @@ class ProfileDonaturRelawanController extends Controller
         $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan = Carbon::createFromFormat('H:i:s', $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan)->format('H:i');
         $detailRegistrasiRelawan->setAttribute('FormatJamRelawan', $detailRegistrasiRelawan->kegiatanRelawan->JamMulaiKegiatanRelawan . '-' . $detailRegistrasiRelawan->kegiatanRelawan->JamSelesaiKegiatanRelawan);
 
-        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_relawan', compact('id1', 'id2', 'detailRegistrasiRelawan'));
+        $id = $idDonaturRelawan;
+
+        return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_relawan', compact('id', 'idRegistrasiRelawan', 'detailRegistrasiRelawan'));
     }
 
     public function logout(){

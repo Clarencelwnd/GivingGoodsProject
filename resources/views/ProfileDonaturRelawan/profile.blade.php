@@ -12,7 +12,7 @@
 @section('content')
 <div class="container">
     <div class="left col-sm-2">
-        <h4 class="left-title fw-semibold">Pengaturan</h4>
+        <h2 class="left-title fw-semibold">Pengaturan</h2>
         <img class="profile-pict" src="{{asset($detailDR->FotoDonaturRelawan)}}" alt="">
         <form id="photo" action="{{route('edit_photo_logic.donatur_relawan', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
             @csrf
