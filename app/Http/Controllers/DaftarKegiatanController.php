@@ -68,6 +68,7 @@ class DaftarKegiatanController extends Controller
             $relawan->setAttribute('jarakKm', $jarakKm);
         }
 
+
         // Gabungkan kedua koleksi kegiatan
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
@@ -118,13 +119,6 @@ class DaftarKegiatanController extends Controller
          // Determine Panti Sosial IDs for filtering
         $pantiSosialIds = $pantiSosial ? [$pantiSosial->IDPantiSosial] : [];
 
-         // Fetch activities related to the Panti Sosial
-        // if ($pantiSosial) {
-        //     $pantiSosialIds = [$pantiSosial->IDPantiSosial];
-        // } else {
-        //     $pantiSosialIds = PantiSosial::where('NamaPantiSosial', 'like', '%' . $search . '%')->pluck('IDPantiSosial');
-        // }
-
         $kegiatanRelawan = KegiatanRelawan::withCount('registrasiRelawan')
         ->where(function($query) use ($search, $pantiSosialIds) {
             $query->where('NamaKegiatanRelawan', 'like', '%' . $search . '%')
@@ -149,15 +143,44 @@ class DaftarKegiatanController extends Controller
         }
         if (isset($filters['jenis_kegiatan_relawan'])) {
             $kegiatanRelawan->whereIn('JenisKegiatanRelawan', $filters['jenis_kegiatan_relawan']);
-            // $kegiatanRelawan->where(function($query) use ($jenisKegiatanRelawanFilters) {
-            //     foreach ($jenisKegiatanRelawanFilters as $jenis) {
-            //         $query->orWhere('JenisKegiatanRelawan', $jenis);
-            //     }
-            // });
         }
 
         $kegiatanRelawan = $kegiatanRelawan->orderBy('created_at', 'desc')->get();
         $kegiatanDonasi = $kegiatanDonasi->orderBy('created_at', 'desc')->get();
+
+        // Ambil data DonaturAtauRelawan
+        $donaturRelawan = DonaturAtauRelawan::find($id);
+        $coordinatesDonatur = $this->getCoordinatesFromGoogleMapsLink($donaturRelawan->LinkGoogleMapsDonaturRelawan);
+
+        foreach ($kegiatanDonasi as $donasi) {
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($donasi->LinkGoogleMapsLokasiKegiatanDonasi);
+
+            $jarakKm = 0;
+            if ($coordinatesDonatur && $coordinatesPantiSosial) {
+                $jarakKm = $this->calculateRouteDistance(
+                    $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
+                    $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
+                );
+            }
+
+            $donasi->setAttribute('jarakKm', $jarakKm);
+        }
+
+        // Tambahkan jarak ke setiap kegiatan relawan
+        foreach ($kegiatanRelawan as $relawan) {
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($relawan->LinkGoogleMapsLokasiKegiatanRelawan);
+
+            $jarakKm = 0;
+            if ($coordinatesDonatur && $coordinatesPantiSosial) {
+                $jarakKm = $this->calculateRouteDistance(
+                    $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
+                    $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
+                );
+            }
+
+            $relawan->setAttribute('jarakKm', $jarakKm);
+        }
+
         $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
         $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
 
@@ -196,7 +219,8 @@ class DaftarKegiatanController extends Controller
             'jenisDonasiList' => $jenisDonasiList,
             'jenisRelawanList' => $jenisRelawanList,
             'pantiSosial' => $pantiSosial,
-            'id' => $id
+            'id' => $id,
+            'jarakKm' => $jarakKm
         ]);
     }
 

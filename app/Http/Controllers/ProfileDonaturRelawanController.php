@@ -101,7 +101,6 @@ class ProfileDonaturRelawanController extends Controller
 
         $original_name = $request->file('FotoDonaturRelawan')->getClientOriginalName();
         $original_ext = $request->file('FotoDonaturRelawan')->getClientOriginalExtension();
-        // $foto_donatur_relawan_name = $original_name . time() . '.' . $original_ext;
         $foto_donatur_relawan_name = time() . '_' . $original_name . '.' . $original_ext;
 
 
