@@ -2,6 +2,13 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+}
+
 .btn{
     border-radius:5px;
     font-size: 13px;
@@ -10,23 +17,22 @@
 /* LEFT SIDE  */
 
 .left{
-    padding-right: 25px;
-    padding-top:50px;
-    overflow: hidden;
-    height: 100vh;
+    margin-right: 25px;
+    margin-bottom: 30px;
 }
 
 .left-title{
     color: #006374;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 .profile-pict{
-    width: 100%;
-    height: 40%;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
+    display: block;
 }
 
 #btn-choose-photo, #btn-change-password, #btn-history{
@@ -42,15 +48,6 @@
     background: #B7342C;
     color: #FDFFFE;
     pointer-events: none;
-}
-
-/* RIGHT SIDE  */
-
-.right{
-    height: 100vh;
-    padding-top: 50px;
-    padding-left: 25px;
-    overflow-y: auto;
 }
 
 /* RIGHT SIDE MAIN TABLE  */
@@ -69,6 +66,7 @@ tr{
 
 .small-text{
     font-size: xx-small;
+    padding-top: 0px;
     padding-bottom: 20px;
     padding-left: 10px;
 }
@@ -78,6 +76,8 @@ tr{
     width: 100%;
     height: 40%;
     padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .small-text-above textarea{
@@ -128,37 +128,27 @@ input[readonly]{
     padding-bottom: 20px;
 }
 
-.actionbuttons {
-    margin-top: 20px; /* Add margin top for spacing */
-}
-
 #btn-back {
     color: #007C92;
     border: 1px solid #007C92;
-    width: 30%; /* Set width for button */
+    width: 20%;
 }
 
-.btn-back:hover {
+#btn-back:hover {
     font-weight: 500;
     background-color: #E6E7E6;
     color: #007C92;
 }
 
-.btn-save {
-    background-color: #00AF71 !important;
-    color: #FDFFFE;
-    width: 30%; /* Set width for button */
+#btn-save {
+    background-color: #00AF71;
+    color: #FFFFFF;
+    width: 40%;
 }
 
-.btn-save:hover {
+#btn-save:hover {
     background-color: #009B65;
     color: #FDFFFE;
-}
-
-#btn-back:hover{
-    font-weight: 500;
-    background: #E6E7E6;
-    color: #007C92;
 }
 
 #inf-address{
