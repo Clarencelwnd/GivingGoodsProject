@@ -53,6 +53,13 @@
     font-weight: 600;
 }
 
+#namaPembuatKomentar{
+    margin-bottom: 10px;
+    color:  #1C3F5B;
+    font-size: 22px;
+    font-weight: 600;
+}
+
 .tanggalBuatForum{
     color: #1C3F5B;
     font-size: 16px;
