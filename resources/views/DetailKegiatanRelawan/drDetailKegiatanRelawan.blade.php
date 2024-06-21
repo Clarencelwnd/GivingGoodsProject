@@ -9,16 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 @endsection
 
-
 @section('content')
-<div class="container">
+<div class="containerDetailKegiatan">
     <div class="title">
         <a href="javascript:history.back()"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
         <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
     </div>
 
     <div class="image-container">
-        <img src="{{ $kegiatanRelawan->GambarKegiatanRelawan }}" alt="Image">
+        <img src="{{ asset('Image/kegiatanRelawan/'.$kegiatanRelawan->GambarKegiatanRelawan) }}" alt="Image">
     </div>
 
     <div class="content">

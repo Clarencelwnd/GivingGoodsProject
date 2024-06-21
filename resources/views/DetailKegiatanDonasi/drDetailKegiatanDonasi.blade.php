@@ -19,7 +19,7 @@
 
 
     <div class="image-container">
-        <img src="{{ $kegiatanDonasi->GambarKegiatanDonasi }}" alt="Image">
+        <img src="{{ asset('Image/kegiatanRelawan/'.$kegiatanDonasi->GambarKegiatanDonasi) }}" alt="Image">
     </div>
 
 
