@@ -15,7 +15,7 @@
 
         <div class="title">
             <a href="javascript:history.back()">
-                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
+                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
             <h1>Daftar Kegiatan</h1>
         </div>
 

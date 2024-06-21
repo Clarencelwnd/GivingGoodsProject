@@ -11,14 +11,14 @@ body {
 
 .title {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     flex-direction: row;
     padding-bottom: 50px;
 }
 
 .title img {
     display: flex;
-    padding-top: 10px;
+    padding-top: 7px;
     padding-right: 10px;
 }
 
