@@ -21,14 +21,14 @@
     </div>
 
     {{-- RIGHT SIDE  --}}
-    <div class="right col-sm-7">
+    <div class="right col-sm-9">
         <div class="row container-profile" style="margin-top: 50px; margin-left: 50px;" >
             <form action="{{route('edit_profile_logic.donatur_relawan', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                 @csrf
                 <table class="main-table">
                     <tr>
                         <td class="left-column-mt col-lg-3">Nama Lengkap</td>
-                        <td class="right-column-mt col-lg-4">
+                        <td class="right-column-mt col-lg-6">
                             <input class= "form-control @error('NamaDonaturRelawan') is-invalid @enderror" type="text" name="NamaDonaturRelawan" placeholder="Nama dari donatur atau relawan" value="{{old('NamaDonaturRelawan', $detailDR->NamaDonaturRelawan)}}">
                             @error('NamaDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td class="left-column-mt col-lg-3">Tanggal Lahir</td>
-                        <td class="right-column-mt col-lg-4">
+                        <td class="right-column-mt col-lg-6">
                             <input class= "form-control @error('TanggalLahirDonaturRelawan') is-invalid @enderror" type="date" id="datepicker" name="TanggalLahirDonaturRelawan" value="{{old('TanggalLahirDonaturRelawan', $detailDR->TanggalLahirDonaturRelawan)}}">
                             @error('TanggalLahirDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -50,7 +50,7 @@
                     </tr>
                     <tr>
                         <td class="left-column-mt col-lg-3">Jenis Kelamin</td>
-                        <td class="right-column-mt col-lg-4">
+                        <td class="right-column-mt col-lg-6">
                             <input class= "form-control @error('JenisKelaminDonaturRelawan') is-invalid @enderror" type="text" name="JenisKelaminDonaturRelawan" placeholder="Laki-laki atau Perempuan" value="{{old('JenisKelaminDonaturRelawan', $detailDR->JenisKelaminDonaturRelawan)}}">
                             @error('JenisKelaminDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -61,11 +61,11 @@
                     </tr>
                     <tr>
                         <td class="left-column-mt col-lg-3" id="EmailDonaturRelawan">Email</td>
-                        <td class="right-column-mt col-lg-4"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userDR->email)}}"></td>
+                        <td class="right-column-mt col-lg-6"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userDR->email)}}"></td>
                     </tr>
                     <tr>
                         <td class="left-column-mt col-lg-3">Nomor Handphone</td>
-                        <td class="right-column-mt col-lg-4">
+                        <td class="right-column-mt col-lg-6">
                             <input class= "form-control @error('NomorTeleponDonaturRelawan') is-invalid @enderror" type="text" name="NomorTeleponDonaturRelawan" placeholder="+62812345678910" value="{{old('NomorTeleponDonaturRelawan', $detailDR->NomorTeleponDonaturRelawan)}}">
                             @error('NomorTeleponDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -79,7 +79,7 @@
                             Alamat Lengkap
                             <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                         </td>
-                        <td class="small-text-above col-lg-4">
+                        <td class="small-text-above col-lg-6">
                             <textarea class= "form-control @error('AlamatDonaturRelawan') is-invalid @enderror" type="text" name="AlamatDonaturRelawan" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatDonaturRelawan', $detailDR->AlamatDonaturRelawan)}}</textarea>
                             @error('AlamatDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -90,14 +90,14 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="col-lg-4 small-text">maks. 450 karakter</td>
+                        <td class="col-lg-6 small-text">maks. 450 karakter</td>
                     </tr>
                     <tr>
                         <td class="left-column-mt col-lg-3">
                             Lokasi pada Google Maps
                             <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                         </td>
-                        <td class="right-column-mt col-lg-4">
+                        <td class="right-column-mt col-lg-6">
                             <input class= "form-control @error('LinkGoogleMapsDonaturRelawan') is-invalid @enderror" type="text" name="LinkGoogleMapsDonaturRelawan" placeholder="https://maps.app.goo.gl/linkGoogleMaps" value="{{old('LinkGoogleMapsDonaturRelawan', $detailDR->LinkGoogleMapsDonaturRelawan)}}">
                             @error('LinkGoogleMapsDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -109,7 +109,7 @@
                 </table>
 
                 {{-- BUTTON  --}}
-                <div class="mt-5 d-flex justify-content-end">
+                <div class="mt-5 d-flex justify-content-end" style="margin-bottom: 30px;">
                         <a href="{{ route('profile.donatur_relawan', ['id' => $id]) }}" class="btn me-2" id="btn-back">Batal</a>
                         <button type="submit" class="btn" id="btn-save">Simpan Perubahan</button>
                 </div>

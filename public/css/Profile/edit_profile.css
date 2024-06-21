@@ -7,6 +7,7 @@
     justify-content: center;
     width: 100%;
     padding: 0;
+    margin: 0;
 }
 
 .btn{
@@ -131,7 +132,7 @@ input[readonly]{
 #btn-back {
     color: #007C92;
     border: 1px solid #007C92;
-    width: 20%;
+    width: 10%;
 }
 
 #btn-back:hover {
@@ -143,7 +144,7 @@ input[readonly]{
 #btn-save {
     background-color: #00AF71;
     color: #FFFFFF;
-    width: 40%;
+    width: 30%;
 }
 
 #btn-save:hover {

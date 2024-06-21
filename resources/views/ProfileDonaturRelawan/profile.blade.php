@@ -29,7 +29,7 @@
         <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
     </div>
 
-    <div class="right col-sm-7">
+    <div class="right col-sm-9">
         @if (!$detailDR->LinkGoogleMapsDonaturRelawan)
             <div class="row" style="margin-left: 50px;">
                 <div class="alert alert-light" role="alert">
@@ -45,37 +45,37 @@
             <table class="main-table">
                 <tr>
                     <td class="left-column-mt col-lg-3">Nama Lengkap</td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->NamaDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->NamaDonaturRelawan}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">Tanggal Lahir</td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->TanggalLahirDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->TanggalLahirDonaturRelawan}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">Jenis Kelamin</td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->JenisKelaminDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->JenisKelaminDonaturRelawan}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">Email</td>
-                    <td class="right-column-mt col-lg-4"> {{$userDR->email}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$userDR->email}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">Nomor Handphone</td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->NomorTeleponDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->NomorTeleponDonaturRelawan}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">
                         Alamat Lengkap
                         <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                     </td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->AlamatDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->AlamatDonaturRelawan}}</td>
                 </tr>
                 <tr>
                     <td class="left-column-mt col-lg-3">
                         Lokasi pada Google Maps
                         <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                     </td>
-                    <td class="right-column-mt col-lg-4"> {{$detailDR->LinkGoogleMapsDonaturRelawan}}</td>
+                    <td class="right-column-mt col-lg-6"> {{$detailDR->LinkGoogleMapsDonaturRelawan}}</td>
                 </tr>
             </table>
         </div>
