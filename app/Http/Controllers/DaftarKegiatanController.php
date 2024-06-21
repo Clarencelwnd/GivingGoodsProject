@@ -93,9 +93,9 @@ class DaftarKegiatanController extends Controller
             'makanan' => 'Image/donasi/makanan.png',
             'obat' => 'Image/donasi/obat.png',
             'pakaian' => 'Image/donasi/pakaian.png',
-            'keperluan_ibadah' => 'Image/donasi/perlengkapan_ibadah.png',
+            'keperluan_ibadah' => 'Image/donasi/keperluan_ibadah.png',
             'sepatu' => 'Image/donasi/sepatu.png',
-            'keperluan_mandi' => 'Image/donasi/toiletries.png'
+            'keperluan_mandi' => 'Image/donasi/keperluan_mandi.png'
         ];
 
         $jenisDonasiList = ['Makanan', 'Pakaian', 'Keperluan_Mandi', 'Obat', 'Keperluan_Rumah', 'Buku', 'Alat_Tulis', 'Keperluan_Ibadah', 'Mainan'];

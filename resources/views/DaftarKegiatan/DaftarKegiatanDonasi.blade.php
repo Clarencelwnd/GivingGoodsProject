@@ -8,16 +8,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanDonasi.css') }}" rel="stylesheet">
     <script src="{{ asset('js/Artikel/DaftarKegiatanDonasi.js') }}"></script>
-@endsection
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    @endsection
 
     @section('content')
-    <div class="container">
-
+    <div class="containerDaftarDonasi">
         <div class="title">
             <a href="javascript:history.back()">
                 <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
-            <h1>Daftar Kegiatan</h1>
+            <h1 id="judulKegiatan">Daftar Kegiatan</h1>
         </div>
 
         <div class="input-container">
@@ -34,8 +33,8 @@
             <div class="subtitle">Jenis Donasi</div>
             <div class="dropdown">
                 <div id="selected-options"></div>
-                <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly>
-                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow">
+                <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly style="background-color: #f0f0f0;">
+                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow" style="margin-top:10px">
                 <div class="dropdown-content" id="dropdown_content_jenis">
                     <div class="dropdown-item" onclick="selectOptionJenis('Pakaian')"><span>Pakaian</span></div>
                     <div class="dropdown-item" onclick="selectOptionJenis('Makanan')"><span>Makanan</span></div>
@@ -54,10 +53,9 @@
             @endif
         </div>
 
-
         <div class="input-container">
             <div class="subtitle">Deskripsi Barang Donasi</div>
-            <input type="text" class="input-field" name="deskripsi_barang" id="deskripsi_barang_field" value="{{ old('deskripsi_barang') }}">
+            <input type="text" class="input-field" name="deskripsi_barang" id="deskripsi_barang_field" value="{{ old('deskripsi_barang') }}" style="background-color: #f0f0f0;">
             @if ($errors->has('deskripsi_barang'))
                 <div class="error-message">{{ $errors->first('deskripsi_barang') }}</div>
             @endif
@@ -66,7 +64,7 @@
         <div class="input-container">
             <div class="subtitle">Pengiriman barang menggunakan?</div>
             <div class="dropdown">
-                <input type="text" class="input-field" name="pengiriman_barang" id="pengiriman_barang_field" value="{{ old('pengiriman_barang') }}" readonly>
+                <input type="text" class="input-field" name="pengiriman_barang" id="pengiriman_barang_field" value="{{ old('pengiriman_barang') }}" readonly style="background-color: #f0f0f0;">
                 <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow" alt="Dropdown Arrow">
                 <div class="dropdown-content" id="dropdown_content">
                     <div class="dropdown-item" onclick="selectOption('Antar sendiri')">Antar sendiri</div>
@@ -88,7 +86,6 @@
             </div>
         </div>
 
-
         <div class="input-container">
             <div class="subtitle">Jam Operasional {{ $kegiatanDonasi->PantiSosial->NamaPantiSosial }}</div>
             <div class="text-instruction">
@@ -103,13 +100,11 @@
             </div>
         </div>
 
-
-
         <div class="time-date-container">
             <div class="input-container">
                 <div class="date-picker-container">
                     <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
-                    <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}">
+                    <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}" style="background-color: #f0f0f0;">
                 </div>
                 @if ($errors->has('tanggal_kegiatan'))
                     <div class="error-message">{{ $errors->first('tanggal_kegiatan') }}</div>
@@ -119,7 +114,7 @@
             <div class="input-container">
                 <div class="time-picker-container">
                     <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
-                    <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field" value="{{ old('jam_mulai_kegiatan') }}">
+                    <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field" value="{{ old('jam_mulai_kegiatan') }}" style="background-color: #f0f0f0;">
                 </div>
                 @if ($errors->has('jam_mulai_kegiatan'))
                     <div class="error-message">{{ $errors->first('jam_mulai_kegiatan') }}</div>
@@ -146,7 +141,6 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         flatpickr("#date-picker", {
             dateFormat: "Y-m-d",
@@ -213,11 +207,8 @@
                 }
             }
 
-
-
             document.getElementById('jenis_donasi_field').addEventListener('click', toggleDropdownJenis);
             document.getElementById('dropdown_arrow_jenis').addEventListener('click', toggleDropdownJenis);
-
 
             function toggleDropdownJenis() {
                 let dropdown = document.getElementById('dropdown_content_jenis');
@@ -231,7 +222,6 @@
                 }
             }
 
-
             window.onclick = function(event) {
                 if (!event.target.matches('.input-field') && !event.target.matches('.arrow')) {
                     let dropdown = document.getElementById('dropdown_content_jenis');
@@ -242,7 +232,6 @@
                     }
                 }
             }
-
 
             function selectOptionJenis(option) {
                 // Periksa apakah opsi sudah ada di selected-options
@@ -287,7 +276,6 @@
                 adjustArrowPadding();
             }
 
-
             // Fungsi untuk menyesuaikan padding atas arrow
             function adjustArrowPadding() {
                 let selectedOptions = document.getElementById('selected-options');
@@ -300,7 +288,6 @@
                     arrow.style.marginTop = '0';
                 }
             }
-
     </script>
 
 @endsection
