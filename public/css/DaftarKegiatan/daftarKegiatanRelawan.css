@@ -22,11 +22,13 @@ body {
     padding-right: 10px;
 }
 
-.title h1 {
-    font-weight: 600;
+#judulKegiatan{
     color: #007C92;
-    font-size: 36px;
+    font-size: 30px;
+    font-weight: 500;
     margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 10px;
 }
 
 .input-container {
