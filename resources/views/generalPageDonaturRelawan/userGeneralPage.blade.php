@@ -53,7 +53,7 @@
 
             <div class="cardsKegiatanDonasi-container">
                 @foreach ($kegiatanDonasi as $donasi)
-                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $donasi->IDKegiatanDonasi, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $donasi->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $donasi->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         <div class="card card-kegiatanDonasi" style="width: 16rem;">
                             <img src="{{ asset('Image/kegiatanDonasi/'.$donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
                             <div class="card-body card-kegiatan">
@@ -74,7 +74,7 @@
                             </p>
                             <div class="d-flex justify-content-between">
                                 <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
-                                <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                                <p class="card-text" id="card-jenisDonasi">{{ $donasi->jarakKm }} km</p>
                             </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@
 
             <div class="cardsKegiatanRelawan-container">
                 @foreach ($kegiatanRelawan as $relawan)
-                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $relawan->IDKegiatanRelawan, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $relawan->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $relawan->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         <div class="card card-kegiatanRelawan" style="width: 16rem;">
                             <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             <div class="card-body card-kegiatan">
@@ -101,7 +101,7 @@
                                 <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
                                 <div class="d-flex justify-content-between">
                                     <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
-                                    <p class="card-text">jarak</p>
+                                    <p class="card-text">{{ $relawan->jarakKm }} km</p>
                                 </div>
                             </div>
                         </div>
