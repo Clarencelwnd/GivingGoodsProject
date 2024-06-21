@@ -93,9 +93,8 @@
     </div>
 </div>
 
-
-<div id="donation-popup-container" style="display: none;">
-    <div id="donation-popup">
+<div id="relawan-popup-container" style="display: none;">
+    <div id="relawan-popup">
         <div class="popup-header">
             <h3>Kegiatan Relawan</h3>
             <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" width="15px" height="15px">
@@ -126,7 +125,5 @@
         document.getElementById('donation-popup-container').style.display = 'none';
     }
 </script>
-
 @endsection
-{{-- </html> --}}
 

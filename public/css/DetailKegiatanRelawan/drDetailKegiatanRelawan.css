@@ -116,7 +116,7 @@ body {
 }
 
 /* POPUP CONTAINER */
-#donation-popup-container {
+#relawan-popup-container {
     display: none;
     position: fixed;
     top: 0;
@@ -128,7 +128,7 @@ body {
     align-items: center;
 }
 
-#donation-popup {
+#relawan-popup {
     background-color: white;
     padding: 30px;
     border-radius: 10px;

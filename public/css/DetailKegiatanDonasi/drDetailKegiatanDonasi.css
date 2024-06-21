@@ -1,14 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
 }
 
-.container {
-    padding: 30px;
+.containerDetailDonasi{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .image-container {
+    justify-content: center;
+    width: 100%;
     text-align: center;
     padding: 20px 0;
 }
@@ -23,18 +27,18 @@ body {
 }
 
 .section {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
 }
 
 .subtitle {
-    font-size: 32px;
+    font-size: 20px;
     color: #1C3F5B;
     font-weight: 600;
     padding-bottom: 8px;
 }
 
 .text {
-    font-size: 22px;
+    font-size: 18px;
     color: #006374;
     font-weight: 400;
 }
@@ -42,9 +46,11 @@ body {
 .button {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size: 32px;
+    font-size: 20px;
     color: white;
     font-weight: 600;
     background-color: #00C27E;
@@ -52,7 +58,7 @@ body {
     border-radius: 5px;
     margin-top: 20px;
     text-decoration: none;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .question-contact-container {
@@ -76,37 +82,39 @@ body {
 }
 
 .question {
-    font-size: 24px;
+    font-size: 18px;
+    margin-top: 50px;
     color: #1C3F5B;
     font-weight: 600;
 }
 
 .contact-text {
-    font-size: 24px;
+    font-size: 16px;
     color: #007C92;
     font-weight: 400;
 }
 
 .title {
     display: flex;
-    /* align-items: center; */
     flex-direction: row;
 }
 
 .title img {
     display: flex;
-    padding-top: 7px;
+    margin-top: 10px;
     padding-right: 10px;
 }
 
-.title h1 {
-    font-weight: 600;
-    color: #007C92;
-    font-size: 36px;
+#judul-kegiatan-donasi {
+    color: #006374;
+    font-size: 30px;
+    font-weight: 500;
     margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 10px;
 }
 
-
+/* POPUP CONTAINER */
 #donation-popup-container {
     display: none;
     position: fixed;
@@ -132,14 +140,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    margin-top: -25px;
+    margin: 5px;
 }
 
 .popup-header h3 {
     color: #1C3F5B;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 25px;
 }
 
 .popup-header .close-icon {
@@ -149,6 +156,7 @@ body {
 .popup-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .popup-column {
@@ -160,19 +168,20 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .popup-row img {
     margin-right: 10px;
-    height: 35px;
-    width: 37px;
+    height: 25px;
+    width: 27px;
 }
 
 .popup-row span {
     color: #006374;
     font-weight: 400;
-    font-size: 22px;
-    padding-left: 20px;
+    font-size: 18px;
+    padding-left: 5px;
 }
 
 
@@ -189,22 +198,15 @@ body {
     margin-left: 20px;
 }
 
-.donation-options img {
+#jenisDonasiIcons {
     height: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.donation-options img.selected {
-    background-color: #B0ECD7;
+    padding-right: 10px;
 }
 
 .detail-label {
     color: #1C3F5B;
     font-weight: 600;
-    font-size: 26px;
+    font-size: 20px;
 }
 
 .flex-row {
