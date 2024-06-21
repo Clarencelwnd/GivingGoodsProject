@@ -5,10 +5,18 @@ body {
 }
 
 .container {
-    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .image-container {
+    justify-content: center;
+    width: 100%;
     text-align: center;
     padding: 20px 0;
 }
@@ -27,14 +35,14 @@ body {
 }
 
 .subtitle {
-    font-size: 32px;
+    font-size: 20px;
     color: #1C3F5B;
     font-weight: 600;
     padding-bottom: 8px;
 }
 
 .text {
-    font-size: 22px;
+    font-size: 18px;
     color: #006374;
     font-weight: 400;
 }
@@ -42,9 +50,11 @@ body {
 .button {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size: 32px;
+    font-size: 20px;
     color: white;
     font-weight: 600;
     background-color: #00C27E;
@@ -52,7 +62,7 @@ body {
     border-radius: 5px;
     margin-top: 20px;
     text-decoration: none;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .question-contact-container {
@@ -76,37 +86,40 @@ body {
 }
 
 .question {
-    font-size: 24px;
+    font-size: 18px;
+    margin-top: 50px;
     color: #1C3F5B;
     font-weight: 600;
 }
 
 .contact-text {
-    font-size: 24px;
+    font-size: 16px;
     color: #007C92;
     font-weight: 400;
 }
 
+/* JUDUL */
+#judul-kegiatan-relawan{
+    color: #006374;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
 .title {
     display: flex;
-    /* align-items: center; */
     flex-direction: row;
 }
 
 .title img {
     display: flex;
-    padding-top: 7px;
+    margin-top: 10px;
     padding-right: 10px;
 }
 
-.title h1 {
-    font-weight: 600;
-    color: #007C92;
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-
+/* POPUP CONTAINER */
 #donation-popup-container {
     display: none;
     position: fixed;

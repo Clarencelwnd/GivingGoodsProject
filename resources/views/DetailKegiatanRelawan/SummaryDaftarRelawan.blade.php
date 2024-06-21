@@ -145,8 +145,9 @@
         }
 
         function closePopup() {
-        document.getElementById('popup-container').style.display = 'none';
-    }
+            document.getElementById('popup-container').style.display = 'none';
+            window.location.href = "{{ route('displayDaftarKegiatan', ['id' => $donaturRelawan->IDDonaturRelawan]) }}"; // Redirect to daftar kegiatan page
+        }
     </script>
 
 @endsection

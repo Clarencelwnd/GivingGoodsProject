@@ -10,18 +10,16 @@
 @endsection
 
 
-    @section('content')
+@section('content')
 <div class="container">
     <div class="title">
         <a href="javascript:history.back()"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
-        <h1>{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
+        <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
     </div>
-
 
     <div class="image-container">
         <img src="{{ $kegiatanRelawan->GambarKegiatanRelawan }}" alt="Image">
     </div>
-
 
     <div class="content">
         <div class="section">
@@ -88,7 +86,7 @@
         <div class="question-contact-container">
             <div class="question">Punya Pertanyaan?</div>
             <div class="contact">
-                <img src="{{ asset('image/general/chat.png') }}" alt="Chat Icon">
+                <img src="{{ asset('image/general/chat.png') }}" alt="Chat Icon" width="20px" height="20px">
                 <div class="contact-text">Hubungi {{ $kegiatanRelawan->pantiSosial->NamaPantiSosial }}</div>
             </div>
         </div>
@@ -121,14 +119,15 @@
 </div>
 
 <script>
-            function showDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'flex';
-                }
+    function showDonationPopup() {
+        document.getElementById('donation-popup-container').style.display = 'flex';
+    }
 
-                function hideDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'none';
-                }
+    function hideDonationPopup() {
+        document.getElementById('donation-popup-container').style.display = 'none';
+    }
 </script>
 
 @endsection
-</html>
+{{-- </html> --}}
+
