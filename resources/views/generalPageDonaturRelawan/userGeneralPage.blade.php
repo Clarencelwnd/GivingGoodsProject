@@ -46,9 +46,6 @@
         <div class="donasi-barang">
             <div class="mt-2 mb-3 d-flex header-donasi-barang align-content-center">
                     <h4 class="header-title">Donasikan Barangmu</h4>
-                <div>
-                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next-button">
-                </div>
             </div>
 
             <div class="cardsKegiatanDonasi-container">
@@ -72,10 +69,8 @@
                                     @endif
                                 @endforeach
                             </p>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
-                                <p class="card-text" id="card-jenisDonasi">{{ $donasi->jarakKm }} km</p>
-                            </div>
+                            <p class="card-text" id="card-namaPanti">{{ $donasi->pantiSosial->NamaPantiSosial }}</p>
+                            <p class="card-text d-flex justify-content-end" id="card-jenisDonasi">{{ $donasi->jarakKm }} km</p>
                             </div>
                         </div>
                     </a>
@@ -86,9 +81,6 @@
         <div class="kegiatan-relawan">
             <div class="mt-2 d-flex header-kegiatan-relawan align-content-center">
                 <h4 class="header-title">Ikuti Kegiatan Relawan</h4>
-                <div>
-                    <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
-                </div>
             </div>
 
             <div class="cardsKegiatanRelawan-container">
@@ -98,11 +90,19 @@
                             <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             <div class="card-body card-kegiatan">
                                 <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
-                                <p class="card-text">Jenis Relawan: {{ $relawan->JenisKegiatanRelawan }}</p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
-                                    <p class="card-text">{{ $relawan->jarakKm }} km</p>
-                                </div>
+                                <p class="card-text">Jenis Relawan:
+                                    @if ($relawan->JenisKegiatanRelawan == "Bencana_Alam")
+                                        Bencana Alam
+                                    @elseif ($relawan->JenisKegiatanRelawan == "Darurat_Bencana")
+                                        Darurat Bencana
+                                    @elseif ($relawan->JenisKegiatanRelawan == "Seni_Budaya")
+                                        Seni Budaya
+                                    @else
+                                        {{ $relawan->JenisKegiatanRelawan }}
+                                    @endif
+                                </p>
+                                <p class="card-text">{{ $relawan->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text d-flex justify-content-end">{{ $relawan->jarakKm }} km</p>
                             </div>
                         </div>
                     </a>
@@ -113,9 +113,6 @@
 
         <div class="mt-2 d-flex header-baca-artikel align-content-center">
             <h4 class="header-title">Baca Artikel</h4>
-            <div>
-                <img class="mt-1" src="{{ asset('Image/general/next.png') }}" width="24px" height="24px" alt="next button">
-            </div>
         </div>
 
         <div class="baca-artikel">

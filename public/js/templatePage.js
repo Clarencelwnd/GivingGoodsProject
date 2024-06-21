@@ -11,7 +11,7 @@ function toggleNav(){
 }
 
 function openModalView() {
-    const modalView = document.getElementById("keluarAkun");
+    const modalView = document.getElementById("logoutModal");
     modalView.display='block';
 }
 
