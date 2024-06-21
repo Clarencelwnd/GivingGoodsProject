@@ -145,14 +145,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    margin-top: -25px;
+   margin: 5px;
 }
 
 .popup-header h3 {
     color: #1C3F5B;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 25px;
 }
 
 .popup-header .close-icon {
@@ -162,6 +161,7 @@ body {
 .popup-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .popup-column {
@@ -173,6 +173,7 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .popup-row img {
@@ -184,8 +185,8 @@ body {
 .popup-row span {
     color: #006374;
     font-weight: 400;
-    font-size: 22px;
-    padding-left: 20px;
+    font-size: 18px;
+    padding-left: 5px;
 }
 
 .flex-row {

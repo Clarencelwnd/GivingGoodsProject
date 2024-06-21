@@ -99,7 +99,7 @@
     <div id="donation-popup">
         <div class="popup-header">
             <h3>Kegiatan Relawan</h3>
-            <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+            <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" width="15px" height="15px">
         </div>
         <div class="popup-content">
             <div class="popup-column">
