@@ -94,8 +94,7 @@ class DaftarKegiatanController extends Controller
         ]);
     }
 
-
-    public function search(Request $request) {
+    public function search(Request $request, $id) {
         $search = $request->input('search');
         $filters = $request->only(['jenis_kegiatan', 'jenis_donasi', 'jenis_kegiatan_relawan']);
 
@@ -181,7 +180,8 @@ class DaftarKegiatanController extends Controller
             'jenisDonasiIcons' => $jenisDonasiIcons,
             'jenisDonasiList' => $jenisDonasiList,
             'jenisRelawanList' => $jenisRelawanList,
-            'pantiSosial' => $pantiSosial
+            'pantiSosial' => $pantiSosial,
+            'id' => $id
         ]);
     }
 

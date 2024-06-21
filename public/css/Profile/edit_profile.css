@@ -128,7 +128,7 @@ input[readonly]{
     padding-bottom: 20px;
 }
 
-..actionbuttons {
+.actionbuttons {
     margin-top: 20px; /* Add margin top for spacing */
 }
 

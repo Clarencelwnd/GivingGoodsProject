@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-<div class="daftarForum-top">
-    <h6 id="daftarForumTitle">Daftar Forum</h6>
+<div class="daftarArtikel-top">
+    <h6 id="daftarArtikelTitle">Daftar Artikel</h6>
 </div>
 
 <a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="text-decoration-none text-dark">
