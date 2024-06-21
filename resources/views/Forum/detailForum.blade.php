@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <div class="btn-forumBack mb-3">
+    <div class="btn-forumBack">
         <a href="{{ route('displayDaftarForum', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
             <p id="back-text">Kembali ke Daftar Forum</p>
@@ -19,7 +19,7 @@
     </div>
 
     {{-- DISKUSI UTAMA --}}
-    <div class="card w-60">
+    <div class="card">
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
@@ -31,7 +31,7 @@
     </div>
 
     {{-- Reply text area --}}
-    <div class="mt-4 replyTextArea">
+    <div class="replyTextArea">
         <form action="{{ route('simpanKomentar', ['idDonaturRelawan' => $id]) }}" method="POST">
             @csrf
             <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
@@ -46,7 +46,7 @@
     <div class="mt-4">
         <h5 id="balasanTitle">Semua Balasan</h5>
         @foreach ($forum->komentarForum as $komentar)
-            <div class="card w-60 mb-3">
+            <div class="card">
                 <div class="card-body">
                     @if ($komentar->donaturRelawan)
                         <h6 class="card-info namaPembuatForum">{{ $komentar->donaturRelawan->NamaDonaturRelawan }}</h6>
@@ -59,8 +59,4 @@
             </div>
         @endforeach
     </div>
-
-
-
-
 @endsection

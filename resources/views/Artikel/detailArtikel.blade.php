@@ -8,15 +8,15 @@
 @endsection
 
 @section('content')
-<div class="btn-articleBack mb-3">
+<div class="btn-articleBack">
     <a href="{{ route('displayDaftarArtikel', ['id' => $id]) }}" class="back-link">
         <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
         <p class="judulArtikel-text">Manfaat Donasi</p>
     </a>
 </div>
 
-<div class="row artikel1 justify-text">
-    <div class="col-30">
+<div class="artikel1 justify-text">
+    <div>
         Melakukan donasi dapat memberikan banyak manfaat, baik bagi donatur, relawan, maupun panti sosial. Dengan memberikan donasi, donatur atau relawan tidak hanya memberikan kontribusi langsung, namun juga memberikan dampak jangka panjang yang membantu panti sosial dalam menjangkau lebih banyak orang lagi di masa depan.
         <br>
         <br>

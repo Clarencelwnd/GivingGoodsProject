@@ -13,10 +13,10 @@
 </div>
 
 <a href="{{ route('displayDetailArtikel', ['id' => $id]) }}" class="text-decoration-none text-dark">
-    <div class="card w-60" id="forum-cards">
+    <div class="card" id="artikel-cards">
         <div class="card-body">
             <div class="card-top">
-                <h5 class="card-title" id="judulForum">Manfaat Donasi</h5>
+                <h5 class="card-title" id="judulArtikel">Manfaat Donasi</h5>
             </div>
             <div class="row artikel1">
                 <div class="col-30 text-truncate">
@@ -42,10 +42,10 @@
 </a>
 
 <a href="{{ route('displayDetailArtikel2', ['id' => $id]) }}" class="text-decoration-none text-dark">
-    <div class="card w-60" id="forum-cards">
+    <div class="card" id="artikel-cards">
         <div class="card-body">
             <div class="card-top">
-                <h5 class="card-title" id="judulForum">Melakukan Donasi secara Online</h5>
+                <h5 class="card-title" id="judulArtikel">Melakukan Donasi secara Online</h5>
             </div>
             <div class="row artikel2">
                 <div class="col-30 text-truncate">

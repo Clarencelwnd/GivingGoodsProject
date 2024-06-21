@@ -5,14 +5,10 @@ body {
     min-height: 100vh;
 }
 
-.container {
-   padding: 30px;
-}
-
 .faq-title {
     font-weight: 600;
     color: #006374;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     font-size: 30px;
 }
 
@@ -20,7 +16,6 @@ body {
     font-weight: 600;
     color: #1C3F5B;
     font-size: 25px;
-
     margin-bottom: 30px;
     margin-top: 30px;
 }
@@ -37,7 +32,7 @@ body {
 .faq-question {
     background-color: #0095AF;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     overflow: hidden;
     border: 1.5px solid #0095AF;
 }

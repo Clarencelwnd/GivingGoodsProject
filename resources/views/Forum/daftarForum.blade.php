@@ -19,7 +19,7 @@
 
 @foreach ($daftarForum as $forum)
 <a href="{{ route('displayDetailForum', ['idDonaturRelawan' => $id, 'idForum' => $forum->IDForum]) }}" class="text-decoration-none text-dark">
-    <div class="card w-60" id="forum-cards">
+    <div class="card" id="forum-cards">
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>

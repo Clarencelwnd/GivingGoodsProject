@@ -1,35 +1,14 @@
-.daftarForum-top{
-    display: flex;
-    align-items: center;
+/* BACK BUTTON */
+.btn-forumBack{
+    width: 90%;
+    margin: auto;
     margin-bottom: 50px;
 }
 
-#daftarForumTitle{
-  color: #006374;
-  font-size: 30px;
-  font-weight: 600;
-  margin-left: 80px;
-  margin-top: 30px;
-}
-
-#buatDiskusiBaru{
-    width: auto;
-    height: auto;
-    margin-left: 30px;
-    margin-top: 25px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    background: #006374;
-    color: #FDFFFE;
-    border-radius: 5px;
-}
-
-/* BACK BUTTON */
 .btn-forumBack a {
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin-left: 10px;
 }
 
 .btn-forumBack:focus, .btn-forumBack:active {
@@ -50,8 +29,10 @@
 
 /* CARDS */
 .card{
-    margin-bottom: 40px;
     border-color: 2px #007C92;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
 }
 
 .card-top{
@@ -104,6 +85,8 @@
 }
 
 .replyTextArea form {
+    width: 90%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center; /* Align items vertically */
@@ -121,10 +104,11 @@
 
 /* REPLIES */
 #balasanTitle{
-    margin-left: 10px;
     color: #007C92;
     font-size: 22px;
     font-weight: 600;
+    width: 90%;
+    margin: auto;
     margin-bottom: 20px;
 }
 
