@@ -53,6 +53,9 @@
 
             <div class="cardsKegiatanDonasi-container">
                 @foreach ($kegiatanDonasi as $donasi)
+                @php
+                    // dd($donasi);
+                @endphp
                     <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $donasi->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $donasi->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         <div class="card card-kegiatanDonasi" style="width: 16rem;">
                             <img src="{{ asset('Image/kegiatanDonasi/'.$donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">

@@ -35,10 +35,9 @@ class UserGeneralPageController extends Controller
 
         // Tambahkan jarak ke setiap kegiatan donasi
         foreach ($kegiatanDonasi as $donasi) {
-            $pantiSosial = $donasi->pantiSosial; // Asumsi relasi pantiSosial sudah didefinisikan
-            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($pantiSosial->LinkGoogleMapsPantiSosial);
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($donasi->LinkGoogleMapsLokasiKegiatanDonasi);
 
-            $jarakKm = null;
+            $jarakKm = 0;
             if ($coordinatesDonatur && $coordinatesPantiSosial) {
                 $jarakKm = $this->calculateRouteDistance(
                     $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
@@ -51,10 +50,9 @@ class UserGeneralPageController extends Controller
 
         // Tambahkan jarak ke setiap kegiatan relawan
         foreach ($kegiatanRelawan as $relawan) {
-            $pantiSosial = $relawan->pantiSosial; // Asumsi relasi pantiSosial sudah didefinisikan
-            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($pantiSosial->LinkGoogleMapsPantiSosial);
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($relawan->LinkGoogleMapsLokasiKegiatanRelawan);
 
-            $jarakKm = null;
+            $jarakKm = 0;
             if ($coordinatesDonatur && $coordinatesPantiSosial) {
                 $jarakKm = $this->calculateRouteDistance(
                     $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],

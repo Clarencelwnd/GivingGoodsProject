@@ -58,16 +58,17 @@
                          data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
                          @if (isset($activity->NamaKegiatanDonasi))
                             <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
-                        @elseif (isset($activity->NamaKegiatanRelawan))
+                        @endif
+                        @if (isset($activity->NamaKegiatanRelawan))
                             <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         @endif
                         <div class="card">
                             @if (isset($activity->NamaKegiatanRelawan))
                                 <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
-                            @elseif (isset($activity->NamaKegiatanDonasi))
+                            @endif
+                            @if (isset($activity->NamaKegiatanDonasi))
                                 <img src="{{ asset('Image/kegiatanDonasi/'.$activity->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
-
                             <div class="card-body card-kegiatan">
                                 <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
                                 <p class="card-text" id="card-jenisDonasi">
@@ -83,7 +84,8 @@
                                                 {{ $activity->JenisKegiatanRelawan }}
                                             @endif
                                         </p>
-                                    @elseif (isset($activity->NamaKegiatanDonasi))
+                                    @endif
+                                    @if (isset($activity->NamaKegiatanDonasi))
                                         @php
                                             $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
                                             $donasiTypes = array_slice($donasiTypes, 0, 5);

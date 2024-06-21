@@ -39,24 +39,57 @@ class DaftarKegiatanController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        // Gabungkan kedua koleksi kegiatan
-        $merged = $kegiatanRelawan->merge($kegiatanDonasi);
+
 
         // Hitung jarak dan tambahkan ke setiap kegiatan
-        foreach ($merged as $kegiatan) {
-            $pantiSosial = $kegiatan->pantiSosial; // Ambil pantiSosial terkait kegiatan
-            if ($pantiSosial) {
-                $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($pantiSosial->LinkGoogleMapsPantiSosial);
-                $jarakKm = null;
-                if ($coordinatesDonatur && $coordinatesPantiSosial) {
-                    $jarakKm = $this->calculateRouteDistance(
-                        $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
-                        $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
-                    );
-                }
-                $kegiatan->setAttribute('jarakKm', $jarakKm); // Tambahkan atribut jarakKm ke kegiatan
+        // foreach ($merged as $kegiatan) {
+        //     $pantiSosial = $kegiatan->pantiSosial; // Ambil pantiSosial terkait kegiatan
+        //     if ($pantiSosial) {
+        //         $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($pantiSosial->LinkGoogleMapsPantiSosial);
+        //         $jarakKm = 0;
+        //         if ($coordinatesDonatur && $coordinatesPantiSosial) {
+        //             $jarakKm = $this->calculateRouteDistance(
+        //                 $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
+        //                 $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
+        //             );
+        //         }
+        //         $kegiatan->setAttribute('jarakKm', $jarakKm); // Tambahkan atribut jarakKm ke kegiatan
+        //     }
+        // }
+
+        foreach ($kegiatanDonasi as $donasi) {
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($donasi->LinkGoogleMapsLokasiKegiatanDonasi);
+
+            $jarakKm = 0;
+            if ($coordinatesDonatur && $coordinatesPantiSosial) {
+                $jarakKm = $this->calculateRouteDistance(
+                    $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
+                    $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
+                );
             }
+
+            $donasi->setAttribute('jarakKm', $jarakKm);
         }
+
+        // Tambahkan jarak ke setiap kegiatan relawan
+        foreach ($kegiatanRelawan as $relawan) {
+            $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($relawan->LinkGoogleMapsLokasiKegiatanRelawan);
+
+            $jarakKm = 0;
+            if ($coordinatesDonatur && $coordinatesPantiSosial) {
+                $jarakKm = $this->calculateRouteDistance(
+                    $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
+                    $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
+                );
+            }
+
+            $relawan->setAttribute('jarakKm', $jarakKm);
+        }
+
+        // Gabungkan kedua koleksi kegiatan
+        $kegiatanRelawanCollection = $kegiatanRelawan->toBase();
+        $kegiatanDonasiCollection = $kegiatanDonasi->toBase();
+        $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
 
         // Sorting dan pagination
         $sorted = $merged->sortByDesc('created_at');
