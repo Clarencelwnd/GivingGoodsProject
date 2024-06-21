@@ -23,7 +23,8 @@
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
-                <h6 class="tanggalBuatForum">{{ \Carbon\Carbon::parse($forum->TanggalBuatForum)->format('d M Y') }}</h6>
+                <h6 class="tanggalBuatForum">{{ $forum->FormatTanggalBuatForum }}</h6>
+                {{-- <h6 class="tanggalBuatForum">{{ \Carbon\Carbon::parse($forum->TanggalBuatForum)->format('d M Y') }}</h6> --}}
             </div>
                 <h6 class="card-info namaPembuatForum">Diposting oleh: {{ $forum->donaturRelawan->NamaDonaturRelawan ?? $forum->pantiSosial->NamaPantiSosial}}</h6>
                 <p class="card-text">{{ $forum->DeskripsiForum }}</p>
@@ -48,13 +49,15 @@
         @foreach ($forum->komentarForum as $komentar)
             <div class="card">
                 <div class="card-body">
-                    @if ($komentar->donaturRelawan)
-                        <h6 class="card-info namaPembuatForum">{{ $komentar->donaturRelawan->NamaDonaturRelawan }}</h6>
-                    @elseif ($komentar->pantiSosial)
-                        <h6 class="card-info namaPembuatForum">{{ $komentar->pantiSosial->NamaPantiSosial }}</h6>
-                    @endif
+                    <div class="card-top">
+                        @if ($komentar->donaturRelawan)
+                            <h5 class="card-info namaPembuatKomentar">{{ $komentar->donaturRelawan->NamaDonaturRelawan }}</h5>
+                        @elseif ($komentar->pantiSosial)
+                            <h5 class="card-info namaPembuatKomentar">{{ $komentar->pantiSosial->NamaPantiSosial }}</h5>
+                        @endif
+                        <h6 class="tanggalBuatForum">{{ $komentar->FormatTanggalKomentarForum }}</h6>
+                    </div>
                     <p class="card-text">{{ $komentar->KomentarForum }}</p>
-                    <small class="tanggalBuatForum">{{ \Carbon\Carbon::parse($komentar->TanggalKomentarForum)->format('d M Y') }}</small>
                 </div>
             </div>
         @endforeach
