@@ -39,24 +39,6 @@ class DaftarKegiatanController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-
-
-        // Hitung jarak dan tambahkan ke setiap kegiatan
-        // foreach ($merged as $kegiatan) {
-        //     $pantiSosial = $kegiatan->pantiSosial; // Ambil pantiSosial terkait kegiatan
-        //     if ($pantiSosial) {
-        //         $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($pantiSosial->LinkGoogleMapsPantiSosial);
-        //         $jarakKm = 0;
-        //         if ($coordinatesDonatur && $coordinatesPantiSosial) {
-        //             $jarakKm = $this->calculateRouteDistance(
-        //                 $coordinatesDonatur['latitude'], $coordinatesDonatur['longitude'],
-        //                 $coordinatesPantiSosial['latitude'], $coordinatesPantiSosial['longitude']
-        //             );
-        //         }
-        //         $kegiatan->setAttribute('jarakKm', $jarakKm); // Tambahkan atribut jarakKm ke kegiatan
-        //     }
-        // }
-
         foreach ($kegiatanDonasi as $donasi) {
             $coordinatesPantiSosial = $this->getCoordinatesFromGoogleMapsLink($donasi->LinkGoogleMapsLokasiKegiatanDonasi);
 
