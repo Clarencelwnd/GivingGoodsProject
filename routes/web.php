@@ -10,13 +10,10 @@ use App\Http\Controllers\PagePanSosController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DaftarKegiatanController;
 use App\Http\Controllers\PantiSosialController;
-use App\Http\Controllers\UserGeneralPage;
 use App\Http\Controllers\UserGeneralPageController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BuatKegiatanController;
-use App\Http\Controllers\ForumController;
-use App\Http\Controllers\KomentarForumController;
-use App\Models\KomentarForum;
+use App\Http\Controllers\ForumDonaturRelawanController;
+use App\Http\Controllers\KomentarForumDonaturRelawanController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -64,10 +61,10 @@ Route::get('/detailArtikel/{id}', [ArtikelController::class, 'displayDetailArtik
 Route::get('/daftarArtikel/artikel2/{id}', [ArtikelController::class, 'displayDetailArtikel2'])->name('displayDetailArtikel2');
 
 //FORUM
-Route::get('/daftarForum/{id}', [ForumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum/{id}', [ForumController::class, 'buatForum'])->name('buatForum');
-Route::get('/forum/{idDonaturRelawan}/{idForum}', [ForumController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idDonaturRelawan}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::get('/daftarForum/{id}', [ForumDonaturRelawanController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum/{id}', [ForumDonaturRelawanController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{idDonaturRelawan}/{idForum}', [ForumDonaturRelawanController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar/{idDonaturRelawan}', [KomentarForumDonaturRelawanController::class, 'storeKomentar'])->name('simpanKomentar');
 
 // ====== Profile ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');
@@ -82,7 +79,6 @@ Route::get('/detail_riwayat_kegiatan/donasi/{idDonaturRelawan}/{idRegistrasiDona
 Route::get('/detail_riwayat_kegiatan/relawan/{idDonaturRelawan}/{idRegistrasiRelawan}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
 Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
-// DUMMY
-Route::get('/home_page', [ProfileDonaturRelawanController::class, 'home_page'])->name('home_page');
+
 
 
