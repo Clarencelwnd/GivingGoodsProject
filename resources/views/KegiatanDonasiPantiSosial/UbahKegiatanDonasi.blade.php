@@ -15,9 +15,9 @@
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
+                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px">
                 </a>
-                <h1>{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
+                <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
         </div>
 
@@ -29,21 +29,21 @@
                 <div class="detail-row">
                     <div class="detail-label">Nama Kegiatan</div>
                     <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('namaKegiatanInput', this.innerText)">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</div>
-                    <input type="hidden" name="namaKegiatan" id="namaKegiatanInput" value="{{ $kegiatanDonasi->NamaKegiatanDonasi }}">
+                    <input type="hidden" name="namaKegiatan" id="namaKegiatanInput" value="{{ $kegiatanDonasi->NamaKegiatanDonasi }}" class="custom-input">
                 </div>
 
                 <div class="detail-row">
                     <div class="detail-label">Deskripsi Kegiatan</div>
                     <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('deskripsiKegiatanInput', this.innerText)">{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
-                    <input type="hidden" name="deskripsiKegiatan" id="deskripsiKegiatanInput" value="{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}">
+                    <input type="hidden" name="deskripsiKegiatan" id="deskripsiKegiatanInput" value="{{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}" class="custom-input">
                 </div>
 
                 <div class="detail-row">
                     <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                     <div class="detail-dates">
-                        <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}</div>
-                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
-                        <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
+                        <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }} </div>
+                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="10px">
+                        <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
                         <input type="hidden" name="tglMulai" id="tglMulaiInput" value="{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}">
                         <input type="hidden" name="tglSelesai" id="tglSelesaiInput" value="{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}">
                     </div>
@@ -54,19 +54,18 @@
                         <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                     </div>
                     <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('jenisDonasiInput', this.innerText)">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
-                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}">
+                    <input type="hidden" name="jenisDonasi" style="background-color:#f0f0f0" #f0f0f0; id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}">
                 </div>
 
                 <div class="detail-row">
                     <div class="detail-label">Deskripsi Jenis Donasi</div>
                     <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('deskripsiJenisDonasiInput', this.innerText)">{{ $kegiatanDonasi->DeskripsiJenisDonasi }}</div>
-                    <input type="hidden" name="deskripsiJenisDonasi" id="deskripsiJenisDonasiInput" value="{{ $kegiatanDonasi->DeskripsiJenisDonasi }}">
+                    <input type="hidden" name="deskripsiJenisDonasi" style="background-color:#f0f0f0" id="deskripsiJenisDonasiInput" value="{{ $kegiatanDonasi->DeskripsiJenisDonasi }}">
                 </div>
-
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
-                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #444444;" readonly>
                         {{ $kegiatanDonasi->LokasiKegiatanDonasi  }}
                     </div>
                     <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ $kegiatanDonasi->LokasiKegiatanDonasi  }}">
@@ -76,7 +75,7 @@
                     <div class="detail-label">Lokasi pada Google Maps
                         {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
                     </div>
-                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
+                    <div class="detail-info" style="background-color: #f0f0f0; color: #444444;" readonly>
                         {{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}
                     </div>
                     <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}">
