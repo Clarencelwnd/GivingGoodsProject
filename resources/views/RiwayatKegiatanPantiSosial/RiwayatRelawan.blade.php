@@ -1,6 +1,6 @@
 @extends('GeneralPagePantiSosial.templatePage')
 
-@section('title', 'Riwayat Donatur')
+@section('title', 'Riwayat Relawan')
 
 @section('stylesheets')
     @parent
@@ -14,20 +14,20 @@
     <div class="title-back">
         <div class="back">
             <a href="{{ route('kegiatan-relawan.show', ['id' => request()->id]) }}">
-                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
+                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
             </a>
         </div>
         <div class="col">
-            <h1 style="font-weight: 600; font-size: 36px;">Riwayat Relawan</h1>
+            <h1 id="judul-riwayat-relawan">Riwayat Relawan</h1>
         </div>
     </div>
 
     <div class="total-jumlah">
         <div class="col">
-            <p>Total Relawan Mendaftar</p>
+            <p id="total-relawan">Total Relawan Mendaftar</p>
         </div>
         <div class="jumlah">
-            <p>{{ $jumlahKonfirmasiDiterima }} orang</p>
+            <p id="jumlah-relawan">{{ $jumlahKonfirmasiDiterima }} orang</p>
         </div>
     </div>
 
@@ -46,7 +46,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach($registrasiRelawan as $registrasi)
                     <tr>
                         <td>{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}</td>
@@ -60,15 +59,15 @@
 
                                 <!-- Tombol "Terima" -->
                                 <button type="submit" name="terima" class="btn-confirmation accept
-                                    @if($registrasi->StatusRegistrasiRelawan == 'Terima') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Ditolak') inactive @endif"
-                                    @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                    @if($registrasi->StatusRegistrasiRelawan == 'Terima') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Tolak') inactive @endif"
+                                    @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Tolak') disabled @endif>
                                     Terima
                                 </button>
 
                                 <!-- Tombol "Tolak" -->
                                 <button type="submit" name="tolak" class="btn-confirmation reject
-                                    @if($registrasi->StatusRegistrasiRelawan == 'Ditolak') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Terima') inactive @endif"
-                                    @if($registrasi->StatusRegistrasiRelawan == 'Terima' || $registrasi->StatusRegistrasiRelawan == 'Ditolak') disabled @endif>
+                                    @if($registrasi->StatusRegistrasiRelawan == 'Tolak') clicked @elseif($registrasi->StatusRegistrasiRelawan == 'Terima') inactive @endif"
+                                    @if($registrasi->StatusRegistrasiRelawan == 'Tolak' || $registrasi->StatusRegistrasiRelawan == 'Terima') disabled @endif>
                                     Tolak
                                 </button>
                             </form>

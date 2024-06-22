@@ -10,25 +10,23 @@
 
 @section('content')
     <div class="container">
-
         <div class="title-back">
             <div class="back">
                 <a href="{{ route('kegiatan-donasi.show', ['id' => request()->id]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
+                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
                 </a>
             </div>
             <div class="col">
-                <h1 style="font-weight: 600; font-size: 36px;">Riwayat Donatur</h1>
+                <h1 id="judul-riwayat-donatur">Riwayat Donatur</h1>
             </div>
         </div>
 
-
         <div class="total-jumlah">
             <div class="col">
-                <p>Total Donatur</p>
+                <p id="total-donatur">Total Donatur</p>
             </div>
             <div class="jumlah">
-                <p>{{ $jumlahKonfirmasiDiterima }} orang</p> <!-- Updated -->
+                <p id="jumlah-donatur">{{ $jumlahKonfirmasiDiterima }} orang</p> <!-- Updated -->
             </div>
         </div>
 
@@ -49,10 +47,10 @@
                     <tbody>
 
                         @foreach($registrasiDonatur as $registrasi)
-                        <tr>
-                            <td>{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}</td>
-                            <td>{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}</td>
-                            <td>{{ $registrasi->jamTanggalDonasi }}</td>
+                        <tr class="donatur-info">
+                            <td style="color: #1C3F5B; font-size: 16px; font-weight: 400;">{{ $registrasi->donaturRelawan->NamaDonaturRelawan }}</td>
+                            <td style="color: #1C3F5B; font-size: 16px; font-weight: 400;">{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}</td>
+                            <td  style="color: #1C3F5B; font-size: 16px; font-weight: 400;">{{ $registrasi->jamTanggalDonasi }}</td>
                             <td>
                                 <form action="{{ route('update-status', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
                                     @csrf

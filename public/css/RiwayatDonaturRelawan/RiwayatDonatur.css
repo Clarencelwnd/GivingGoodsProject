@@ -1,10 +1,10 @@
-h1 {
-    font-weight: 600;
-    font-size: 36px;
-    margin: 0;
-    display: flex;
+#judul-riwayat-donatur{
     color: #007C92;
-    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 7px;
 }
 
 .title-back {
@@ -20,11 +20,17 @@ h1 {
     margin-top: -10px;
 }
 
-.total-donatur {
-    font-size: 18px;
+#total-donatur {
+    font-size: 22px;
     margin-top: 10px;
     margin-left: auto;
 }
+
+#jumlah-donatur{
+    font-size: 22px;
+    font-weight: 500;
+}
+
 .total-jumlah {
     display: flex;
     flex-direction: row;
@@ -48,35 +54,41 @@ h1 {
 .table {
     border-collapse: collapse;
     width: 100%;
+    margin: 0 auto;
+}
+
+.table th, .table td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .table th {
     border-bottom: 1px solid #ddd;
     text-align: center;
-    padding-bottom: 20px
+    padding-bottom: 20px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #006374 !important;
 }
 
 .table td {
     text-align: center;
     padding-top: 20px;
-    font-size: 20px;
-}
-
-.table th {
-    font-weight: 500;
-    font-size: 22px;
-    color: #006374;
+    color: #1C3F5B;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .btn-confirmation {
-        background-color: white;
-        color: #005739;
-        border: 2px solid #005739;
-        border-radius: 5px;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+    background-color: white;
+    color: #005739;
+    border: 1px solid #005739;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 .btn-confirmation.clicked {
         background-color: #DFDFDF;
@@ -86,7 +98,7 @@ h1 {
 .btn-detail {
     background-color: white;
     color: #00925F;
-    border: 2px solid #00925F;
+    border: 1px solid #00925F;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -114,7 +126,7 @@ h1 {
 .popup-content {
     background-color: white;
     padding: 40px;
-    border-radius: 5px;
+    border-radius: 7px;
     width: 500px;
     max-height: 80%;
     overflow-y: auto;
@@ -128,8 +140,8 @@ h1 {
 }
 
 .popup-title {
-    font-weight: 600;
-    font-size: 32px;
+    font-weight:600;
+    font-size: 25px;
     color: #1C3F5B;
     margin: 0 auto;
     text-align: center;
@@ -142,32 +154,31 @@ h1 {
     cursor: pointer;
 }
 
-
 .popup-close img {
     width: 20px;
     height: 20px;
 }
 
 .popup-subtitle {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 500;
     color: #007C92;
     margin-top: 20px;
 }
 
 .popup-data {
+    font-size: 16px;
     margin-bottom: 10px;
 }
 
-
 .footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        padding-bottom: 10px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
 
-    .copyright-image {
-       height: 25px;
-    }
+.copyright-image {
+    height: 25px;
+}
