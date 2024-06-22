@@ -1,40 +1,10 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-.sidebar {
-    width: 15%;
-    background-color: #00849B;
-    color: white;
-    padding: 20px;
-    position: fixed;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-info {
-    margin-top: auto;
-    margin-bottom: 40px
-}
-
-.sidebar img {
-    width: 100px;
-    margin-bottom: 20px;
-}
-
-.sidebar a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    margin-bottom: 10px;
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .main-content {
-    margin-left: 16.666%;
-    padding: 80px;
+    margin: auto;
+    width: 90%;
 }
 
 .header {
@@ -44,11 +14,13 @@ body {
     margin-bottom: 20px;
 }
 
-.header h1 {
-    font-weight: 600;
+#judul-kegiatan-donasi {
     color: #007C92;
-    font-size: 36px;
+    font-size: 30px;
+    font-weight: 500;
     margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 15px;
 }
 
 .title {
@@ -92,10 +64,10 @@ body {
 }
 
 .detail-label {
-    flex: 1;
-    font-weight: 600;
     color: #006374;
-    font-weight: bold;
+    font-size: 20px;
+    flex: 1;
+    font-weight: 500;
     margin-bottom: 10px;
 }
 
@@ -104,6 +76,8 @@ body {
 }
 
 .detail-info {
+    color: #5B5B5B;
+    font-size: 16px;
     flex: 2;
     background-color: #D9D9D9;
     padding: 10px;
@@ -120,7 +94,8 @@ body {
 .detail-dates {
     display: flex;
     align-items: center;
-    padding-right: 424px;
+    justify-content: flex-start;
+    width: 67%;
 }
 
 .detail-info-tanggal {
@@ -131,12 +106,20 @@ body {
     width: 82px;
 }
 
+#tglMulai{
+    width: 150px;
+    text-align: center;
+}
+
+#tglSelesai{
+    width: 150px;
+    text-align: center;
+}
+
 .date-separator {
     padding: 0 20px;
     font-weight: bold;
 }
-
-
 
 #popup-container {
     display: none;
@@ -165,7 +148,7 @@ body {
 .btn-primary,
 .btn-secondary {
     width: 36%;
-    padding: 15px;
+    padding: 7px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -216,14 +199,13 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    margin-top: -25px;
+    margin: 5px;
 }
 
 .popup-header h3 {
     color: #1C3F5B;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 20px;
 }
 
 .popup-header .close-icon {
@@ -233,6 +215,7 @@ body {
 .popup-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .popup-column {
@@ -244,21 +227,21 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .popup-row img {
     margin-right: 10px;
-    height: 35px;
-    width: 37px;
+    height: 25px;
+    width: 27px;
 }
 
 .popup-row span {
     color: #006374;
     font-weight: 400;
-    font-size: 22px;
-    padding-left: 20px;
+    font-size: 18px;
+    padding-left: 5px;
 }
-
 
 .button-container {
     display: flex;
@@ -302,9 +285,9 @@ body {
 
 }
 
-.dropdown-select img {
+/* .dropdown-select img {
     transition: transform 0.3s;
-}
+} */
 
 .dropdown-menu {
     display: none;
@@ -344,7 +327,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .detail-info-jenis {
     display: flex;
     flex: 2;
@@ -354,11 +336,10 @@ body {
 }
 
 .donation-options img {
+
+    padding-right: 15px;
+    width: 37px;
     height: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .donation-options img.selected {
@@ -377,10 +358,43 @@ body {
     padding-top: 15px;
 }
 
-
 .hint-text {
     font-weight: 400;
     font-size: 16px;
     color: #898989;
     margin-top: 5px;
 }
+
+.detail-info-jenis{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    width: 68%;
+}
+
+.donation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.donation-icon-wrapper {
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.donation-icon-wrapper.selected {
+    border: 1px solid #007C92;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.donation-icon-wrapper img {
+    display: block;
+    margin: 0 auto;
+}
+

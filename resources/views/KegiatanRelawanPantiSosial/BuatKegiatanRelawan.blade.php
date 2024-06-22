@@ -393,7 +393,6 @@
                 }, {once: true});
             }
         }
-
-        </script>
+    </script>
 @endsection
 
