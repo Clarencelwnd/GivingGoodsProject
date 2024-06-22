@@ -12,7 +12,7 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
+                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
             <div class="buttons">
@@ -86,9 +86,9 @@
 
     <div id="popup-container" style="display: none;">
             <div id="popup">
-                <h3 style="color: #152F44; font-size: 24px; font-weight: 700;">Hapus Kegiatan</h3>
-                <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
-                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <h3 style="color: #152F44; font-size: 20px; font-weight: 600;">Hapus Kegiatan</h3>
+                <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
+                <div style="display: flex; gap:20px; justify-content:center; margin-top: 20px;">
                     <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="hidePopup()">Batal</button>
                     <form id="delete-form" action="{{ route('delete-kegiatan-donasi.destroy', $kegiatanDonasi->IDKegiatanDonasi) }}" method="POST" style="display:inline;">
                         @csrf

@@ -15,7 +15,7 @@
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px">
+                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  width="30px" height="30px">
                 </a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
