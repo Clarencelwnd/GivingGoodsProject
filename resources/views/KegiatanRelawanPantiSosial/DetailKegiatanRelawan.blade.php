@@ -12,7 +12,7 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $kegiatanRelawan->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
                 <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
