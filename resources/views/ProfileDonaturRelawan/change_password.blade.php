@@ -1,10 +1,10 @@
-@extends('generalPageDonaturRelawan.templateDonaturRelawan')
+@extends('GeneralPageDonaturRelawan.templateDonaturRelawan')
 
 @section('title', 'Ubah Kata Sandi')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{asset('css/Profile/change_password.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ProfileDonaturRelawan/change_password.css')}}">
 @endsection
 
 @section('content')
@@ -80,6 +80,6 @@
     @if(session('success'))
     <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
         <script> var url = "{{route('profile.donatur_relawan', ['id'=>$id])}}" </script>
-        <script src="{{ asset('js/Profile/change_password.js') }}"></script>
+        <script src="{{ asset('js/ProfileDonaturRelawan/change_password.js') }}"></script>
     @endif
 @endsection

@@ -1,10 +1,10 @@
-@extends('generalPageDonaturRelawan.templateDonaturRelawan')
+@extends('GeneralPageDonaturRelawan.templateDonaturRelawan')
 
 @section('title', 'Detail Riwayat Kegiatan Donasi')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{asset('css/DetailKegiatanDonasi/detail_riwayat_kegiatan_donasi.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ProfileDonaturRelawan/detail_riwayat_kegiatan_donasi.css')}}">
 @endsection
 
 @section('content')

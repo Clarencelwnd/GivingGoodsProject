@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class forumController extends Controller
+class ForumController extends Controller
 {
     public function displayDaftarForum($id){
         // $daftarForum = Forum::with('donaturRelawan')->get();
@@ -30,7 +30,7 @@ class forumController extends Controller
             $partitionTanggalBuatForum = explode('-', $forum->TanggalBuatForum);
             $forum->setAttribute('FormatTanggalBuatForum', $partitionTanggalBuatForum[2] . ' ' . $bulan[$partitionTanggalBuatForum[1]] . ' ' . $partitionTanggalBuatForum[0]);
         }
-        return view('Forum.daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
+        return view('ForumDonaturRelawan.daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
     }
 
     public function buatForum(Request $request, $id){
@@ -75,7 +75,7 @@ class forumController extends Controller
             $komentar->setAttribute('FormatTanggalKomentarForum', $partitionTanggalKomentarForum[2] . ' ' . $bulan[$partitionTanggalKomentarForum[1]] . ' ' . $partitionTanggalKomentarForum[0]);
         }
 
-        return view('Forum.detailForum',['id' => $idDonaturRelawan, 'forum' => $forum, 'idForum' => $idForum]);
+        return view('ForumDonaturRelawan.detailForum',['id' => $idDonaturRelawan, 'forum' => $forum, 'idForum' => $idForum]);
     }
 
 }

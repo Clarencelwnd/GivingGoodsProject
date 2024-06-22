@@ -63,12 +63,12 @@ class UserGeneralPageController extends Controller
             $relawan->setAttribute('jarakKm', $jarakKm);
         }
 
-        return view('generalPageDonaturRelawan.userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons', 'donaturRelawan', 'id'));
+        return view('GeneralPageDonaturRelawan.userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons', 'donaturRelawan', 'id'));
     }
 
 
     public function FAQ($id){
-        return view('FAQ.FAQ', compact('id'));
+        return view('FAQDonaturRelawan.FAQ', compact('id'));
     }
 
 

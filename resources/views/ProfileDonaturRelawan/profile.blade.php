@@ -1,11 +1,11 @@
-@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+@extends('GeneralPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Profil Pengguna')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{asset('css/Profile/profile.css')}}">
-    <script src="{{ asset('js/Profile/profile.js') }}"></script>
+    <link rel="stylesheet" href="{{asset('css/ProfileDonaturRelawan/profile.css')}}">
+    <script src="{{ asset('js/ProfileDonaturRelawan/profile.js') }}"></script>
 @endsection
 
 @section('content')

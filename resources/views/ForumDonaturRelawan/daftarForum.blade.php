@@ -1,11 +1,11 @@
-@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+@extends('GeneralPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Daftar Forum')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/daftarForumPage.css') }}">
-    <script src="{{ asset('js/forumPage.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/ForumDonaturRelawan/daftarForumPage.css') }}">
+    <script src="{{ asset('js/ForumDonaturRelawan/forumPage.js') }}"></script>
 @endsection
 
 

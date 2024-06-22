@@ -1,10 +1,10 @@
-@extends('generalPageDonaturRelawan/templateDonaturRelawan')
+@extends('GeneralPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Profil Pengguna')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{asset('css/Profile/edit_profile.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ProfileDonaturRelawan/edit_profile.css')}}">
 @endsection
 
 @section('content')
@@ -147,6 +147,6 @@
 
 @if (session('success'))
     <script> var url = "{{route('profile.donatur_relawan', ['id'=>$id])}}" </script>
-    <script src="{{ asset('js/Profile/edit_profile.js') }}"></script>
+    <script src="{{ asset('js/ProfileDonaturRelawan/edit_profile.js') }}"></script>
 @endif
 @endsection
