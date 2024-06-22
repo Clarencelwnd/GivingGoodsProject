@@ -15,8 +15,14 @@ html, body {
     padding: 0 20px; /* Add some padding for breathing room */
 }
 
+#mySidebar {
+    width: 0;
+    transition: width 0.5s;
+}
+
 #main {
-    transition: margin-left .5s;
+    margin-left: 0;
+    transition: margin-left 0.5s;
     padding: 16px;
 }
 

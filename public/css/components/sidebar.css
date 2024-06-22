@@ -1,4 +1,9 @@
 
+#mySidebar {
+    width: 0;
+    transition: width 0.5s;
+}
+
 .sidebar {
     height: 100%;
     width: 0;
@@ -48,3 +53,4 @@
     font-size: 14px;
     margin-bottom: 5px;
 }
+
