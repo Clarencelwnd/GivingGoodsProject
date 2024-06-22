@@ -1,17 +1,17 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f9f9f9;
 }
 
-.container {
-    padding: 40px 70px;
+.containerDaftarRelawan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
 }
 
 .title {
     display: flex;
-    /* align-items: center; */
     flex-direction: row;
     padding-bottom: 50px;
 }
@@ -28,7 +28,7 @@ body {
     font-weight: 500;
     margin-bottom: 10px;
     font-weight: 600;
-    padding-top: 10px;
+    padding-top: 5px;
 }
 
 .input-container {
@@ -37,35 +37,41 @@ body {
 
 .subtitle {
     color: #193952;
-    font-weight: 400;
-    font-size: 24px;
-    padding-bottom: 20px;
+    font-size: 20px;
+    color: #1C3F5B;
+    font-weight: 500;
+    padding-bottom: 10px;
 }
 
 .subtitle-time-date {
+    width: 100%;
     color: #193952;
-    font-weight: 400;
-    font-size: 24px;
-    padding-top: 20px;
+    font-size: 20px;
+    color: #1C3F5B;
+    font-weight: 500;
+    padding-bottom: 10px;
 }
 
 .input-field {
-    background-color: #f0f0f0;
+    background-color: #E0E0E0;
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    font-size: 16px;
     margin-bottom: 10px;
+    border-radius: 5px;
     box-sizing: border-box;
+    color: #193952;
+    font-weight: 400;
     font-size: 16px;
 }
-
 
 .info-text {
     color: #898989;
     font-weight: 400;
-    font-size: 22px;
-    padding: 15px 0px;
+    font-size: 18px;
+    width: 100%;
+   padding-bottom: 20px;
 }
 
 .info-container {
@@ -88,6 +94,10 @@ body {
     padding-top: 30px;
 }
 
+#date-picker{
+    width: auto;
+}
+
 .date-picker-container,
 .time-picker-container {
     display: flex;
@@ -99,12 +109,11 @@ body {
     margin-right: 10px;
     margin-bottom: 10px;
     height: 24px;
-
 }
 
 .input-field-date-time {
     background-color: #E0E0E0;
-    width: 100%;
+    width: auto;
     padding: 10px;
     border: none;
     font-size: 20px;
@@ -116,17 +125,19 @@ body {
 .button {
     display: block;
     width: 100%;
-    padding: 15px 0;
+    padding: 10px 20px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    font-size: 32px;
+    font-size: 20px;
     color: white;
     font-weight: 600;
     background-color: #00C27E;
     border: none;
     border-radius: 5px;
-    margin-top: 40px;
+    margin-top: 20px;
     text-decoration: none;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .error-message {
