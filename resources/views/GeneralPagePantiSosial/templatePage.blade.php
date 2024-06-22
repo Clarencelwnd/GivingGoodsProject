@@ -18,18 +18,16 @@
 </head>
 
 <body>
-    <div class="container" id="main">
+    <div class="container">
         @include('components.sideBar', ['id' => $id])
-
-        @include('components.header', ['id'=> $id])
         {{-- @section('header') --}}
         <div id="main">
+            @include('components.header', ['id'=> $id])
             {{-- @include('components.header', ['id' => $id]) --}}
             @yield('content')
             @yield('pagination')
+            @include('components.footer')
         </div>
-
-        @include('components.footer')
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
