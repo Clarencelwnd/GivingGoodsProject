@@ -93,7 +93,11 @@
                     <div>
                         <span>{{ $hari }}&nbsp;:</span>
                         @foreach($jadwals as $jadwal)
-                            {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
+                            @if ($jadwal->JamBukaPantiSosial == '00:00:00' && $jadwal->JamTutupPantiSosial == '00:00:00')
+                                {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }} ( Libur )
+                            @else
+                                {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
+                            @endif
                         @endforeach
                     </div>
                 @endforeach
