@@ -1,11 +1,17 @@
 
-.container {
-    width: 70%;
+.containerDetailPansos {
+    width: auto;
     margin: 0 auto;
     margin-top: 50px;
     padding: 40px;
+    padding-top: 0px;
     border-radius: 5px;
     border: 1px solid #004A57;
+}
+
+.containerPansosPage{
+    max-width: 90%;
+    margin: 0 auto;
 }
 
 .info-container {
@@ -37,17 +43,16 @@
 
 .subtitle {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 20px;
     color: #006374;
     margin-right: 10px;
     width: 180px;
 }
 
-.text-info {
+.text-infoPansos {
     font-weight: 400;
-    font-size: 22px;
+    font-size: 18px;
     color: #1C3F5B;
-    flex: 1;
 }
 
 .section {
@@ -61,7 +66,6 @@
 }
 
 /* Gaya untuk card kegiatan */
-
 .btn-forumBack{
     width: 90%;
     margin: auto;
@@ -85,7 +89,6 @@
     font-weight: 500;
     margin: 0;
 }
-
 
 .daftarKegiatanContents{
     padding: 16px;
@@ -159,4 +162,8 @@
     padding-right: 10px;
     width: 30px;
     height: 18px;
+}
+
+.card-body.card-kegiatan{
+    height: 100%;
 }

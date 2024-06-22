@@ -14,125 +14,125 @@
     <div class="btn-forumBack">
         <a href="{{ route('daftarKegiatan.search', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
-            <p id="back-text">Kembali ke Daftar Kegiatan {{ $pantiSosial->NamaPantiSosial }}</p>
+            <p id="back-text">Kembali ke Daftar Kegiatan</p>
         </a>
     </div>
 
-    <div class="container">
-        <div class="info-container">
-            <img src="{{ $pantiSosial->LogoPantiSosial }}" class="donation-icon" alt="Logo Panti Sosial">
-            <div class="info-text-container">
-                <div class="title">{{ $pantiSosial->NamaPantiSosial }}</div>
-                <div class="text-info">No. Registrasi: {{ $pantiSosial->NomorRegistrasiPantiSosial }}</div>
-            </div>
-        </div>
-        <div class="text-info" style="margin-top: 15px;">
-            Panti Asuhan Budi Mulia merupakan tempat yang memberikan perlindungan dan pendidikan bagi anak-anak yatim piatu dan kurang mampu. Kami berkomitmen untuk memberikan lingkungan yang aman dan mendukung perkembangan mereka.
-        </div>
-        <div class="details-container">
-            <div class="section">
-                <div class="subtitle">Email:</div>
-                <div class="text-info">{{ $pantiSosial->User->email }}</div>
-            </div>
-            <div class="section">
-                <div class="subtitle">Nomor HP:</div>
-                <div class="text-info">{{ $pantiSosial->NomorTeleponPantiSosial }}</div>
-            </div>
-            <div class="section">
-                <div class="subtitle">Website:</div>
-                <div class="text-info">{{ $pantiSosial->WebsitePantiSosial }}</div>
-            </div>
-            <div class="section">
-                <div class="subtitle">Alamat:</div>
-                <div class="text-info">{{ $pantiSosial->AlamatPantiSosial }}</div>
-            </div>
-            <div class="section">
-                <div class="subtitle">Jam Operasional:</div>
-                <div class="text-info">
-                    @foreach($pantiSosial->JadwalOperasional->groupBy('Hari') as $hari => $jadwals)
-                        <div>
-                            <span>{{ $hari }}&nbsp;:</span>
-                            @foreach($jadwals as $jadwal)
-                                {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
-                            @endforeach
-                        </div>
-                    @endforeach
+    <div class="containerPansosPage">
+        <div class="containerDetailPansos">
+            <div class="info-container">
+                <img src="{{ $pantiSosial->LogoPantiSosial }}" class="donation-icon" alt="Logo Panti Sosial">
+                <div class="info-text-container">
+                    <div class="title">{{ $pantiSosial->NamaPantiSosial }}</div>
+                    <div class="text-infoPansos">No. Registrasi: {{ $pantiSosial->NomorRegistrasiPantiSosial }}</div>
                 </div>
             </div>
-            <div class="section">
-                <div class="subtitle">Media Sosial:</div>
-                <div class="text-info">{{ $pantiSosial->MediaSosialPantiSosial }}</div>
+            <div class="text-infoPansos" style="margin-top: 10px;">
+                {{ $pantiSosial->DeskripsiPantiSosial }}
+            </div>
+            <div class="details-container">
+                <div class="section">
+                    <div class="subtitle">Email:</div>
+                    <div class="text-infoPansos">{{ $pantiSosial->User->email }}</div>
+                </div>
+                <div class="section">
+                    <div class="subtitle">Nomor HP:</div>
+                    <div class="text-infoPansos">{{ $pantiSosial->NomorTeleponPantiSosial }}</div>
+                </div>
+                <div class="section">
+                    <div class="subtitle">Website:</div>
+                    <div class="text-infoPansos">{{ $pantiSosial->WebsitePantiSosial }}</div>
+                </div>
+                <div class="section">
+                    <div class="subtitle">Alamat:</div>
+                    <div class="text-infoPansos">{{ $pantiSosial->AlamatPantiSosial }}</div>
+                </div>
+                <div class="section">
+                    <div class="subtitle">Jam Operasional:</div>
+                    <div class="text-infoPansos">
+                        @foreach($pantiSosial->JadwalOperasional->groupBy('Hari') as $hari => $jadwals)
+                            <div>
+                                <span>{{ $hari }}&nbsp;:</span>
+                                @foreach($jadwals as $jadwal)
+                                    {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="subtitle">Media Sosial:</div>
+                    <div class="text-infoPansos">{{ $pantiSosial->MediaSosialPantiSosial }}</div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="daftarKegiatanContents">
-        <h4 id="daftar-kegiatan-title">Daftar Kegiatan</h4>
+        <div class="daftarKegiatanContents">
+            <h4 id="daftar-kegiatan-title">Daftar Kegiatan</h4>
 
-        {{-- CARDS --}}
-        <div class="row" id="activity-cards">
-            @foreach ($activities as $activity)
-            <div class="col-md-4 mb-5 activity-card"
-                data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
-                data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
-                data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
-                @if (isset($activity->NamaKegiatanDonasi))
-                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
-                @elseif (isset($activity->NamaKegiatanRelawan))
-                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
-                @endif
-                    <div class="card">
-                        @if (isset($activity->NamaKegiatanRelawan))
-                            <img src="{{ $activity->GambarKegiatan }}" class="card-img-top" style="height: 14rem" alt="...">
-                        @elseif (isset($activity->NamaKegiatanDonasi))
-                            <img src="{{ $activity->GambarKegiatan }}" class="card-img-top" style="height: 14rem" alt="...">
-                        @endif
+            {{-- CARDS --}}
+            <div class="row" id="activity-cards">
+                @foreach ($activities as $activity)
+                <div class="col-md-4 mb-5 activity-card"
+                    data-jenis-kegiatan="{{ isset($activity->NamaKegiatanRelawan) ? 'relawan' : 'donasi' }}"
+                    data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
+                    data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
+                    @if (isset($activity->NamaKegiatanDonasi))
+                        <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
+                    @elseif (isset($activity->NamaKegiatanRelawan))
+                        <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
+                    @endif
+                        <div class="card">
+                            @if (isset($activity->NamaKegiatanRelawan))
+                                <img src="{{ asset('Image/kegiatanRelawan/' . $activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            @endif
+                            @if (isset($activity->NamaKegiatanDonasi))
+                                <img src="{{ asset('Image/kegiatanDonasi/' . $activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            @endif
 
-                        <div class="card-body card-kegiatan">
-                            <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
-                            <p class="card-text" id="card-jenisDonasi">
-                                @if (isset($activity->NamaKegiatanRelawan))
-                                    <p class="card-text">Jenis relawan:
-                                        @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
-                                            Bencana Alam
-                                        @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
-                                            Darurat Bencana
-                                        @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
-                                            Seni Budaya
-                                        @else
-                                            {{ $activity->JenisKegiatanRelawan }}
-                                        @endif
-                                    </p>
-                                @elseif (isset($activity->NamaKegiatanDonasi))
-                                    @php
-                                        $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
-                                        $donasiTypes = array_slice($donasiTypes, 0, 5);
-                                    @endphp
-                                    Jenis Donasi:
-                                    @foreach ($donasiTypes as $type)
-                                        @if(array_key_exists($type, $activity->jenisDonasiIcons))
-                                            <img id="jenisDonasiIcons" src="{{ asset($activity->jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
-                                        @else
-                                            {{ $type }}
-                                        @endif
-                                    @endforeach
-                                @endif
-                            </p>
-                            <div class="d-flex justify-content-between">
-                                <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
-                                <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                            <div class="card-body card-kegiatan">
+                                <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
+                                <p class="card-text" id="card-jenisDonasi">
+                                    @if (isset($activity->NamaKegiatanRelawan))
+                                        <p class="card-text">Jenis relawan:
+                                            @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
+                                                Bencana Alam
+                                            @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
+                                                Darurat Bencana
+                                            @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
+                                                Seni Budaya
+                                            @else
+                                                {{ $activity->JenisKegiatanRelawan }}
+                                            @endif
+                                        </p>
+                                    @elseif (isset($activity->NamaKegiatanDonasi))
+                                        @php
+                                            $donasiTypes = explode(',', $activity->JenisDonasiDibutuhkan);
+                                            $donasiTypes = array_slice($donasiTypes, 0, 5);
+                                        @endphp
+                                        Jenis Donasi:
+                                        @foreach ($donasiTypes as $type)
+                                            @if(array_key_exists($type, $activity->jenisDonasiIcons))
+                                                <img id="jenisDonasiIcons" src="{{ asset($activity->jenisDonasiIcons[$type]) }}" alt="{{ $type }}">
+                                            @else
+                                                {{ $type }}
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                    <p class="card-text" id="card-jenisDonasi">Jarak</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                @endforeach
             </div>
-        @endforeach
-
         </div>
     </div>
-
-    @endsection
-
+ @endsection
 
 @section('pagination')
     <div class="pagination-container">
