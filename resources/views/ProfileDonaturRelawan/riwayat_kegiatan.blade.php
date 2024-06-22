@@ -4,14 +4,12 @@
 
 @section('stylesheets')
     @parent
-    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="{{asset('css/Profile/riwayat_kegiatan.css')}}">
 @endsection
 
 @section('content')
     <div class="card main container justify-content-center">
         <div class="card-header main">
-            <p class="position">Profil > Riwayat Kegiatan</p>
             <div class="row">
                 <div class="col-auto back-column">
                     <a class="back" href="{{route('profile.donatur_relawan', ['id'=>$id])}}">
@@ -38,7 +36,7 @@
             @endif
             @if ($registrasiDonatur)
                 @foreach($registrasiDonatur as $key => $registDonatur)
-                    <div class="data-item semua donasi card kegiatan container justify-content-center" data-status-kegiatan="{{$registDonatur->StatusRegistrasiDonatur}}" data-url="{{route('detail_riwayat_kegiatan_donasi', ['idDonaturRelawan' => $id, 'idRegistrasiDonasi' => $registDonatur->IDRegistrasiDonatur])}}">
+                    <div class="data-item semua donasi card kegiatan container justify-content-center" data-status-kegiatan="{{ str_replace(' ', '_', $registDonatur->StatusRegistrasiDonatur) }}" data-url="{{route('detail_riwayat_kegiatan_donasi', ['idDonaturRelawan' => $id, 'idRegistrasiDonasi' => $registDonatur->IDRegistrasiDonatur])}}">
                         <div class="card-header kegiatan">
                             <div class="row row-riwayat mt-1 mb-2">
                                 <div class="col-auto label-donasi-relawan">Donasi</div>
@@ -59,7 +57,7 @@
             @endif
             @if ($registrasiRelawan)
                 @foreach($registrasiRelawan as $registRelawan)
-                    <div class="data-item semua relawan card kegiatan container justify-content-center" data-status-kegiatan="{{$registRelawan->StatusRegistrasiRelawan}}" data-url="{{route('detail_riwayat_kegiatan_relawan', ['idDonaturRelawan'=>$id, 'idRegistrasiRelawan'=> $registRelawan->IDRegistrasiRelawan])}}">
+                    <div class="data-item semua relawan card kegiatan container justify-content-center" data-status-kegiatan="{{ str_replace(' ', '_', $registRelawan->StatusRegistrasiRelawan) }}" data-url="{{route('detail_riwayat_kegiatan_relawan', ['idDonaturRelawan'=>$id, 'idRegistrasiRelawan'=> $registRelawan->IDRegistrasiRelawan])}}">
                         <div class="card-header kegiatan">
                             <div class="row row-riwayat mt-1 mb-2">
                                 <div class="col-auto label-donasi-relawan">Relawan</div>

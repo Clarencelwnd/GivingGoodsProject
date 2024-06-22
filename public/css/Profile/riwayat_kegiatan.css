@@ -41,13 +41,6 @@
     border-bottom: none;
 }
 
-.position{
-    color: #1C3F5B;
-    font-size: x-small;
-    font-style: italic;
-    margin-bottom: 5px;
-}
-
 .back{
     text-decoration: none;
     color: #007C92;
@@ -79,12 +72,12 @@
     padding-left: 12px;
 }
 
-.btn-filter, .btn-filter:hover{
+#btn-semua, #btn-donasi, #btn-relawan, #btn-semua:hover, #btn-donasi:hover, #btn-relawan:hover{
     border: 1px solid #00744C;
     color: #00744C;
 }
 
-.btn-filter.selected{
+#btn-semua.selected, #btn-donasi.selected, #btn-relawan.selected{
     background-color: #D9F6EC;
     border: none;
     color: #00744C;
@@ -98,12 +91,13 @@
     margin-top: 15px;
 }
 
-.btn-sub-filter, .btn-sub-filter:hover{
+#btn-sedang-diproses, #btn-donasi-diterima, #btn-menunggu-konfirmasi, #btn-relawan-diterima, #btn-relawan-ditolak,
+#btn-sedang-diproses:hover, #btn-donasi-diterima:hover, #btn-menunggu-konfirmasi:hover, #btn-relawan-diterima:hover, #btn-relawan-ditolak:hover{
     border: 1px solid #00849B;
     color: #00849B;
 }
 
-.btn-sub-filter.selected{
+#btn-sedang-diproses.selected, #btn-donasi-diterima.selected, #btn-menunggu-konfirmasi.selected, #btn-relawan-diterima.selected, #btn-relawan-ditolak.selected{
     background-color: #D9F2F6;
     border: none;
     color: #00849B;
@@ -159,31 +153,4 @@
     font-size: medium;
     color: #00849B;
     text-align: center;
-}
-
-/* RESPONSIVE  */
-
-@media only screen and (min-width: 768px) {
-    .container {
-        max-width: 960px;
-        margin: 0 auto;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .container {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-}
-
-@media only screen and (max-width: 575px) {
-    .container {
-        max-width: 480px;
-        margin: 0 auto;
-    }
-
-    #btn-relawan-ditolak{
-        margin-top: 10px;
-    }
 }
