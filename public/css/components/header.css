@@ -1,9 +1,5 @@
-
-.website-title {
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    display: inline-flex;
+.linkTitle{
+    text-decoration: none;
 }
 
 /* DROPDOWN */

@@ -20,8 +20,7 @@
 <body>
     <div class="container">
         @include('components.sideBar', ['id' => $id])
-
-        @include('components.header', ['id'=> $id])
+        
         {{-- @section('header') --}}
         <div id="main">
             @include('components.header', ['id'=> $id])
