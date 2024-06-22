@@ -18,16 +18,18 @@
 </head>
 
 <body>
-    <div class="container" id="main">
+    <div class="container">
         @include('components.sideBar', ['id' => $id])
 
         @include('components.header', ['id'=> $id])
+        {{-- @section('header') --}}
         <div id="main">
+            @include('components.header', ['id'=> $id])
+            {{-- @include('components.header', ['id' => $id]) --}}
             @yield('content')
             @yield('pagination')
+            @include('components.footer')
         </div>
-
-        @include('components.footer')
     </div>
 
 </body>
