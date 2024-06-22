@@ -7,10 +7,8 @@ use App\Models\KegiatanDonasi;
 
 class DetailKegiatanDonasiController extends Controller
 {
-    public function show($id)
-    {
+    public function show($id){
         $kegiatanDonasi = KegiatanDonasi::find($id);
-
         if (!$kegiatanDonasi) {
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
@@ -18,8 +16,7 @@ class DetailKegiatanDonasiController extends Controller
         return view('KegiatanDonasiPantiSosial.DetailKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
-    public function showEdit($id)
-    {
+    public function showEdit($id){
         $kegiatanDonasi = KegiatanDonasi::find($id);
 
         if (!$kegiatanDonasi) {
@@ -29,8 +26,7 @@ class DetailKegiatanDonasiController extends Controller
         return view('KegiatanDonasiPantiSosial.UbahKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
-    public function showBuat($id)
-    {
+    public function showBuat($id){
         $kegiatanDonasi = KegiatanDonasi::find($id);
 
         if (!$kegiatanDonasi) {
