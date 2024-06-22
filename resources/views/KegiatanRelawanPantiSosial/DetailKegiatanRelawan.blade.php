@@ -12,8 +12,8 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
-                <h1>{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
+                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
+                <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
                 <a href="{{ route('ubah-kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}" style="text-decoration: none;">
@@ -22,6 +22,7 @@
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
             </div>
         </div>
+
         <div class="details">
             <div class="detail-row">
                 <div class="detail-label">Nama Kegiatan</div>
