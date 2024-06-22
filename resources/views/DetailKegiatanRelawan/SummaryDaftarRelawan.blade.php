@@ -12,12 +12,11 @@
 
 
     @section('content')
-    <div class="container">
-
+    <div class="containerSummaryDaftarRelawan">
         <div class="title">
             <a href="javascript:history.back()">
                 <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
-            <h1>Daftar Kegiatan</h1>
+            <h1 id="judul-daftar-kegiatan">Daftar Kegiatan</h1>
         </div>
 
         <form action="{{ route('storeSummaryDaftarRelawan') }}" method="POST">
@@ -94,7 +93,9 @@
         <div class="container-help-platform" id="container-help-platform">
             <div class="header">
                 <div class="text-help">Bantu GivingGoods Terus Berkembang!</div>
-                <div class="arrow" onclick="toggleDropdown()">&#x25BC;</div>
+                <div class="arrow" onclick="toggleDropdown()">
+                    <img src="{{ asset('Image/general/drop.png') }}" alt="dropdown" width="20px" height="20px">
+                </div>
             </div>
             <div class="dropdown-content">
                 <span style="font-weight: 400; font-size: 22px; color: #006374;">
@@ -146,7 +147,7 @@
 
         function closePopup() {
             document.getElementById('popup-container').style.display = 'none';
-            window.location.href = "{{ route('displayDaftarKegiatan', ['id' => $donaturRelawan->IDDonaturRelawan]) }}"; // Redirect to daftar kegiatan page
+            window.location.href = "{{ route('displayDaftarKegiatan', ['id' => $donaturRelawan->IDDonaturRelawan]) }}";
         }
     </script>
 

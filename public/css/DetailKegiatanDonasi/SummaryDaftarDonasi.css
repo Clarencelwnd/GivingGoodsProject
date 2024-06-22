@@ -10,7 +10,6 @@ body {
 
 .title {
     display: flex;
-    /* align-items: center; */
     flex-direction: row;
     padding-bottom: 20px;
 }
@@ -117,7 +116,6 @@ body {
 .flex-row img {
     margin-right: 10px;
 }
-
 
 .button {
     display: block;
