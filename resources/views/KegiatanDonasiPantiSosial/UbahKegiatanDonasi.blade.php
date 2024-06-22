@@ -53,8 +53,6 @@
                     <div class="detail-label">Jenis Donasi
                         <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                     </div>
-                    {{-- <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('jenisDonasiInput', this.innerText)">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
-                    <input type="hidden" name="jenisDonasi" style="background-color:#f0f0f0" #f0f0f0; id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}"> --}}
 
                     <div class="detail-info-jenis d-flex justify-content-start">
                         <div class="donation-options">

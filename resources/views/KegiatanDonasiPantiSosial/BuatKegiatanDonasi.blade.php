@@ -14,8 +14,8 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
-                <h1>Buat Kegiatan Donasi</h1>
+                <a href="{{ route('viewAllKegiatan', ['id' => $pantiSosial->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px"></a>
+                <h1 id="judul-kegiatan-donasi">Buat Kegiatan Donasi</h1>
             </div>
 
         </div>
@@ -37,7 +37,6 @@
                         <div class="hint-text">maks. 5 kata</div>
                     </div>
                 </div>
-
 
                 <div class="detail-row">
                     <div class="detail-label">Foto-foto Kegiatan</div>
@@ -78,7 +77,7 @@
                             <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">
                                 {{ old('tglMulai') }}
                             </div>
-                            <img src="{{ asset('image/general/line.png') }}" alt="Line" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                            <img src="{{ asset('image/general/line.png') }}" alt="Line" width="10px">
                             <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">
                                 {{ old('tglSelesai') }}
                             </div>
@@ -91,34 +90,33 @@
                     </div>
                 </div>
 
-
                 <div class="detail-row">
                     <div class="detail-label">Jenis Donasi
                         <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                     </div>
-                    <div class="detail-input-container">
-                        <div class="detail-info-jenis">
-                            <div class="donation-options">
-                                <img src="{{ asset('image/donasi/pakaian.png') }}" alt="pakaian" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/makanan.png') }}" alt="makanan" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/obat.png') }}" alt="obat" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/buku.png') }}" alt="buku" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="perlengkapan_ibadah" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/mainan.png') }}" alt="mainan" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="toiletries" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="keperluan_rumah" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="alat_tulis" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/sepatu.png') }}" alt="sepatu" onclick="selectDonationOption(this)">
-                            </div>
+
+                    <div class="detail-info-jenis d-flex justify-content-start">
+                        <div class="donation-options">
+                            @php
+                                $allDonasiTypes = [
+                                    'pakaian', 'makanan', 'obat', 'buku', 'keperluan_ibadah',
+                                    'mainan', 'keperluan_mandi', 'keperluan_rumah', 'alat_tulis', 'sepatu'
+                                ];
+                                $jenisDonasiArray = explode(',', old('jenisDonasi', ''));
+                            @endphp
+                            @foreach($allDonasiTypes as $jenisDonasi)
+                                @php
+                                    $namaFile = 'image/donasi/' . strtolower(trim($jenisDonasi)) . '.png';
+                                    $selected = in_array($jenisDonasi, $jenisDonasiArray);
+                                @endphp
+                                <div class="donation-icon-wrapper {{ $selected ? 'selected' : '' }}" onclick="toggleDonasi(this, '{{ $jenisDonasi }}')">
+                                    <img src="{{ asset($namaFile) }}" alt="{{ $jenisDonasi }}" height="20px">
+                                </div>
+                            @endforeach
                         </div>
-                        <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ old('jenisDonasi') }}">
-                        @if ($errors->has('jenisDonasi'))
-                            <div class="error-message">{{ $errors->first('jenisDonasi') }}</div>
-                        @endif
                     </div>
+                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ old('jenisDonasi', '') }}">
                 </div>
-
-
 
 
                 <div class="detail-row">
@@ -136,26 +134,30 @@
                 <div class="detail-row">
                     <div class="detail-label">Lokasi Pelaksanaan Kegiatan</div>
                     <div class="detail-input-container">
-                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
-                        {{ $pantiSosial->AlamatPantiSosial }}
+                        <div class="detail-info" contenteditable="true" data-old="{{ old('lokasiKegiatan', '') }}" oninput="updateHiddenInput('lokasiKegiatanInput', this.innerText)">
+                            {{ old('lokasiKegiatan', '') }}
+                        </div>
+                        <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ old('lokasiKegiatan') }}">
+                        @error('lokasiKegiatan')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ $pantiSosial->AlamatPantiSosial }}">
-                </div>
                 </div>
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi pada Google Maps
-                        {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
+                        <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)">
                     </div>
                     <div class="detail-input-container">
-                    <div class="detail-info" style="background-color: #f0f0f0; color: #666;" readonly>
-                        {{ $pantiSosial->LinkGoogleMapsPantiSosial }}
+                        <div class="detail-info" contenteditable="true" data-old="{{ old('linkGoogleMaps', '') }}" oninput="updateHiddenInput('linkGoogleMapsInput', this.innerText)">
+                            {{ old('linkGoogleMaps', '') }}
+                        </div>
+                        <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ old('linkGoogleMaps') }}">
+                        @error('linkGoogleMaps')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ $pantiSosial->LinkGoogleMapsPantiSosial }}">
                 </div>
-                </div>
-
-
 
                 <div id="infoMessage">
                     Mohon mencari dan menyalin link <br> Google Maps untuk lokasi kegiatan donasi.
@@ -165,7 +167,7 @@
                     <div class="detail-label">Apakah Panti Sosial <br> menyediakan jasa ambil <br> barang?</div>
                     <div class="detail-input-container">
                         <div class="detail-info">
-                            <div class="dropdown" onclick="toggleDropdown()">
+                            <div class="dropdownpickup" onclick="toggleDropdown()">
                                 <div class="dropdown-select">
                                     <span id="dropdown-selected">{{ old('jasaAmbilBarang', '') }}</span>
                                     <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
@@ -178,12 +180,10 @@
                             <input type="hidden" name="jasaAmbilBarang" id="jasaAmbilBarangInput" value="{{ old('jasaAmbilBarang') }}">
                         </div>
                         @if ($errors->has('jasaAmbilBarang'))
-                            <div class="error-message">{{ $errors->first('jasaAmbilBarang') }}</div>
+                            <div class= "error-message">{{ $errors->first('jasaAmbilBarang') }}</div>
                         @endif
                     </div>
                 </div>
-
-
 
                 <div class="button-container">
                     <button class="cancel-btn" type="button" onclick="window.location='{{ url("/") }}'">Batal</button>
@@ -191,8 +191,6 @@
                 </div>
             </div>
         </form>
-
-
     </div>
 
     @if (session('success'))
@@ -207,7 +205,6 @@
         });
     </script>
     @endif
-
 
     <div id="popup-container" style="display: none;">
         <div id="popup">
@@ -262,6 +259,21 @@
         });
     });
 
+    function toggleDonasi(element, jenisDonasi) {
+        const jenisDonasiInput = document.getElementById('jenisDonasiInput');
+        let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
+
+        if (element.classList.contains('selected')) {
+            element.classList.remove('selected');
+            selectedValues = selectedValues.filter(value => value !== jenisDonasi);
+        } else {
+            element.classList.add('selected');
+            selectedValues.push(jenisDonasi);
+        }
+
+        jenisDonasiInput.value = selectedValues.join(',');
+    }
+
     function showDonationPopup() {
         document.getElementById('donation-popup-container').style.display = 'flex';
     }
@@ -271,7 +283,33 @@
     }
 
     function toggleDropdown() {
-        document.querySelector('.dropdown').classList.toggle('dropdown-open');
+        // document.querySelector('.dropdown').classList.toggle('dropdown-open');
+        const dropdown = document.querySelector('.dropdownpickup');
+        dropdown.classList.toggle('dropdown-open');
+    }
+
+    function showInfoMessage(imgElement) {
+        const infoMessage = document.getElementById('infoMessage');
+        if (infoMessage.style.display === 'block') {
+            infoMessage.style.display = 'none';
+        } else {
+            infoMessage.style.display = 'block';
+
+            // Posisi pesan dekat dengan gambar yang diklik
+            const rect = imgElement.getBoundingClientRect();
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            infoMessage.style.position = 'absolute';
+            infoMessage.style.left = `${rect.right + 10 + scrollLeft}px`;
+            infoMessage.style.top = `${rect.top + scrollTop}px`;
+
+            // Tambahkan event listener untuk klik di luar pesan
+            document.addEventListener('click', function(event) {
+                if (!infoMessage.contains(event.target) && !imgElement.contains(event.target)) {
+                    infoMessage.style.display = 'none';
+                }
+            }, {once: true});
+        }
     }
 
     function selectOption(option) {
@@ -290,8 +328,6 @@
             dropdown.classList.remove('dropdown-open');
         }
     });
-
-
 
     function updateHiddenInput(inputId, value) {
         document.getElementById(inputId).value = value;
