@@ -8,6 +8,7 @@
     <script src="{{ asset('js/generalPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/KegiatanRelawanPantiSosial/BuatKegiatanRelawan.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endsection
 
 @section('content')
@@ -15,12 +16,12 @@
         <div class="header">
             <div class="title">
                 <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
-                <h1>Buat Kegiatan Relawan</h1>
+                <h1 id="judul-kegiatan-relawan">Buat Kegiatan Relawan</h1>
             </div>
 
         </div>
 
-        <form action="{{ route('buat_kegiatan_relawan.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('buat_kegiatan_relawan.store', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="IDPantiSosial" value="{{ $pantiSosial->IDPantiSosial }}">
             <div class="details">
@@ -43,7 +44,7 @@
                 <div class="detail-row">
                     <div class="detail-label">Foto-foto Kegiatan</div>
                     <div class="detail-input-container">
-                        <label for="fotoKegiatanUpload" class="upload-btn" style="background-color: #007C92; border-radius:5px; color: white; font-size: 20px; padding: 10px 20px; cursor: pointer;">
+                        <label for="fotoKegiatanUpload" class="upload-btn" style="background-color: #007C92; border-radius:5px; color: white; font-size: 16px; padding: 5px 20px; cursor: pointer;">
                             Upload
                         </label>
                         <input type="file" name="fotoKegiatan" id="fotoKegiatanUpload" style="display: none;" onchange="showFileName()">
@@ -279,95 +280,85 @@
         </div>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-        <script>
-
-function updateHiddenInput(inputId, value) {
+<script>
+        function updateHiddenInput(inputId, value) {
             document.getElementById(inputId).value = value;
         }
 
-
         document.addEventListener('DOMContentLoaded', function() {
-                    flatpickr("#tglMulai", {
-                        dateFormat: "Y-m-d",
-                        onChange: function(selectedDates, dateStr, instance) {
-                            document.getElementById('tglMulai').textContent = dateStr;
-                            document.getElementById('tglMulai').setAttribute('contenteditable', 'false');
-                        }
-                    });
-
-                    flatpickr("#tglSelesai", {
-                        dateFormat: "Y-m-d",
-                        onChange: function(selectedDates, dateStr, instance) {
-                            document.getElementById('tglSelesai').textContent = dateStr;
-                            document.getElementById('tglSelesai').setAttribute('contenteditable', 'false');
-                        }
-                    });
-
-
-                    flatpickr("#pendaftaranTutup", {
-                        dateFormat: "Y-m-d",
-                        onChange: function(selectedDates, dateStr, instance) {
-                            document.getElementById('pendaftaranTutup').textContent = dateStr;
-                            document.getElementById('pendaftaranTutup').setAttribute('contenteditable', 'false');
-                        }
-                    });
-                });
-
-
-                document.addEventListener('DOMContentLoaded', function() {
-                        flatpickr("#jamMulai", {
-                            enableTime: true,
-                            noCalendar: true,
-                            dateFormat: "H:i",
-                            time_24hr: true,
-                            onChange: function(selectedDates, dateStr, instance) {
-                                document.getElementById('jamMulai').textContent = dateStr;
-                                updateHiddenInput('jamMulaiInput', dateStr);
-                            }
-                        });
-
-                        flatpickr("#jamSelesai", {
-                            enableTime: true,
-                            noCalendar: true,
-                            dateFormat: "H:i",
-                            time_24hr: true,
-                            onChange: function(selectedDates, dateStr, instance) {
-                                document.getElementById('jamSelesai').textContent = dateStr;
-                                updateHiddenInput('jamSelesaiInput', dateStr);
-                            }
-                        });
-                    });
-
-
-                function hideDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'none';
-                }
-
-
-
-                function toggleDropdown() {
-                    document.querySelector('.dropdown').classList.toggle('dropdown-open');
-                }
-
-                function selectOption(option) {
-                    document.getElementById('dropdown-selected').innerText = option;
-                    document.getElementById('jenisRelawanInput').value = option;
-                    updateHiddenInput('jenisRelawanInput', option); // Memperbarui input hidden
-                    setTimeout(() => {
-                        document.querySelector('.dropdown').classList.remove('dropdown-open');
-                    }, 100); // Beri sedikit jeda sebelum menutup dropdown
-                }
-
-                document.addEventListener('click', function(event) {
-                    const dropdown = document.querySelector('.dropdown');
-                    const dropdownMenu = document.querySelector('.dropdown-menu');
-                    if (!dropdown.contains(event.target) && dropdownMenu.style.display === 'block') {
-                        dropdown.classList.remove('dropdown-open');
+                flatpickr("#tglMulai", {
+                    dateFormat: "Y-m-d",
+                    onChange: function(selectedDates, dateStr, instance) {
+                        document.getElementById('tglMulai').textContent = dateStr;
+                        document.getElementById('tglMulai').setAttribute('contenteditable', 'false');
                     }
                 });
+
+                flatpickr("#tglSelesai", {
+                    dateFormat: "Y-m-d",
+                    onChange: function(selectedDates, dateStr, instance) {
+                        document.getElementById('tglSelesai').textContent = dateStr;
+                        document.getElementById('tglSelesai').setAttribute('contenteditable', 'false');
+                    }
+                });
+
+                flatpickr("#pendaftaranTutup", {
+                    dateFormat: "Y-m-d",
+                    onChange: function(selectedDates, dateStr, instance) {
+                        document.getElementById('pendaftaranTutup').textContent = dateStr;
+                        document.getElementById('pendaftaranTutup').setAttribute('contenteditable', 'false');
+                    }
+                });
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+                flatpickr("#jamMulai", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    onChange: function(selectedDates, dateStr, instance) {
+                        document.getElementById('jamMulai').textContent = dateStr;
+                        updateHiddenInput('jamMulaiInput', dateStr);
+                    }
+                });
+
+                flatpickr("#jamSelesai", {
+                    enableTime: true,
+                    noCalendar: true,
+                    dateFormat: "H:i",
+                    time_24hr: true,
+                    onChange: function(selectedDates, dateStr, instance) {
+                        document.getElementById('jamSelesai').textContent = dateStr;
+                        updateHiddenInput('jamSelesaiInput', dateStr);
+                    }
+                });
+            });
+
+            function hideDonationPopup() {
+                document.getElementById('donation-popup-container').style.display = 'none';
+            }
+
+            function toggleDropdown() {
+                document.querySelector('.dropdown').classList.toggle('dropdown-open');
+            }
+
+            function selectOption(option) {
+                document.getElementById('dropdown-selected').innerText = option;
+                document.getElementById('jenisRelawanInput').value = option;
+                updateHiddenInput('jenisRelawanInput', option); // Memperbarui input hidden
+                setTimeout(() => {
+                    document.querySelector('.dropdown').classList.remove('dropdown-open');
+                }, 100); // Beri sedikit jeda sebelum menutup dropdown
+            }
+
+            document.addEventListener('click', function(event) {
+                const dropdown = document.querySelector('.dropdown');
+                const dropdownMenu = document.querySelector('.dropdown-menu');
+                if (!dropdown.contains(event.target) && dropdownMenu.style.display === 'block') {
+                    dropdown.classList.remove('dropdown-open');
+                }
+            });
 
      // Fungsi untuk menampilkan nama file yang diunggah dan mengupdate nilai input hidden dengan URL gambar
         function showFileName() {
@@ -392,16 +383,18 @@ function updateHiddenInput(inputId, value) {
 
                 // Posisi pesan dekat dengan gambar yang diklik
                 const rect = imgElement.getBoundingClientRect();
+                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 infoMessage.style.position = 'absolute';
-                infoMessage.style.left = `${rect.right + 10}px`;
-                infoMessage.style.top = `${rect.top}px`;
+                infoMessage.style.left = `${rect.right + 10 + scrollLeft}px`;
+                infoMessage.style.top = `${rect.top + scrollTop}px`;
 
                 // Tambahkan event listener untuk klik di luar pesan
                 document.addEventListener('click', function(event) {
                     if (!infoMessage.contains(event.target) && !imgElement.contains(event.target)) {
                         infoMessage.style.display = 'none';
                     }
-                });
+                }, {once: true});
             }
         }
 

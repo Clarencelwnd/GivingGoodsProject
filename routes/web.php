@@ -69,7 +69,7 @@ Route::put('/update-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::cl
 
 // ===== BUAT KEGIATAN RELAWAN =====
 Route::get('/buat-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class, 'show'])->name('buat_kegiatan_relawan.show');
-Route::post('/simpan-kegiatan-relawan', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
+Route::post('/simpan-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
 
 // ===== RIWAYAT RELAWAN =====
 Route::get('/riwayat-relawan/{id}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');

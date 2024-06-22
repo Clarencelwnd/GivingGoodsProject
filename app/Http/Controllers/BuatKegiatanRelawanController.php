@@ -16,11 +16,11 @@ class BuatKegiatanRelawanController extends Controller
             return redirect()->back()->with('error', 'Panti Sosial tidak ditemukan');
         }
 
-        return view('KegiatanRelawanPantiSosial.BuatKegiatanRelawan', compact('pantiSosial'));
+        return view('KegiatanRelawanPantiSosial.BuatKegiatanRelawan', compact('pantiSosial', 'id'));
     }
 
     // Menyimpan data kegiatan donasi ke database
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
     $validatedData = $request->validate([
             'namaKegiatan' => 'required|string|max:255|unique:kegiatan_relawan,NamaKegiatanRelawan',
@@ -72,7 +72,7 @@ class BuatKegiatanRelawanController extends Controller
                 'KontakKegiatanRelawan' => $request->kontakSpesifik,
             ]);
 
-            return redirect()->route('buat_kegiatan_relawan.show')->with('success', 'Kegiatan relawan berhasil dibuat.');
+            return redirect()->route('buat_kegiatan_relawan.show', compact('id'))->with('success', 'Kegiatan relawan berhasil dibuat.');
             } else {
                 return redirect()->back()->withErrors($validatedData)->withInput();
             }
