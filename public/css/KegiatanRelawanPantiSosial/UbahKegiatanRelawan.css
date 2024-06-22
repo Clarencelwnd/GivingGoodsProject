@@ -108,6 +108,10 @@
     width: 68%;
 }
 
+.custom-input{
+    background-color: #f0f0f0;
+}
+
 .detail-info-tanggal {
     background-color: #D9D9D9;
     color: #444444;

@@ -53,8 +53,30 @@
                     <div class="detail-label">Jenis Donasi
                         <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                     </div>
-                    <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('jenisDonasiInput', this.innerText)">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
-                    <input type="hidden" name="jenisDonasi" style="background-color:#f0f0f0" #f0f0f0; id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}">
+                    {{-- <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('jenisDonasiInput', this.innerText)">{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}</div>
+                    <input type="hidden" name="jenisDonasi" style="background-color:#f0f0f0" #f0f0f0; id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}"> --}}
+
+                    <div class="detail-info-jenis d-flex justify-content-start">
+                        <div class="donation-options">
+                            @php
+                                $allDonasiTypes = [
+                                    'pakaian', 'makanan', 'obat', 'buku', 'keperluan_ibadah',
+                                    'mainan', 'keperluan_mandi', 'keperluan_rumah', 'alat_tulis', 'sepatu'
+                                ];
+                                $jenisDonasiArray = explode(',', $kegiatanDonasi->JenisDonasiDibutuhkan);
+                            @endphp
+                            @foreach($allDonasiTypes as $jenisDonasi)
+                                @php
+                                    $namaFile = 'Image/donasi/' . strtolower(trim($jenisDonasi)) . '.png';
+                                    $selected = in_array($jenisDonasi, $jenisDonasiArray);
+                                @endphp
+                                <div class="donation-icon-wrapper {{ $selected ? 'selected' : '' }}" onclick="toggleDonasi(this, '{{ $jenisDonasi }}')">
+                                    <img src="{{ asset($namaFile) }}" alt="{{ $jenisDonasi }}" height="20px">
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ $kegiatanDonasi->JenisDonasiDibutuhkan }}">
                 </div>
 
                 <div class="detail-row">
@@ -82,7 +104,7 @@
                 </div>
 
                 <div class="button-container">
-                    <a href="{{ route('kegiatan-relawan.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}" class="cancel-btn">
+                    <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}" class="cancel-btn">
                         Batal
                     </a>
                     <button class="save-btn" type="button" onclick="tampilkanPopup()">Simpan Perubahan</button>
@@ -153,6 +175,18 @@
                 }
             });
         });
+
+    function toggleDonasi(element, jenisDonasi) {
+        element.classList.toggle('selected');
+        const jenisDonasiInput = document.getElementById('jenisDonasiInput');
+        let currentJenis = jenisDonasiInput.value.split(',').filter(Boolean);
+        if (currentJenis.includes(jenisDonasi)) {
+            currentJenis = currentJenis.filter(item => item !== jenisDonasi);
+        } else {
+            currentJenis.push(jenisDonasi);
+        }
+        jenisDonasiInput.value = currentJenis.join(',');
+    }
 
     function updateHiddenInput(inputId, text) {
         document.getElementById(inputId).value = text;

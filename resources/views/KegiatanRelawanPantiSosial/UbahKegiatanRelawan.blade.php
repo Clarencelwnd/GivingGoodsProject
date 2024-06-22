@@ -75,7 +75,7 @@
                     <div class="detail-time">
                         <div class="detail-info-tanggal" id="jamMulai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('jamMulaiInput', this.innerText)">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}</div>
                         <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" >
-                        <div class="detail-info-tanggal" id="jamSelesai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('jamSelesaiInput', this.innerText)">{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan  }}</div>
+                        <div class="detail-info-tanggal" id="jamSelesai" contenteditable="true"  oninput="updateHiddenInput('jamSelesaiInput', this.innerText)">{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan  }}</div>
                         <input type="hidden" name="jamMulai" id="jamMulaiInput" value="{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}">
                         <input type="hidden" name="jamSelesai" id="jamSelesaiInput" value="{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}">
                     </div>
