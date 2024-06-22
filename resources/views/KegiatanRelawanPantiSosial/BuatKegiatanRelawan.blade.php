@@ -78,7 +78,7 @@
                     <div class="detail-label">Jenis Relawan</div>
                     <div class="detail-input-container">
                         <div class="detail-info">
-                            <div class="dropdown" onclick="toggleDropdown()">
+                            <div class="dropdownjenisrelawan" onclick="toggleDropdown()">
                                 <div class="dropdown-select">
                                     <span id="dropdown-selected">{{ old('jenisRelawan', '') }}</span>
                                     <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
@@ -272,7 +272,7 @@
     <div id="popup-container" style="display: none;">
         <div id="popup">
             <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Kegiatan Berhasil Dibuat</h3>
-            <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
+            <img src="{{ asset('Image/general/success.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
         </div>
     </div>
 
@@ -336,7 +336,9 @@
             }
 
             function toggleDropdown() {
-                document.querySelector('.dropdown').classList.toggle('dropdown-open');
+                const dropdown = document.querySelector('.dropdownjenisrelawan');
+                dropdown.classList.toggle('dropdown-open');
+                // document.querySelector('.dropdown').classList.toggle('dropdown-open');
             }
 
             function selectOption(option) {
