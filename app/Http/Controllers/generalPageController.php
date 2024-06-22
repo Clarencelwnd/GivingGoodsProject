@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\KegiatanDonasi;
 use App\Models\KegiatanRelawan;
 use App\Models\PantiSosial;
+use App\Models\RegistrasiDonatur;
+use App\Models\RegistrasiRelawan;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -72,6 +74,8 @@ class generalPageController extends Controller
                     'image' => $FotoDonasi[$jenis],
                 ];
             }, $donasiItems));
+
+
         }
         foreach ($kegiatanRelawan as $relawan) {
             $partitionTanggalRelawanMulai = explode('-', $relawan->TanggalKegiatanRelawanMulai);
@@ -95,6 +99,21 @@ class generalPageController extends Controller
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
 
+        foreach ($sorted as $kegiatan) {
+
+            if ($kegiatan instanceof KegiatanRelawan) {
+                $count = RegistrasiRelawan::where('IDKegiatanRelawan', $kegiatan->IDKegiatanRelawan)
+                    ->where('StatusRegistrasiRelawan', 'Menunggu Konfirmasi')
+                    ->count();
+            } else {
+                $count = RegistrasiDonatur::where('IDKegiatanDonasi', $kegiatan->IDKegiatanDonasi)
+                    ->where('StatusRegistrasiDonatur', 'Menunggu Konfirmasi')
+                    ->count();
+            }
+
+            $kegiatan->setAttribute('count', $count);
+        }
+
         $paginator = new LengthAwarePaginator(
             $sorted->forPage($currentPage, $perPage),
             $sorted->count(),
@@ -106,15 +125,63 @@ class generalPageController extends Controller
         return view('GeneralPagePantiSosial.generalPage', ['activities'=> $paginator, 'id'=>$id]);
     }
 
-    public function displayDummyProfilePage(){
-        return view('dummyPages.dummyProfilePage');
-    }
-
     public function viewAllKegiatanDonasi($id){
         $kegiatanDonasi = KegiatanDonasi::withCount('registrasiDonatur')
             ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
+
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
+        $FotoDonasi = [
+            'pakaian' => 'Image/donasi/pakaian.png',
+            'sepatu' => 'Image/donasi/sepatu.png',
+            'mainan' => 'Image/donasi/mainan.png',
+            'keperluan_ibadah' => 'Image/donasi/keperluan_ibadah.png',
+            'buku' => 'Image/donasi/buku.png',
+            'makanan' => 'Image/donasi/makanan.png',
+            'obat' => 'Image/donasi/obat.png',
+            'keperluan_mandi' => 'Image/donasi/keperluan_mandi.png',
+            'keperluan_rumah' => 'Image/donasi/keperluan_rumah.png',
+            'alat_tulis' => 'Image/donasi/alat_tulis.png'
+        ];
+        foreach ($kegiatanDonasi as $donasi) {
+            $partitionTanggalDonasiMulai = explode('-', $donasi->TanggalKegiatanDonasiMulai);
+            $partitionTanggalDonasiSelesai = explode('-', $donasi->TanggalKegiatanDonasiSelesai);
+            $donasi->setAttribute('TanggalDonasi', $partitionTanggalDonasiMulai[2] . ' ' . $bulan[$partitionTanggalDonasiMulai[1]] . ' ' . $partitionTanggalDonasiMulai[0] .
+            ' - ' . $partitionTanggalDonasiSelesai[2] . ' ' . $bulan[$partitionTanggalDonasiSelesai[1]] . ' ' . $partitionTanggalDonasiMulai[0]);
+
+            $partitionTanggalDanJamBuatDonasi = explode(' ', $donasi->created_at);
+            $partitionTanggalBuatDonasi = explode('-', $partitionTanggalDanJamBuatDonasi[0]);
+            $donasi->setAttribute('TanggalDanJamBuatDonasi', $partitionTanggalBuatDonasi[2] . ' ' . $bulan[$partitionTanggalBuatDonasi[1]] . ' ' . $partitionTanggalBuatDonasi[0] .
+            ' (' . $partitionTanggalDanJamBuatDonasi[1] . ')');
+
+            $donasiItems = explode(',', $donasi->JenisDonasiDibutuhkan);
+            $donasi->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
+                return[
+                    'jenis' => $jenis,
+                    'image' => $FotoDonasi[$jenis],
+                ];
+            }, $donasiItems));
+
+            $count = RegistrasiDonatur::where('IDKegiatanDonasi', $donasi->IDKegiatanDonasi)
+                    ->where('StatusRegistrasiDonatur', 'Menunggu Konfirmasi')
+                    ->count();
+            $donasi->setAttribute('count', $count);
+        }
+
         return view('KegiatanDonasiPantiSosial.kegiatanDonasiPage', compact('kegiatanDonasi', 'id'));
     }
 
@@ -123,7 +190,42 @@ class generalPageController extends Controller
             ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-            // dd($id);
+
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
+
+        foreach ($kegiatanRelawan as $relawan) {
+            $partitionTanggalRelawanMulai = explode('-', $relawan->TanggalKegiatanRelawanMulai);
+            $partitionTanggalRelawanSelesai = explode('-', $relawan->TanggalKegiatanRelawanSelesai);
+            $relawan->setAttribute('TanggalRelawan', $partitionTanggalRelawanMulai[2] . ' ' . $bulan[$partitionTanggalRelawanMulai[1]] . ' ' . $partitionTanggalRelawanMulai[0] .
+            ' - ' . $partitionTanggalRelawanSelesai[2] . ' ' . $bulan[$partitionTanggalRelawanSelesai[1]] . ' ' . $partitionTanggalRelawanMulai[0]);
+
+            $partitionTanggalDanJamBuatRelawan = explode(' ', $relawan->created_at);
+            $partitionTanggalBuatRelawan = explode('-', $partitionTanggalDanJamBuatRelawan[0]);
+            $relawan->setAttribute('TanggalDanJamBuatRelawan', $partitionTanggalBuatRelawan[2] . ' ' . $bulan[$partitionTanggalBuatRelawan[1]] . ' ' . $partitionTanggalBuatRelawan[0] .
+            ' (' .  $partitionTanggalDanJamBuatRelawan[1] . ')');
+
+            $partitionTanggalTutupRelawan = explode('-', $relawan->TanggalPendaftaranKegiatanDitutup);
+            $relawan->setAttribute('TanggalTutupRelawan', $partitionTanggalTutupRelawan[2] . ' ' . $bulan[$partitionTanggalTutupRelawan[1]] . ' ' . $partitionTanggalTutupRelawan[0]);
+
+            $count = RegistrasiRelawan::where('IDKegiatanRelawan', $relawan->IDKegiatanRelawan)
+                    ->where('StatusRegistrasiRelawan', 'Menunggu Konfirmasi')
+                    ->count();
+            $relawan->setAttribute('count', $count);
+        }
+
         return view('KegiatanRelawanPantiSosial.kegiatanRelawanPage', compact('kegiatanRelawan', 'id'));
     }
 

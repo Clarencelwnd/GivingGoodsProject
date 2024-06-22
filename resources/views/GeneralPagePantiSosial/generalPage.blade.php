@@ -101,15 +101,6 @@
                 $badgeClass = 'badge-selesai';
             }
 
-            //Count of registrations for each activity
-            $registrationsCount = $activity instanceof App\Models\KegiatanRelawan ?
-                $activity->registrasiRelawan->count() :
-                $activity->registrasiDonatur->count();
-
-            // Determine the detail page route
-            $detailPageRoute = $activity instanceof App\Models\KegiatanRelawan ?
-                route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) :
-                route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]);
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="{{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donasi' }}">
@@ -121,8 +112,8 @@
                 @endif
                 <div class="card-body">
                     <div>
-                        @if ($registrationsCount > 0)
-                            <p class="konfirmasi-alert">Mohon Konfirmasi {{ $registrationsCount }} Calon {{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donatur' }} yang Sudah Mendaftar</p>
+                        @if ($activity->count > 0)
+                            <p class="konfirmasi-alert">Mohon Konfirmasi {{ $activity->count }} Calon {{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donatur' }} yang Sudah Mendaftar</p>
                         @endif
 
                         <div class="card-top-info">

@@ -9,16 +9,23 @@
 @endsection
 
 @section('content')
+
+@php
+    $PantiSosial = \App\Models\PantiSosial::find($id);
+@endphp
+
 {{-- INFORMATION BUTTON --}}
-<div class="container information-button">
-    <div class="overlay" id="overlay"></div>
-    <div class="row justify-content-center">
-        <div class="alert alert-light text-center" role="alert" onclick="window.location.href='{{ route('profile.panti_sosial', ['id'=>$id]) }}'">
-            <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
-            <p>Lengkapi profil panti sosial untuk memberikan informasi yang lebih baik kepada calon donatur/relawan.</p>
+@if (!$PantiSosial->LinkGoogleMapsPantiSosial)
+    <div class="container information-button">
+        <div class="overlay" id="overlay"></div>
+        <div class="row justify-content-center">
+            <div class="alert alert-light text-center" role="alert" onclick="window.location.href='{{ route('profile.panti_sosial', ['id'=>$id]) }}'">
+                <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
+                <p>Lengkapi profil panti sosial untuk memberikan informasi yang lebih baik kepada calon donatur/relawan.</p>
+            </div>
         </div>
     </div>
-</div>
+@endif
 
 {{-- SEARCH BAR --}}
 <form action="{{ route('search', ['id' => $id]) }}" method="GET">
@@ -32,30 +39,22 @@
 
 {{-- OPTIONS --}}
 <div class="kegiatan-nav">
-    <ul class="nav justify-content-start">
-        <div class="nav-items">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('viewAllKegiatan', ['id' => $id]) }}">All</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link active" href="{{ route('viewAllKegiatanRelawan', ['id' => $id]) }}">Kegiatan Relawan</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="{{ route('viewAllKegiatanDonasi', ['id' => $id]) }}">Kegiatan Donasi</a>
-                </li>
+    <div class="row align-items-center" style="padding: 0;">
+        <div class="col-auto nav">
+            <a class="nav-link btn" href="{{ route('viewAllKegiatan', ['id'=>$id]) }}" style="text-decoration: none;">Semua</a>
+            <a class="nav-link btn active" href="{{ route('viewAllKegiatanRelawan', ['id' => $id]) }}" style="text-decoration: none;">Relawan</a>
+            <a class="nav-link btn" href="{{ route('viewAllKegiatanDonasi', ['id' => $id]) }}" style="text-decoration: none;">Donasi</a>
         </div>
-
-        <div class="dropdown-buatKegiatan">
-            <button class="btn btn-primary" type="button" style="margin-left: 23rem" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <div class="col-auto ms-auto">
+            <button class="btn btn-primary btn-buatKegiatan" style="margin-left: 23rem" type="button" id="buatKegiatanDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                 Buat Kegiatan
             </button>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="buatKegiatanDropdown">
                 <li><a class="dropdown-item" href="{{ route('buat_kegiatan_relawan.show', ['id' => $id]) }}">Buat Kegiatan Relawan</a></li>
                 <li><a class="dropdown-item" href="{{ route('buat_kegiatan_donasi.show', ['id' => $id]) }}">Buat Kegiatan Donasi</a></li>
-
             </ul>
         </div>
-    </ul>
+    </div>
 </div>
 
 {{-- FILTER --}}
@@ -81,9 +80,9 @@
     @foreach ($kegiatanRelawan as $activity)
         @php
             $status = '';
-            $startDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai);
-            $endDate = \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai);
-            $today = \Carbon\Carbon::today();
+            $startDate = $activity->TanggalKegiatanRelawanMulai;
+            $endDate = $activity->TanggalKegiatanRelawanSelesai;
+            $today = today();
 
             if ($today->lessThan($startDate)) {
                 $status = 'Akan Datang';
@@ -101,20 +100,26 @@
             } else {
                 $badgeClass = 'badge-selesai';
             }
+
+            //Count of registrations for each activity
+            $registrationsCount = $activity instanceof App\Models\KegiatanRelawan ?
+                $activity->registrasiRelawan->count() :
+                $activity->registrasiDonatur->count();
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="Relawan">
-            <div class="card-body">
-                <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+            <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+                <div class="card-body">
                     <div>
-                        <p class="konfirmasi-alert">Mohon Konfirmasi 2 Calon Relawan yang Sudah Mendaftar</p>
-
+                        @if ($activity->count > 0)
+                            <p class="konfirmasi-alert">Mohon Konfirmasi {{ $activity->count }} Calon Relawan yang Sudah Mendaftar</p>
+                        @endif
                         <div class="card-top-info">
                             <div class="badge-container">
                                 <span id="badge" class="badge {{ $badgeClass }} rounded-pill">{{ $status }}</span>
                             </div>
 
-                            <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ \Carbon\Carbon::parse($activity->TanggalPendaftaranKegiatanDitutup)->format('d M Y') }}</h6>
+                            <h6 class="card-title" id="pendaftaranTutup">Pendaftaran ditutup: {{ $activity->TanggalTutupRelawan }}</h6>
                         </div>
                     </div>
 
@@ -122,18 +127,28 @@
 
                     <div class="card-info">
                         <div class="card-details">
-                            <p class="card-text">Tanggal kegiatan: {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanMulai)->format('d M Y') }} - {{ \Carbon\Carbon::parse($activity->TanggalKegiatanRelawanSelesai)->format('d M Y') }}</p>
+                            <p class="card-text">Tanggal kegiatan: {{ $activity->TanggalRelawan }}</p>
                             <p class="card-text">Lokasi kegiatan: {{ $activity->LokasiKegiatanRelawan }}</p>
-                            <p class="card-text">Jenis Relawan: {{ $activity->JenisKegiatanRelawan }}</p>
-                            <p class="card-text">Tanggal kegiatan dibuat: {{ \Carbon\Carbon::parse($activity->created_at)->format('d M Y H:i:s') }}</p>
+                            <p class="card-text">Jenis Relawan:
+                                @if ($activity->JenisKegiatanRelawan == "Bencana_Alam")
+                                    Bencana Alam
+                                @elseif ($activity->JenisKegiatanRelawan == "Darurat_Bencana")
+                                    Darurat Bencana
+                                @elseif ($activity->JenisKegiatanRelawan == "Seni_Budaya")
+                                    Seni Budaya
+                                @else
+                                    {{ $activity->JenisKegiatanRelawan }}
+                                @endif
+                            </p>
+                            <p class="card-text">Tanggal kegiatan dibuat: {{ $activity->TanggalDanJamBuatRelawan }}</p>
                         </div>
 
                         <div class="jumlahDonaturRelawan">
                             <p class="card-text">Relawan: {{ $activity->registrasi_relawan_count . '/' . $activity->JumlahRelawanDibutuhkan }}</p>
                         </div>
                     </div>
-                </a>
-            </div>
+                </div>
+            </a>
         </div>
     @endforeach
 @endsection
