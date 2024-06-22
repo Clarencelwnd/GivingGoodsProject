@@ -12,7 +12,7 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $kegiatanRelawan->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
                 <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
@@ -40,7 +40,7 @@
                 <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                 <div class="detail-dates">
                     <div class="detail-info-tanggal">{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }}</div>
-                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                    <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="10px">
                     <div class="detail-info-tanggal">{{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai }}</div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <div class="detail-label">Jam Kegiatan</div>
                 <div class="detail-time">
                     <div class="detail-info-tanggal">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}</div>
-                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                    <img src="{{ asset('image/general/line.png') }}" alt="Back" width="10px">
                     <div class="detail-info-tanggal">{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan  }}</div>
                 </div>
             </div>
@@ -80,10 +80,10 @@
         </div>
 
         <div class="donor-history">
-            <h2>Riwayat Relawan</h2>
+            <h2 id="judul-riwayat-relawan">Riwayat Relawan</h2>
             <a href="{{ route('riwayat-relawan.index', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
                 <button class="view-history-btn">Lihat Riwayat Relawan</button>
-                </a>
+            </a>
         </div>
     </div>
 

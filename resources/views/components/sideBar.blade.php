@@ -10,7 +10,6 @@
 </head>
 <body>
     <div id="mySidebar" class="sidebar">
-        {{-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a> --}}
         <a href="{{ route('viewAllKegiatan', ['id' => $id]) }}">Kegiatan</a>
         <a href="{{ route('displayDaftarForum', ['id' => $id]) }}">Forum</a>
         <a href="{{ route('faq', ['id' => $id]) }}">FAQ</a>

@@ -7,6 +7,7 @@
     <script src="{{ asset('js/generalPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/KegiatanDonasiPantiSosial/BuatKegiatanDonasi.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endsection
 
 @section('content')
@@ -102,9 +103,9 @@
                                 <img src="{{ asset('image/donasi/makanan.png') }}" alt="makanan" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/obat.png') }}" alt="obat" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/buku.png') }}" alt="buku" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="perlengkapan_ibadah" onclick="selectDonationOption(this)">
+                                <img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="perlengkapan_ibadah" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/mainan.png') }}" alt="mainan" onclick="selectDonationOption(this)">
-                                <img src="{{ asset('image/donasi/toiletries.png') }}" alt="toiletries" onclick="selectDonationOption(this)">
+                                <img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="toiletries" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="keperluan_rumah" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="alat_tulis" onclick="selectDonationOption(this)">
                                 <img src="{{ asset('image/donasi/sepatu.png') }}" alt="sepatu" onclick="selectDonationOption(this)">
@@ -228,12 +229,12 @@
                     <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/perlengkapan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
                 </div>
                 <div class="popup-column">
                     <!-- Right Column Items -->
                     <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
@@ -242,95 +243,89 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        flatpickr("#tglMulai", {
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr, instance) {
+                document.getElementById('tglMulai').textContent = dateStr;
+                document.getElementById('tglMulai').setAttribute('contenteditable', 'false');
+            }
+        });
 
-        <script>
+        flatpickr("#tglSelesai", {
+            dateFormat: "Y-m-d",
+            onChange: function(selectedDates, dateStr, instance) {
+                document.getElementById('tglSelesai').textContent = dateStr;
+                document.getElementById('tglSelesai').setAttribute('contenteditable', 'false');
+            }
+        });
+    });
 
-        document.addEventListener('DOMContentLoaded', function() {
-                    flatpickr("#tglMulai", {
-                        dateFormat: "Y-m-d",
-                        onChange: function(selectedDates, dateStr, instance) {
-                            document.getElementById('tglMulai').textContent = dateStr;
-                            document.getElementById('tglMulai').setAttribute('contenteditable', 'false');
-                        }
-                    });
+    function showDonationPopup() {
+        document.getElementById('donation-popup-container').style.display = 'flex';
+    }
 
-                    flatpickr("#tglSelesai", {
-                        dateFormat: "Y-m-d",
-                        onChange: function(selectedDates, dateStr, instance) {
-                            document.getElementById('tglSelesai').textContent = dateStr;
-                            document.getElementById('tglSelesai').setAttribute('contenteditable', 'false');
-                        }
-                    });
-                });
+    function hideDonationPopup() {
+        document.getElementById('donation-popup-container').style.display = 'none';
+    }
 
+    function toggleDropdown() {
+        document.querySelector('.dropdown').classList.toggle('dropdown-open');
+    }
 
-                function showDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'flex';
-                }
+    function selectOption(option) {
+        document.getElementById('dropdown-selected').innerText = option;
+        document.getElementById('jasaAmbilBarangInput').value = option;
+        updateHiddenInput('jasaAmbilBarangInput', option); // Memperbarui input hidden
+        setTimeout(() => {
+            document.querySelector('.dropdown').classList.remove('dropdown-open');
+        }, 100); // Beri sedikit jeda sebelum menutup dropdown
+    }
 
-                function hideDonationPopup() {
-                    document.getElementById('donation-popup-container').style.display = 'none';
-                }
-
-
-
-                function toggleDropdown() {
-                    document.querySelector('.dropdown').classList.toggle('dropdown-open');
-                }
-
-                function selectOption(option) {
-                    document.getElementById('dropdown-selected').innerText = option;
-                    document.getElementById('jasaAmbilBarangInput').value = option;
-                    updateHiddenInput('jasaAmbilBarangInput', option); // Memperbarui input hidden
-                    setTimeout(() => {
-                        document.querySelector('.dropdown').classList.remove('dropdown-open');
-                    }, 100); // Beri sedikit jeda sebelum menutup dropdown
-                }
-
-                document.addEventListener('click', function(event) {
-                    const dropdown = document.querySelector('.dropdown');
-                    const dropdownMenu = document.querySelector('.dropdown-menu');
-                    if (!dropdown.contains(event.target) && dropdownMenu.style.display === 'block') {
-                        dropdown.classList.remove('dropdown-open');
-                    }
-                });
-
-
-
-function updateHiddenInput(inputId, value) {
-            document.getElementById(inputId).value = value;
+    document.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.dropdown');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        if (!dropdown.contains(event.target) && dropdownMenu.style.display === 'block') {
+            dropdown.classList.remove('dropdown-open');
         }
+    });
+
+
+
+    function updateHiddenInput(inputId, value) {
+        document.getElementById(inputId).value = value;
+    }
 
      // Fungsi untuk menampilkan nama file yang diunggah dan mengupdate nilai input hidden dengan URL gambar
-        function showFileName() {
-            const input = document.getElementById('fotoKegiatanUpload');
-            const fileName = document.getElementById('fileName');
-            const file = input.files[0];
-            fileName.textContent = file.name;
+    function showFileName() {
+        const input = document.getElementById('fotoKegiatanUpload');
+        const fileName = document.getElementById('fileName');
+        const file = input.files[0];
+        fileName.textContent = file.name;
 
-            // Menggunakan URL.createObjectURL() untuk mendapatkan URL gambar dari file yang diunggah
-            const imageURL = URL.createObjectURL(file);
+        // Menggunakan URL.createObjectURL() untuk mendapatkan URL gambar dari file yang diunggah
+        const imageURL = URL.createObjectURL(file);
 
-            // Memperbarui nilai input hidden dengan URL gambar
-            updateHiddenInput('urlFotoKegiatanInput', imageURL);
+        // Memperbarui nilai input hidden dengan URL gambar
+        updateHiddenInput('urlFotoKegiatanInput', imageURL);
+    }
+
+    function selectDonationOption(selectedImg) {
+        const jenisDonasiInput = document.getElementById('jenisDonasiInput');
+        let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
+
+        if (selectedImg.classList.contains('selected')) {
+            selectedImg.classList.remove('selected');
+            selectedValues = selectedValues.filter(value => value !== selectedImg.alt);
+        } else {
+            selectedImg.classList.add('selected');
+            selectedValues.push(selectedImg.alt);
         }
 
-        function selectDonationOption(selectedImg) {
-            const jenisDonasiInput = document.getElementById('jenisDonasiInput');
-            let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
-
-            if (selectedImg.classList.contains('selected')) {
-                selectedImg.classList.remove('selected');
-                selectedValues = selectedValues.filter(value => value !== selectedImg.alt);
-            } else {
-                selectedImg.classList.add('selected');
-                selectedValues.push(selectedImg.alt);
-            }
-
-            jenisDonasiInput.value = selectedValues.join(',');
-            updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
-        }
+        jenisDonasiInput.value = selectedValues.join(',');
+        updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
+    }
         </script>
 @endsection
 

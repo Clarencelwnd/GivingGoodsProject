@@ -60,8 +60,6 @@ class DetailKegiatanDonasiController extends Controller
     return redirect()->route('kegiatan-donasi.show', ['id' => $id])->with('success', 'Perubahan berhasil disimpan');
 }
 
-
-
     public function destroy($id)
     {
         $kegiatanDonasi = KegiatanDonasi::findOrFail($id);
