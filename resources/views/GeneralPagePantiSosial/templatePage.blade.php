@@ -11,7 +11,7 @@
 
     <title>@yield('title')</title>
     @section('stylesheets')
-        <link rel="stylesheet" href="{{ asset('css/templatePage.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/templatePage.css') }}">
     @show
 
     <script src="{{ asset('js/templatePage.js') }}"></script>

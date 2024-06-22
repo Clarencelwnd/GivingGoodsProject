@@ -1,4 +1,4 @@
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 @section('title', 'Frequently Asked Questions')
 
 @section('stylesheets')
