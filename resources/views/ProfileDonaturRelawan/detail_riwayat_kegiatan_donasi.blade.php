@@ -4,14 +4,12 @@
 
 @section('stylesheets')
     @parent
-    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
     <link rel="stylesheet" href="{{asset('css/DetailKegiatanDonasi/detail_riwayat_kegiatan_donasi.css')}}">
 @endsection
 
 @section('content')
     <div class="card container justify-content-center">
-        <div class="card-header">
-            <p class="position">Profil > Riwayat Kegiatan > {{$detailRegistrasiDonatur->kegiatanDonasi->NamaKegiatanDonasi}}</p>
+        <div class="card-header" style="background-color: transparent; border-bottom: none;">
             <div class="row card-title">
                 <div class="col row">
                     <div class="col-auto back-column">

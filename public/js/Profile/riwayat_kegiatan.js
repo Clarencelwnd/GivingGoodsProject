@@ -45,14 +45,14 @@ function updateSubFilters(filterType) {
     let subFilterOptions = '';
     if (filterType === 'donasi') {
         subFilterOptions = `
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="sedang_diproses" class="col-auto btn btn-sub-filter" id="btn-sedang-diproses">Sedang Diproses</button>
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="donasi_diterima" class="col-auto btn btn-sub-filter" id="btn-donasi-diterima">Donasi Diterima</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="Menunggu_Konfirmasi" class="col-auto btn btn-sub-filter" id="btn-sedang-diproses">Sedang Diproses</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="Konfirmasi_Diterima" class="col-auto btn btn-sub-filter" id="btn-donasi-diterima">Donasi Diterima</button>
         `;
     } else if (filterType === 'relawan') {
         subFilterOptions = `
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="menunggu_konfirmasi" class="col-auto btn btn-sub-filter" id="btn-menunggu-konfirmasi">Menunggu Konfirmasi</button>
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="relawan_diterima" class="col-auto btn btn-sub-filter" id="btn-relawan-diterima">Relawan Diterima</button>
-            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="relawan_ditolak" class="col-auto btn btn-sub-filter" id="btn-relawan-ditolak">Relawan Ditolak</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="Menunggu_Konfirmasi" class="col-auto btn btn-sub-filter" id="btn-menunggu-konfirmasi">Menunggu Konfirmasi</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="Terima" class="col-auto btn btn-sub-filter" id="btn-relawan-diterima">Relawan Diterima</button>
+            <button type="button" onclick="updateSubFilter(this)" data-filter="${filterType}" data-sub-filter="Tolak" class="col-auto btn btn-sub-filter" id="btn-relawan-ditolak">Relawan Ditolak</button>
         `;
     }
     subFilterContainer.innerHTML = subFilterOptions;
