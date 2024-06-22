@@ -2,6 +2,14 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
+/* .container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+} */
+
 .btn{
     border-radius:5px;
     font-size: 13px;
@@ -13,27 +21,22 @@
 
 /* LEFT SIDE  */
 .left{
-    padding: 20px;
-    margin-right: 10px;
-    overflow: hidden;
-    height: 100vh;
+    margin-right: 25px;
+    margin-bottom: 30px;
 }
 
 .left-title{
     color: #006374;
     margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 600;
 }
 
 .profile-pict{
-    display: block;
-    margin: 0 auto 20px;
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    margin-bottom: 25px;
+    object-fit: cover;
+    margin-bottom: 50px;
+    display: block;
 }
 
 #btn-choose-photo, #btn-change-password{
@@ -51,23 +54,7 @@
     pointer-events: none;
 }
 
-/* RIGHT SIDE  */
-.right{
-    height: 100vh;
-    padding: 20px;
-    margin-left: 50px;
-    padding-top: 100px;
-    overflow-y: auto;
-}
-
 /* RIGHT SIDE MAIN TABLE  */
-
-.scrollable-content {
-    max-height: 500px; /* Adjust as needed */
-    overflow-y: auto;
-    padding-right: 15px; /* Adjust for scrollbar width */
-    /* Additional styling as needed */
-}
 
 .main-table{
     width: 100%;
@@ -83,6 +70,7 @@ tr{
 
 .small-text{
     font-size: xx-small;
+    padding-top: 0px;
     padding-bottom: 20px;
     padding-left: 10px;
 }
@@ -92,6 +80,12 @@ tr{
     width: 100%;
     height: 40%;
     padding-left: 10px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.small-text-above textarea{
+    resize: none;
 }
 
 .form-control{
@@ -175,7 +169,7 @@ input[readonly]{
 }
 
 #button-style{
-    margin-top: 50px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -184,10 +178,6 @@ input[readonly]{
     color: #FDFFFE;
     width: 30%;
 
-}
-
-#btn-save{
-    margin-left: 20px;
 }
 
 #btn-save:hover, #btn-save-schedule:hover{
@@ -199,7 +189,7 @@ input[readonly]{
 #btn-back{
     color: #007C92;
     border: 1px solid #007C92;
-    width: 15%;
+    width: 10%;
 }
 
 #btn-back:hover{
@@ -254,37 +244,4 @@ th{
 
 .modal-body{
     word-wrap: break-word;
-}
-
-/* RESPONSIVE  */
-
-@media only screen and (min-width: 768px) {
-    .container {
-        max-width: 960px;
-        margin: 0 auto;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-    .container {
-        max-width: 720px;
-        margin: 0 auto;
-    }
-
-    .profile-pict{
-        max-width: 100%;
-        max-height: 20%;
-    }
-}
-
-@media only screen and (max-width: 575px) {
-    .container {
-        max-width: 480px;
-        margin: 0 auto;
-    }
-
-    .profile-pict{
-        max-width: 35%;
-        max-height: 35%;
-    }
 }

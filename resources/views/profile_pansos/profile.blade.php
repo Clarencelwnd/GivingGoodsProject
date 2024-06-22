@@ -1,85 +1,88 @@
 @extends('GeneralPagePantiSosial.templatePage')
+
 @section('title', 'Profil Panti Sosial')
 
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{asset('css/Profile/profile.css')}}">
+    <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
 
 @section('content')
-    {{-- <div class="container-fluid"> --}}
-        <div class="row">
-            <div class="left col-md-3">
+    <div class="container" style="display: flex; justify-content: center; width: 100%; padding: 0; margin: 0;">
+        {{-- <div class="row"> --}}
+            <div class="left col-sm-2">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
-                <img class="profile-pict text-center img-fluid" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
+                <img class="profile-pict" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
                 <form id="photo" action="{{route('edit_photo_logic.panti_sosial', ['id'=>$id])}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="LogoPantiSosial" id="input_photo" class="file-choose-photo" onchange="document.getElementById('photo').submit()">
+                    <input type="file" name="LogoPantiSosial" id="input_photo" class="file-choose-photo  @error('LogoPantiSosial') is-invalid @enderror" onchange="document.getElementById('photo').submit()">
                     @error('LogoPantiSosial')
                         <label class="error-msg invalid-feedback fw-normal lh-1">
                             {{$message}}
                         </label>
                     @enderror
-                    <button type="button" for="LogoPantiSosial" class="btn btn-block @error('LogoPantiSosial') is-invalid @enderror" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
+                    <button type="button" for="LogoPantiSosial" class="btn btn-block" id="btn-choose-photo" onclick="document.getElementById('input_photo').click();">Pilih Foto</button>
                 </form>
                 <a href="{{route('change_password.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
                 <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-block" id="btn-logout">Keluar Akun</a>
             </div>
 
-            <div class="right col-md-8">
+            <div class="right col-sm-9">
                 @if (!$detailPansos->LinkGoogleMapsPantiSosial)
-                    <div class="row">
+                    <div class="row" style="margin-left: 50px;">
                         <div class="alert alert-light" role="alert">
                             <img id="information-icon" src="{{ asset('Image/general/information.png') }}" alt="information">
                             <p>Lengkapi profil panti sosial untuk memberikan informasi yang lebih baik kepada calon donatur/relawan.</p>
                         </div>
                     </div>
+                    <div class="row container-profile" style="margin-left: 50px;">
+                @else
+                    <div class="row container-profile" style="margin-left: 50px; margin-top:50px;">
                 @endif
-
-                <div class="row container-profile" style="margin-left: 50px; overflow:hidden" >
                     <a href="{{route('edit_profile.panti_sosial', ['id'=>$id])}}" class="btn btn-block" id="btn-edit">Ubah Biodata</a>
                     <table class="main-table">
                         <tr>
-                            <td class="left-column-mt col-lg-4">Nama Panti Sosial</td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->NamaPantiSosial}}</td>
+                            <td class="left-column-mt col-lg-3">Nama Panti Sosial</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->NamaPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Nomor Registrasi</td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->NomorRegistrasiPantiSosial}}</td>
+                            <td class="left-column-mt col-lg-3">Nomor Registrasi</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->NomorRegistrasiPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Deskripsi</td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->DeskripsiPantiSosial}}</td>
+                            <td class="left-column-mt col-lg-3">Deskripsi</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->DeskripsiPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Email</td>
-                            <td class="right-column-mt col-lg-5"> {{$userPansos->email}}</td>
+                            <td class="left-column-mt col-lg-3">Email</td>
+                            <td class="right-column-mt col-lg-6"> {{$userPansos->email}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Nomor HP</td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->NomorTeleponPantiSosial}}</td>
+                            <td class="left-column-mt col-lg-3">Nomor HP</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->NomorTeleponPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Website</td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->WebsitePantiSosial}}</td>
+                            <td class="left-column-mt col-lg-3">Website</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->WebsitePantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">
+                            <td class="left-column-mt col-lg-3">
                                 Alamat Lengkap
                                 <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                             </td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->AlamatPantiSosial}}</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->AlamatPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">
+                            <td class="left-column-mt col-lg-3">
                                 Lokasi pada Google Maps
                                 <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                             </td>
-                            <td class="right-column-mt col-lg-5"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
+                            <td class="right-column-mt col-lg-6"> {{$detailPansos->LinkGoogleMapsPantiSosial}}</td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Media Sosial</td>
-                            <td class="right-column-mt col-lg-5">
+                            <td class="left-column-mt col-lg-3">Media Sosial</td>
+                            <td class="right-column-mt col-lg-6">
                                 @php
                                     $count = count($media_sosial);
                                 @endphp
@@ -89,8 +92,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="left-column-mt col-lg-4">Jam Operasional</td>
-                            <td class="right-column-mt col-lg-5">
+                            <td class="left-column-mt col-lg-3">Jam Operasional</td>
+                            <td class="right-column-mt col-lg-6">
                                 <table class="schedule-table">
                                     @php
                                         $index = 0;
@@ -146,8 +149,10 @@
                             Apakah Anda yakin ingin keluar dari Akun Anda?
                         </div>
                         <div class="row modal-footer align-content-center justify-content-center border-0">
-                            <div class="col">
+                            <div class="col-change">
                                 <button type="button" class="btn" id="btn-back" data-bs-dismiss="modal">Kembali</button>
+                            </div>
+                            <div class="col-profile">
                                 <button  onclick="window.location.href='{{route('logout.panti_sosial')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
                             </div>
                         </div>
@@ -157,23 +162,23 @@
             </div>
 
             {{-- MODAL INFORMATION --}}
-            <div class="container">
-                <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content text-center">
-                        <div class="modal-header text-center border-0">
-                            <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
-                        </div>
-                        <div class="modal-body" id="informationModalBody">
-                            Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini.
-                            <br><br> Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
-                        </div>
+            {{-- <div class="container"> --}}
+            <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header text-center border-0">
+                        <div class="modal-title w-100" id="informationModalLabel">Mengapa kami membutuhkan alamat lengkap & lokasi Anda pada Google Maps?</div>
                     </div>
+                    <div class="modal-body" id="informationModalBody">
+                        Kami membutuhkan alamat Anda untuk membantu kami dalam menghitung jarak Anda dengan panti sosial yang terdaftar di situs web ini.
+                        <br><br> Dengan mengetahui lokasi Anda, kami dapat memastikan bahwa sumbangan dan bantuan Anda dapat langsung disalurkan ke panti sosial terdaftar di sekitar Anda. Privasi dan keamanan informasi pribadi Anda adalah prioritas kami.
                     </div>
                 </div>
+                </div>
             </div>
-        </div>
-    {{-- </div> --}}
-    <script src="{{ asset('js/profile.js') }}"></script>
+            {{-- </div> --}}
+        {{-- </div> --}}
+    </div>
+
 @endsection
 

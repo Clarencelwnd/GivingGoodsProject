@@ -8,27 +8,27 @@
 @endsection
 
 @section('content')
-    {{-- <div class="container"> --}}
-        <div class="row">
+    <div class="container" style=" display: flex; justify-content: center; width: 100%; padding: 0;margin: 0;">
+        {{-- <div class="row"> --}}
             {{-- LEFT SIDE  --}}
-            <div class="left col-md-3">
+            <div class="left col-sm-2">
                 <h4 class="left-title fw-semibold">Pengaturan</h4>
-                <img class="profile-pict text-center img-fluid" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
+                <img class="profile-pict text-center" src="{{asset($detailPansos->LogoPantiSosial)}}" alt="">
                 <a href="#" class="btn btn-block" id="btn-choose-photo">Pilih Foto</a>
                 <a href="#" class="btn btn-block" id="btn-change-password">Ubah Kata Sandi</a>
                 <a href="#" class="btn btn-block" id="btn-logout">Keluar Akun</a>
             </div>
 
             {{-- RIGHT SIDE  --}}
-            <div class="right col-md-8">
-                <div class="row">
-                    <div class="scrollable-content">
+            <div class="right col-sm-9">
+                {{-- <div class="row"> --}}
+                    <div class="row container-profile" style="margin-top: 50px; margin-left: 50px;">
                         <form action="{{route('edit_profile_logic.panti_sosial', ['id'=>$id])}}" method="post" class= "form" role="form" autocomplete="off" >
                             @csrf
                             <table class="main-table">
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Nama Panti Sosial</td>
-                                    <td class="right-column-mt col-lg-5">
+                                    <td class="left-column-mt col-lg-3">Nama Panti Sosial</td>
+                                    <td class="right-column-mt col-lg-6">
                                         <input class= "form-control @error('NamaPantiSosial') is-invalid @enderror" type="text" name="NamaPantiSosial" placeholder="Nama dari panti sosial" value="{{old('NamaPantiSosial', $detailPansos->NamaPantiSosial)}}">
                                         @error('NamaPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -38,12 +38,12 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4" id="NomorRegistrasiPantiSosial">Nomor Registrasi</td>
-                                    <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
+                                    <td class="left-column-mt col-lg-3" id="NomorRegistrasiPantiSosial">Nomor Registrasi</td>
+                                    <td class="right-column-mt col-lg-6"><input readonly class= "form-control" type="text" name="NomorRegistrasiPantiSosial" value="{{old('NomorRegistrasiPantiSosial', $detailPansos->NomorRegistrasiPantiSosial)}}"></td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Deskripsi</td>
-                                    <td class="small-text-above col-lg-5">
+                                    <td class="left-column-mt col-lg-3">Deskripsi</td>
+                                    <td class="small-text-above col-lg-6">
                                         <textarea class= "form-control @error('DeskripsiPantiSosial') is-invalid @enderror" type="text" name="DeskripsiPantiSosial" placeholder="Deskripsi singkat dari panti sosial">{{old('DeskripsiPantiSosial', $detailPansos->DeskripsiPantiSosial ?? '')}}</textarea>
                                         @error('DeskripsiPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -54,15 +54,15 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="col-lg-5 small-text">maks. 300 karakter</td>
+                                    <td class="col-lg-6 small-text">maks. 300 karakter</td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4" id="EmailPantiSosial">Email</td>
-                                    <td class="right-column-mt col-lg-5"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
+                                    <td class="left-column-mt col-lg-3" id="EmailPantiSosial">Email</td>
+                                    <td class="right-column-mt col-lg-6"><input readonly class= "form-control" type="text" name="email" value="{{old('email', $userPansos->email)}}"></td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Nomor Handphone</td>
-                                    <td class="right-column-mt col-lg-5">
+                                    <td class="left-column-mt col-lg-3">Nomor Handphone</td>
+                                    <td class="right-column-mt col-lg-6">
                                         <input class= "form-control @error('NomorTeleponPantiSosial') is-invalid @enderror" type="text" name="NomorTeleponPantiSosial" placeholder="+62812345678910" value="{{old('NomorTeleponPantiSosial', $detailPansos->NomorTeleponPantiSosial)}}">
                                         @error('NomorTeleponPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -72,15 +72,15 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Website</td>
-                                    <td class="right-column-mt col-lg-5"><input class= "form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}" placeholder="www.websitepantisosial.com"></td>
+                                    <td class="left-column-mt col-lg-3">Website</td>
+                                    <td class="right-column-mt col-lg-6"><input class= "form-control" type="text" name="WebsitePantiSosial" value="{{old('WebsitePantiSosial', $detailPansos->WebsitePantiSosial)}}" placeholder="www.websitepantisosial.com"></td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">
+                                    <td class="left-column-mt col-lg-3">
                                         Alamat Lengkap
                                         <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                                     </td>
-                                    <td class="small-text-above col-lg-5">
+                                    <td class="small-text-above col-lg-6">
                                         <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>
                                         @error('AlamatPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -91,14 +91,14 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td class="col-lg-5 small-text">maks. 450 karakter</td>
+                                    <td class="col-lg-6 small-text">maks. 450 karakter</td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">
+                                    <td class="left-column-mt col-lg-3">
                                         Lokasi pada Google Maps
                                         <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                                     </td>
-                                    <td class="right-column-mt col-lg-5">
+                                    <td class="right-column-mt col-lg-6">
                                         <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://maps.app.goo.gl/linkGoogleMaps">
                                         @error('LinkGoogleMapsPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -108,8 +108,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Media Sosial</td>
-                                    <td class="right-column-mt col-lg-5">
+                                    <td class="left-column-mt col-lg-3">Media Sosial</td>
+                                    <td class="right-column-mt col-lg-6">
                                         <textarea class= "form-control @error('MediaSosialPantiSosial') is-invalid @enderror" type="text" name="MediaSosialPantiSosial" placeholder="Instagram: @username; Facebook: @username;">{{old('MediaSosialPantiSosial', $detailPansos->MediaSosialPantiSosial ?? '')}}</textarea>
                                         @error('MediaSosialPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
@@ -119,8 +119,8 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="left-column-mt col-lg-4">Jam Operasional</td>
-                                    <td class="right-column-mt col-lg-5" id="jam-operasional">
+                                    <td class="left-column-mt col-lg-3">Jam Operasional</td>
+                                    <td class="right-column-mt col-lg-6" id="jam-operasional">
                                         @if (!($jadwalPansos->firstWhere('Hari', 'Senin')))
                                             <button type="button" data-bs-toggle="modal" data-bs-target="#scheduleModal" class="btn btn-jam-operasional @error('btn-schedule') is-invalid @enderror" id="btn-schedule" name="btn-schedule">Atur Jam Operasional</button>
                                             @error('btn-schedule')
@@ -183,8 +183,8 @@
                             </table>
 
                             {{-- BUTTON  --}}
-                            <div class="d-flex justify-content-end" id="button-style">
-                               <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn" id="btn-back">Batal</a>
+                            <div class="d-flex justify-content-end" style="margin-bottom: 30px;">
+                               <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn me-2" id="btn-back">Batal</a>
                                <button type="submit" class="btn" id="btn-save"> Simpan Perubahan </button>
                            </div>
                         </form>
@@ -192,7 +192,7 @@
 
 
                     {{-- MODAL JADWAL OPERASIONAL --}}
-                    <div class="container">
+                    {{-- <div class="container"> --}}
                         <div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -251,13 +251,13 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    {{-- </div> --}}
+                {{-- </div> --}}
             </div>
-        </div>
+        {{-- </div> --}}
 
         {{-- MODAL SUCCESSFULLY UPDATE PROFILE  --}}
-        <div class="container">
+        {{-- <div class="container"> --}}
             <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successsModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
@@ -270,10 +270,10 @@
                 </div>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
 
         {{-- MODAL INFORMATION --}}
-        <div class="container">
+        {{-- <div class="container"> --}}
             <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
@@ -286,8 +286,8 @@
                 </div>
                 </div>
             </div>
-        </div>
-    {{-- </div> --}}
+        {{-- </div> --}}
+    </div>
 
     @if(session('success'))
         <script> var url = "{{route('profile.panti_sosial', ['id'=>$id])}}" </script>

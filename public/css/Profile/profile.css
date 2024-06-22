@@ -10,8 +10,8 @@
 
 /* INFORMATION */
 #information-icon{
-    width: 10%;
-    height: 75%;
+    width: 5%;
+    height: 100%;
     margin-right: 20px;
 }
 
@@ -29,27 +29,22 @@
 
 /* LEFT SIDE  */
 .left{
-    padding: 20px;
-    margin-right: 10px;
-    overflow: hidden;
-    height: 100vh;
+    margin-right: 25px;
+    margin-bottom: 30px;
 }
 
 .left-title{
     color: #006374;
-    margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 600;
+    margin-bottom: 50px;
 }
 
 .profile-pict{
-    display: block;
-    margin: 0 auto 20px;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
+    display: block;
 }
 
 #btn-choose-photo, #btn-change-password, #btn-back{
@@ -81,12 +76,12 @@
 }
 
 /* RIGHT SIDE  */
-.right{
+/* .right{
     height: 100vh;
     padding: 20px;
     margin-left: 50px;
     padding-top: 100px;
-}
+} */
 
 #btn-edit{
     background: #007C92;
@@ -154,11 +149,11 @@ td{
     word-wrap: break-word;
 }
 
-.modal-content{
+/* .modal-content{
     padding: 10px;
-}
+} */
 
-.col{
+.col-change, .col-profile{
     width: 30%;
 }
 
@@ -178,54 +173,3 @@ td{
     font-size: smaller;
 }
 
-/* RESPONSIVE  */
-
-@media only screen and (min-width: 768px) {
-    /* .container {
-        max-width: 960px;
-        margin: 0 auto;
-    } */
-
-    /* .profile-pict{
-        max-width: 100%;
-        max-height: 20%;
-    } */
-
-    .profile-pict{
-        /* max-width: 100%; */
-        /* max-height: 50%; */
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 890px) {
-    /* .container {
-        max-width: 720px;
-        margin: 0 auto;
-    } */
-
-    .profile-pict{
-        /* max-width: 100%; */
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-}
-
-@media only screen and (max-width: 575px) {
-        /* .container {
-            max-width: 480px;
-            margin: 0 auto;
-        } */
-
-    .profile-pict{
-        max-width: 50%;
-        max-height: 50%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-}

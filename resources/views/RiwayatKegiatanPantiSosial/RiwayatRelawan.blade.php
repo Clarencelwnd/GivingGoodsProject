@@ -24,7 +24,7 @@
 
     <div class="total-jumlah">
         <div class="col">
-            <p id="total-relawan">Total Relawan Mendaftar</p>
+            <p id="total-relawan">Total Relawan Diterima</p>
         </div>
         <div class="jumlah">
             <p id="jumlah-relawan">{{ $jumlahKonfirmasiDiterima }} orang</p>
@@ -38,7 +38,7 @@
                     <tr>
                         <th>Nama Relawan</th>
                         <th>Nomor Handphone</th>
-                        <th>Tanggal Kegiatan</th>
+                        <th>Tanggal Kehadiran</th>
                         <th>Waktu Kegiatan</th>
                         <th>Konfirmasi</th>
                         <th>Sudah dihubungi</th>
@@ -134,10 +134,10 @@
         <div class="popup-subtitle">Alasan Bergabung</div>
         <div class="popup-data" id="popup-alasan"></div>
 
-        <div class="popup-subtitle">Shift yang dipilih</div>
+        <div class="popup-subtitle">Waktu Kegiatan</div>
         <div class="popup-data" id="popup-shift"></div>
 
-        <div class="popup-subtitle">Tanggal Kegiatan</div>
+        <div class="popup-subtitle">Tanggal Kehadiran</div>
         <div class="popup-data" id="popup-tanggal"></div>
     </div>
     </div>

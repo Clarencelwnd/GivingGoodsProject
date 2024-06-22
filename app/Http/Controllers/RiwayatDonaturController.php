@@ -15,15 +15,31 @@ class RiwayatDonaturController extends Controller{
     // Ambil data registrasi donatur beserta informasi donatur berdasarkan ID
     $registrasiDonatur = RegistrasiDonatur::with('donaturRelawan')->where('IDKegiatanDonasi', $id)->get();
 
+    $bulan = [
+        '01' => 'Januari',
+        '02' => 'Februari',
+        '03' => 'Maret',
+        '04' => 'April',
+        '05' => 'Mei',
+        '06' => 'Juni',
+        '07' => 'Juli',
+        '08' => 'Agustus',
+        '09' => 'September',
+        '10' => 'Oktober',
+        '11' => 'November',
+        '12' => 'Desember'
+    ];
+
     // Format tanggal dan jam menjadi satu string
     foreach ($registrasiDonatur as $registrasi) {
-        $tanggalDonasi = date('Y-m-d', strtotime($registrasi->TanggalDonasi));
+        $partitionTanggalDonasi = explode('-', $registrasi->TanggalDonasi);
+        $tanggalDonasi = $partitionTanggalDonasi[2] . ' ' . $bulan[$partitionTanggalDonasi[1]] . ' ' . $partitionTanggalDonasi[0];
         $jamDonasi = date('H:i', strtotime($registrasi->JamDonasi));
         $registrasi->setAttribute('jamTanggalDonasi', $tanggalDonasi . ' ' . $jamDonasi);
     }
 
     // Hitung jumlah donatur dengan status "Konfirmasi Diterima"
-    $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
+    $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->where('IDKegiatanDonasi', $id)->count();
 
     // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
     return view('RiwayatKegiatanPantiSosial.RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima', 'id'));

@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="daftarForum-top">
-    <h6 id="daftarForumTitle">Daftar Forum</h6>
+    <h2 id="daftarForumTitle">Daftar Forum</h2>
     <button class="btn" id="buatDiskusiBaru" data-bs-toggle="modal" data-bs-target="#buatDiskusiModal">
         Buat Diskusi Baru
     </button>
@@ -22,7 +22,7 @@
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
-                <h6 id="tanggalBuatForum">{{ \Carbon\Carbon::parse($forum->TanggalBuatForum)->format('d M Y') }}</h6>
+                <h6 id="tanggalBuatForum">{{ $forum->TanggalBuatForum }}</h6>
             </div>
                 <h6 class="card-info" id="namaPembuatForum">{{ $forum->donaturRelawan->NamaDonaturRelawan ?? $forum->pantiSosial->NamaPantiSosial}}</h6>
                 <p class="card-text">{{ $forum->DeskripsiForum }}</p>
@@ -59,4 +59,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('pagination')
+    <div class="pagination-container d-flex justify-content-center">
+        {{ $daftarForum->links('components.pagination') }}
+    </div>
 @endsection

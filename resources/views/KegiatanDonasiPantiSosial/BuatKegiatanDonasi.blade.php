@@ -186,7 +186,7 @@
                 </div>
 
                 <div class="button-container">
-                    <button class="cancel-btn" type="button" onclick="window.location='{{ url("/") }}'">Batal</button>
+                    <button class="cancel-btn" type="button" onclick="window.location='{{ route('viewAllKegiatan', ['id'=>$id]) }}'">Batal</button>
                     <button class="save-btn" type="submit">Buat</button>
                 </div>
             </div>

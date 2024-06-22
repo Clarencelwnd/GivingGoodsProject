@@ -37,8 +37,8 @@
                     <thead>
                         <tr>
                             <th>Nama Donatur</th>
-                            <th>No HP</th>
-                            <th>Jam & Tanggal Donasi</th>
+                            <th>Nomor Handphone</th>
+                            <th>Tanggal & Jam Donasi</th>
                             <th>Konfirmasi</th>
                             <th>Sudah dihubungi</th>
                             <th></th>

@@ -14,12 +14,29 @@ class RiwayatRelawanController extends Controller
         $id = $request->id;
 
         // Ambil data registrasi relawan beserta informasi relawan berdasarkan IDKegiatanRelawan
-        $registrasiRelawan = RegistrasiRelawan::with('donaturRelawan')->where('IDKegiatanRelawan', $id)->get();
+        $registrasiRelawan = RegistrasiRelawan::with('donaturRelawan', 'kegiatanRelawan')->where('IDKegiatanRelawan', $id)->get();
+
+        $bulan = [
+            '01' => 'Januari',
+            '02' => 'Februari',
+            '03' => 'Maret',
+            '04' => 'April',
+            '05' => 'Mei',
+            '06' => 'Juni',
+            '07' => 'Juli',
+            '08' => 'Agustus',
+            '09' => 'September',
+            '10' => 'Oktober',
+            '11' => 'November',
+            '12' => 'Desember'
+        ];
 
         // Format tanggal dan jam menjadi satu string dan tambahkan ke variabel baru
         foreach ($registrasiRelawan as $registrasi) {
-            $tanggalKegiatan = date('Y-m-d', strtotime($registrasi->TanggalKegiatanMulaiRelawan)) . ' - ' . date('Y-m-d', strtotime($registrasi->TanggalKegiatanSelesaiRelawan));
-            $waktuKegiatan = date('H:i', strtotime($registrasi->JamMulaiRelawan)) . ' - ' . date('H:i', strtotime($registrasi->JamSelesaiRelawan));
+            $partitionTanggalKegiatan = explode('-', $registrasi->TanggalKehadiranRelawan);
+            $tanggalKegiatan = $partitionTanggalKegiatan[2] . ' ' . $bulan[$partitionTanggalKegiatan[1]] . ' ' . $partitionTanggalKegiatan[0];
+            $waktuKegiatan = date('H:i', strtotime($registrasi->kegiatanRelawan->JamMulaiKegiatanRelawan)) . ' - '. date('H:i', strtotime($registrasi->kegiatanRelawan->JamSelesaiKegiatanRelawan));
+            // $waktuKegiatan = date('H:i', strtotime($registrasi->JamMulaiRelawan)) . ' - ' . date('H:i', strtotime($registrasi->JamSelesaiRelawan));
             $registrasi->setAttribute('tanggalKegiatan', $tanggalKegiatan);
             $registrasi->setAttribute('waktuKegiatan', $waktuKegiatan);
         }

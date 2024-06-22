@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
 
-        // Menutup modal setelah 1 detik
+        // Menutup modal setelah 2 detik
         setTimeout(function() {
             successModal.hide();
             window.location.href = url;
-        }, 1000);
+        }, 2000);
     }
 });
 

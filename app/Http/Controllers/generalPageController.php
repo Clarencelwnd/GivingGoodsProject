@@ -278,7 +278,7 @@ class generalPageController extends Controller
         ]);
 
         // Determine which view to return based on search context
-        $view = $request->input('view', 'generalPage');
+        $view = $request->input('view', 'GeneralPagePantiSosial.generalPage');
 
         return view($view, ['activities' => $paginator, 'id' => $id]);
     }
