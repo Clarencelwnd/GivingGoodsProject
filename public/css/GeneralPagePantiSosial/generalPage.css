@@ -21,6 +21,11 @@
     z-index: 1;
 }
 
+.container{
+    width: 90%;
+    margin: auto;
+}
+
 /* Overlay Grey to block other actions when entering page for the first time */
 /* #overlay{
     position: fixed;
@@ -34,6 +39,8 @@
 
 /* SEARCH BAR */
 .searchbar{
+    width: 90%;
+    margin: auto;
     margin-top: 30px;
 }
 
@@ -47,27 +54,32 @@
 
 /* OPTIONS */
 .kegiatan-nav{
-    /* justify-content: space-between; */
-    align-items: center;
-    margin-top: 45px;
-    /* flex-wrap: nowrap; */
+    margin-top: 30px;
 }
 
-/* Set text color for kegiatan-nav lists */
-.kegiatan-nav .nav-item .nav-link {
+.kegiatan-nav .row .nav .nav-link{
     color: #1C3F5B;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
+    /* padding: 0; */
+    margin: 0;
+    margin-left: 10px;
 }
 
-.kegiatan-nav .nav-item .nav-link.active {
+.kegiatan-nav .row .nav .nav-link.active{
+    border: 1px solid #007C92;
     color: #1C3F5B;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: 500;
+    /* padding: 0; */
+    margin: 0;
+    margin-left: 10px;
 }
 
 .nav-items{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 #buatKegiatanDropdown{
@@ -76,12 +88,6 @@
     border: 0px transparent;
     margin-left: auto;
     white-space: nowrap;
-}
-
-.nav-items{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 .dropdown-buatKegiatan {
@@ -99,8 +105,14 @@
     font-weight: 400;
     display: flex;
     justify-content: flex-end;
-    margin-top: 30px;
+    margin-top: 10px;
     padding-bottom: 30px;
+}
+
+.filter-title{
+    padding-left: 5px;
+    font-weight: 600;
+    color: #1C3F5B;
 }
 
 #filterDropdown{
@@ -111,6 +123,10 @@
 .dropdown-menu-end{
     margin-top: 0; /* Reset default margin */
     z-index: 1000;
+}
+
+.dropdown-item.filter-option{
+    padding-left: 10px;
 }
 
 /* CARD */
