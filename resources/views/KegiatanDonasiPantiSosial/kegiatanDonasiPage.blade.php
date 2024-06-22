@@ -145,7 +145,7 @@
 
 @section('pagination')
     <div class="pagination-container">
-        {{ $kegiatanDonasi->links('components.pagination') }}
+        {{ $kegiatanDonasi->links('componentsPansos.pagination') }}
     </div>
 @endsection
 

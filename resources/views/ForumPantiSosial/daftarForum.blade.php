@@ -63,6 +63,6 @@
 
 @section('pagination')
     <div class="pagination-container d-flex justify-content-center">
-        {{ $daftarForum->links('components.pagination') }}
+        {{ $daftarForum->links('componentsPansos.pagination') }}
     </div>
 @endsection

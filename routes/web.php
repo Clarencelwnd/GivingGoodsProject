@@ -1,17 +1,15 @@
 <?php
 
-use App\Http\Controllers\buatKegiatanController;
-use App\Http\Controllers\forumController;
+use App\Http\Controllers\forumPantiSosialController;
 use App\Http\Controllers\generalPageController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\KomentarForumController;
+use App\Http\Controllers\KomentarForumPantiSosialController;
 use App\Models\KomentarForum;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DetailKegiatanDonasiController;
 use App\Http\Controllers\DetailKegiatanRelawanController;
 use App\Http\Controllers\RiwayatDonaturController;
 use App\Http\Controllers\RiwayatRelawanController;
-
 use App\Http\Controllers\BuatKegiatanDonasiController;
 use App\Http\Controllers\BuatKegiatanRelawanController;
 
@@ -71,16 +69,14 @@ Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanContr
 Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
 
 // ===== FORUM =====
-Route::get('/daftarForum/{id}', [forumController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum/{id}', [forumController::class, 'buatForum'])->name('buatForum');
-Route::get('/forum/{idPantiSosial}/{idForum}', [forumController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idPantiSosial}', [KomentarForumController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::get('/daftarForum/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForum');
+Route::post('/daftarForum/{id}', [forumPantiSosialController::class, 'buatForum'])->name('buatForum');
+Route::get('/forum/{idPantiSosial}/{idForum}', [forumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForum');
+Route::post('/komentar/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('simpanKomentar');
 
 // === FAQ ===
 Route::get('/faq/{id}', [generalPageController::class, 'faq'])->name('faq');
 
 // ===== DUMMY PAGES =====
 Route::get('/dummyProfile', [generalPageController::class, 'displayDummyProfilePage'])->name('dummyProfile');
-Route::get('/dummyBuatKegiatanRelawan', [buatKegiatanController::class, 'displayDummyBuatRelawanPage'])->name('dummyBuatRelawan');
-Route::get('/dummyBuatKegiatanDonasi', [buatKegiatanController::class, 'displayDummyBuatDonasiPage'])->name('dummyBuatDonasi');
 Route::get('/home_page', [ProfileController::class, 'home_page'])->name('home_page');

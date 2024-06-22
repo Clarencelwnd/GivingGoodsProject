@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class forumController extends Controller
+class ForumPantiSosialController extends Controller
 {
     public function displayDaftarForum($id){
         $daftarForum = Forum::with('donaturRelawan')->paginate(5);
@@ -72,7 +72,7 @@ class forumController extends Controller
             $partitionTanggalKomentarForum = explode('-', $komentar->TanggalKomentarForum);
             $komentar->setAttribute('FormatTanggalKomentarForum', $partitionTanggalKomentarForum[2] . ' ' . $bulan[$partitionTanggalKomentarForum[1]] . ' ' . $partitionTanggalKomentarForum[0]);
         }
-        
+
         return view('ForumPantiSosial.detailForum',['id' => $idPantiSosial, 'forum' => $forum, 'idForum' => $idForum]);
     }
 

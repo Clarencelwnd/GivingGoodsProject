@@ -6,7 +6,7 @@ use App\Models\KomentarForum;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class KomentarForumController extends Controller
+class KomentarForumPantiSosialController extends Controller
 {
     public function storeKomentar(Request $request, $idPantiSosial){
         $request->validate([

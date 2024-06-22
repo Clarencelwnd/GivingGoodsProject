@@ -19,13 +19,13 @@
 
 <body>
     <div class="container">
-        @include('components.sideBar', ['id' => $id])
+        @include('componentsPansos.sideBar', ['id' => $id])
 
         <div id="main">
-            @include('components.header', ['id'=> $id])
+            @include('componentsPansos.header', ['id'=> $id])
             @yield('content')
             @yield('pagination')
-            @include('components.footer')
+            @include('componentsPansos.footer')
         </div>
     </div>
 

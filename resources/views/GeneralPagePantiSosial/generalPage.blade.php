@@ -173,7 +173,7 @@
 {{-- Pagination Links --}}
 @section('pagination')
     <div class="pagination-container">
-        {{ $activities->links('components.pagination') }}
+        {{ $activities->links('componentsPansos.pagination') }}
     </div>
 @endsection
 
