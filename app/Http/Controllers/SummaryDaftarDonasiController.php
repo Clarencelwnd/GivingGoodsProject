@@ -54,10 +54,8 @@ public function store(Request $request)
         'TanggalDonasi' => $data['tanggal_kegiatan'],
         'JamDonasi' => $data['jam_mulai_kegiatan'],
         'PengirimanBarang' => $data['pengiriman_barang'],
+        'StatusDihubungi' => 'Belum'
     ]);
-
-    // Hapus data dari session
-    // $request->session()->forget('daftar_donasi');
 
     return redirect()->back()->with('success', 'Registrasi berhasil disimpan');
 }

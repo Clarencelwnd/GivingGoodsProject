@@ -11,8 +11,7 @@
 @endsection
 
     @section('content')
-    <div class="container">
-
+    <div class="containerSummaryDaftarDonasi">
         <div class="title">
             <a href="javascript:history.back()">
                 <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
@@ -115,10 +114,12 @@
         <div class="container-help-platform" id="container-help-platform">
             <div class="header">
                 <div class="text-help">Bantu GivingGoods Terus Berkembang!</div>
-                <div class="arrow" onclick="toggleDropdown()">&#x25BC;</div>
+                <div class="arrow" onclick="toggleDropdown()">
+                    <img src="{{ asset('Image/general/drop.png') }}" alt="dropdown" width="20px" height="20px">
+                </div>
             </div>
             <div class="dropdown-content">
-                <span style="font-weight: 400; font-size: 22px; color: #006374;">
+                <span style="font-weight: 400; font-size: 20px; color: #006374;">
                     Ayo dukung pengembangan website kami! Setiap donasi Anda sangat berarti bagi kami untuk <br> terus meningkatkan layanan.
                 </span>
                 <div class="donation-info">
@@ -136,8 +137,8 @@
 {{-- POPUP TERIMAKASIH --}}
         <div id="popup-container" style="display: none;">
                 <div id="popup">
-                    <h3 style="color: #1C3F5B; font-size: 26px; font-weight: 600;">Terima kasih telah berbagi kebaikan!</h3>
-                    <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #1C3F5B;">Kami sangat menghargai dukungan Anda. <br> <br>
+                    <h3 style="color: #1C3F5B; font-size: 22px; font-weight: 600;">Terima kasih telah berbagi kebaikan!</h3>
+                    <p style="margin-top: 10px; font-size: 18px; font-weight: 400; color: #1C3F5B;">Kami sangat menghargai dukungan Anda. <br> <br>
                         Pihak {{ $kegiatanDonasi->pantiSosial->NamaPantiSosial }} telah kami informasikan. <br> <br>
                         Sebelum melakukan donasi, mohon tunggu untuk dihubungi atau jangan ragu <br> untuk menghubungi langsung melalui <span style="font-weight: 600;">{{ $kegiatanDonasi->pantiSosial->NomorTeleponPantiSosial }}</span>.</p>
                     <div style="display: flex; justify-content: center; margin-top: 20px;">
@@ -165,8 +166,8 @@
         }
 
         function closePopup() {
-        document.getElementById('popup-container').style.display = 'none';
-    }
+            document.getElementById('popup-container').style.display = 'none';
+        }
     </script>
 
 @endsection

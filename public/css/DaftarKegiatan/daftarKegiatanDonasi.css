@@ -6,8 +6,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 90%;
-    margin: 0 auto;
+    width: 80%;
+    margin: auto;
 }
 
 .title {
@@ -28,7 +28,7 @@ body {
     font-weight: 500;
     margin-bottom: 10px;
     font-weight: 600;
-    padding-top: 7px;
+    padding-top: 10px;
 }
 
 .input-container {
@@ -62,6 +62,12 @@ body {
     padding-top: 30px;
 }
 
+#date-picker{
+    color: #193952;
+    font-weight: 400;
+    font-size: 18px;
+}
+
 .date-picker-container,
 .time-picker-container {
     display: flex;
@@ -85,6 +91,9 @@ body {
     margin-bottom: 10px;
     border-radius: 5px;
     box-sizing: border-box;
+    color: #193952;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 .input-field-date-time {
