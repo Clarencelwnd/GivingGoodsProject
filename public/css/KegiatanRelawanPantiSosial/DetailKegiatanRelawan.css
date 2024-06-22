@@ -96,6 +96,7 @@
     cursor: pointer;
     font-size: 16px;
 }
+
 .detail-row {
     display: flex;
     justify-content: flex-start;
@@ -200,10 +201,7 @@
         width: 245px; /* Atur lebar sesuai kebutuhan */
     }
 
-
-
-
-    #donation-popup-container {
+#donation-popup-container {
     display: none;
     position: fixed;
     top: 0;
