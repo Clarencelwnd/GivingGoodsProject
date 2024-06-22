@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.faq-title {
+    font-weight: 600;
+    color: #006374;
+    margin-bottom: 50px;
+}
+
+.faq-subtitle{
+    font-weight: 600;
+    color: #1C3F5B;
+    font-size: 25px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.section-divider {
+    border-top: 1px solid #B6B3B3;
+    margin: 50px 0 10px 0;
+}
+
+.faq-section {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    background-color: #0095AF;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    border: 1.5px solid #0095AF;
+}
+
+.faq-question:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.question-text {
+    font-size: 16px;
+    color: #fff;
+}
+
+.answer {
+    color: #006374;
+    font-size: 14px;
+    padding: 20px;
+    border-top: 1px solid #006374;
+    background-color: #fff;
+    display: none;
+}
+
+.rotate {
+    transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+
+.faq-question.active .arrow-icon {
+    transform: rotate(180deg);
+}
+
+.faq-question.active .answer {
+    display: block;
+}
+
+.footer {
+    flex-shrink: 0; /* Mencegah footer dari penyusutan */
+    margin-top: auto; /* Memindahkan footer ke bawah */
+    text-align: center; /* Memposisikan teks di tengah */
+    padding-top: 80px;
+}

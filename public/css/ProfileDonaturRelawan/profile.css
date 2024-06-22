@@ -1,0 +1,166 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.btn{
+    width: 100%;
+    border-radius:5px;
+    font-size: 13px;
+}
+
+/* INFORMATION */
+.information-icon{
+    width: 5%;
+    height: 100%;
+    margin-right: 20px;
+}
+
+.alert{
+    display: inline-flex;
+    flex-direction: row;
+    font-size: 16px;
+    width: 100%;
+}
+
+.alert p{
+    color: #CB3A31;
+    margin-bottom: 0px;
+}
+
+/* LEFT SIDE  */
+.left{
+    margin-right: 25px;
+    margin-bottom: 30px;
+    /* overflow: hidden; */
+    /* height: 100vh; */
+}
+
+.left-title{
+    color: #006374;
+    margin-bottom: 50px;
+}
+
+.profile-pict{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 50px;
+    display: block;
+}
+
+#btn-choose-photo, #btn-change-password, #btn-history, #btn-back{
+    color: #007C92;
+}
+
+#btn-choose-photo, #btn-change-password, #btn-history{
+    border: 1px solid #006374;
+    margin-bottom: 15px;
+}
+
+#btn-choose-photo:hover, #btn-change-password:hover, #btn-history:hover, #btn-back:hover{
+    background: #E6E7E6;
+    font-weight: 500;
+}
+
+.file-choose-photo{
+    display: none;
+}
+
+#btn-logout, #btn-yes-logout{
+    background: #B7342C;
+    color: #FDFFFE;
+}
+
+#btn-logout:hover, #btn-yes-logout:hover{
+    background: #A42E28;
+    font-weight: 500;
+}
+
+/* RIGHT SIDE  */
+
+#btn-edit{
+    background: #007C92;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+#btn-edit:hover{
+    background: #017286;
+    font-weight: 600;
+}
+
+/* RIGHT SIDE MAIN TABLE  */
+
+.error-msg{
+    margin-bottom: 15px;
+    font-size: 12px;
+    display: block;
+}
+
+table, td, tr{
+    border: none;
+}
+
+td, tr{
+    padding-bottom: 20px;
+}
+
+td{
+    padding-right: 10%;
+}
+
+.left-column-mt, .right-column-mt{
+    color: #006374;
+}
+
+.left-column-mt{
+    font-weight: 500;
+}
+
+.right-column-mt{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+#inf-address{
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+/* MODAL  */
+.modal-body{
+    word-wrap: break-word;
+}
+
+.col-change{
+    width: 30%;
+}
+
+.col-profile{
+    width: 30%;
+}
+
+#btn-back{
+    border: 1px solid #007C92;
+}
+
+#informationModalLabel{
+    color: #152F44;
+    font-weight: 500;
+}
+
+#informationModalBody{
+    text-align: justify;
+    color: #1C3F5B;
+    font-size: smaller;
+}

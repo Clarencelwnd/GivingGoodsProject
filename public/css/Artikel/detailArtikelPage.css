@@ -1,0 +1,67 @@
+.daftarForum-top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+#daftarForumTitle{
+  color: #006374;
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 80px;
+  margin-top: 30px;
+}
+
+#buatDiskusiBaru{
+    width: auto;
+    height: auto;
+    margin-left: 30px;
+    margin-top: 25px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background: #006374;
+    color: #FDFFFE;
+    border-radius: 5px;
+}
+
+/* BACK BUTTON */
+.btn-articleBack a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.btn-articleBack:focus, .btn-articleBack:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.back-img {
+    margin-right: 8px;
+}
+
+.judulArtikel-text{
+    color: #1c3f5B;
+    font-size: large;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ARTIKEL TEXT */
+.artikel1{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.justify-text{
+    color: #006374;
+    justify-content: center;
+    text-align: justify;
+}
+
+
+

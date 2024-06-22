@@ -1,0 +1,156 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.card.main.container{
+    /* margin-top: 2%; */
+    border: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.card.kegiatan.container{
+    border-top: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card.kegiatan.container:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card.container.blank{
+    border: none;
+    height: 50vh;
+}
+
+.btn{
+    border-radius:5px;
+    font-size: 13px;
+}
+
+/* MAIN-CARD HEADER  */
+
+.card-header.main{
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.back{
+    text-decoration: none;
+    color: #007C92;
+    font-size: small;
+}
+
+.back-column{
+    padding: 0px;
+}
+
+.gambar-back{
+    width: 20px;
+}
+
+.title{
+    margin-top: 10px;
+    font-weight: 600;
+    color: #007C92;
+    margin-bottom: 20px;
+}
+
+/* MAIN-CARD BODY  */
+
+.card-body.main{
+    margin-top: 0px;
+}
+
+.row-riwayat{
+    padding-left: 12px;
+}
+
+#btn-semua, #btn-donasi, #btn-relawan, #btn-semua:hover, #btn-donasi:hover, #btn-relawan:hover{
+    border: 1px solid #00744C;
+    color: #00744C;
+}
+
+#btn-semua.selected, #btn-donasi.selected, #btn-relawan.selected{
+    background-color: #D9F6EC;
+    border: none;
+    color: #00744C;
+}
+
+#btn-donasi, #btn-relawan, #btn-donasi-diterima, #btn-relawan-diterima, #btn-relawan-ditolak{
+    margin-left: 16px;
+}
+
+#sub-filter{
+    margin-top: 15px;
+}
+
+#btn-sedang-diproses, #btn-donasi-diterima, #btn-menunggu-konfirmasi, #btn-relawan-diterima, #btn-relawan-ditolak,
+#btn-sedang-diproses:hover, #btn-donasi-diterima:hover, #btn-menunggu-konfirmasi:hover, #btn-relawan-diterima:hover, #btn-relawan-ditolak:hover{
+    border: 1px solid #00849B;
+    color: #00849B;
+}
+
+#btn-sedang-diproses.selected, #btn-donasi-diterima.selected, #btn-menunggu-konfirmasi.selected, #btn-relawan-diterima.selected, #btn-relawan-ditolak.selected{
+    background-color: #D9F2F6;
+    border: none;
+    color: #00849B;
+}
+
+/* KEGIATAN-CARD HEADER  */
+.card-header.kegiatan{
+    background-color: transparent;
+    border-bottom: none;
+    padding: 0px;
+}
+
+.card-title{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+.label-donasi-relawan{
+    border: 1px solid #00849B;
+    color: #00849B;
+    border-radius: 5px;
+    font-size: small;
+}
+
+.tanggal-donasi-relawan, .nama-panti, .jenis-donasi-relawan{
+    color: #1C3F5B;
+    font-size: small;
+}
+
+.nama-panti{
+    padding-top: 5px;
+}
+
+.jenis-donasi-relawan{
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+/* KEGIATAN-CARD BODY   */
+.card-body.kegiatan{
+    padding: 0px;
+}
+
+.gambar-donasi{
+    width: 20px;
+    height: auto;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* BLANK-CARD BODY  */
+.card-text.blank{
+    font-size: medium;
+    color: #00849B;
+    text-align: center;
+}

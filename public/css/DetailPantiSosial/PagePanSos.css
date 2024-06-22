@@ -1,0 +1,169 @@
+
+.containerDetailPansos {
+    width: auto;
+    margin: 0 auto;
+    margin-top: 50px;
+    padding: 40px;
+    padding-top: 0px;
+    border-radius: 5px;
+    border: 1px solid #004A57;
+}
+
+.containerPansosPage{
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.info-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.donation-icon {
+    margin-right: 40px;
+    border-radius: 50%;
+    height: 170px;
+    width: 170px;
+    overflow: hidden;
+}
+
+.info-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 40px;
+    color: #1C3F5B;
+    margin-right: 10px;
+}
+
+.subtitle {
+    font-weight: 500;
+    font-size: 20px;
+    color: #006374;
+    margin-right: 10px;
+    width: 180px;
+}
+
+.text-infoPansos {
+    font-weight: 400;
+    font-size: 18px;
+    color: #1C3F5B;
+}
+
+.section {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 20px;
+}
+
+.details-container {
+    margin-top: 30px;
+}
+
+/* Gaya untuk card kegiatan */
+.btn-forumBack{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.btn-forumBack a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-forumBack:focus, .btn-forumBack:active {
+    outline: none;
+    box-shadow: none; /* Remove any box-shadow if present */
+}
+
+#back-text{
+    color: #007C92;
+    font-size: large;
+    font-weight: 500;
+    margin: 0;
+}
+
+.daftarKegiatanContents{
+    padding: 16px;
+}
+#daftar-kegiatan-title{
+    margin-top: 45px;
+    margin-left: 30px;
+    font-size: 25px;
+    font-weight: 600;
+    padding-right: 10px;
+    color: #006374;
+    margin-bottom: 50px;
+}
+
+.activity-card {
+    margin-bottom: 30px;
+}
+
+.card {
+    width: 90%;
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+    margin-left: 30px;
+    margin-bottom: 70px;
+}
+
+.card-img-top {
+    height: 14rem;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.card-text {
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(60, 60, 67, 0.60);
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+#card-namaPanti, #card-jenisDonasi {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(60, 60, 67, 0.60);
+}
+
+#jenisDonasiIcons{
+    padding-right: 10px;
+    width: 30px;
+    height: 18px;
+}
+
+.card-body.card-kegiatan{
+    height: 100%;
+}

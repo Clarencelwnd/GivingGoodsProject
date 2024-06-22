@@ -1,0 +1,70 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.card.container{
+    /* margin-top: 2%; */
+    border: none;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+/* CARD HEADER  */
+
+.card-title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.back-column{
+    padding: 0;
+}
+
+.gambar-back{
+    width: 20px;
+}
+
+.title{
+    text-decoration: none;
+    color: #007C92;
+    font-size: large;
+    font-weight: 600;
+}
+
+.label-status-kegiatan{
+    background-color: #00AF71;
+    color: #FDFFFE;
+    border-radius: 5px;
+    font-size: small;
+}
+
+/* CARD BODY  */
+.card-body{
+    margin-top: 0px;
+}
+
+.caption{
+    color: #1C3F5B;
+    font-weight: 600;
+}
+
+.content{
+    display: flex;
+    align-items: center;
+    color: #006374;
+    font-size: small;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.gambar{
+    width: 20px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}

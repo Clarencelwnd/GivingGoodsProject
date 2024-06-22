@@ -1,0 +1,24 @@
+.card-kegiatan{
+    background: #00849B;
+}
+
+#card-namaKegiatan{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 15px;
+}
+
+#card-namaPanti{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+#card-jenisDonasi{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
