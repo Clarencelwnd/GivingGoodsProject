@@ -40,12 +40,6 @@ Route::get('/change_password/panti_sosial/{id}', [ProfileController::class, 'cha
 Route::post('/change_password/panti_sosial/{id}', [ProfileController::class, 'change_password_logic'])->name('change_password_logic.panti_sosial');
 Route::get('/logout/panti_sosial', [ProfileController::class, 'logout'])->name('logout.panti_sosial');
 
-// DETAIL KEGIATAN DONASI
-// Route::get('/DetailKegiatanDonasi', function () {
-//     return view('DetailKegiatanDonasi');
-// });
-
-
 // ===== DETAIL KEGIATAN DONASI =====
 Route::get('/kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'show'])->name('kegiatan-donasi.show');
 Route::get('/ubah-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'showEdit'])->name('ubah-kegiatan-donasi.show');

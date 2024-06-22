@@ -15,7 +15,7 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="#"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $pantiSosial->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
                 <h1 id="judul-kegiatan-relawan">Buat Kegiatan Relawan</h1>
             </div>
 
@@ -102,8 +102,6 @@
                     </div>
                 </div>
 
-
-
                 <div class="detail-row">
                     <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                     <div class="detail-input-container">
@@ -111,7 +109,7 @@
                             <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" data-old="{{ old('tglMulai', '') }}" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">
                                 {{ old('tglMulai', '') }}
                             </div>
-                            <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                            <img src="{{ asset('image/general/line.png') }}" alt="Back" width="10px">
                             <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" data-old="{{ old('tglSelesai', '') }}" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">
                                 {{ old('tglSelesai', '') }}
                             </div>
@@ -182,11 +180,9 @@
                     </div>
                 </div>
 
-
                 <div id="infoMessage">
                     Mohon mencari dan menyalin link <br> Google Maps untuk lokasi kegiatan donasi.
                 </div>
-
 
                 <div class="detail-row">
                     <div class="detail-label">Jam Kegiatan</div>
@@ -251,7 +247,7 @@
                 </div>
 
                 <div class="button-container">
-                    <button class="cancel-btn" type="button" onclick="window.location='{{ url("/") }}'">Batal</button>
+                    <button class="cancel-btn" type="button" onclick="window.location.href='{{ route('viewAllKegiatan', ['id'=>$id]) }}'">Batal</button>
                     <button class="save-btn" type="submit">Buat</button>
                 </div>
             </div>
