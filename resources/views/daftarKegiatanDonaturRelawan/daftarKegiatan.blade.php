@@ -62,7 +62,7 @@
                         @if (isset($activity->NamaKegiatanRelawan))
                             <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         @endif
-                        <div class="card">
+                        <div class="card card-kegiatan-donatur-relawan">
                             @if (isset($activity->NamaKegiatanRelawan))
                                 <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
