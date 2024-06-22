@@ -156,7 +156,7 @@
                                     @endif
                                 </p>
                             @elseif (isset($activity->NamaKegiatanDonasi))
-                                <p class="card-text">Jenis donasi:
+                                <p class="card-text jenisDonasiPart">Jenis donasi:
                                     @foreach ($activity->donasiDanGambar as $donasi)
                                         <img class="gambar-donasi" src="{{asset($donasi['image'])}}" alt="">
                                     @endforeach

@@ -46,11 +46,11 @@ class generalPageController extends Controller
             'pakaian' => 'Image/donasi/pakaian.png',
             'sepatu' => 'Image/donasi/sepatu.png',
             'mainan' => 'Image/donasi/mainan.png',
-            'keperluan_ibadah' => 'Image/donasi/perlengkapan_ibadah.png',
+            'keperluan_ibadah' => 'Image/donasi/keperluan_ibadah.png',
             'buku' => 'Image/donasi/buku.png',
             'makanan' => 'Image/donasi/makanan.png',
             'obat' => 'Image/donasi/obat.png',
-            'keperluan_mandi' => 'Image/donasi/toiletries.png',
+            'keperluan_mandi' => 'Image/donasi/keperluan_mandi.png',
             'keperluan_rumah' => 'Image/donasi/keperluan_rumah.png',
             'alat_tulis' => 'Image/donasi/alat_tulis.png'
         ];
@@ -65,7 +65,7 @@ class generalPageController extends Controller
             $donasi->setAttribute('TanggalDanJamBuatDonasi', $partitionTanggalBuatDonasi[2] . ' ' . $bulan[$partitionTanggalBuatDonasi[1]] . ' ' . $partitionTanggalBuatDonasi[0] .
             ' (' . $partitionTanggalDanJamBuatDonasi[1] . ')');
 
-            $donasiItems = explode(',', $donasi->JenisDonasiDidonasikan);
+            $donasiItems = explode(',', $donasi->JenisDonasiDibutuhkan);
             $donasi->setAttribute('donasiDanGambar', array_map(function($jenis) use ($FotoDonasi){
                 return[
                     'jenis' => $jenis,
