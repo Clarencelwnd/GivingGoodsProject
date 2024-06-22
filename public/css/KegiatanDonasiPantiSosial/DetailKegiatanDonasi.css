@@ -1,0 +1,274 @@
+
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.main-content{
+    margin: auto;
+    width: 90%;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#judul-kegiatan-donasi {
+    color: #007C92;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title img {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.buttons {
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.buttons button {
+    padding: 10px 20px;
+    border: none;
+    margin-left: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #00AF71;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.delete-btn {
+    background-color: #B7342C;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.details {
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.donor-history {
+    margin-top: 50px;
+}
+
+#judul-riwayat-donatur{
+    color: #007C92;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.view-history-btn {
+    background-color: #00AF71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 60px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.detail-label {
+    color: #006374;
+    font-size: 20px;
+    flex: 1;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.detail-info {
+    color: #5B5B5B;
+    font-size: 16px;
+    flex: 2;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.detail-dates {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 68%;
+}
+
+.detail-info-tanggal {
+    background-color: #D9D9D9;
+    color: #5B5B5B;;
+    padding: 10px;
+    margin: 0 8px;
+    border-radius: 5px;
+}
+
+.date-separator {
+    padding: 0 20px;
+    font-weight: bold;
+}
+
+#popup-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 4px;
+    width: auto;
+    text-align: center;
+}
+
+.btn-primary, .btn-secondary {
+    width: 36%;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.btn-primary {
+    background-color: #00AF71;
+    color: #FFFFFF;
+    margin-right: 55px;
+}
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #007C92;
+    border: 1px solid #007C92;
+    margin-left: 55px;
+}
+
+.delete-button {
+        width: 245px; /* Atur lebar sesuai kebutuhan */
+    }
+
+
+#donation-popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#donation-popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.popup-header h3 {
+    color: #1C3F5B;
+    font-weight: 600;
+    font-size: 25px;
+}
+
+.popup-header .close-icon {
+    cursor: pointer;
+}
+
+.popup-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.popup-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.popup-row img {
+    margin-right: 10px;
+    height: 25px;
+    width: 27px;
+}
+
+.popup-row span {
+    color: #006374;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.detail-info-jenis {
+    display: flex;
+    flex: 2;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: -10px;
+}
+
+.donation-options img {
+    padding-right: 15px;
+    width: 37px;
+    height: 20px;
+}
+
+.donation-options img.selected {
+    background-color: #B0ECD7;
+}

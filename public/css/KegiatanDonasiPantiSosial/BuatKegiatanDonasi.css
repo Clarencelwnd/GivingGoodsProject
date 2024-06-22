@@ -1,0 +1,400 @@
+*{
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.main-content {
+    margin: auto;
+    width: 90%;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#judul-kegiatan-donasi {
+    color: #007C92;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title img {
+    display: flex;
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.details {
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin: 5px 0;
+}
+
+.donor-history {
+    margin-top: 50px;
+}
+
+.view-history-btn {
+    background-color: #00AF71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 60px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.detail-label {
+    color: #006374;
+    font-size: 20px;
+    flex: 1;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.detail-input-container {
+    flex: 2;
+}
+
+.detail-info {
+    color: #5B5B5B;
+    font-size: 16px;
+    flex: 2;
+    background-color: #D9D9D9;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.detail-info-upload {
+    flex: 2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: -10px;
+}
+
+.detail-dates {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 67%;
+}
+
+.detail-info-tanggal {
+    background-color: #D9D9D9;
+    padding: 10px;
+    margin: 0 5px;
+    border-radius: 5px;
+    width: 82px;
+}
+
+#tglMulai{
+    width: 150px;
+    text-align: center;
+}
+
+#tglSelesai{
+    width: 150px;
+    text-align: center;
+}
+
+.date-separator {
+    padding: 0 20px;
+    font-weight: bold;
+}
+
+#popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 4px;
+    width: auto;
+    text-align: center;
+}
+
+.btn-primary,
+.btn-secondary {
+    width: 36%;
+    padding: 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background-color: #00AF71;
+    color: #FFFFFF;
+    margin-right: 55px;
+}
+
+.btn-secondary {
+    background-color: #FFFFFF;
+    color: #007C92;
+    border: 1px solid #007C92;
+    margin-left: 55px;
+}
+
+.delete-button {
+    width: 245px;
+}
+
+#donation-popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+#donation-popup {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+}
+
+.popup-header h3 {
+    color: #1C3F5B;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.popup-header .close-icon {
+    cursor: pointer;
+}
+
+.popup-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.popup-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.popup-row img {
+    margin-right: 10px;
+    height: 25px;
+    width: 27px;
+}
+
+.popup-row span {
+    color: #006374;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 55px;
+}
+
+.save-btn {
+    background-color: #00AF71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 20%;
+}
+
+.cancel-btn {
+    color: #007C92;
+    background-color: white;
+    border: 2px solid #007C92;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 20px;
+    width: 20%;
+}
+
+
+
+.dropdown-select {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+/* .dropdown-select img {
+    transition: transform 0.3s;
+} */
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    width: 47%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border: none;
+}
+
+.dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-open .dropdown-menu {
+    display: block;
+}
+
+.dropdown-open .dropdown-select img {
+    transform: rotate(180deg);
+}
+
+
+#infoMessage {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-info-jenis {
+    display: flex;
+    flex: 2;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-left: -10px;
+}
+
+.donation-options img {
+
+    padding-right: 15px;
+    width: 37px;
+    height: 20px;
+}
+
+.donation-options img.selected {
+    background-color: #B0ECD7;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.error-message-upload {
+    color: red;
+    font-size: 14px;
+    padding-top: 15px;
+}
+
+.hint-text {
+    font-weight: 400;
+    font-size: 16px;
+    color: #898989;
+    margin-top: 5px;
+}
+
+.detail-info-jenis{
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    width: 68%;
+}
+
+.donation-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.donation-icon-wrapper {
+    display: inline-block;
+    border: 1px solid transparent;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.donation-icon-wrapper.selected {
+    border: 1px solid #007C92;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.donation-icon-wrapper img {
+    display: block;
+    margin: 0 auto;
+}
+
