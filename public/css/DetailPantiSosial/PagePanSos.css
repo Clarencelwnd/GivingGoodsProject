@@ -60,8 +60,32 @@
     margin-top: 30px;
 }
 
-
 /* Gaya untuk card kegiatan */
+
+.btn-forumBack{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.btn-forumBack a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-forumBack:focus, .btn-forumBack:active {
+    outline: none;
+    box-shadow: none; /* Remove any box-shadow if present */
+}
+
+#back-text{
+    color: #007C92;
+    font-size: large;
+    font-weight: 500;
+    margin: 0;
+}
+
 
 .daftarKegiatanContents{
     padding: 16px;
@@ -75,7 +99,6 @@
     color: #006374;
     margin-bottom: 50px;
 }
-
 
 .activity-card {
     margin-bottom: 30px;

@@ -11,6 +11,13 @@
 @endsection
 
 @section('content')
+    <div class="btn-forumBack">
+        <a href="{{ route('daftarKegiatan.search', ['id' => $id]) }}" class="back-link">
+            <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
+            <p id="back-text">Kembali ke Daftar Kegiatan {{ $pantiSosial->NamaPantiSosial }}</p>
+        </a>
+    </div>
+
     <div class="container">
         <div class="info-container">
             <img src="{{ $pantiSosial->LogoPantiSosial }}" class="donation-icon" alt="Logo Panti Sosial">
@@ -70,9 +77,9 @@
                 data-jenis-donasi="{{ isset($activity->JenisDonasiDibutuhkan) ? implode(' ', explode(',', $activity->JenisDonasiDibutuhkan)) : '' }}"
                 data-jenis-relawan="{{ isset($activity->JenisKegiatanRelawan) ? implode(' ', explode(',', $activity->JenisKegiatanRelawan)) : '' }}">
                 @if (isset($activity->NamaKegiatanDonasi))
-                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                 @elseif (isset($activity->NamaKegiatanRelawan))
-                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id]) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $activity->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                 @endif
                     <div class="card">
                         @if (isset($activity->NamaKegiatanRelawan))

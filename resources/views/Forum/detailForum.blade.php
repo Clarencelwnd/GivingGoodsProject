@@ -10,7 +10,6 @@
 
 
 @section('content')
-
     <div class="btn-forumBack">
         <a href="{{ route('displayDaftarForum', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">

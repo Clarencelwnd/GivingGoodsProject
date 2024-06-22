@@ -5,6 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{asset('css/Profile/riwayat_kegiatan.css')}}">
+    <script src="{{asset('js/Profile/riwayat_kegiatan.js')}}"></script>
 @endsection
 
 @section('content')
@@ -74,5 +75,5 @@
             @endif
         </div>
     </div>
-    <script src="{{asset('js/Profile/riwayat_kegiatan.js')}}"></script>
 @endsection
+

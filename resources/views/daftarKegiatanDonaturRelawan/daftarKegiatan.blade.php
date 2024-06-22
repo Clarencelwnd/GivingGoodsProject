@@ -32,10 +32,11 @@
              {{-- Display Panti Sosial card if exists --}}
              <div class="pantiSosialCardResult">
                  @if (isset($pantiSosial))
+                 <a href="{{ route('panti_sosial.show', ['idPantiSosial' => $pantiSosial->IDPantiSosial, 'idDonaturRelawan' => $id])}}" style="text-decoration: none; color: inherit;">
                  <div class="panti-sosial-card mb-2">
                      <div class="card">
                          <div class="organization-card">
-                            <img src="{{ asset('Image/general/dummy_profile_pict.png') }}" alt="panti-sosial-picture" id="pantiSosialPicture" class="rounded-circle">
+                            <img src="{{ $pantiSosial->LogoPantiSosial }}" alt="panti-sosial-picture" id="pantiSosialPicture" class="rounded-circle">
                             <div class="organization-information">
                                 <h5 class="card-title" id="namaPantiSosialCard">{{ $pantiSosial->NamaPantiSosial }}</h5>
                                 <p class="card-text" id="alamatPantiSosialCard">{{ $pantiSosial->AlamatPantiSosial }}</p>

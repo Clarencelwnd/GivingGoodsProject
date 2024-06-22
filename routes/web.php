@@ -44,7 +44,7 @@ Route::get('/summary-daftar-donasi/{idKegiatanDonasi}/{idDonaturRelawan}', [Summ
 Route::post('/store-daftar-donasi', [SummaryDaftarDonasiController::class, 'store'])->name('storeSummaryDaftarDonasi');
 
 // ====== Page Detail Panti Sosial ======
-Route::get('/panti-sosial/{IDPantiSosial}/{IDDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
+Route::get('/panti-sosial/{idPantiSosial}/{idDonaturRelawan}', [PagePanSosController::class, 'show'])->name('panti_sosial.show');
 
 //Search
 Route::get('/search/{id}', [DaftarKegiatanController::class, 'search'])->name('daftarKegiatan.search');
@@ -53,7 +53,7 @@ Route::get('/search/{id}', [DaftarKegiatanController::class, 'search'])->name('d
 Route::get('/sidebar', [DaftarKegiatanController::class, 'displaySideBar'])->name('displaySideBar');
 
 //Search Panti Sosial
-Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
+// Route::get('/panti-sosial/{id}', [PantiSosialController::class, 'displaySearchResult'])->name('searchPantiSosial');
 
 // ====== Artikel ======
 //Daftar Artikel
