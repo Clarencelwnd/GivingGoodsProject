@@ -10,7 +10,8 @@ use Carbon\Carbon;
 class forumController extends Controller
 {
     public function displayDaftarForum($id){
-        $daftarForum = Forum::with('donaturRelawan')->get();
+        // $daftarForum = Forum::with('donaturRelawan')->get();
+        $daftarForum = Forum::with('donaturRelawan')->paginate(5);
         $bulan = [
             '01' => 'Januari',
             '02' => 'Februari',
