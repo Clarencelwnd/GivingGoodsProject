@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RegistrasiDonatur;
 
 
-class RiwayatDonaturController extends Controller
-{
+class RiwayatDonaturController extends Controller{
 
     public function index(Request $request){
     // Ambil ID dari request
