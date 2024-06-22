@@ -108,6 +108,33 @@
         </div>
     </form>
 
+    <div id="donation-popup-container" style="display: none;">
+        <div id="donation-popup">
+            <div class="popup-header">
+                <h3>Jenis Donasi</h3>
+                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+            </div>
+            <div class="popup-content">
+                <div class="popup-column">
+                    <!-- Left Column Items -->
+                    <div class="popup-row"><img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
+                </div>
+                <div class="popup-column">
+                    <!-- Right Column Items -->
+                    <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Inisialisasi Flatpickr setelah memuat perpustakaan -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -130,6 +157,14 @@
         document.getElementById(inputId).value = text;
     }
 
+    function showDonationPopup() {
+            document.getElementById('donation-popup-container').style.display = 'flex';
+    }
+
+    function hideDonationPopup() {
+        document.getElementById('donation-popup-container').style.display = 'none';
+    }
+
     function tampilkanPopup() {
         // Tampilkan pop-up konfirmasi
         document.getElementById('popup-container').style.display = 'block';
@@ -139,5 +174,5 @@
         // Sembunyikan pop-up konfirmasi
         document.getElementById('popup-container').style.display = 'none';
     }
-    </script>
+</script>
 @endsection

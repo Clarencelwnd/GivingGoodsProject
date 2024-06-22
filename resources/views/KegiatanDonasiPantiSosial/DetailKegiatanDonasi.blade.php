@@ -108,19 +108,19 @@
             <div class="popup-content">
                 <div class="popup-column">
                     <!-- Left Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
                 </div>
                 <div class="popup-column">
                     <!-- Right Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_mandi.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
                 </div>
             </div>
         </div>

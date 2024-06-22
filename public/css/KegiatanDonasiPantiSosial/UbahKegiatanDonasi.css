@@ -153,13 +153,10 @@
 }
 
 .delete-button {
-        width: 245px; /* Atur lebar sesuai kebutuhan */
-    }
+    width: 245px; /* Atur lebar sesuai kebutuhan */
+}
 
-
-
-
-    #donation-popup-container {
+#donation-popup-container {
     display: none;
     position: fixed;
     top: 0;
@@ -184,14 +181,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    margin-top: -25px;
+    margin: 5px;
 }
 
 .popup-header h3 {
     color: #1C3F5B;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 25px;
 }
 
 .popup-header .close-icon {
@@ -201,6 +197,7 @@
 .popup-content {
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
 }
 
 .popup-column {
@@ -212,51 +209,51 @@
     display: flex;
     align-items: center;
     margin-bottom: 25px;
+    margin-top: 5px;
 }
 
 .popup-row img {
     margin-right: 10px;
-    height: 35px;
-    width: 37px;
+    height: 25px;
+    width: 27px;
 }
 
 .popup-row span {
     color: #006374;
     font-weight: 400;
-    font-size: 22px;
-    padding-left: 20px;
+    font-size: 18px;
+    padding-left: 5px;
 }
 
-
 .button-container {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 55px;
-    }
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 55px;
+}
 
-    .save-btn {
-        background-color: #00AF71;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        width: 20%;
-    }
-
-    a.cancel-btn {
-    display: inline-block;
-    text-decoration: none;
-    color: #007C92;
-    background-color: white;
-    border: 2px solid #007C92;
+.save-btn {
+    background-color: #00AF71;
+    color: white;
+    border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
+    width: 20%;
+}
+
+a.cancel-btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #007C92;
+    background-color: white;
+    border: 1px solid #007C92;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
     margin-right: 20px;
     width: 20%;
     text-align: center;

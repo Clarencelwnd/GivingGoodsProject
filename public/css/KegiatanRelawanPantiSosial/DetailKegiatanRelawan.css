@@ -190,6 +190,7 @@
     color: #FFFFFF;
     margin-right: 55px;
 }
+
 .btn-secondary {
     background-color: #FFFFFF;
     color: #007C92;
@@ -198,8 +199,8 @@
 }
 
 .delete-button {
-        width: 245px; /* Atur lebar sesuai kebutuhan */
-    }
+    width: 245px; /* Atur lebar sesuai kebutuhan */
+}
 
 #donation-popup-container {
     display: none;
