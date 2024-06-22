@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-class ForumController extends Controller
+class ForumDonaturRelawanController extends Controller
 {
     public function displayDaftarForum($id){
         // $daftarForum = Forum::with('donaturRelawan')->get();
