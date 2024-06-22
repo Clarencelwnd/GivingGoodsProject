@@ -80,16 +80,15 @@
     font-weight: 400;
 }
 
-
 .btn-confirmation {
-        background-color: white;
-        color: #005739;
-        border: 1px solid #005739;
-        border-radius: 5px;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+    background-color: white;
+    color: #005739;
+    border: 1px solid #005739;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
 
 .btn-confirmation.clicked {
         background-color: #DFDFDF;
@@ -173,13 +172,13 @@
 }
 
 .footer {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-        padding-bottom: 10px;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
 
-    .copyright-image {
-       height: 25px;
-    }
+.copyright-image {
+    height: 25px;
+}
