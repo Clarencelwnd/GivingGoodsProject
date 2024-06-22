@@ -90,16 +90,16 @@
             </div>
 
         <div class="donor-history">
-            <h2>Riwayat Donatur</h2>
+            <h2 id="judul-riwayat-donatur">Riwayat Donatur</h2>
             <button class="view-history-btn-disabled" type="button" disabled>Lihat Riwayat Donatur</button>
         </div>
     </div>
 
         <!-- Pop-up konfirmasi -->
         <div id="popup-container" style="display: none;">
-            <div id="popup">
-                <h3 style="color: #152F44; font-size: 24px; font-weight: 700;">Konfirmasi Penyimpanan Perubahan</h3>
-                <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menyimpan perubahan yang telah Anda buat? <br> Perrubahan yang disimpan akan menggantikan versi sebelumnya.</p>
+            <div id="popup" style="margin: 10px">
+                <h3 style="color: #152F44; font-size: 20px; font-weight: 600;">Konfirmasi Penyimpanan Perubahan</h3>
+                <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menyimpan perubahan yang telah Anda buat? <br> Perrubahan yang disimpan akan menggantikan versi sebelumnya.</p>
                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                     <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="tutupPopup(); return false;">Batal</button>
                     <button type="submit" class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Simpan</button>
@@ -114,6 +114,7 @@
                 <h3>Jenis Donasi</h3>
                 <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
             </div>
+
             <div class="popup-content">
                 <div class="popup-column">
                     <!-- Left Column Items -->
@@ -126,7 +127,7 @@
                 <div class="popup-column">
                     <!-- Right Column Items -->
                     <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/toiletries.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="Perlengkapan Mandi"><span>Perlengkapan Mandi</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
                     <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
