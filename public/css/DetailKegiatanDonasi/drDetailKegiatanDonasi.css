@@ -61,6 +61,13 @@ body {
     margin-bottom: 30px;
 }
 
+.button.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    text-decoration: none;
+    background-color: #cccccc;
+}
+
 .question-contact-container {
     display: flex;
     flex-direction: column;

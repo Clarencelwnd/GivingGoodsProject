@@ -11,15 +11,19 @@ html, body {
     overflow-x: hidden;
 }
 
+
+
 /* CONTENTS */
 .contentContainer{
     display: flex;
     flex-direction: row;
+    width: 90%;
+    margin: auto;
 }
 
 .contentContainerSearched{
     flex: 1;
-    margin-left: 2rem;
+    /* margin-left: 2rem; */
 }
 
 .pantiSosialCardResult{
@@ -27,20 +31,20 @@ html, body {
 }
 
 #daftar-kegiatan-title{
-    margin-top: 45px;
-    margin-left: 30px;
+    /* margin-top: 45px; */
+    /* margin-left: 30px; */
     font-size: 25px;
     font-weight: 600;
-    padding-right: 10px;
+    /* padding-right: 10px; */
     color: #006374;
     margin-bottom: 50px;
 }
 
 /* SEARCH BAR */
 .searchbar{
-    width: 100px;
-    margin-left: 40px;
-    margin-top: 30px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
 }
 
 #placeholder-text{
@@ -114,4 +118,16 @@ html, body {
     padding-right: 10px;
     width: 30px;
     height: 18px;
+}
+
+.card.card-kegiatan-donatur-relawan{
+    height: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card.card-kegiatan-donatur-relawan:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }

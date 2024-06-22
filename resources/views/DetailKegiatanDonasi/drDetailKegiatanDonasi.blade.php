@@ -74,9 +74,11 @@
             </div>
             <div class="text">Jenis Donasi yang Dibutuhkan: {{ $kegiatanDonasi->DeskripsiKegiatanDonasi }}</div>
         </div>
-
-        <a href="{{ route('daftarKegiatanDonasi', ['idKegiatanDonasi' => $kegiatanDonasi->IDKegiatanDonasi, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button">Ikut Kegiatan</a>
-
+        @if ($kegiatanDonasi->Disable == 'True')
+            <a href="{{ route('daftarKegiatanDonasi', ['idKegiatanDonasi' => $kegiatanDonasi->IDKegiatanDonasi, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button disabled">Ikut Kegiatan</a>
+        @else
+            <a href="{{ route('daftarKegiatanDonasi', ['idKegiatanDonasi' => $kegiatanDonasi->IDKegiatanDonasi, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button">Ikut Kegiatan</a>
+        @endif
         <div class="question-contact-container">
             <div class="question">Punya Pertanyaan?</div>
             <div class="contact">
