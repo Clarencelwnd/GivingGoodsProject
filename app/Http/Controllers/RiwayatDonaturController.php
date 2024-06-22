@@ -9,8 +9,7 @@ use App\Models\RegistrasiDonatur;
 class RiwayatDonaturController extends Controller
 {
 
-    public function index(Request $request)
-{
+    public function index(Request $request){
     // Ambil ID dari request
     $id = $request->id;
 
@@ -28,11 +27,8 @@ class RiwayatDonaturController extends Controller
     $jumlahKonfirmasiDiterima = RegistrasiDonatur::where('StatusRegistrasiDonatur', 'Konfirmasi Diterima')->count();
 
     // Kirim data ke view beserta jumlah donatur yang telah dikonfirmasi
-    return view('RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima', 'id'));
+    return view('RiwayatKegiatanPantiSosial.RiwayatDonatur', compact('registrasiDonatur', 'jumlahKonfirmasiDiterima', 'id'));
 }
-
-
-
 
     public function updateStatus(Request $request, $id)
     {
@@ -63,6 +59,5 @@ class RiwayatDonaturController extends Controller
 
         return redirect()->back()->with('error', 'Registrasi tidak ditemukan');
     }
-
 
 }

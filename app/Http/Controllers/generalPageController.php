@@ -42,7 +42,7 @@ class generalPageController extends Controller
             ['path' => LengthAwarePaginator::resolveCurrentPath()]
         );
 
-        return view('generalPage', ['activities'=> $paginator, 'id'=>$id]);
+        return view('GeneralPagePantiSosial.generalPage', ['activities'=> $paginator, 'id'=>$id]);
     }
 
     public function displayDummyProfilePage(){
@@ -54,7 +54,7 @@ class generalPageController extends Controller
             ->where('IDPantiSosial', $id)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
-        return view('kegiatanDonasiPage', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.kegiatanDonasiPage', compact('kegiatanDonasi', 'id'));
     }
 
     public function viewAllKegiatanRelawan($id){
@@ -63,7 +63,7 @@ class generalPageController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5);
             // dd($id);
-        return view('kegiatanRelawanPage', compact('kegiatanRelawan', 'id'));
+        return view('KegiatanRelawanPantiSosial.kegiatanRelawanPage', compact('kegiatanRelawan', 'id'));
     }
 
     public function search(Request $request, $id){
@@ -158,9 +158,8 @@ class generalPageController extends Controller
             $kegiatanRelawan = $kegiatanRelawan->withCount('registrasiRelawan')->get();
             $kegiatanDonasi = $kegiatanDonasi->withCount('registrasiDonatur')->get();
             $activities = $kegiatanRelawan->merge($kegiatanDonasi);
-            return view('generalPage', compact('activities', ['id' => $id]));
+            return view('GeneralPagePantiSosial.generalPage', compact('activities', ['id' => $id]));
         }
-
     }
 
     private function addPaginationLinks($activities){
@@ -171,6 +170,6 @@ class generalPageController extends Controller
     }
 
     public function faq($id){
-        return view('FAQ', compact('id'));
+        return view('FAQ.FAQ', compact('id'));
     }
 }

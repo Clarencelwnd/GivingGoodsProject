@@ -14,8 +14,6 @@ class KomentarForumController extends Controller
             'KomentarForum' => 'required|string|max:255'
         ]);
 
-        // $idForum = $request->IDForum;
-
          // Create a new comment entry
          KomentarForum::create([
             'IDForum' => $request->IDForum,

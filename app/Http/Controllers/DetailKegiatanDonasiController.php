@@ -15,7 +15,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('DetailKegiatanDonasi', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.DetailKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
     public function showEdit($id)
@@ -26,7 +26,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('UbahKegiatanDonasi', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.UbahKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
     public function showBuat($id)
@@ -37,7 +37,7 @@ class DetailKegiatanDonasiController extends Controller
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('BuatKegiatanDonasi', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.BuatKegiatanDonasi', compact('kegiatanDonasi', 'id'));
     }
 
 

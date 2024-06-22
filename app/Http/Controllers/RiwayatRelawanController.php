@@ -8,7 +8,6 @@ use App\Models\RegistrasiRelawan;
 
 class RiwayatRelawanController extends Controller
 {
-
     public function index(Request $request)
     {
         // Ambil ID dari request
@@ -29,9 +28,8 @@ class RiwayatRelawanController extends Controller
         $jumlahKonfirmasiDiterima = RegistrasiRelawan::where('StatusRegistrasiRelawan', 'Terima')->where('IDKegiatanRelawan', $id)->count();
 
         // Kirim data ke view beserta jumlah relawan yang telah dikonfirmasi
-        return view('RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima', 'id'));
+        return view('RiwayatKegiatanPantiSosial.RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima', 'id'));
     }
-
 
     public function updateStatus(Request $request, $id)
     {

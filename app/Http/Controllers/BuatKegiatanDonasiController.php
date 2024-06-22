@@ -10,21 +10,21 @@ use App\Models\PantiSosial;
 class BuatKegiatanDonasiController extends Controller
 {
 
-      // Menampilkan form buat kegiatan donasi
-      public function show($id)
-      {
-          $pantiSosial = PantiSosial::find($id);
+    // Menampilkan form buat kegiatan donasi
+    public function show($id)
+    {
+        $pantiSosial = PantiSosial::find($id);
 
-          if (!$pantiSosial) {
-              return redirect()->back()->with('error', 'Panti Sosial tidak ditemukan');
-          }
+        if (!$pantiSosial) {
+            return redirect()->back()->with('error', 'Panti Sosial tidak ditemukan');
+        }
 
-          return view('BuatKegiatanDonasi', compact('pantiSosial', 'id'));
-      }
+        return view('KegiatanDonasiPantiSosial.BuatKegiatanDonasi', compact('pantiSosial', 'id'));
+    }
 
 
-       // Menyimpan data kegiatan donasi ke database
-       public function store(Request $request)
+    // Menyimpan data kegiatan donasi ke database
+    public function store(Request $request)
        {
         $validatedData = $request->validate([
                'namaKegiatan' => 'required|string|max:255|unique:kegiatan_donasi,NamaKegiatanDonasi',
@@ -70,7 +70,6 @@ class BuatKegiatanDonasiController extends Controller
         } else {
             return redirect()->back()->withErrors($validatedData)->withInput();
         }
-   }
-
+    }
 
 }

@@ -1,11 +1,11 @@
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 
 @section('title', 'Riwayat Donatur')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
-    <link href="{{ asset('css/RiwayatDonatur.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
+    <link href="{{ asset('css/RiwayatDonaturRelawan/RiwayatDonatur.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

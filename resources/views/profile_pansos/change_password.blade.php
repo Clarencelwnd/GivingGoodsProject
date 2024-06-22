@@ -1,9 +1,9 @@
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 @section('title', 'Profil Panti Sosial')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{asset('css/change_password.css')}}">
+    <link rel="stylesheet" href="{{asset('css/Profile/change_password.css')}}">
     <script src="{{ asset('js/profile.js') }}"></script>
 @endsection
 

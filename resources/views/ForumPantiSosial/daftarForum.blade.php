@@ -1,10 +1,10 @@
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 
 @section('title', 'Daftar Forum')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/daftarForumPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ForumPantiSosial/daftarForumPage.css') }}">
     <script src="{{ asset('js/forumPage.js') }}"></script>
 @endsection
 

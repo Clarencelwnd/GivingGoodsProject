@@ -1,12 +1,11 @@
-<!-- resources/views/kegiatan-donasi/show.blade.php -->
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 @section('title', 'Detail Kegiatan Donasi')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
     <script src="{{ asset('js/generalPage.js') }}"></script>
-    <link href="{{ asset('css/DetailKegiatanDonasi.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/KegiatanDonasiPantiSosial/DetailKegiatanDonasi.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

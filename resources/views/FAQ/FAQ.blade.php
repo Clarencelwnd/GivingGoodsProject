@@ -3,8 +3,8 @@
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
-    <link href="{{ asset('css/faq.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
+    <link href="{{ asset('css/FAQ/faq.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')

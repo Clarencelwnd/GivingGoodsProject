@@ -1,10 +1,10 @@
-@extends('templatePage')
+@extends('GeneralPagePantiSosial.templatePage')
 
 @section('title', 'Home Panti Sosial')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/generalPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css')}}">
     <script src="{{ asset('js/generalPage.js') }}"></script>
 @endsection
 

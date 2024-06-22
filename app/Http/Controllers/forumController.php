@@ -11,7 +11,7 @@ class forumController extends Controller
 {
     public function displayDaftarForum($id){
         $daftarForum = Forum::with('donaturRelawan')->get();
-        return view('daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
+        return view('ForumPantiSosial.daftarForum', ['daftarForum' => $daftarForum, 'id' => $id]);
     }
 
     public function buatForum(Request $request, $id){
@@ -32,7 +32,7 @@ class forumController extends Controller
 
     public function displayDetailForum($idPantiSosial, $idForum){
         $forum = Forum::with(['donaturRelawan', 'pantiSosial', 'komentarForum.donaturRelawan', 'komentarForum.pantiSosial'])->findOrFail($idForum);
-        return view('detailForum',['id' => $idPantiSosial, 'forum' => $forum, 'idForum' => $idForum]);
+        return view('ForumPantiSosial.detailForum',['id' => $idPantiSosial, 'forum' => $forum, 'idForum' => $idForum]);
     }
 
 }
