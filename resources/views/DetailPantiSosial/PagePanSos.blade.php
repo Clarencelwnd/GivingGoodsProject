@@ -5,7 +5,7 @@
 @section('stylesheets')
     @parent
     <link href="{{ asset('css/DetailPantiSosial/PagePanSos.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/components/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/componentsUser/pagination.css') }}">
     <script src="{{ asset('js/DetailPantiSosial/PagePanSos.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 @endsection
@@ -137,6 +137,6 @@
 @section('pagination')
     <div class="pagination-container">
 
-        {{ $activities->appends(request()->input())->links('components.pagination') }}
+        {{ $activities->appends(request()->input())->links('componentsUser.pagination') }}
     </div>
 @endsection

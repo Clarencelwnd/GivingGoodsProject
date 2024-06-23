@@ -10,7 +10,7 @@
 
 @section('content')
     <div class="btn-forumBack">
-        <a href="{{ route('displayDaftarForum', ['id' => $id]) }}" class="back-link">
+        <a href="{{ route('displayDaftarForumPantiSosial', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
             <p id="back-text">Kembali ke Daftar Forum</p>
         </a>
@@ -30,7 +30,7 @@
 
     {{-- Reply text area --}}
     <div class="replyTextArea">
-        <form action="{{ route('pantisosial.simpanKomentar', ['idPantiSosial' => $id]) }}" method="POST">
+        <form action="{{ route('simpanKomentarForumPantiSosial', ['idPantiSosial' => $id]) }}" method="POST">
             @csrf
             <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
             <textarea class="w-100 form-control" name="KomentarForum" rows="4" placeholder="Bagikan pendapatmu..." required></textarea>

@@ -23,6 +23,6 @@ class KomentarForumPantiSosialController extends Controller
         ]);
 
         // Redirect back to the forum details
-        return redirect()->route('displayDetailForum', ['idPantiSosial' => $idPantiSosial, 'idForum' => $request->IDForum])->with('success', 'Comment added successfully.');
+        return redirect()->route('displayDetailForumPantiSosial', ['idPantiSosial' => $idPantiSosial, 'idForum' => $request->IDForum])->with('success', 'Comment added successfully.');
     }
 }
