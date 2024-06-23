@@ -6,25 +6,20 @@
     <title>Reset Password</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/ResetPassword/email_reset_password.css')}}">
 </head>
 <body>
-    <div class="content row g-0">
+    <div class="content row g-0 vh-100">
         <div class="col-sm-6 d-none d-md-block">
             <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="col-lg-6">
-            <div class="card-body p-md-5 ">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <div class="card-body p-md-5 d-flex flex-column align-items-center">
                 {{-- HEADER --}}
-                <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
-                    <h3 class="mb-3">GivingGoods</h3>
-                </div>
+               <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
                 {{-- OPTIONS --}}
                 <div class="card justify-content-center">
@@ -41,7 +36,7 @@
                                     {{$message}}
                                 </label>
                             @enderror
-                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-next">
+                            <button type="submit" class="btn btn-block px-4 me-md-2 fw-normal" id="btn-next">
                                 Lanjut
                             </button>
                         </form>
@@ -50,9 +45,7 @@
                 </div>
 
                 {{-- Sudah punya akun? --}}
-                <div class="d-flex bottom-txt">
-                    <div id="copyright-txt">©️GivingGoods | 2024</div>
-                </div>
+                <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
             </div>
         </div>
 
