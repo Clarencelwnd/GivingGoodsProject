@@ -12,7 +12,7 @@
     <div id="mySidebar" class="sidebar">
         <a href="{{ route('viewAllKegiatan', ['id' => $id]) }}">Kegiatan</a>
         <a href="{{ route('displayDaftarForumPantiSosial', ['id' => $id]) }}">Forum</a>
-        <a href="{{ route('FAQPantiSosial', ['id' => $id]) }}">FAQ</a>
+        <a href="{{ route('faqPantiSosial', ['id' => $id]) }}">FAQ</a>
         <div class="contact-us">
             <p>Hubungi Kami:</p>
             <div id="content-contact-us">

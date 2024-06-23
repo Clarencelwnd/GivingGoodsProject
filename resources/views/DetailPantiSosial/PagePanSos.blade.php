@@ -12,7 +12,7 @@
 
 @section('content')
     <div class="btn-forumBack">
-        <a href="{{ route('daftarKegiatan.search', ['id' => $id]) }}" class="back-link">
+        <a href="{{ route('displayDaftarKegiatan', ['id' => $id]) }}" class="back-link">
             <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
             <p id="back-text">Kembali ke Daftar Kegiatan</p>
         </a>

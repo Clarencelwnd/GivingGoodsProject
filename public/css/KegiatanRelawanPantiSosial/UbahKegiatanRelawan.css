@@ -125,6 +125,15 @@
     font-weight: bold;
 }
 
+#judul-riwayat-relawan{
+    color: #007C92;
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    font-weight: 600;
+    padding-top: 15px;
+}
+
 #popup-container{
     display: none;
     position: fixed;

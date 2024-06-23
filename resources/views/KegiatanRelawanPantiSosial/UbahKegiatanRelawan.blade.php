@@ -102,7 +102,7 @@
         </div>
 
         <div class="donor-history">
-            <h2>Riwayat Relawan</h2>
+            <h2 id="judul-riwayat-relawan">Riwayat Relawan</h2>
             <button class="view-history-btn-disabled" type="button" disabled>Lihat Riwayat Relawan</button>
         </div>
     </div>
