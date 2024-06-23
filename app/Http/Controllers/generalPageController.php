@@ -269,7 +269,6 @@ class generalPageController extends Controller
         $merged = $kegiatanRelawanCollection->merge($kegiatanDonasiCollection);
         $sorted = $merged->sortByDesc('created_at');
 
-
         $perPage = 5;
         $currentPage = LengthAwarePaginator::resolveCurrentPage();
         $currentPageItems = $sorted->slice(($currentPage - 1) * $perPage, $perPage)->all();
