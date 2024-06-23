@@ -1,20 +1,11 @@
-<<<<<<<< HEAD:resources/views/ForumDonaturRelawan/daftarForum.blade.php
-@extends('GeneralPageDonaturRelawan/templateDonaturRelawan')
-========
 @extends('GeneralPagePantiSosial.templatePage')
->>>>>>>> PantiSosial:resources/views/ForumPantiSosial/daftarForum.blade.php
 
 @section('title', 'Daftar Forum')
 
 @section('stylesheets')
     @parent
-<<<<<<<< HEAD:resources/views/ForumDonaturRelawan/daftarForum.blade.php
-    <link rel="stylesheet" href="{{ asset('css/ForumDonaturRelawan/daftarForumPage.css') }}">
-    <script src="{{ asset('js/ForumDonaturRelawan/forumPage.js') }}"></script>
-========
     <link rel="stylesheet" href="{{ asset('css/ForumPantiSosial/daftarForumPage.css') }}">
     <script src="{{ asset('js/forumPage.js') }}"></script>
->>>>>>>> PantiSosial:resources/views/ForumPantiSosial/daftarForum.blade.php
 @endsection
 
 @section('content')
@@ -26,21 +17,12 @@
 </div>
 
 @foreach ($daftarForum as $forum)
-<<<<<<<< HEAD:resources/views/ForumDonaturRelawan/daftarForum.blade.php
-<a href="{{ route('displayDetailForum', ['idDonaturRelawan' => $id, 'idForum' => $forum->IDForum]) }}" class="text-decoration-none text-dark">
-    <div class="card" id="forum-cards">
-        <div class="card-body">
-            <div class="card-top">
-                <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
-                <h6 id="tanggalBuatForum">{{ $forum->FormatTanggalBuatForum }}</h6>
-========
 <a href="{{ route('displayDetailForum', ['idPantiSosial' => $id, 'idForum' => $forum->IDForum]) }}" class="text-decoration-none text-dark">
     <div class="card w-60" id="forum-cards">
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
                 <h6 id="tanggalBuatForum">{{ $forum->TanggalBuatForum }}</h6>
->>>>>>>> PantiSosial:resources/views/ForumPantiSosial/daftarForum.blade.php
             </div>
                 <h6 class="card-info" id="namaPembuatForum">{{ $forum->donaturRelawan->NamaDonaturRelawan ?? $forum->pantiSosial->NamaPantiSosial}}</h6>
                 <p class="card-text">{{ $forum->DeskripsiForum }}</p>
@@ -81,10 +63,6 @@
 
 @section('pagination')
     <div class="pagination-container d-flex justify-content-center">
-<<<<<<<< HEAD:resources/views/ForumDonaturRelawan/daftarForum.blade.php
-        {{ $daftarForum->links('components.pagination') }}
-========
         {{ $daftarForum->links('componentsPansos.pagination') }}
->>>>>>>> PantiSosial:resources/views/ForumPantiSosial/daftarForum.blade.php
     </div>
 @endsection
