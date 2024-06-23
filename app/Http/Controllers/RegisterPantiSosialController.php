@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\PantiSosial;
+use App\Models\PantiSosial;
 
 class RegisterPantiSosialController extends Controller
 {

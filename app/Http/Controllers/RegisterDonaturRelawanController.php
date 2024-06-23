@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Models\DonaturAtauRelawan;
+use App\Models\DonaturAtauRelawan;
 
 class RegisterDonaturRelawanController extends Controller
 {

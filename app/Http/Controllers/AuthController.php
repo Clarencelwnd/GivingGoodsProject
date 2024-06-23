@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     public function displayLoginView(){
-        return view('login');
+        return view('Login.login');
     }
 
     public function loginUser(Request $request){

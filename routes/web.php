@@ -22,32 +22,27 @@ Route::get('/', function () {
 });
 
 Route::get('/RegisterPantiSosial', function () {
-    return view('RegisterPantiSosial');
+    return view('Registration.RegisterPantiSosial');
 });
 
 Route::get('/RegisterPantiSosial-2', function () {
-    return view('RegisterPantiSosial-2');
+    return view('Registration.RegisterPantisosial-2');
 })->name('registerPantiSosialNext');
 
 
 Route::get('/RegisterSelected', function () {
-    return view('RegisterSelected');
+    return view('Registration.RegisterSelected');
 })->name('registerSelected');
 
 Route::get('/RegisterDonaturRelawan', function () {
-    return view('RegisterDonaturRelawan');
+    return view('Registration.RegisterDonaturRelawan');
 })->name('registerDonaturRelawan');
-
-
-// Route::post('/check-email', [RegisterDonaturRelawanController::class, 'checkEmail'])->name('register.checkEmail');
-// Route::post('/store', [RegisterDonaturRelawanController::class, 'store'])->name('register.store');
 
 // REGISTER PANTI SOSIAL
 Route::post('/register-pantisosial', [RegisterPantiSosialController::class, 'registerPantiSosial1'])->name('registerPantiSosial1');
 
 // REGISTER PANTI SOSIAL 2
 Route::post('/register-pantisosial2', [RegisterPantiSosialController::class, 'registerPantiSosial2'])->name('registerPantiSosial2');
-
 
 //REGISTER DONATUR RELAWAN
 Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
