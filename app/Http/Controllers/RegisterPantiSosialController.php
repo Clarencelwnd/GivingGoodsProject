@@ -67,7 +67,6 @@ class RegisterPantiSosialController extends Controller
             $user->NomorTeleponPantiSosial = $phone;
             $user->NomorRegistrasiPantiSosial = $request->registration_num;
 
-
               // untuk uplaod file dan menyimpan path ke database
               if ($request->hasFile('validation_document')) {
                 $file = $request->file('validation_document');

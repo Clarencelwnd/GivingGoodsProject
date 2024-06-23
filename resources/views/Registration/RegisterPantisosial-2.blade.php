@@ -36,7 +36,7 @@
                  <script>
                     setTimeout(function() {
                         document.getElementById('popup-container-success').style.display = 'none';
-                        window.location.href = "{{ route('login') }}";
+                        window.location.href = "{{ route() }}";
                     }, 1500);
                 </script>
              @endif
@@ -85,7 +85,7 @@
             </div>
 
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
+                Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
             </div>
 
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">

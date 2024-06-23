@@ -16,7 +16,7 @@
             <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+        <div class="col-lg-6 d-flex justify-content-center">
             <div class="card-body p-md-5 d-flex flex-column align-items-center">
                 {{-- HEADER --}}
                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
@@ -40,7 +40,7 @@
                                 Lanjut
                             </button>
                         </form>
-                        <a href="{{route('login')}}" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
+                        <a href="{{ route('login-user') }}" class="btn btn-block" id="btn-login">Kembali ke Halaman Masuk</a>
                     </div>
                 </div>
 

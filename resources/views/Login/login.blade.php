@@ -42,14 +42,14 @@
                             </div>
                         </div>
 
-                    <div class="btn-container">
+                    <div class="btn-container" onclick="window.location.href='{{ route('login-user') }}">
                         <button type="submit" class="btn-primary">Masuk Akun</button>
                     </div>
                     </form>
 
                 </div>
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
+                Belum Punya Akun? <a href="{{ route('registerDonaturRelawan') }}">Daftar</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>

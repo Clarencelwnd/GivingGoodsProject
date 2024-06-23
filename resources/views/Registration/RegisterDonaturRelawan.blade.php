@@ -41,7 +41,7 @@
                             <script>
                                 setTimeout(function() {
                                     document.getElementById('popup-container-success').style.display = 'none';
-                                    window.location.href = "{{ route('login') }}";
+                                    window.location.href = "{{ route('login-user') }}";
                                 }, 1500);
                             </script>
                         @endif
@@ -58,7 +58,7 @@
                                 <p style="margin-top: 10px;">Lanjutkan dengan email ini? <br> {{ session('registeredEmail') }}</p>
                                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                                     <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="window.location.href='{{ route('registerDonaturRelawan') }}'; return false;">Ubah</button>
-                                    <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" onclick="window.location.href='{{ route('login') }}'; return false;">Ya, Masuk</button>
+                                    <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" onclick="window.location.href='{{ route('login-user') }}'; return false;">Ya, Masuk</button>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="already-have-account">
-                    Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
+                    Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
                 </div>
                 <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
             </div>

@@ -8,22 +8,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/Registration/RegisterPantiSosial.css') }}">
     <script src="{{ asset('js/RegisterPantiSosial.js') }}"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="left-side">
+    <div class="content row g-0 vh-100">
+        <div class="col-sm-6 d-none d-lg-block">
             <img src="{{ asset('Image/login_reset_password/bg3.png') }}" alt="Sample photo" class="img-fluid">
         </div>
-        <div class="right-side">
-            <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
-            {{-- FORM --}}
-            <div class="form-container">
-                <form action="{{ route('registerPantiSosial1') }}" method="POST">
-                    @csrf
+        <div class="col-lg-6 d-flex justify-content-center">
+            <div class="card-body p-md-5 d-flex flex-column align-items-center">
+                {{-- HEADER --}}
+                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
+
+                {{-- FORM --}}
+                <div class="form-container">
                     <h2>Mulai Bergabung</h2>
+
+                    <form action="{{ route('registerPantiSosial1') }}" method="POST">
+                    @csrf
 
                     <div class="form-group">
                         <label for="organization-name">Nama Organisasi</label>
@@ -73,17 +78,17 @@
                         <button type="submit" class="btn-primary">Selanjutnya</button>
                         <a class="btn-secondary" href="{{ route('registerSelected') }}" style="text-decoration: none;">Kembali</a>
                     </div>
-
                 </form>
             </div>
 
-            {{-- SUDAH PUNYA AKUN --}}
-            <div class="already-have-account">
-                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
+             {{-- SUDAH PUNYA AKUN --}}
+             <div class="already-have-account">
+                Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>
     </div>
+</div>
 
 </body>
 </html>
