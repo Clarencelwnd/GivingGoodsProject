@@ -27,7 +27,7 @@
     @endif
 
     {{-- SEARCH BAR --}}
-    <form action="{{ route('search', ['id' => $id]) }}" method="GET">
+    <form action="{{ route('daftarKegiatan.search', ['id' => $id]) }}" method="GET">
         <div class="col-md-12 searchbar">
             <div class="d-flex form-inputs">
                 <input type="hidden">

@@ -11,42 +11,22 @@
 
     <title>@yield('title')</title>
     @section('stylesheets')
-<<<<<<<< HEAD:resources/views/generalPageDonaturRelawan/templateDonaturRelawan.blade.php
         <link rel="stylesheet" href="{{ asset('css/GeneralPageDonaturRelawan/templatePage.css') }}">
         <script src="{{ asset('js/GeneralPageDonaturRelawan/templatePage.js') }}"></script>
     @show
-
-
 </head>
 
 <body>
     @include('components/header', ['id' => $id])
     <hr>
-
     @section('header')
     <div id="main">
         @yield('content')
         @yield('pagination')
-========
-        <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/templatePage.css') }}">
-        <script src="{{ asset('js/templatePage.js') }}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    @show
-</head>
-
-<body>
-    <div class="container">
-        @include('componentsPansos.sideBar', ['id' => $id])
-
-        <div id="main">
-            @include('componentsPansos.header', ['id'=> $id])
-            @yield('content')
-            @yield('pagination')
-            @include('componentsPansos.footer')
-        </div>
->>>>>>>> PantiSosial:resources/views/GeneralPagePantiSosial/templatePage.blade.php
+        @include('components.footer')
     </div>
-
+    @include('componentsUser.footer')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>
