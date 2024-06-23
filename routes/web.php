@@ -4,7 +4,6 @@ use App\Http\Controllers\forumPantiSosialController;
 use App\Http\Controllers\generalPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KomentarForumPantiSosialController;
-use App\Models\KomentarForum;
 use App\Http\Controllers\ProfileDonaturRelawanController;
 use App\Http\Controllers\drDetailKegiatanRelawanController;
 use App\Http\Controllers\DaftarKegiatanRelawanController;
@@ -15,7 +14,6 @@ use App\Http\Controllers\SummaryDaftarDonasiController;
 use App\Http\Controllers\PagePanSosController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DaftarKegiatanController;
-use App\Http\Controllers\PantiSosialController;
 use App\Http\Controllers\UserGeneralPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResetPasswordController;
@@ -166,23 +164,20 @@ Route::get('/detail_riwayat_kegiatan/donasi/{idDonaturRelawan}/{idRegistrasiDona
 Route::get('/detail_riwayat_kegiatan/relawan/{idDonaturRelawan}/{idRegistrasiRelawan}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
 Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
-
-
-
-
+//REGISTER PANTI SOSIAL
 Route::get('/RegisterPantiSosial', function () {
     return view('Registration.RegisterPantiSosial');
 });
-
 Route::get('/RegisterPantiSosial-2', function () {
     return view('Registration.RegisterPantisosial-2');
 })->name('registerPantiSosialNext');
 
-
+// REGISTER SELECTION
 Route::get('/RegisterSelected', function () {
     return view('Registration.RegisterSelected');
 })->name('registerSelected');
 
+//REGISTER DONATUR RELAWAN
 Route::get('/RegisterDonaturRelawan', function () {
     return view('Registration.RegisterDonaturRelawan');
 })->name('registerDonaturRelawan');
@@ -210,6 +205,3 @@ Route::post('/new_password', [ResetPasswordController::class, 'checking_otp'])->
 Route::get('/new_password', [ResetPasswordController::class, 'new_password'])->name('new_password');
 Route::post('/checking_password', [ResetPasswordController::class, 'checking_password'])->name('checking_password');
 
-// dummy
-Route::get('/dummy_login', [ResetPasswordController::class, 'dummy_login'])->name('dummy_login');
-Route::get('/dummy_register', [ResetPasswordController::class, 'dummy_register'])->name('dummy_register');
