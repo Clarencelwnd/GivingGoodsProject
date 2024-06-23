@@ -25,7 +25,7 @@
         <div>
             <form id="filter-form" action="{{ route('daftarKegiatan.search', ['id' => $id]) }}" method="GET">
                 <input type="hidden" name="search" value="{{ request('search') }}">
-            @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
+            @include('componentsUser.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
         </div>
 
         <div class="contentContainerSearched">
@@ -119,6 +119,6 @@
 @section('pagination')
     <div class="pagination-container">
         {{-- {{ $activities->links('components.pagination') }} --}}
-        {{ $activities->appends(request()->input())->links('components.pagination') }}
+        {{ $activities->appends(request()->input())->links('componentsUser.pagination') }}
     </div>
 @endsection

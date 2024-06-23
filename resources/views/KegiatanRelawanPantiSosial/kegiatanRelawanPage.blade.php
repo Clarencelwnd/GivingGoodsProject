@@ -28,7 +28,7 @@
 @endif
 
 {{-- SEARCH BAR --}}
-<form action="{{ route('search', ['id' => $id]) }}" method="GET">
+<form action="{{ route('pantisosial.search', ['id' => $id]) }}" method="GET">
     <div class="col-md-12 searchbar">
         <div class="d-flex form-inputs">
             <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama kegiatan donasi/ kegiatan relawan, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">

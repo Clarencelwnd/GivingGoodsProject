@@ -37,7 +37,7 @@ Route::get('/generalPage/viewAllKegiatanDonasi/{id}', [generalPageController::cl
 Route::get('/generalPage/viewAllKegiatanRelawan/{id}', [generalPageController::class, 'viewAllKegiatanRelawan'])->name('viewAllKegiatanRelawan');
 
 // ===== SEARCH =====
-Route::get('/search/{id}', [generalPageController::class, 'search'])->name('search');
+Route::get('/searchPantiSosial/{id}', [generalPageController::class, 'search'])->name('pantisosial.search');
 
 // ===== FILTER =====
 Route::get('/filter/{id}', [generalPageController::class, 'filterStatusKegiatan'])->name('filterStatus');
@@ -86,10 +86,11 @@ Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRel
 Route::get('/daftarForum/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForum');
 Route::post('/daftarForum/{id}', [forumPantiSosialController::class, 'buatForum'])->name('buatForum');
 Route::get('/forum/{idPantiSosial}/{idForum}', [forumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::post('/komentarPantiSosial/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('pantisosial.simpanKomentar');
 
 // === FAQ ===
 Route::get('/faq/{id}', [generalPageController::class, 'faq'])->name('faq');
+
 //Halaman utama
 Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage'])->name('halamanUtama');
 Route::get('/faq/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');
@@ -135,7 +136,7 @@ Route::get('/daftarArtikel/artikel2/{id}', [ArtikelController::class, 'displayDe
 Route::get('/daftarForum/{id}', [ForumDonaturRelawanController::class, 'displayDaftarForum'])->name('displayDaftarForum');
 Route::post('/daftarForum/{id}', [ForumDonaturRelawanController::class, 'buatForum'])->name('buatForum');
 Route::get('/forum/{idDonaturRelawan}/{idForum}', [ForumDonaturRelawanController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idDonaturRelawan}', [KomentarForumDonaturRelawanController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::post('/komentarDonaturRelawan/{idDonaturRelawan}', [KomentarForumDonaturRelawanController::class, 'storeKomentar'])->name('donaturrelawan.simpanKomentar');
 
 // ====== Profile ======
 Route::get('/profile/donatur_relawan/{id}', [ProfileDonaturRelawanController::class, 'index'])->name('profile.donatur_relawan');

@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home Page</title>
+    <title>Document</title>
 </head>
 <body>
-    Home Page (Not Login)
+    <footer class="footer">
+        <p class="footer-text">© 2024 GivingGoods. All rights reserved</p>
+    </footer>
 </body>
 </html>
