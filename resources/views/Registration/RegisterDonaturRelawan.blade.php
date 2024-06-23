@@ -34,7 +34,7 @@
                                 <!-- Popup untuk berhasil membuat akun -->
                                 <div id="popup">
                                     <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
-                                    <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
+                                    <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
                                 </div>
                             </div>
 

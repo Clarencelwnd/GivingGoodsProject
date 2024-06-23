@@ -49,10 +49,9 @@ Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::clas
 
 //Login
 Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
-Route::get('/login', [AuthController::class, 'displayLoginView'])->name('login');
+Route::get('/login-user', [AuthController::class, 'displayLoginView'])->name('login-user');
 Route::get('/home', [AuthController::class, 'displayHomeView']);
 Route::get('/logout', [AuthController::class, 'logoutUser']);
-
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 
 Route::get('/reset_password', [ResetPasswordController::class, 'index'])->name('reset_password');

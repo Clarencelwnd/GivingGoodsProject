@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DonaturAtauRelawan;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterDonaturRelawanController extends Controller
 {
@@ -17,20 +19,29 @@ class RegisterDonaturRelawanController extends Controller
         ]);
 
         $email = $request->input('email');
-        $user = DonaturAtauRelawan::where('EmailDonaturRelawan', $email)->first();
+        $user = User::where('email', $email)->first();
 
         if ($user) {
             // Email sudah terdaftar
-            $registeredEmail = $user->EmailDonaturRelawan;// Mengambil email yang sudah terdaftar
+            $registeredEmail = $user->email;// Mengambil email yang sudah terdaftar
             return back()->with('exists', true)->with('registeredEmail', $registeredEmail);// Mengirim email yang sudah terdaftar ke view
         } else {
             // Email belum terdaftar
-            $user = new DonaturAtauRelawan();
-            $user->EmailDonaturRelawan = $request->email;
-            $user->PasswordDonaturRelawan = $request->password;
-            $user->NamaDonaturRelawan = $request->name;
-            $user->NomorTeleponDonaturRelawan = $request->phone;
-            $result = $user->save();
+            $users = new User();
+            $users->email = $request->email;
+            $users->password = Hash::make($request->password);
+            $users->role = 'donatur_relawan';
+            $result = $users->save();
+
+            $DonaturRelawan = new DonaturAtauRelawan();
+            // $user->EmailDonaturRelawan = $request->email;
+            // $DonaturRelawan->PasswordDonaturRelawan = $request->password;
+            $DonaturRelawan->IDUser = $users->id;
+            $DonaturRelawan->NamaDonaturRelawan = $request->name;
+            $DonaturRelawan->NomorTeleponDonaturRelawan = $request->phone;
+            $DonaturRelawan->FotoDonaturRelawan = 'https://www.gravatar.com/avatar/?d=mp&s=200';
+            $result = $DonaturRelawan->save();
+
             //Berhasil save
             if ($result){
                 return back()->with('success', 'Registration successful');

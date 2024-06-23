@@ -41,14 +41,15 @@
                                 <a href="{{ route('reset_password') }}" style="text-decoration: none; color: #0095AF; font-size: 12px;">Lupa kata sandi?</a>
                             </div>
                         </div>
-                    </form>
 
                     <div class="btn-container">
                         <button type="submit" class="btn-primary">Masuk Akun</button>
                     </div>
+                    </form>
+
                 </div>
             <div class="already-have-account">
-                Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
+                Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>

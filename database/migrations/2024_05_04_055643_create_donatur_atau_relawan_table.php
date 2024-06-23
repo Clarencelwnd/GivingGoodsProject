@@ -13,7 +13,7 @@ return new class extends Migration
             $table->unsignedBigInteger('IDUser');
             $table->foreign('IDUser')->references('id')->on('users');
             $table->string('NamaDonaturRelawan', 255);
-            $table->date('TanggalLahirDonaturRelawan');
+            $table->date('TanggalLahirDonaturRelawan')->nullable();
             $table->string('JenisKelaminDonaturRelawan', 10)->nullable();
             $table->string('NomorTeleponDonaturRelawan', 15);
             $table->text('AlamatDonaturRelawan')->nullable();
