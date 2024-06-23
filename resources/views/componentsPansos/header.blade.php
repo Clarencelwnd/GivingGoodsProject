@@ -65,7 +65,7 @@
                                     <button type="button" class="btn" id="btn-back" style="color: #007C92; font-size: 16px; border: 1px #007C92 solid; border-radius: 5px; width: 100%; margin-right: 20px;" data-bs-dismiss="modal">Kembali</button>
                                 </div>
                                 <div class="col-profile" style="width: 30%">
-                                    <button onclick="window.location.href='{{route('logout.panti_sosial')}}'" type="button" class="btn" id="btn-yes-logout" style="color: #FDFFFE; background: #B7342C; border-radius: 5px; width: 100%; margin-right: 20px;">Ya, Keluar</button>
+                                    <button onclick="window.location.href='{{route('logout')}}'" type="button" class="btn" id="btn-yes-logout" style="color: #FDFFFE; background: #B7342C; border-radius: 5px; width: 100%; margin-right: 20px;">Ya, Keluar</button>
                                 </div>
                             </div>
                         </div>

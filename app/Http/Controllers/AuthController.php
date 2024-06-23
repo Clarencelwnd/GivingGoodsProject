@@ -53,9 +53,11 @@ class AuthController extends Controller
 
     public function logoutUser(Request $request): RedirectResponse{
         Auth::logout();
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect()->route('login-user');
     }
 
 }

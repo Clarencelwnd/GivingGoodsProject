@@ -96,7 +96,7 @@
                     <button type="button" class="btn" id="btn-back" data-bs-dismiss="modal">Kembali</button>
                 </div>
                 <div class="col-profile">
-                    <button  onclick="window.location.href='{{route('logout.donatur_relawan')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
+                    <button  onclick="window.location.href='{{route('logout')}}'" type="button" class="btn" id="btn-yes-logout">Ya, Keluar</button>
                 </div>
             </div>
         </div>

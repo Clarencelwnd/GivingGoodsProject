@@ -63,7 +63,7 @@ Route::post('/edit_schedule/panti_sosial/{id}', [ProfileController::class, 'edit
 Route::post('/edit_photo/panti_sosial/{id}', [ProfileController::class, 'edit_photo_logic'])->name('edit_photo_logic.panti_sosial');
 Route::get('/change_password/panti_sosial/{id}', [ProfileController::class, 'change_password_view'])->name('change_password.panti_sosial');
 Route::post('/change_password/panti_sosial/{id}', [ProfileController::class, 'change_password_logic'])->name('change_password_logic.panti_sosial');
-Route::get('/logout/panti_sosial', [ProfileController::class, 'logout'])->name('logout.panti_sosial');
+// Route::get('/logout/panti_sosial', [ProfileController::class, 'logout'])->name('logout.panti_sosial');
 
 // ===== DETAIL KEGIATAN DONASI =====
 Route::get('/kegiatan-donasi/{idKegiatanDonasi}/{idPantiSosial}', [DetailKegiatanDonasiController::class, 'show'])->name('kegiatan-donasi.show');
@@ -162,7 +162,7 @@ Route::post('/change_password/donatur_relawan/{id}', [ProfileDonaturRelawanContr
 Route::get('/riwayat_kegiatan/{id}', [ProfileDonaturRelawanController::class, 'riwayat_kegiatan'])->name('riwayat_kegiatan');
 Route::get('/detail_riwayat_kegiatan/donasi/{idDonaturRelawan}/{idRegistrasiDonasi}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_donasi'])->name('detail_riwayat_kegiatan_donasi');
 Route::get('/detail_riwayat_kegiatan/relawan/{idDonaturRelawan}/{idRegistrasiRelawan}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
-Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
+// Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
 //DISPLAY PANTI SOSIAL
 Route::get('/RegisterPantiSosial', function () {
@@ -194,7 +194,7 @@ Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::clas
 //Login
 Route::get('/login-user', [AuthController::class, 'displayLoginView'])->name('login-user');
 Route::get('/home', [AuthController::class, 'displayHomeView']);
-Route::get('/logout', [AuthController::class, 'logoutUser']);
+Route::get('/logout', [AuthController::class, 'logoutUser'])->name('logout');
 Route::post('/login-user', [AuthController::class, 'loginUser'])->name('login-user');
 
 Route::get('/reset_password', [ResetPasswordController::class, 'index'])->name('reset_password');

@@ -294,11 +294,4 @@ class ProfileDonaturRelawanController extends Controller
 
         return view('ProfileDonaturRelawan.detail_riwayat_kegiatan_relawan', compact('id', 'idRegistrasiRelawan', 'detailRegistrasiRelawan'));
     }
-
-    public function logout(){
-        Auth::logout();
-        Cookie::queue(Cookie::forget('email'));
-        Cookie::queue(Cookie::forget('password'));
-        return view('ProfileDonaturRelawan.dummy_home_page_not_login');
-    }
 }
