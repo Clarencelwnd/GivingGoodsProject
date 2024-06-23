@@ -164,7 +164,7 @@ Route::get('/detail_riwayat_kegiatan/donasi/{idDonaturRelawan}/{idRegistrasiDona
 Route::get('/detail_riwayat_kegiatan/relawan/{idDonaturRelawan}/{idRegistrasiRelawan}', [ProfileDonaturRelawanController::class, 'detail_riwayat_kegiatan_relawan'])->name('detail_riwayat_kegiatan_relawan');
 Route::get('/logout/donatur_relawan', [ProfileDonaturRelawanController::class, 'logout'])->name('logout.donatur_relawan');
 
-//REGISTER PANTI SOSIAL
+//DISPLAY PANTI SOSIAL
 Route::get('/RegisterPantiSosial', function () {
     return view('Registration.RegisterPantiSosial');
 });
@@ -172,12 +172,12 @@ Route::get('/RegisterPantiSosial-2', function () {
     return view('Registration.RegisterPantisosial-2');
 })->name('registerPantiSosialNext');
 
-// REGISTER SELECTION
+// DISPLAY SELECTION
 Route::get('/RegisterSelected', function () {
     return view('Registration.RegisterSelected');
 })->name('registerSelected');
 
-//REGISTER DONATUR RELAWAN
+//DISPLAY DONATUR RELAWAN
 Route::get('/RegisterDonaturRelawan', function () {
     return view('Registration.RegisterDonaturRelawan');
 })->name('registerDonaturRelawan');
