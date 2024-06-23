@@ -14,14 +14,14 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
+                <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}">
                     <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  width="30px" height="30px">
                 </a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
         </div>
 
-        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-donasi.update', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}">
+        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-donasi.update', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}">
             @csrf
             @method('PUT')
             <div class="details">
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="button-container">
-                    <a href="{{ route('kegiatan-donasi.show', ['id' => $kegiatanDonasi->IDKegiatanDonasi]) }}" class="cancel-btn">
+                    <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}" class="cancel-btn">
                         Batal
                     </a>
                     <button class="save-btn" type="button" onclick="tampilkanPopup()">Simpan Perubahan</button>

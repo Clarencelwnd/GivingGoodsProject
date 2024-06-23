@@ -5,7 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css')}}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
+    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
 @endsection
 
 @section('content')
@@ -105,10 +105,13 @@
 
         <div class="card w-80" data-status="{{ $status }}" data-type="{{ $activity instanceof App\Models\KegiatanRelawan ? 'Relawan' : 'Donasi' }}">
                 @if (isset($activity->NamaKegiatanRelawan))
-                    <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+                {{-- @php
+                    dd($activity->IDKegiatanRelawan);
+                @endphp --}}
+                    <a href="{{ route('kegiatan-relawan.show', ['idKegiatanRelawan' => $activity->IDKegiatanRelawan, 'idPantiSosial' => $id]) }}" style="text-decoration: none; color: inherit;">
                 @endif
                 @if (isset($activity->NamaKegiatanDonasi))
-                    <a href="{{ route('kegiatan-donasi.show', ['id' => $activity->IDKegiatanDonasi]) }}" style="text-decoration: none; color: inherit;">
+                    <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $activity->IDKegiatanDonasi, 'idPantiSosial' => $id]) }}" style="text-decoration: none; color: inherit;">
                 @endif
                 <div class="card-body">
                     <div>
@@ -168,6 +171,8 @@
             </a>
         </div>
     @endforeach
+    <script src="{{ asset('js/GeneralPagePantiSosial/generalPage.js') }}"></script>
+
 @endsection
 
 {{-- Pagination Links --}}

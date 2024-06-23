@@ -26,6 +26,8 @@ class SummaryDaftarRelawanController extends Controller
         $id = $idDonaturRelawan;
         // Ambil data dari session jika ada
         $data = $request->session()->get('daftar_relawan');
+        
+        $kegiatanRelawan->setAttribute('FormatJamRelawan', date('H:i', strtotime($kegiatanRelawan->JamMulaiKegiatanRelawan)) . ' - '. date('H:i', strtotime($kegiatanRelawan->JamSelesaiKegiatanRelawan)));
 
         // Kirim data ke view SummaryDaftarRelawan
         return view('DetailKegiatanRelawan.SummaryDaftarRelawan', compact('kegiatanRelawan', 'donaturRelawan', 'data', 'id'));

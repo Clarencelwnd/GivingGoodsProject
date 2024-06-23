@@ -5,7 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
+    <script src="{{ asset('js/GeneralPagePantiSosial/generalPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/KegiatanRelawanPantiSosial/BuatKegiatanRelawan.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

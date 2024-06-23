@@ -12,7 +12,6 @@
     <title>@yield('title')</title>
     @section('stylesheets')
         <link rel="stylesheet" href="{{ asset('css/GeneralPageDonaturRelawan/templatePage.css') }}">
-        <script src="{{ asset('js/GeneralPageDonaturRelawan/templatePage.js') }}"></script>
     @show
 </head>
 

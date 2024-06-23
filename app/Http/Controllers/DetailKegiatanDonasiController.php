@@ -6,38 +6,32 @@ use Illuminate\Http\Request;
 use App\Models\KegiatanDonasi;
 
 class DetailKegiatanDonasiController extends Controller{
-    public function show($id){
-        $kegiatanDonasi = KegiatanDonasi::find($id);
-        if (!$kegiatanDonasi) {
-            return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
-        }
+    public function show($idKegiatanDonasi, $idPantiSosial){
+        $kegiatanDonasi = KegiatanDonasi::find($idKegiatanDonasi);
 
-        return view('KegiatanDonasiPantiSosial.DetailKegiatanDonasi', compact('kegiatanDonasi', 'id'));
-    }
-
-    public function showEdit($id){
-        $kegiatanDonasi = KegiatanDonasi::find($id);
+        $id = $idPantiSosial;
 
         if (!$kegiatanDonasi) {
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('KegiatanDonasiPantiSosial.UbahKegiatanDonasi', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.DetailKegiatanDonasi', compact('kegiatanDonasi', 'idKegiatanDonasi' , 'id'));
     }
 
-    public function showBuat($id){
-        $kegiatanDonasi = KegiatanDonasi::find($id);
+    public function showEdit($idKegiatanDonasi, $idPantiSosial){
+        $kegiatanDonasi = KegiatanDonasi::find($idKegiatanDonasi);
+
+        $id = $idPantiSosial;
 
         if (!$kegiatanDonasi) {
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
 
-        return view('KegiatanDonasiPantiSosial.BuatKegiatanDonasi', compact('kegiatanDonasi', 'id'));
+        return view('KegiatanDonasiPantiSosial.UbahKegiatanDonasi', compact('kegiatanDonasi', 'idKegiatanDonasi', 'id'));
     }
 
-
-    public function update(Request $request, $id){
-        $kegiatanDonasi = KegiatanDonasi::find($id);
+    public function update(Request $request, $idKegiatanDonasi, $idPantiSosial){
+        $kegiatanDonasi = KegiatanDonasi::find($idKegiatanDonasi);
         if (!$kegiatanDonasi) {
             return redirect()->back()->with('error', 'Kegiatan tidak ditemukan');
         }
@@ -54,13 +48,15 @@ class DetailKegiatanDonasiController extends Controller{
 
         $kegiatanDonasi->save();
 
-        return redirect()->route('kegiatan-donasi.show', ['id' => $id])->with('success', 'Perubahan berhasil disimpan');
+        $id = $idPantiSosial;
+
+        return redirect()->route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id])->with('success', 'Perubahan berhasil disimpan');
     }
 
-    public function destroy($id){
-        $kegiatanDonasi = KegiatanDonasi::findOrFail($id);
+    public function destroy($idKegiatanDonasi, $idPantiSosial){
+        $kegiatanDonasi = KegiatanDonasi::where('IDKegiatanDonasi', $idKegiatanDonasi)->where('IDPantiSosial', $idPantiSosial)->first();
         $kegiatanDonasi->delete();
 
-        return redirect()->route('kegiatan-donasi.show', ['id' => $id])->with('success', 'Kegiatan Donasi berhasil dihapus.');
+        return redirect()->route('viewAllKegiatan', ['id' => $idPantiSosial])->with('success', 'Kegiatan Donasi berhasil dihapus.');
     }
 }

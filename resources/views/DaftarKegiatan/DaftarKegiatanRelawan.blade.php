@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
     <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanRelawan.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/Artikel/DaftarKegiatanRelawan.js') }}"></script>
+    <script src="{{ asset('js/DaftarKegiatan/DaftarKegiatanRelawan.js') }}"></script>
 @endsection
 
     @section('content')
@@ -44,7 +44,7 @@
         <div class="info-container">
             <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
             <div class="info-text-container">
-                Apabila kegiatan berlangsung lebih dari satu hari, pastikan Anda dapat mengikuti kegiatan pada batch waktu yang Anda pilih untuk <br> setiap hari tersebut.
+                Apabila kegiatan berlangsung lebih dari satu hari, pastikan Anda dapat mengikuti kegiatan pada batch waktu yang Anda pilih untuk setiap hari tersebut.
             </div>
         </div>
 
@@ -77,14 +77,18 @@
             <input type="hidden" name="IDKegiatanRelawan" value="{{ $kegiatanRelawan->IDKegiatanRelawan }}">
             <input type="hidden" name="IDDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
         </form>
-
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+        var tanggalMulaiKegiatanRelawan = "{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }}"
+        var tanggalSelesaiKegiatanRelawan = "{{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai }}"
+        // console.log(tanggalSelesaiKegiatanRelawan);
         flatpickr("#date-picker", {
             dateFormat: "Y-m-d",
+            minDate: tanggalMulaiKegiatanRelawan,
+            maxDate: tanggalSelesaiKegiatanRelawan,
         });
 
 

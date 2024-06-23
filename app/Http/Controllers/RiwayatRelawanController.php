@@ -8,13 +8,10 @@ use App\Models\RegistrasiRelawan;
 
 class RiwayatRelawanController extends Controller
 {
-    public function index(Request $request)
+    public function index($idKegiatanRelawan, $idPantiSosial)
     {
-        // Ambil ID dari request
-        $id = $request->id;
-
         // Ambil data registrasi relawan beserta informasi relawan berdasarkan IDKegiatanRelawan
-        $registrasiRelawan = RegistrasiRelawan::with('donaturRelawan', 'kegiatanRelawan')->where('IDKegiatanRelawan', $id)->get();
+        $registrasiRelawan = RegistrasiRelawan::with('donaturRelawan', 'kegiatanRelawan')->where('IDKegiatanRelawan', $idKegiatanRelawan)->get();
 
         $bulan = [
             '01' => 'Januari',
@@ -36,21 +33,21 @@ class RiwayatRelawanController extends Controller
             $partitionTanggalKegiatan = explode('-', $registrasi->TanggalKehadiranRelawan);
             $tanggalKegiatan = $partitionTanggalKegiatan[2] . ' ' . $bulan[$partitionTanggalKegiatan[1]] . ' ' . $partitionTanggalKegiatan[0];
             $waktuKegiatan = date('H:i', strtotime($registrasi->kegiatanRelawan->JamMulaiKegiatanRelawan)) . ' - '. date('H:i', strtotime($registrasi->kegiatanRelawan->JamSelesaiKegiatanRelawan));
-            // $waktuKegiatan = date('H:i', strtotime($registrasi->JamMulaiRelawan)) . ' - ' . date('H:i', strtotime($registrasi->JamSelesaiRelawan));
             $registrasi->setAttribute('tanggalKegiatan', $tanggalKegiatan);
             $registrasi->setAttribute('waktuKegiatan', $waktuKegiatan);
         }
 
         // Hitung jumlah relawan dengan status "Konfirmasi Diterima"
-        $jumlahKonfirmasiDiterima = RegistrasiRelawan::where('StatusRegistrasiRelawan', 'Terima')->where('IDKegiatanRelawan', $id)->count();
+        $jumlahKonfirmasiDiterima = RegistrasiRelawan::where('StatusRegistrasiRelawan', 'Terima')->where('IDKegiatanRelawan', $idKegiatanRelawan)->count();
 
+        $id = $idPantiSosial;
         // Kirim data ke view beserta jumlah relawan yang telah dikonfirmasi
-        return view('RiwayatKegiatanPantiSosial.RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima', 'id'));
+        return view('RiwayatKegiatanPantiSosial.RiwayatRelawan', compact('registrasiRelawan', 'jumlahKonfirmasiDiterima', 'idKegiatanRelawan', 'id'));
     }
 
-    public function updateStatus(Request $request, $id)
+    public function updateStatus(Request $request, $idRegistrasiRelawan)
     {
-        $registrasi = RegistrasiRelawan::find($id);
+        $registrasi = RegistrasiRelawan::find($idRegistrasiRelawan);
         if ($registrasi) {
             // Ubah status berdasarkan tombol yang diklik
             if ($request->has('terima')) {
@@ -67,9 +64,9 @@ class RiwayatRelawanController extends Controller
     }
 
 
-    public function updateStatusCheckbox(Request $request, $id)
+    public function updateStatusCheckbox(Request $request, $idRegistrasiRelawan)
 {
-    $registrasi = RegistrasiRelawan::find($id);
+    $registrasi = RegistrasiRelawan::find($idRegistrasiRelawan);
     if ($registrasi) {
         // Periksa apakah checkbox sudah dicentang atau tidak
         $isChecked = $request->has('sudah_dihubungi');

@@ -1,10 +1,9 @@
-<!-- resources/views/kegiatan-donasi/show.blade.php -->
 @extends('GeneralPagePantiSosial.templatePage')
+
 @section('title', 'Detail Kegiatan Relawan')
 
 @section('stylesheets')
     @parent
-    <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
     <link href="{{ asset('css/KegiatanRelawanPantiSosial/DetailKegiatanRelawan.css') }}" rel="stylesheet">
 @endsection
 
@@ -12,11 +11,11 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('viewAllKegiatan', ['id' => $kegiatanRelawan->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $id]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  height="30px"></a>
                 <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
             <div class="buttons">
-                <a href="{{ route('ubah-kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}" style="text-decoration: none;">
+                <a href="{{ route('ubah-kegiatan-relawan.show', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}" style="text-decoration: none;">
                     <button class="edit-btn">Ubah Kegiatan</button>
                 </a>
                 <button class="delete-btn" onclick="showPopup()">Hapus Kegiatan</button>
@@ -81,7 +80,7 @@
 
         <div class="donor-history">
             <h2 id="judul-riwayat-relawan">Riwayat Relawan</h2>
-            <a href="{{ route('riwayat-relawan.index', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+            <a href="{{ route('riwayat-relawan.index', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}">
                 <button class="view-history-btn">Lihat Riwayat Relawan</button>
             </a>
         </div>
@@ -93,7 +92,7 @@
             <p style="margin-top: 10px; font-size: 20px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menghapus kegiatan ini? Tindakan ini tidak dapat dibatalkan</p>
             <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                 <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="hidePopup()">Batal</button>
-                <form id="delete-form" action="{{ route('delete-kegiatan-relawan.destroy', 2) }}" method="POST" style="display:inline;">
+                <form id="delete-form" action="{{ route('delete-kegiatan-relawan.destroy', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                 <button type="submit" class="btn-primary delete-button" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" >Ya, Hapus</button>

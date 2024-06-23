@@ -21,7 +21,7 @@
         <form action="{{ route('storeSummaryDaftarDonasi') }}" method="POST">
             @csrf
             <input type="hidden" name="idKegiatanRelawan" value="{{ $kegiatanDonasi->IDKegiatanDonasi }}">
-            <input type="hidden" name="idDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
+        <input type="hidden" name="idDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
 
         <div class="info-container">
             <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">

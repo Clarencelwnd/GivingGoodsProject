@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/KegiatanRelawanPantiSosial/UbahKegiatanRelawan.css') }}" rel="stylesheet">
+    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endsection
 
@@ -14,7 +15,7 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+                <a href="{{ route('kegiatan-relawan.show', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}">
                     <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
                 </a>
                 <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
@@ -22,7 +23,7 @@
 
         </div>
 
-        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-relawan.update', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}">
+        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-relawan.update', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}">
             @csrf
             @method('PUT')
             <div class="details">
@@ -95,7 +96,7 @@
         </div>
 
         <div class="button-container">
-            <a href="{{ route('kegiatan-relawan.show', ['id' => $kegiatanRelawan->IDKegiatanRelawan]) }}" class="cancel-btn">
+            <a href="{{ route('kegiatan-relawan.show', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id, ]) }}" class="cancel-btn">
                 Batal
             </a>
             <button class="save-btn" type="button" onclick="tampilkanPopup()">Simpan Perubahan</button>

@@ -53,34 +53,34 @@ Route::post('/change_password/panti_sosial/{id}', [ProfileController::class, 'ch
 Route::get('/logout/panti_sosial', [ProfileController::class, 'logout'])->name('logout.panti_sosial');
 
 // ===== DETAIL KEGIATAN DONASI =====
-Route::get('/kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'show'])->name('kegiatan-donasi.show');
-Route::get('/ubah-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'showEdit'])->name('ubah-kegiatan-donasi.show');
-Route::delete('/delete-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'destroy'])->name('delete-kegiatan-donasi.destroy');
-Route::put('/update-kegiatan-donasi/{id}', [DetailKegiatanDonasiController::class, 'update'])->name('ubah-kegiatan-donasi.update');
+Route::get('/kegiatan-donasi/{idKegiatanDonasi}/{idPantiSosial}', [DetailKegiatanDonasiController::class, 'show'])->name('kegiatan-donasi.show');
+Route::get('/ubah-kegiatan-donasi/{idKegiatanDonasi}/{idPantiSosial}', [DetailKegiatanDonasiController::class, 'showEdit'])->name('ubah-kegiatan-donasi.show');
+Route::delete('/delete-kegiatan-donasi/{idKegiatanDonasi}/{idPantiSosial}', [DetailKegiatanDonasiController::class, 'destroy'])->name('delete-kegiatan-donasi.destroy');
+Route::put('/update-kegiatan-donasi/{idKegiatanDonasi}/{idPantiSosial}', [DetailKegiatanDonasiController::class, 'update'])->name('ubah-kegiatan-donasi.update');
 
 // ===== BUAT KEGIATAN DONASI =====
 Route::get('/buat-kegiatan-donasi/{id}', [BuatKegiatanDonasiController::class, 'show'])->name('buat_kegiatan_donasi.show');
-Route::post('/simpan-kegiatan-donasi', [BuatKegiatanDonasiController::class, 'store'])->name('buat_kegiatan_donasi.store');
+Route::post('/simpan-kegiatan-donasi/{id}', [BuatKegiatanDonasiController::class, 'store'])->name('buat_kegiatan_donasi.store');
 
 // ===== RIWAYAT DONASI =====
-Route::get('/riwayat-donatur/{id}', [RiwayatDonaturController::class, 'index'])->name('riwayat-donatur.index');
-Route::post('/update-status/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatus'])->name('update-status');
-Route::post('/update-status-checkbox-donatur/{IDRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-donatur');
+Route::get('/riwayat-donatur/{idKegiatanDonasi}/{idPantiSosial}', [RiwayatDonaturController::class, 'index'])->name('riwayat-donatur.index');
+Route::post('/update-status/{idRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatus'])->name('update-status-donatur');
+Route::post('/update-status-checkbox-donatur/{idRegistrasiDonatur}', [RiwayatDonaturController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-donatur');
 
 // ===== DETAIL KEGIATAN RELAWAN =====
-Route::get('/kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'show'])->name('kegiatan-relawan.show');
-Route::get('/ubah-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'showEdit'])->name('ubah-kegiatan-relawan.show');
-Route::delete('/delete-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'destroy'])->name('delete-kegiatan-relawan.destroy');
-Route::put('/update-kegiatan-relawan/{id}', [DetailKegiatanRelawanController::class, 'update'])->name('ubah-kegiatan-relawan.update');
+Route::get('/kegiatan-relawan/{idKegiatanRelawan}/{idPantiSosial}', [DetailKegiatanRelawanController::class, 'show'])->name('kegiatan-relawan.show');
+Route::get('/ubah-kegiatan-relawan/{idKegiatanRelawan}/{idPantiSosial}', [DetailKegiatanRelawanController::class, 'showEdit'])->name('ubah-kegiatan-relawan.show');
+Route::delete('/delete-kegiatan-relawan/{idKegiatanRelawan}/{idPantiSosial}', [DetailKegiatanRelawanController::class, 'destroy'])->name('delete-kegiatan-relawan.destroy');
+Route::put('/update-kegiatan-relawan/{idKegiatanRelawan}/{idPantiSosial}', [DetailKegiatanRelawanController::class, 'update'])->name('ubah-kegiatan-relawan.update');
 
 // ===== BUAT KEGIATAN RELAWAN =====
 Route::get('/buat-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class, 'show'])->name('buat_kegiatan_relawan.show');
 Route::post('/simpan-kegiatan-relawan/{id}', [BuatKegiatanRelawanController::class, 'store'])->name('buat_kegiatan_relawan.store');
 
 // ===== RIWAYAT RELAWAN =====
-Route::get('/riwayat-relawan/{id}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');
-Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
-Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
+Route::get('/riwayat-relawan/{idKegiatanRelawan}/{idPantiSosial}', [RiwayatRelawanController::class, 'index'])->name('riwayat-relawan.index');
+Route::post('/update-status-relawan/{idRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatus'])->name('update-status-relawan');
+Route::post('/update-status-checkbox-relawan/{idRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
 
 // ===== FORUM =====
 Route::get('/daftarForumPantiSosial/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForumPantiSosial');

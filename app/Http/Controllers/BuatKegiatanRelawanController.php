@@ -72,7 +72,7 @@ class BuatKegiatanRelawanController extends Controller
                 'KontakKegiatanRelawan' => $request->kontakSpesifik,
             ]);
 
-            return redirect()->route('buat_kegiatan_relawan.show', compact('id'))->with('success', 'Kegiatan relawan berhasil dibuat.');
+            return redirect()->route('viewAllKegiatan', compact('id'))->with('success', 'Kegiatan relawan berhasil dibuat.');
             } else {
                 return redirect()->back()->withErrors($validatedData)->withInput();
             }

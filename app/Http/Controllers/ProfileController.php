@@ -227,6 +227,6 @@ class ProfileController extends Controller
         Auth::logout();
         Cookie::queue(Cookie::forget('email'));
         Cookie::queue(Cookie::forget('password'));
-        return view('profile_pansos/dummy_home_page_not_login');
+        return view('profile_pansos/dummy_home_page_not_logim');
     }
 }

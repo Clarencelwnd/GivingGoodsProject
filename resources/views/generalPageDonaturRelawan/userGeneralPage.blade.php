@@ -5,7 +5,6 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPageDonaturRelawan/userGeneralPage.css') }}">
-    <script src="{{ asset('js/GeneralPageDonaturRelawan/generalPage.js') }}"></script>
     <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
 @endsection
 
@@ -52,7 +51,7 @@
                 @foreach ($kegiatanDonasi as $donasi)
                     <a href="{{ route('detailKegiatanDonasi', ['idKegiatanDonasi' => $donasi->IDKegiatanDonasi, 'idDonaturRelawan' => $id, 'jarakKm' => $donasi->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         <div class="card card-kegiatanDonasi" style="width: 16rem;">
-                            <img src="{{ asset('Image/kegiatanDonasi/'.$donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            <img src="{{ asset($donasi->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
                             <div class="card-body card-kegiatan">
                             <h5 class="card-title" id="card-namaKegiatan">{{ $donasi->NamaKegiatanDonasi }}</h5>
                             <p class="card-text" id="card-jenisDonasi">
@@ -87,7 +86,7 @@
                 @foreach ($kegiatanRelawan as $relawan)
                     <a href="{{ route('detailKegiatanRelawan', ['idKegiatanRelawan' => $relawan->IDKegiatanRelawan, 'idDonaturRelawan' => $id, 'jarakKm' => $relawan->jarakKm]) }}" style="text-decoration: none; color: inherit;">
                         <div class="card card-kegiatanRelawan" style="width: 16rem;">
-                            <img src= "{{ asset('Image/kegiatanRelawan/'.$relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                            <img src= "{{ asset($relawan->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             <div class="card-body card-kegiatan">
                                 <h5 class="card-title">{{ $relawan->NamaKegiatanRelawan }}</h5>
                                 <p class="card-text">Jenis Relawan:

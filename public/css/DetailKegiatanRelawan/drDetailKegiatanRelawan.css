@@ -41,6 +41,8 @@ body {
     font-size: 18px;
     color: #006374;
     font-weight: 400;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .button {
@@ -59,6 +61,13 @@ body {
     margin-top: 20px;
     text-decoration: none;
     margin-bottom: 30px;
+}
+
+.button.disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    text-decoration: none;
+    background-color: #cccccc;
 }
 
 .question-contact-container {

@@ -13,7 +13,7 @@
 
     <div class="title-back">
         <div class="back">
-            <a href="{{ route('kegiatan-relawan.show', ['id' => request()->id]) }}">
+            <a href="{{ route('kegiatan-relawan.show', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}">
                 <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
             </a>
         </div>
@@ -53,7 +53,7 @@
                         <td>{{ $registrasi->tanggalKegiatan }}</td>
                         <td>{{ $registrasi->waktuKegiatan }}</td>
                         <td>
-                            <form action="{{ route('update-status-relawan', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
+                            <form action="{{ route('update-status-relawan', ['idRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                 @csrf
                                 @method('POST')
 
@@ -77,7 +77,7 @@
 
 
                         <td>
-                            <form id="checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}" action="{{ route('update-status-checkbox-relawan', ['IDRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
+                            <form id="checkbox-form-{{ $registrasi->IDRegistrasiRelawan }}" action="{{ route('update-status-checkbox-relawan', ['idRegistrasiRelawan' => $registrasi->IDRegistrasiRelawan]) }}" method="POST">
                                 @csrf
                                 <input id="sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiRelawan }}" type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);" @if($registrasi->StatusDihubungi == 'Sudah') checked @endif>
                             </form>

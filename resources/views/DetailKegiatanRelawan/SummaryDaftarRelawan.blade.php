@@ -55,7 +55,7 @@
             </div>
             <div class="flex-row">
                 <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" height="24px">
-                <div class="text">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}</div>
+                <div class="text">{{ $kegiatanRelawan->FormatJamRelawan }} WIB</div>
             </div>
         </div>
 

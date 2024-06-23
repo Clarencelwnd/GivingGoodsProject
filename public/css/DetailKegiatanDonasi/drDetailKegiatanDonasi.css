@@ -41,6 +41,8 @@ body {
     font-size: 18px;
     color: #006374;
     font-weight: 400;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .button {

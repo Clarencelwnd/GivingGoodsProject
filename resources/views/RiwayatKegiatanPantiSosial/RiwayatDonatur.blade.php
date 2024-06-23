@@ -5,6 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
+    
     <link href="{{ asset('css/RiwayatDonaturRelawan/RiwayatDonatur.css') }}" rel="stylesheet">
 @endsection
 
@@ -12,7 +13,7 @@
     <div class="container">
         <div class="title-back">
             <div class="back">
-                <a href="{{ route('kegiatan-donasi.show', ['id' => request()->id]) }}">
+                <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}">
                     <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
                 </a>
             </div>
@@ -52,7 +53,7 @@
                             <td style="color: #1C3F5B; font-size: 16px; font-weight: 400;">{{ $registrasi->donaturRelawan->NomorTeleponDonaturRelawan }}</td>
                             <td  style="color: #1C3F5B; font-size: 16px; font-weight: 400;">{{ $registrasi->jamTanggalDonasi }}</td>
                             <td>
-                                <form action="{{ route('update-status', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
+                                <form action="{{ route('update-status-donatur', ['idRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
                                     @csrf
                                     @method('POST')
                                     <button type="submit" class="btn-confirmation @if($registrasi->StatusRegistrasiDonatur == 'Konfirmasi Diterima') clicked @endif" @if($registrasi->StatusRegistrasiDonatur == 'Konfirmasi Diterima') disabled @endif>
@@ -61,7 +62,7 @@
                                 </form>
                             </td>
                             <td>
-                                <form id="checkbox-form-{{ $registrasi->IDRegistrasiDonatur }}" action="{{ route('update-status-checkbox-donatur', ['IDRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
+                                <form id="checkbox-form-{{ $registrasi->IDRegistrasiDonatur }}" action="{{ route('update-status-checkbox-donatur', ['idRegistrasiDonatur' => $registrasi->IDRegistrasiDonatur]) }}" method="POST">
                                     @csrf
                                     <input id="sudah_dihubungi_checkbox_{{ $registrasi->IDRegistrasiDonatur }}" type="checkbox" name="sudah_dihubungi" value="1" style="transform: scale(1.5);" @if($registrasi->StatusDihubungi == 'Sudah') checked @endif>
                                 </form>

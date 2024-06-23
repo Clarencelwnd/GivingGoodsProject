@@ -4,7 +4,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css')}}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
+    <script src="{{ asset('js/GeneralPagePantiSosial/etgeneralPage.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link href="{{ asset('css/KegiatanDonasiPantiSosial/BuatKegiatanDonasi.css') }}" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
@@ -19,7 +19,7 @@
             </div>
 
         </div>
-        <form action="{{ route('buat_kegiatan_donasi.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('buat_kegiatan_donasi.store', ['id' => $id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="IDPantiSosial" value="{{ $pantiSosial->IDPantiSosial }}">
             <div class="details">
@@ -30,7 +30,7 @@
                         <div class="detail-info" contenteditable="true" data-old="{{ old('namaKegiatan', '') }}" oninput="updateHiddenInput('namaKegiatanInput', this.innerText)">
                             {{ old('namaKegiatan', '') }}
                         </div>
-                        <input type="hidden" name="namaKegiatan" id="namaKegiatanInput" value="{{ old('namaKegiatan') }}">
+                        <input type="hidden" name="namaKegiatan" id="namaKegiatanInput" value="{{ old('namaKegiatan') }}" class="@error('namaKegiatan') is-invalid @enderror">
                         @error('namaKegiatan')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
@@ -46,7 +46,7 @@
                             </label>
                             <input type="file" name="fotoKegiatan" id="fotoKegiatanUpload" style="display: none;" onchange="showFileName()">
                             <span id="fileName" style="margin-left: 10px;">{{ old('fotoKegiatan') }}</span>
-                            <input type="hidden" name="urlFotoKegiatan" id="urlFotoKegiatanInput" value="{{ old('urlFotoKegiatan') }}">
+                            <input type="hidden" name="urlFotoKegiatan" id="urlFotoKegiatanInput" value="{{ old('urlFotoKegiatan') }}" class="@error('fotoKegiatan') is-invalid @enderror">
                         @error('fotoKegiatan')
                             <div class="error-message-upload">{{ $message }}</div>
                         @enderror
@@ -61,7 +61,7 @@
                         <div class="detail-info" contenteditable="true" data-old="{{ old('deskripsiKegiatan', '') }}" oninput="updateHiddenInput('deskripsiKegiatanInput', this.innerText)">
                             {{ old('deskripsiKegiatan', '') }}
                         </div>
-                        <input type="hidden" name="deskripsiKegiatan" id="deskripsiKegiatanInput" value="{{ old('deskripsiKegiatan') }}">
+                        <input type="hidden" name="deskripsiKegiatan" id="deskripsiKegiatanInput" value="{{ old('deskripsiKegiatan') }}" class="@error('deskripsiKegiatan') is-invalid @enderror">
                         @error('deskripsiKegiatan')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
@@ -81,12 +81,18 @@
                             <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">
                                 {{ old('tglSelesai') }}
                             </div>
-                            <input type="hidden" name="tglMulai" id="tglMulaiInput" value="{{ old('tglMulai') }}">
-                            <input type="hidden" name="tglSelesai" id="tglSelesaiInput" value="{{ old('tglSelesai') }}">
+                            <input type="hidden" name="tglMulai" id="tglMulaiInput" value="{{ old('tglMulai') }}" class="@error('tglMulai') is-invalid @enderror">
+                            <input type="hidden" name="tglSelesai" id="tglSelesaiInput" value="{{ old('tglSelesai') }}" class="@error('tglSelesai') is-invalid @enderror">
                         </div>
-                        @if ($errors->has('tglMulai') || $errors->has('tglSelesai'))
+                        @error('tglMulai')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                        @error('tglSelesai')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
+                        {{-- @if ($errors->has('tglMulai') || $errors->has('tglSelesai'))
                             <div class="error-message">{{ $errors->first('tglMulai') ?: $errors->first('tglSelesai') }}</div>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
 
@@ -114,8 +120,11 @@
                                 </div>
                             @endforeach
                         </div>
+                        @error('jenisDonasi')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
-                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ old('jenisDonasi', '') }}">
+                    <input type="hidden" name="jenisDonasi" id="jenisDonasiInput" value="{{ old('jenisDonasi', '') }}" class="@error('jenisDonasi') is-invalid @enderror">
                 </div>
 
 
@@ -123,10 +132,13 @@
                     <div class="detail-label">Deskripsi Jenis Donasi</div>
                     <div class="detail-input-container">
                         <div class="detail-info" contenteditable="true" oninput="updateHiddenInput('deskripsiJenisDonasiInput', this.innerText)">{{ old('deskripsiJenisDonasi') }}</div>
-                        <input type="hidden" name="deskripsiJenisDonasi" id="deskripsiJenisDonasiInput" value="{{ old('deskripsiJenisDonasi') }}">
-                        @if ($errors->has('deskripsiJenisDonasi'))
+                        <input type="hidden" name="deskripsiJenisDonasi" id="deskripsiJenisDonasiInput" value="{{ old('deskripsiJenisDonasi') }}" class="@error('deskripsJenisDonasi') is-invalid @enderror">
+                        {{-- @if ($errors->has('deskripsiJenisDonasi'))
                             <div class="error-message">{{ $errors->first('deskripsiJenisDonasi') }}</div>
-                        @endif
+                        @endif --}}
+                        @error('deskripsiJenisDonasi')
+                        <div class="error-message">{{ $message }}</div>
+                    @enderror
                         <div class="hint-text">maks. 200 kata</div>
                     </div>
                 </div>
@@ -137,7 +149,7 @@
                         <div class="detail-info" contenteditable="true" data-old="{{ old('lokasiKegiatan', '') }}" oninput="updateHiddenInput('lokasiKegiatanInput', this.innerText)">
                             {{ old('lokasiKegiatan', '') }}
                         </div>
-                        <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ old('lokasiKegiatan') }}">
+                        <input type="hidden" name="lokasiKegiatan" id="lokasiKegiatanInput" value="{{ old('lokasiKegiatan') }}" class="@error('lokasiKegiatan') is-invalid @enderror">
                         @error('lokasiKegiatan')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
@@ -152,7 +164,7 @@
                         <div class="detail-info" contenteditable="true" data-old="{{ old('linkGoogleMaps', '') }}" oninput="updateHiddenInput('linkGoogleMapsInput', this.innerText)">
                             {{ old('linkGoogleMaps', '') }}
                         </div>
-                        <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ old('linkGoogleMaps') }}">
+                        <input type="hidden" name="linkGoogleMaps" id="linkGoogleMapsInput" value="{{ old('linkGoogleMaps') }}" class="@error('linkGoogleMaps') is-invalid @enderror">
                         @error('linkGoogleMaps')
                             <div class="error-message">{{ $message }}</div>
                         @enderror
@@ -177,11 +189,14 @@
                                     <div class="dropdown-item" onclick="selectOption('Tidak, kami tidak memiliki jasa pick up')">Tidak, kami tidak memiliki jasa pick up</div>
                                 </div>
                             </div>
-                            <input type="hidden" name="jasaAmbilBarang" id="jasaAmbilBarangInput" value="{{ old('jasaAmbilBarang') }}">
+                            <input type="hidden" name="jasaAmbilBarang" id="jasaAmbilBarangInput" value="{{ old('jasaAmbilBarang') }}" class="@error('jasaAmbilBarang') is-invalid @enderror">
                         </div>
-                        @if ($errors->has('jasaAmbilBarang'))
+                        {{-- @if ($errors->has('jasaAmbilBarang'))
                             <div class= "error-message">{{ $errors->first('jasaAmbilBarang') }}</div>
-                        @endif
+                        @endif --}}
+                        @error('jasaAmbilBarang')
+                            <div class="error-message">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 
@@ -313,6 +328,7 @@
     }
 
     function selectOption(option) {
+        console.log('Selected option:', option);
         document.getElementById('dropdown-selected').innerText = option;
         document.getElementById('jasaAmbilBarangInput').value = option;
         updateHiddenInput('jasaAmbilBarangInput', option); // Memperbarui input hidden
@@ -347,21 +363,21 @@
         updateHiddenInput('urlFotoKegiatanInput', imageURL);
     }
 
-    function selectDonationOption(selectedImg) {
-        const jenisDonasiInput = document.getElementById('jenisDonasiInput');
-        let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
+    // function selectDonationOption(selectedImg) {
+    //     const jenisDonasiInput = document.getElementById('jenisDonasiInput');
+    //     let selectedValues = jenisDonasiInput.value ? jenisDonasiInput.value.split(',') : [];
 
-        if (selectedImg.classList.contains('selected')) {
-            selectedImg.classList.remove('selected');
-            selectedValues = selectedValues.filter(value => value !== selectedImg.alt);
-        } else {
-            selectedImg.classList.add('selected');
-            selectedValues.push(selectedImg.alt);
-        }
+    //     if (selectedImg.classList.contains('selected')) {
+    //         selectedImg.classList.remove('selected');
+    //         selectedValues = selectedValues.filter(value => value !== selectedImg.alt);
+    //     } else {
+    //         selectedImg.classList.add('selected');
+    //         selectedValues.push(selectedImg.alt);
+    //     }
 
-        jenisDonasiInput.value = selectedValues.join(',');
-        updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
-    }
+    //     jenisDonasiInput.value = selectedValues.join(',');
+    //     updateHiddenInput('jenisDonasiInput', jenisDonasiInput.value);
+    // }
         </script>
 @endsection
 

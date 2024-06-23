@@ -17,7 +17,7 @@
     </div>
 
     <div class="image-container">
-        <img src="{{ asset('Image/kegiatanRelawan/'.$kegiatanRelawan->GambarKegiatanRelawan) }}" alt="Image">
+        <img src="{{ asset($kegiatanRelawan->GambarKegiatanRelawan) }}" alt="Image">
     </div>
 
     <div class="content">
@@ -33,12 +33,12 @@
 
         <div class="section">
             <div class="subtitle">Tanggal Kegiatan</div>
-            <div class="text">{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }} - {{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai}}</div>
+            <div class="text">{{ $kegiatanRelawan->FormatTanggalRelawan}}</div>
         </div>
 
         <div class="section">
             <div class="subtitle">Jam Kegiatan</div>
-            <div class="text">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }} WIB</div>
+            <div class="text">{{ $kegiatanRelawan->FormatJamRelawan }} WIB</div>
         </div>
 
         <div class="section">
@@ -79,9 +79,11 @@
             </div>
             <div class="text">{{ $kegiatanRelawan->JenisKegiatanRelawan }}</div>
         </div>
-
-        <a href="{{ route('daftarKegiatanRelawan', ['idKegiatanRelawan' => $kegiatanRelawan->IDKegiatanRelawan, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button">Ikut Kegiatan</a>
-
+        @if ($kegiatanRelawan->Disable == 'True')
+            <a href="{{ route('daftarKegiatanRelawan', ['idKegiatanRelawan' => $kegiatanRelawan->IDKegiatanRelawan, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button disabled">Ikut Kegiatan</a>
+        @else
+            <a href="{{ route('daftarKegiatanRelawan', ['idKegiatanRelawan' => $kegiatanRelawan->IDKegiatanRelawan, 'idDonaturRelawan' => $donaturRelawan->IDDonaturRelawan]) }}" class="button">Ikut Kegiatan</a>
+        @endif
         <div class="question-contact-container">
             <div class="question">Punya Pertanyaan?</div>
             <div class="contact">

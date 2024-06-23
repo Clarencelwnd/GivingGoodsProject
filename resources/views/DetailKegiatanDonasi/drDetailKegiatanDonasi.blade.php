@@ -17,13 +17,13 @@
     </div>
 
     <div class="image-container">
-        <img src="{{ asset('Image/kegiatanDonasi/'.$kegiatanDonasi->GambarKegiatanDonasi) }}" alt="Image">
+        <img src="{{ asset($kegiatanDonasi->GambarKegiatanDonasi) }}" alt=" Image">
     </div>
 
     <div class="content">
         <div class="section">
             <div class="subtitle">Tanggal Kegiatan Donasi</div>
-            <div class="text">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }} - {{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai}}</div>
+            <div class="text">{{ $kegiatanDonasi->FormatTanggalDonasi }}</div>
         </div>
 
         <div class="section">

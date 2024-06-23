@@ -5,7 +5,8 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/GeneralPagePantiSosial/generalPage.css') }}">
-    <script src="{{ asset('js/generalPage.js') }}"></script>
+    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
+
 @endsection
 
 @section('content')
@@ -108,7 +109,7 @@
         @endphp
 
         <div class="card w-80" data-status="{{ $status }}" data-type="Relawan">
-            <a href="{{ route('kegiatan-relawan.show', ['id' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
+            <a href="{{ route('kegiatan-relawan.show', ['idPantiSosial' => $id, 'idKegiatanRelawan' => $activity->IDKegiatanRelawan]) }}" style="text-decoration: none; color: inherit;">
                 <div class="card-body">
                     <div>
                         @if ($activity->count > 0)
@@ -151,6 +152,7 @@
             </a>
         </div>
     @endforeach
+    <script src="{{ asset('js/GeneralPagePantiSosial/generalPage.js') }}"></script>
 @endsection
 
 @section('pagination')
