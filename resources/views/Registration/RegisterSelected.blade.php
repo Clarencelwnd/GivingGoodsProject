@@ -22,14 +22,14 @@
                     <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
                     {{-- OPTIONS --}}
-                            <div class="form-container">
-                                <h2 id="judul-form">Mulai Bergabung</h2>
-                                <div class="btn-container">
-                                    <button class="btn-secondary donatur-relawan" style="height: 60px;">Daftar sebagai Donatur/Relawan</button>
-                                    <button class="btn-secondary panti-sosial" style="height: 60px;">Daftar sebagai Panti Sosial</button>
-                                    <button id="selanjutnya" class="btn-primary">Selanjutnya</button>
-                                </div>
-                            </div>
+                    <div class="form-container">
+                        <h2 id="judul-form">Mulai Bergabung</h2>
+                        <div class="btn-container">
+                            <button class="btn-secondary donatur-relawan" style="height: 60px;">Daftar sebagai Donatur/Relawan</button>
+                            <button class="btn-secondary panti-sosial" style="height: 60px;">Daftar sebagai Panti Sosial</button>
+                            <button id="selanjutnya" class="btn-primary">Selanjutnya</button>
+                        </div>
+                    </div>
                     <div class="already-have-account">
                         Sudah Punya Akun? <a href="{{ route('login') }}">Masuk</a>
                     </div>
