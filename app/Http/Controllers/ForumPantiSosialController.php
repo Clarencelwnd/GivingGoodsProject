@@ -45,7 +45,7 @@ class ForumPantiSosialController extends Controller
             'TanggalBuatForum' => now()
         ]);
 
-        return redirect()->route('displayDaftarForum', compact('id'))->with('success', 'Forum post created successfully');
+        return redirect()->route('displayDaftarForumPantiSosial', compact('id'))->with('success', 'Forum post created successfully');
     }
 
     public function displayDetailForum($idPantiSosial, $idForum){

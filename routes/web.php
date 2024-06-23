@@ -83,13 +83,14 @@ Route::post('/update-status-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanContr
 Route::post('/update-status-checkbox-relawan/{IDRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
 
 // ===== FORUM =====
-Route::get('/daftarForum/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForum');
-Route::post('/daftarForum/{id}', [forumPantiSosialController::class, 'buatForum'])->name('buatForum');
-Route::get('/forum/{idPantiSosial}/{idForum}', [forumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForum');
-Route::post('/komentar/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('simpanKomentar');
+Route::get('/daftarForumPantiSosial/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForumPantiSosial');
+Route::post('/daftarForumPantiSosial/{id}', [forumPantiSosialController::class, 'buatForum'])->name('buatForumPantiSosial');
+Route::get('/forumPantiSosial/{idPantiSosial}/{idForum}', [forumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForumPantiSosial');
+Route::post('/komentarForumPantiSosial/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('simpanKomentarForumPantiSosial');
 
 // === FAQ ===
-Route::get('/faq/{id}', [generalPageController::class, 'faq'])->name('faq');
+Route::get('/faqPantiSosial/{id}', [generalPageController::class, 'faq'])->name('faqPantiSosial');
+
 //Halaman utama
 Route::get('/halaman-utama/{id}', [UserGeneralPageController::class, 'displayUserGeneralPage'])->name('halamanUtama');
 Route::get('/faq/{id}', [UserGeneralPageController::class, 'FAQ'])->name('FAQ');

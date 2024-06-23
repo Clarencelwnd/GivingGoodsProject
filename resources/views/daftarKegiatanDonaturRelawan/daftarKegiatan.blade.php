@@ -6,7 +6,7 @@
     @parent
     <script src="{{ asset('js/DaftarKegiatanDonaturRelawan/daftarKegiatan.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/DaftarKegiatanDonaturRelawan/daftarKegiatan.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/components/pagination.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/componentsUser/pagination.css') }}">
     <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
 @endsection
 
@@ -25,7 +25,7 @@
         <div>
             <form id="filter-form" action="{{ route('daftarKegiatan.search', ['id' => $id]) }}" method="GET">
                 <input type="hidden" name="search" value="{{ request('search') }}">
-            @include('components.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
+            @include('componentsUser.filterSideBar',  ['jenisDonasiList' => $jenisDonasiList, 'jenisRelawanList' => $jenisRelawanList])
         </div>
 
         <div class="contentContainerSearched">
@@ -118,7 +118,6 @@
 
 @section('pagination')
     <div class="pagination-container">
-        {{-- {{ $activities->links('components.pagination') }} --}}
-        {{ $activities->appends(request()->input())->links('components.pagination') }}
+        {{ $activities->appends(request()->input())->links('componentsUser.pagination') }}
     </div>
 @endsection
