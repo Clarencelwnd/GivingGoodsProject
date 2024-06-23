@@ -8,22 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/new_password.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ResetPassword/new_password.css')}}">
     <script src="{{ asset('js/new_password.js') }}"></script>
 </head>
 <body>
-    <div class="row g-0">
+    <div class="content row g-0 vh-100">
         <div class="col-sm-6 d-none d-md-block">
             <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="col-lg-6">
-            <div class="card-body p-md-5 ">
+        <div class="col-lg-6 d-flex justify-content-center">
+            <div class="card-body p-md-5 d-flex flex-column align-items-center">
                 <!-- HEADER -->
-                <div class="d-flex header">
-                    <img class="logo-img" src="{{asset('Image/general/logo.png')}}" alt="logo">
-                    <h5 class="mb-1">GivingGoods</h5>
-                </div>
+                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
                 {{-- OPTIONS --}}
                 <div class="card justify-content-center">
@@ -32,25 +29,31 @@
                         <div class="desc-text">Buat kata sandi baru yang kuat untuk akunmu.</div>
                         <form action="{{route('checking_password')}}" class="text" method="POST">
                             @csrf
-                            <label for="password" id="password" class="password-text fw-normal lh-1 ">
-                                Kata Sandi Baru
-                            </label>
-                            <input type="password" name="password" class="password-input @error('password') is-invalid @enderror">
-                            @error('password')
-                                <div class="error-msg invalid-feedback fw-normal lh-1">
-                                    {{$message}}
-                                </div>
-                            @enderror
-                            <label for="password_confirmation" id="password" class="password-text fw-normal lh-1">
-                                Ketik Ulang Kata Sandi Baru
-                            </label>
-                            <input type="password" name="password_confirmation" class="password-input  @error('password_confirmation') is-invalid @enderror">
-                            @error('password_confirmation')
-                                <div class="error-msg invalid-feedback fw-normal lh-1">
-                                    {{$message}}
-                                </div>
-                            @enderror
-                            <button type="submit" class="btn px-4 me-md-2 fw-normal" id="btn-save">
+                            <div class="form-group">
+                                <label for="password" id="password" class="password-text fw-normal lh-1 ">
+                                    Kata Sandi Baru
+                                </label>
+                                <input type="password" name="password" class="password-input @error('password') is-invalid @enderror">
+                                @error('password')
+                                    <div class="error-msg invalid-feedback fw-normal lh-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password_confirmation" id="password" class="password-text fw-normal lh-1">
+                                    Ketik Ulang Kata Sandi Baru
+                                </label>
+                                <input type="password" name="password_confirmation" class="password-input  @error('password_confirmation') is-invalid @enderror">
+                                @error('password_confirmation')
+                                    <div class="error-msg invalid-feedback fw-normal lh-1">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn btn-block" id="btn-save">
                                 Simpan
                             </button>
                         </form>
@@ -59,9 +62,7 @@
                 </div>
 
                 <!-- Sudah punya akun? -->
-                <div class="d-flex bottom-txt">
-                    <div id="copyright-txt">©️GivingGoods | 2024</div>
-                </div>
+                <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
             </div>
         </div>
 

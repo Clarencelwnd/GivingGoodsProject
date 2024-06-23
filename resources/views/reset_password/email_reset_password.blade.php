@@ -16,7 +16,7 @@
             <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="col-lg-6 d-flex justify-content-center">
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="card-body p-md-5 d-flex flex-column align-items-center">
                 {{-- HEADER --}}
                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">

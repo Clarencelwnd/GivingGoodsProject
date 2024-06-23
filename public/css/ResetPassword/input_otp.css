@@ -10,9 +10,9 @@
     border-bottom-left-radius: .25rem;
 }
 
-.logo-img{
-    width: 74px;
-    height: 76px;
+.logo {
+    margin-bottom: 20px;
+    height: 120px;
 }
 
 .header{
@@ -34,27 +34,34 @@
 }
 
 .card-body{
-    width: 95%;
+    width: 98%;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 5px;
+    gap: 8px;
     display: inline-flex;
 }
 
 .card-title{
     color: #003A44;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     word-wrap: break-word;
+}
+
+.footer-image {
+    margin-top: 7rem;
+    margin-bottom: 20px;
+    max-width: 100%;
+    height: 15px;
 }
 
 .otp-text{
     color: #003A44;
     text-align:justify;
-    font-size: 10px;
+    font-size: 16px;
     margin-bottom: 15px;
 }
 
@@ -74,18 +81,20 @@
     border-radius: 5px;
     width: 100%;
     height: 40px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
+    margin-top: 16px;
 }
 
 .error-msg{
     margin-bottom: 7px;
-    font-size: 10px;
+    font-size: 16px;
 }
 
 .btn{
     width: 100%;
     border-radius:5px;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 #btn-next{
@@ -118,10 +127,3 @@
     padding-top: 10px;
 }
 
-#copyright-txt{
-    padding-top: 15px;
-    color: #009B65;
-    font-size: 10px;
-    font-weight: 500;
-    word-wrap: break-word;
-}

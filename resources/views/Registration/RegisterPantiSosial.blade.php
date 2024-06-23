@@ -28,56 +28,55 @@
                     <h2>Mulai Bergabung</h2>
 
                     <form action="{{ route('registerPantiSosial1') }}" method="POST">
-                    @csrf
-
-                    <div class="form-group">
-                        <label for="organization-name">Nama Organisasi</label>
-                        <input type="text" name="organization-name" id="organization" value="{{ old('organization-name') }}">
-                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
-                            @error('organization-name')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" value="{{ old('email') }}">
-                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
-                            @error('email')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Nomor HP</label>
-                        <div class="num-container" style="padding-left: 5px;">
-                            <div class="num-btn">+62</div>
-                            <input type="text" name="phone" value="{{ old('phone') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="organization-name">Nama Organisasi</label>
+                            <input type="text" name="organization-name" id="organization" value="{{ old('organization-name') }}">
+                            <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                                @error('organization-name')
+                                    {{ $message }}
+                                @enderror
+                            </span>
                         </div>
-                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
-                            @error('phone')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="password">Kata Sandi</label>
-                        <input type="password" name="password" id="password">
-                        <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
-                            @error('password')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                        <p class="password-hint">Harus terdiri dari minimal 8 karakter</p>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" value="{{ old('email') }}">
+                            <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                                @error('email')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
 
-                    <div class="btn-container" class="form-group">
-                        <button type="submit" class="btn-primary">Selanjutnya</button>
-                        <a class="btn-secondary" href="{{ route('registerSelected') }}" style="text-decoration: none;">Kembali</a>
-                    </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor HP</label>
+                            <div class="num-container" style="padding-left: 5px;">
+                                <div class="num-btn">+62</div>
+                                <input type="text" name="phone" value="{{ old('phone') }}">
+                            </div>
+                            <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                                @error('phone')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Kata Sandi</label>
+                            <input type="password" name="password" id="password">
+                            <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
+                                @error('password')
+                                    {{ $message }}
+                                @enderror
+                            </span>
+                            <p class="password-hint">Harus terdiri dari minimal 8 karakter</p>
+                        </div>
+
+                        <div class="btn-container" class="form-group">
+                            <button type="submit" class="btn-primary">Selanjutnya</button>
+                            <a class="btn-secondary" href="{{ route('registerSelected') }}" style="text-decoration: none;">Kembali</a>
+                        </div>
                 </form>
             </div>
 
