@@ -34,8 +34,6 @@ class RegisterDonaturRelawanController extends Controller
             $result = $users->save();
 
             $DonaturRelawan = new DonaturAtauRelawan();
-            // $user->EmailDonaturRelawan = $request->email;
-            // $DonaturRelawan->PasswordDonaturRelawan = $request->password;
             $DonaturRelawan->IDUser = $users->id;
             $DonaturRelawan->NamaDonaturRelawan = $request->name;
             $DonaturRelawan->NomorTeleponDonaturRelawan = $request->phone;

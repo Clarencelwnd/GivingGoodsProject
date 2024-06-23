@@ -192,7 +192,6 @@ Route::post('/register-pantisosial2', [RegisterPantiSosialController::class, 're
 Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
 
 //Login
-Route::post('/register-donatur-relawan', [RegisterDonaturRelawanController::class, 'registerUser'])->name('registerUser');
 Route::get('/login-user', [AuthController::class, 'displayLoginView'])->name('login-user');
 Route::get('/home', [AuthController::class, 'displayHomeView']);
 Route::get('/logout', [AuthController::class, 'logoutUser']);

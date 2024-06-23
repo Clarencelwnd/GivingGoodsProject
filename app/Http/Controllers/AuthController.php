@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DonaturAtauRelawan;
+use App\Models\PantiSosial;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +33,15 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if(Auth::attempt($credentials)){
-            return redirect()->intended('/home');
+            if($user->role === 'panti_sosial'){
+                $panti_sosial = PantiSosial::where('IDUser', $user->id)->first();
+                $id = $panti_sosial->IDPantiSosial;
+                return redirect()->route('viewAllKegiatan', compact('id'));
+            } else if($user->role === 'donatur_relawan'){
+                $donatur_relawan = DonaturAtauRelawan::where('IDUser', $user->id)->first();
+                $id = $donatur_relawan->IDDonaturRelawan;
+                return redirect()->route('halamanUtama', compact('id'));
+            };
         }
         return back()->with('fail', '❌  Email/Kata Sandi salah');
 
