@@ -9,7 +9,7 @@
 
 @section('content')
 <div class="btn-articleBack">
-    <a href="{{ route('displayDaftarArtikel', ['id' => $id]) }}" class="back-link">
+    <a href="javascript:void(0)" onclick="history.back()" class="back-link">
         <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
         <p class="judulArtikel-text">Melakukan Donasi Secara Online</p>
     </a>

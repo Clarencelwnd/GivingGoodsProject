@@ -79,7 +79,7 @@
     </div>
 
     @if(session('success'))
-
+        <script> var url = "{{route('profile.donatur_relawan', ['id'=>$id])}}" </script>
         <script src="{{ asset('js/ProfileDonaturRelawan/change_password.js') }}"></script>
     @endif
 @endsection

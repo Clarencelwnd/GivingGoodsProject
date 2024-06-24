@@ -69,7 +69,17 @@
                         </div>
                         <div class="card-body kegiatan">
                             <div class="nama-panti">{{$registRelawan->kegiatanRelawan->pantiSosial->NamaPantiSosial}}</div>
-                            <div class="jenis-donasi-relawan">Jenis Relawan: {{$registRelawan->kegiatanRelawan->JenisKegiatanRelawan}}</div>
+                            <div class="jenis-donasi-relawan">Jenis Relawan:
+                                @if ($registRelawan->kegiatanRelawan->JenisKegiatanRelawan == "Bencana_Alam")
+                                    Bencana Alam
+                                @elseif ($registRelawan->kegiatanRelawan->JenisKegiatanRelawan == "Darurat_Bencana")
+                                    Darurat Bencana
+                                @elseif ($registRelawan->kegiatanRelawan->JenisKegiatanRelawan == "Seni_Budaya")
+                                    Seni Budaya
+                                @else
+                                    {{ $registRelawan->kegiatanRelawan->JenisKegiatanRelawan }}
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endforeach

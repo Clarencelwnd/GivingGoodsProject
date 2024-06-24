@@ -100,7 +100,7 @@
                                         <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                                     </td>
                                     <td class="right-column-mt col-lg-6">
-                                        <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://maps.app.goo.gl/linkGoogleMaps">
+                                        <input class= "form-control @error('LinkGoogleMapsPantiSosial') is-invalid @enderror" type="text" name="LinkGoogleMapsPantiSosial" value="{{old('LinkGoogleMapsPantiSosial', $detailPansos->LinkGoogleMapsPantiSosial)}}" placeholder="https://www.google.com/maps/place/LinkGoogleMap">
                                         @error('LinkGoogleMapsPantiSosial')
                                             <div class="error-msg invalid-feedback fw-normal lh-1">
                                                 {{$message}}
@@ -184,7 +184,7 @@
                             </table>
 
                             {{-- BUTTON  --}}
-                            <div class="d-flex justify-content-end" style="margin-bottom: 30px;">
+                            <div class="d-flex justify-content-end" style="margin-bottom: 30px; margin-top: 30px;">
                                <a href="{{route('profile.panti_sosial', ['id'=>$id])}}" class="btn me-2" id="btn-back">Batal</a>
                                <button type="submit" class="btn" id="btn-save"> Simpan Perubahan </button>
                            </div>

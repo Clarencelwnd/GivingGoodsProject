@@ -55,6 +55,8 @@ class drDetailKegiatanRelawanController extends Controller
         $kegiatanRelawan->setAttribute('FormatTanggalRelawan', $partitionTanggalKegiatanRelawanMulai[2] . ' ' . $bulan[$partitionTanggalKegiatanRelawanMulai[1]] . ' ' . $partitionTanggalKegiatanRelawanMulai[0] . ' - ' .
         $partitionTanggalKegiatanRelawanSelesai[2] . ' ' . $bulan[$partitionTanggalKegiatanRelawanSelesai[1]] . ' ' . $partitionTanggalKegiatanRelawanSelesai[0]);
         $kegiatanRelawan->setAttribute('FormatJamRelawan', date('H:i', strtotime($kegiatanRelawan->JamMulaiKegiatanRelawan)) . ' - '. date('H:i', strtotime($kegiatanRelawan->JamSelesaiKegiatanRelawan)));
+        $partitionTanggalPendaftaranKegiatanDitutup = explode('-', $kegiatanRelawan->TanggalPendaftaranKegiatanDitutup);
+        $kegiatanRelawan->setAttribute('FormatTanggalPendaftaranKegiatanDitutup', $partitionTanggalPendaftaranKegiatanDitutup[2] . ' ' . $bulan[$partitionTanggalPendaftaranKegiatanDitutup[1]] . ' ' . $partitionTanggalPendaftaranKegiatanDitutup[0]);
 
         if($registrasiRelawan){
             $kegiatanRelawan->setAttribute('Disable', 'True');

@@ -36,7 +36,7 @@
                  <div class="panti-sosial-card mb-2">
                      <div class="card">
                          <div class="organization-card">
-                            <img src="{{ $pantiSosial->LogoPantiSosial }}" alt="panti-sosial-picture" id="pantiSosialPicture" class="rounded-circle">
+                            <img src="{{ asset($pantiSosial->LogoPantiSosial) }}" alt="panti-sosial-picture" id="pantiSosialPicture" class="rounded-circle">
                             <div class="organization-information">
                                 <h5 class="card-title" id="namaPantiSosialCard">{{ $pantiSosial->NamaPantiSosial }}</h5>
                                 <p class="card-text" id="alamatPantiSosialCard">{{ $pantiSosial->AlamatPantiSosial }}</p>
@@ -65,10 +65,10 @@
                         @endif
                         <div class="card card-kegiatan-donatur-relawan">
                             @if (isset($activity->NamaKegiatanRelawan))
-                                <img src= "{{ asset('Image/kegiatanRelawan/'.$activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                                <img src= "{{ asset($activity->GambarKegiatanRelawan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
                             @if (isset($activity->NamaKegiatanDonasi))
-                                <img src="{{ asset('Image/kegiatanDonasi/'.$activity->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
+                                <img src="{{ asset($activity->GambarKegiatanDonasi) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
                             <div class="card-body card-kegiatan">
                                 <h5 class="card-title" id="card-namaKegiatan">{{ $activity->NamaKegiatanRelawan ?? $activity->NamaKegiatanDonasi }}</h5>
@@ -101,10 +101,8 @@
                                         @endforeach
                                     @endif
                                 </p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
-                                    Jarak: {{ isset($activity->jarakKm) ? $activity->jarakKm . ' km' : 'Tidak diketahui' }}
-                                </div>
+                                <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text d-flex justify-content-end" id="card-jenisDonasi">{{ $activity->jarakKm }} km</p>
                             </div>
                         </div>
                     </a>

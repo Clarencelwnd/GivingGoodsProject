@@ -98,7 +98,7 @@
                             <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                         </td>
                         <td class="right-column-mt col-lg-6">
-                            <input class= "form-control @error('LinkGoogleMapsDonaturRelawan') is-invalid @enderror" type="text" name="LinkGoogleMapsDonaturRelawan" placeholder="https://maps.app.goo.gl/linkGoogleMaps" value="{{old('LinkGoogleMapsDonaturRelawan', $detailDR->LinkGoogleMapsDonaturRelawan)}}">
+                            <input class= "form-control @error('LinkGoogleMapsDonaturRelawan') is-invalid @enderror" type="text" name="LinkGoogleMapsDonaturRelawan" placeholder="https://www.google.com/maps/place/LinkGoogleMap" value="{{old('LinkGoogleMapsDonaturRelawan', $detailDR->LinkGoogleMapsDonaturRelawan)}}">
                             @error('LinkGoogleMapsDonaturRelawan')
                                 <div class="error-msg invalid-feedback fw-normal lh-1">
                                     {{$message}}

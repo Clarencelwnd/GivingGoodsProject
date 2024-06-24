@@ -5,6 +5,7 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{asset('css/ProfileDonaturRelawan/detail_riwayat_kegiatan_donasi.css')}}">
+    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
 @endsection
 
 @section('content')
@@ -58,7 +59,10 @@
                 </div>
             </div>
             <br>
-            <div class="caption">Jenis Donasi</div>
+            <div class="caption">
+                Jenis Donasi
+                <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
+            </div>
             <div class="row">
                 @foreach ($detailRegistrasiDonatur->donasiDanGambar as $donasi)
                     <div class="col-auto">
@@ -71,4 +75,31 @@
             <div class="content">{{$detailRegistrasiDonatur->DeskripsiBarangDonasi}}</div>
         </div>
     </div>
+
+    <div id="donation-popup-container" style="display: none;">
+        <div id="donation-popup">
+            <div class="popup-header">
+                <h3>Jenis Donasi</h3>
+                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+            </div>
+            <div class="popup-content">
+                <div class="popup-column">
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
+                </div>
+                <div class="popup-column">
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_mandi.png') }}" alt="Keperluan Mandi"><span>Keperluan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('js/ProfileDonaturRelawan/riwayat_kegiatan.js')}}"></script>
 @endsection

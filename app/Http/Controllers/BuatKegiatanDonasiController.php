@@ -45,10 +45,10 @@ class BuatKegiatanDonasiController extends Controller
            if ($request->hasFile('fotoKegiatan')) {
                $file = $request->file('fotoKegiatan');
                $fileName = time() . '_' . $file->getClientOriginalName();
-               $file->storeAs('uploads', $fileName, 'public');
+               $file->storeAs('fotoKegiatanDonasi', $fileName, 'public');
 
                // Mendapatkan URL gambar
-               $fotoKegiatanUrl = asset('storage/uploads/' . $fileName);
+               $fotoKegiatanUrl = asset('storage/fotoKegiatanDonasi/' . $fileName);
            }
         //    dd($request);
            KegiatanDonasi::create([

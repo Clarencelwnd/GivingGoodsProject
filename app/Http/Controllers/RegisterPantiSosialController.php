@@ -15,8 +15,7 @@ class RegisterPantiSosialController extends Controller
         // Validasi input
         $request->validate([
             'organization-name' => 'required|min:2|max:255',
-            // 'email' => 'required|email|unique:panti_sosial,EmailPantiSosial',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric|min:7',
             'password' => 'required|min:8',
         ]);
@@ -32,7 +31,7 @@ class RegisterPantiSosialController extends Controller
 
          // Simpan data yang ingin Anda kirim ke halaman berikutnya di sesi
         $request->session()->put('organization_name', $request->input('organization-name'));
-        $request->session()->put('email', $request->input('email'));
+        $request->session()->put('email', '+62' . $request->input('email'));
         $request->session()->put('phone', $request->input('phone'));
         $request->session()->put('password', $request->input('password'));
         // Lanjut ke halaman berikutnya jika validasi berhasil
@@ -54,59 +53,41 @@ class RegisterPantiSosialController extends Controller
             'validation_document' => 'required|file|mimes:jpg,png|max:10240',
         ]);
 
-        // Simpan data dari halaman kedua dan data dari session ke dalam database
-        // $email = $request->input('email');
-        // $email = $request->session()->get('email');
-        // $user = User::where('email', $email)->first();
+        $users = new User();
+        $users->email = $email;
+        $users->password = Hash::make($password);
+        $users->role = 'panti_sosial';
+        $result1 = $users->save();
 
-        // if ($user) {
-            // Email sudah terdaftar
-            // return back()->with('exists', true);
-        // } else {
-            $users = new User();
-            $users->email = $email;
-            $users->password = Hash::make($password);
-            $users->role = 'panti_sosial';
-            $result1 = $users->save();
+        // Email belum terdaftar
+        $PantiSosial = new PantiSosial();
+        $PantiSosial->IDUser = $users->id;
+        $PantiSosial->NamaPantiSosial = $organizationName;
+        $PantiSosial->NomorTeleponPantiSosial = $phone;
+        $PantiSosial->NomorRegistrasiPantiSosial = $request->registration_num;
+        $PantiSosial->LogoPantiSosial = 'https://www.gravatar.com/avatar/?d=mp&s=200';
 
-            // Email belum terdaftar
-            $PantiSosial = new PantiSosial();
-            $PantiSosial->IDUser = $users->id;
-            $PantiSosial->NamaPantiSosial = $organizationName;
-            $PantiSosial->NomorTeleponPantiSosial = $phone;
-            $PantiSosial->NomorRegistrasiPantiSosial = $request->registration_num;
-            $PantiSosial->LogoPantiSosial = 'https://www.gravatar.com/avatar/?d=mp&s=200';
+        $validation_document_url = null;
+        // untuk uplaod file dan menyimpan path ke database
+        if ($request->hasFile('validation_document')) {
+            $file = $request->file('validation_document');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('documents', $fileName, 'public');
+            $validation_document_url = asset('/storage/documents/' . $fileName);
 
-              // untuk uplaod file dan menyimpan path ke database
-              if ($request->hasFile('validation_document')) {
-                $original_name = $request->file('validation_document')->getClientOriginalName();
-                $original_ext = $request->file('validation_document')->getClientOriginalExtension();
-                $validation_document_name = time() . '_' . $original_name . '.' . $original_ext;
-                $request->file('validation_document')->storeAs('uploads', $validation_document_name, 'public');
-                $validation_document_url = asset('storage/uploads/' . $validation_document_name);
-                // dd($validation_document_url);
-                // $file = $request->file('validation_document');
-                // $fileName = time() . '.' . $file->getClientOriginalName();
-                // $file->move(public_path('validasi_dokumen'), $fileName); // memindahkan file ke direktori 'public/validasi_dokumen'
-                $PantiSosial->DokumenValiditasPantiSosial = $validation_document_url; // menyimpan URL file ke kolom DokumenValiditasPantiSosial
-            } else {
-                return back()->with('fail', 'Dokumen validitas harus diunggah');
-            }
+            $PantiSosial->DokumenValiditasPantiSosial = $validation_document_url; // menyimpan URL file ke kolom DokumenValiditasPantiSosial
+        } else {
+            return back()->with('fail', 'Dokumen validitas harus diunggah');
+        }
 
 
-            $result2 = $PantiSosial->save();
-            //Berhasil save
-            if ($result1 && $result2){
-                return back()->with('success', 'Registration successful');
-            }else{
-                return back()->with('fail', 'Registration failed');
-            }
-        // }
-
-        // Hapus data dari session setelah disimpan ke database
-        // $request->session()->forget(['organization_name', 'email', 'phone', 'password']);
-
-
+        $result2 = $PantiSosial->save();
+        //Berhasil save
+        if ($result1 && $result2){
+            return back()->with('success', 'Registration successful');
+        }else{
+            return back()->with('fail', 'Registration failed');
+        }
     }
 
 

@@ -83,12 +83,15 @@
                         <tr>
                             <td class="left-column-mt col-lg-3">Media Sosial</td>
                             <td class="right-column-mt col-lg-6">
-                                @php
-                                    $count = count($media_sosial);
-                                @endphp
-                                @for ($i = 0; $i < $count; $i++)
-                                    {{$media_sosial[$i]}}: {{$link_profile[$i]}}<br>
-                                @endfor
+                                @if ($detailPansos->MediaSosialPantiSosial)
+                                    @php
+                                        $count = count($media_sosial);
+                                    @endphp
+
+                                    @for ($i = 0; $i < $count; $i++)
+                                        {{$media_sosial[$i]}}: {{$link_profile[$i]}}<br>
+                                    @endfor
+                                @endif
                             </td>
                         </tr>
                         <tr>

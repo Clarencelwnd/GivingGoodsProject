@@ -23,7 +23,7 @@
     <div class="content">
         <div class="section">
             <div class="subtitle">Pendaftaran Ditutup</div>
-            <div class="text">{{ $kegiatanRelawan->TanggalPendaftaranKegiatanDitutup }}</div>
+            <div class="text">{{ $kegiatanRelawan->FormatTanggalPendaftaranKegiatanDitutup }}</div>
         </div>
 
         <div class="section">
@@ -45,7 +45,7 @@
             <div class="subtitle">Lokasi Kegiatan Relawan</div>
             <div class="flex-row">
                 <div class="text" style="padding-right: 12px;">{{ $kegiatanRelawan->LokasiKegiatanRelawan }}</div>
-                <a href="{{ $kegiatanRelawan->LinkGoogleMapsLokasiKegiatanRelawan }}">
+                <a href="{{ $kegiatanRelawan->LinkGoogleMapsLokasiKegiatanRelawan }}" target="_blank">
                     <img src="{{ asset('image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
                 </a>
             </div>
@@ -74,8 +74,8 @@
         </div>
 
         <div class="section">
-            <div class="subtitle">Kegiatan Relawan
-                <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
+            <div class="subtitle">Jenis Kegiatan Relawan
+                {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()"> --}}
             </div>
             <div class="text">{{ $kegiatanRelawan->JenisKegiatanRelawan }}</div>
         </div>
@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<div id="relawan-popup-container" style="display: none;">
+{{-- <div id="relawan-popup-container" style="display: none;">
     <div id="relawan-popup">
         <div class="popup-header">
             <h3>Kegiatan Relawan</h3>
@@ -116,7 +116,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <script>
     function showDonationPopup() {

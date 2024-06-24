@@ -53,11 +53,13 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn btn-block" id="btn-save">
-                                Simpan
-                            </button>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-block" id="btn-save">
+                                    Simpan
+                                </button>
+                                <a data-bs-toggle="modal" data-bs-target="#exitResetPasswordModal" class="btn btn-block btn-back" id="exitResetPassword">Kembali</a>
+                            </div>
                         </form>
-                        <a data-bs-toggle="modal" data-bs-target="#exitResetPasswordModal" class="btn btn-block btn-back" id="exitResetPassword">Kembali</a>
                     </div>
                 </div>
 
@@ -82,7 +84,7 @@
                             <button type="button" class="btn" id="btn-change" data-bs-dismiss="modal">Lanjut Ubah</button>
                         </div>
                         <div class="col-login">
-                            <button  onclick="window.location.href='{{route('login-user')}}'" type="button" class="btn" id="btn-login">Keluar</button>
+                            <button onclick="window.location.href='{{route('login-user')}}'" type="button" class="btn" id="btn-login">Keluar</button>
                         </div>
                     </div>
                 </div>

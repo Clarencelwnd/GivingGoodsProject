@@ -35,13 +35,18 @@ class ProfileController extends Controller
         }
 
         // pisah array media_sosial dan link_profile
-        $mediaSosialPantiSosial = explode(';', $detailPansos->MediaSosialPantiSosial);
-        foreach ($mediaSosialPantiSosial as $medsospantisosial) {
-            $partition = explode(': ', $medsospantisosial, 2);
-            if(count($partition) === 2){
-                $media_sosial[] = $partition[0];
-                $link_profile[] = $partition[1];
+        if($detailPansos->MediaSosialPantiSosial){
+            $mediaSosialPantiSosial = explode(';', $detailPansos->MediaSosialPantiSosial);
+            foreach ($mediaSosialPantiSosial as $medsospantisosial) {
+                $partition = explode(': ', $medsospantisosial, 2);
+                if(count($partition) === 2){
+                    $media_sosial[] = $partition[0];
+                    $link_profile[] = $partition[1];
+                }
             }
+        } else{
+            $media_sosial[] = null;
+            $link_profile[] = null;
         };
 
         return view('profile_pansos/profile', compact('id', 'jadwalPansos', 'detailPansos', 'userPansos', 'media_sosial', 'link_profile'));
@@ -73,8 +78,8 @@ class ProfileController extends Controller
             'DeskripsiPantiSosial' => 'required|max:300',
             'NomorTeleponPantiSosial' => 'required|regex:/^\+628\d{9,11}$/',
             'AlamatPantiSosial' => 'required|max:450',
-            'LinkGoogleMapsPantiSosial' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//',
-            'MediaSosialPantiSosial' => 'regex:/^(?=.*:)(?=.*;).+$/'
+            'LinkGoogleMapsPantiSosial' => 'required|regex:/^https:\/\/www\.google\.com\/maps\/place\/.*$/',
+            'MediaSosialPantiSosial' => 'nullable|regex:/^(?=.*:)(?=.*;).+$/'
         ],
         [
             'NamaPantiSosial.required' => 'Nama panti sosial wajib diisi.',
@@ -85,7 +90,7 @@ class ProfileController extends Controller
             'AlamatPantiSosial.required' => 'Alamat panti sosial wajib diisi.',
             'AlamatPantiSosial.max' => 'Alamat panti sosial maksimal berisi 450 karakter.',
             'LinkGoogleMapsPantiSosial.required' => 'Link google maps alamat panti sosial wajib diisi.',
-            'LinkGoogleMapsPantiSosial.regex' => 'Link google maps wajib dengan format -> https://maps.app.goo.gl/',
+            'LinkGoogleMapsPantiSosial.regex' => 'Link google maps wajib dengan format -> https://www.google.com/maps/place/',
             'MediaSosialPantiSosial.regex' => 'Apabila media sosial lebih dari satu, harap pisahkan hanya dengan spasi -> Media Sosial: Username Panti Sosial; Media Sosial: Username Panti Sosial;'
         ]);
 
@@ -101,7 +106,7 @@ class ProfileController extends Controller
             $jadwal = $jadwalPansos->where('Hari', $day)->first();
 
             // Memastikan entri jadwal operasional tersedia untuk setiap hari
-            if(!($jadwal || $jadwal->JamBukaPantiSosial || $jadwal->JamTutupPantiSosial)){
+            if($jadwal == null || $jadwal->JamBukaPantiSosial == null || $jadwal->JamTutupPantiSosial == null){
                 $validator->after(function ($validator){
                     $validator->errors()->add('btn-schedule', 'Jadwal operasional belum dilengkapi.');
                 });
@@ -146,6 +151,8 @@ class ProfileController extends Controller
         // variabel yang dibutuhkan
         $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
 
+        $jadwalPansos = JadwalOperasional::where('IDPantiSosial', $id)->get();
+
         // buat/masukkan data baru
         foreach ($days as $day) {
             $jamBuka = $request->input("jam-buka-".strtolower($day));
@@ -162,6 +169,18 @@ class ProfileController extends Controller
                 ]
             );
         }
+
+        $jadwal = $jadwalPansos->where('Hari', $day)->first();
+
+        // Memastikan entri jadwal operasional tersedia untuk setiap hari
+        if($jadwal == null || $jadwal->JamBukaPantiSosial == null || $jadwal->JamTutupPantiSosial == null){
+            return redirect()->back()->withErrors(['btn-schedule', 'Jadwal operasional belum dilengkapi.'])->withInput();
+        }
+        else{
+            if($jadwal->JamBukaPantiSosial > $jadwal->JamTutupPantiSosial){
+                return redirect()->back()->withErrors(['btn-schedule', 'Jam buka panti sosial harus lebih awal daripada jam tutup panti sosial.'])->withInput();
+            }
+        };
 
         return redirect()->route('edit_profile.panti_sosial', ['id'=>$id]);
     }
@@ -181,15 +200,16 @@ class ProfileController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $original_name = $request->file('LogoPantiSosial')->getClientOriginalName();
-        $original_ext = $request->file('LogoPantiSosial')->getClientOriginalExtension();
-        $logo_panti_sosial_name = $original_name . time() . '.' . $original_ext;
-
-        $request->file('LogoPantiSosial')->storeAs('public/Profile', $logo_panti_sosial_name);
-        $logo_panti_sosial = 'storage/Profile/' . $logo_panti_sosial_name;
+        $logo_panti_sosial_url = null;
+        if($request->file('LogoPantiSosial')){
+            $file = $request->file('LogoPantiSosial');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('profilePansos', $fileName, 'public');
+            $logo_panti_sosial_url = asset('storage/profilePansos/' . $fileName);
+        }
 
         $detailPansos = PantiSosial::find($id);
-        $detailPansos->LogoPantiSosial = $logo_panti_sosial;
+        $detailPansos->LogoPantiSosial = $logo_panti_sosial_url;
         $detailPansos->save();
 
         return redirect()->route('profile.panti_sosial',['id'=>$id]);

@@ -12,8 +12,7 @@ class RegisterDonaturRelawanController extends Controller
     public function registerUser(Request $request){
         $request->validate([
             'name' => 'required|min:2|max:255',
-            // 'email' => 'required|email|unique:donatur_atau_relawan,EmailDonaturRelawan',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric|min:7',
             'password' => 'required|min:8', // sesuaikan validasi sesuai kebutuhan
         ]);
@@ -36,7 +35,7 @@ class RegisterDonaturRelawanController extends Controller
             $DonaturRelawan = new DonaturAtauRelawan();
             $DonaturRelawan->IDUser = $users->id;
             $DonaturRelawan->NamaDonaturRelawan = $request->name;
-            $DonaturRelawan->NomorTeleponDonaturRelawan = $request->phone;
+            $DonaturRelawan->NomorTeleponDonaturRelawan = '+62' . $request->phone;
             $DonaturRelawan->FotoDonaturRelawan = 'https://www.gravatar.com/avatar/?d=mp&s=200';
             $result = $DonaturRelawan->save();
 
