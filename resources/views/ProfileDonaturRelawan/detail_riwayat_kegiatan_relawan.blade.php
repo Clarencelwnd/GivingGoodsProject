@@ -69,8 +69,8 @@
                     Bencana Alam
                 @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Lingkungan_Hidup')
                     Lingkungan Hidup
-                @elseif ($detailRegistrasirelawan->kegiatanRelawan->JenisKegiatanRelawan === 'IT_dan_Teknologi')
-                    IT dan Teknologi
+                @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Teknologi')
+                    Teknologi
                 @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Pengembangan_Masyarakat')
                     Pengembangan Masyarakat
                 @elseif ($detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan === 'Darurat_dan_Bencana')
@@ -80,6 +80,7 @@
                 @else
                     {{$detailRegistrasiRelawan->kegiatanRelawan->JenisKegiatanRelawan}}
                 @endif
+
             </div>
         </div>
     </div>

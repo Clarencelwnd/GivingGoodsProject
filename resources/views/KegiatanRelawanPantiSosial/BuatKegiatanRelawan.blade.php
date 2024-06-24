@@ -84,14 +84,14 @@
                                     <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
                                 </div>
                                 <div class="dropdown-menu">
-                                    <div class="dropdown-item" onclick="selectOption('Bencana Alam')">Bencana Alam</div>
+                                    <div class="dropdown-item" onclick="selectOption('Bencana_Alam')">Bencana Alam</div>
                                     <div class="dropdown-item" onclick="selectOption('Pendidikan')">Pendidikan</div>
                                     <div class="dropdown-item" onclick="selectOption('Kesehatan')">Kesehatan</div>
-                                    <div class="dropdown-item" onclick="selectOption('Lingkungan Hidup')">Lingkungan Hidup</div>
-                                    <div class="dropdown-item" onclick="selectOption('IT dan teknologi')">IT dan teknologi</div>
-                                    <div class="dropdown-item" onclick="selectOption('Pengembangan Masyarakat')">Pengembangan Masyarakat</div>
-                                    <div class="dropdown-item" onclick="selectOption('Darurat dan Bencana')">Darurat dan Bencana</div>
-                                    <div class="dropdown-item" onclick="selectOption('Seni dan Budaya')">Seni dan Budaya</div>
+                                    <div class="dropdown-item" onclick="selectOption('Lingkungan_Hidup')">Lingkungan Hidup</div>
+                                    <div class="dropdown-item" onclick="selectOption('Teknologi')">Teknologi</div>
+                                    <div class="dropdown-item" onclick="selectOption('Pengembangan_Masyarakat')">Pengembangan Masyarakat</div>
+                                    <div class="dropdown-item" onclick="selectOption('Darurat_dan_Bencana')">Darurat dan Bencana</div>
+                                    <div class="dropdown-item" onclick="selectOption('Seni_dan_Budaya')">Seni dan Budaya</div>
                                 </div>
                             </div>
                             <input type="hidden" name="jenisRelawan" id="jenisRelawanInput" value="{{ old('jenisRelawan') }}">
