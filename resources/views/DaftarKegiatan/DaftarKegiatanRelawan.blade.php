@@ -44,7 +44,7 @@
         <div class="info-container">
             <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
             <div class="info-text-container">
-                Apabila kegiatan berlangsung lebih dari satu hari, pastikan Anda dapat mengikuti kegiatan pada batch waktu yang Anda pilih untuk setiap hari tersebut.
+                Pastikan Anda dapat mengikuti kegiatan pada batch waktu yang telah ditentukan oleh panti sosial.
             </div>
         </div>
 
