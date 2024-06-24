@@ -79,7 +79,6 @@
                                 <tr>
                                     <td class="left-column-mt col-lg-3">
                                         Alamat Lengkap
-                                        <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                                     </td>
                                     <td class="small-text-above col-lg-6">
                                         <textarea class= "form-control @error('AlamatPantiSosial') is-invalid @enderror" type="text" name="AlamatPantiSosial" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatPantiSosial', $detailPansos->AlamatPantiSosial ?? '')}}</textarea>

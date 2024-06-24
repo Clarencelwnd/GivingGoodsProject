@@ -69,7 +69,6 @@
                         <tr>
                             <td class="left-column-mt col-lg-3">
                                 Alamat Lengkap
-                                <img data-bs-toggle="modal" data-bs-target="#informationModal" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                             </td>
                             <td class="right-column-mt col-lg-6"> {{$detailPansos->AlamatPantiSosial}}</td>
                         </tr>

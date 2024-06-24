@@ -77,7 +77,6 @@
                     <tr>
                         <td class="left-column-mt col-lg-3">
                             Alamat Lengkap
-                            <img data-bs-toggle="modal" data-bs-target="#informationModal" class="information-icon" id="inf-address" src="{{asset('Image/general/information.png')}}" alt="">
                         </td>
                         <td class="small-text-above col-lg-6">
                             <textarea class= "form-control @error('AlamatDonaturRelawan') is-invalid @enderror" type="text" name="AlamatDonaturRelawan" placeholder="Jalan, RT/RW, Kabupaten, Kecamatan, Kota, Provinsi, Kode Pos">{{old('AlamatDonaturRelawan', $detailDR->AlamatDonaturRelawan)}}</textarea>
