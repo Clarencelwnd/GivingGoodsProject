@@ -14,14 +14,14 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}">
+                <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}">
                     <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  width="30px" height="30px">
                 </a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
         </div>
 
-        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-donasi.update', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}">
+        <form id="ubahKegiatanForm" method="POST" action="{{ route('ubah-kegiatan-donasi.update', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}">
             @csrf
             @method('PUT')
             <div class="details">
@@ -102,7 +102,7 @@
                 </div>
 
                 <div class="button-container">
-                    <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'id' => $id]) }}" class="cancel-btn">
+                    <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}" class="cancel-btn">
                         Batal
                     </a>
                     <button class="save-btn" type="button" onclick="tampilkanPopup()">Simpan Perubahan</button>
@@ -115,18 +115,21 @@
         </div>
     </div>
 
-        <!-- Pop-up konfirmasi -->
-        <div id="popup-container" style="display: none;">
-            <div id="popup" style="margin: 10px">
-                <h3 style="color: #152F44; font-size: 20px; font-weight: 600;">Konfirmasi Penyimpanan Perubahan</h3>
-                <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menyimpan perubahan yang telah Anda buat? <br> Perrubahan yang disimpan akan menggantikan versi sebelumnya.</p>
-                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                    <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="tutupPopup(); return false;">Batal</button>
-                    <button type="submit" class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Simpan</button>
-                </div>
+    <!-- Pop-up konfirmasi -->
+    <div id="popup-container" style="display: none;">
+        <div id="popup" style="margin: 10px">
+            <h3 style="color: #152F44; font-size: 20px; font-weight: 600;">Konfirmasi Penyimpanan Perubahan</h3>
+            <p style="margin-top: 10px; font-size: 18px; font-weight: 300; color: #152F44;">Apakah Anda yakin ingin menyimpan perubahan yang telah Anda buat? <br> Perrubahan yang disimpan akan menggantikan versi sebelumnya.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="tutupPopup(); return false;">Batal</button>
+                <button type="submit" class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;">Ya, Simpan</button>
             </div>
         </div>
+    </div>
+
     </form>
+
+
 
     <div id="donation-popup-container" style="display: none;">
         <div id="donation-popup">
