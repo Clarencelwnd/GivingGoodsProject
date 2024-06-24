@@ -101,10 +101,8 @@
                                         @endforeach
                                     @endif
                                 </p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
-                                    Jarak: {{ isset($activity->jarakKm) ? $activity->jarakKm . ' km' : 'Tidak diketahui' }}
-                                </div>
+                                <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text d-flex justify-content-end" id="card-jenisDonasi">{{ $activity->jarakKm }} km</p>
                             </div>
                         </div>
                     </a>

@@ -123,6 +123,10 @@ body {
     padding-top: 10px;
 }
 
+.donation-icon{
+    cursor: pointer;
+}
+
 /* POPUP CONTAINER */
 #donation-popup-container {
     display: none;

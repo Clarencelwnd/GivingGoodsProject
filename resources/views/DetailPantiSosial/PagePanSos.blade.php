@@ -21,7 +21,7 @@
     <div class="containerPansosPage">
         <div class="containerDetailPansos">
             <div class="info-container">
-                <img src="{{ $pantiSosial->LogoPantiSosial }}" class="donation-icon" alt="Logo Panti Sosial">
+                <img src="{{ asset($pantiSosial->LogoPantiSosial) }}" class="donation-icon" alt="Logo Panti Sosial">
                 <div class="info-text-container">
                     <div class="title">{{ $pantiSosial->NamaPantiSosial }}</div>
                     <div class="text-infoPansos">No. Registrasi: {{ $pantiSosial->NomorRegistrasiPantiSosial }}</div>
@@ -54,7 +54,7 @@
                             <div>
                                 <span>{{ $hari }}&nbsp;:</span>
                                 @foreach($jadwals as $jadwal)
-                                    {{ $jadwal->JamBukaPantiSosial }} - {{ $jadwal->JamTutupPantiSosial }}
+                                    {{ \Carbon\Carbon::parse($jadwal->JamBukaPantiSosial)->format('H:i') }} - {{ \Carbon\Carbon::parse($jadwal->JamTutupPantiSosial)->format('H:i') }}
                                 @endforeach
                             </div>
                         @endforeach
@@ -62,7 +62,26 @@
                 </div>
                 <div class="section">
                     <div class="subtitle">Media Sosial:</div>
-                    <div class="text-infoPansos">{{ $pantiSosial->MediaSosialPantiSosial }}</div>
+                    <div class="text-infoPansos">
+                        @if ($pantiSosial->MediaSosialPantiSosial != null)
+                            @php
+                                $media_sosial = explode(';', $pantiSosial->MediaSosialPantiSosial);
+                                $medsos = [];
+                                $link_profile = [];
+                                foreach ($media_sosial as $med_sos) {
+                                    $partition = explode(': ', $med_sos);
+                                    if(count($partition) === 2){
+                                        $medsos[] = $partition[0];
+                                        $link_profile[] = $partition[1];
+                                    }
+                                }
+                                $count = count($medsos);
+                            @endphp
+                            @for ($i = 0; $i < $count; $i++)
+                                {{$medsos[$i]}}: {{$link_profile[$i]}}<br>
+                            @endfor
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,10 +103,10 @@
                     @endif
                         <div class="card">
                             @if (isset($activity->NamaKegiatanRelawan))
-                                <img src="{{ asset('Image/kegiatanRelawan/' . $activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                                <img src="{{ asset($activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
                             @if (isset($activity->NamaKegiatanDonasi))
-                                <img src="{{ asset('Image/kegiatanDonasi/' . $activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
+                                <img src="{{ asset($activity->GambarKegiatan) }}" class="card-img-top" style="height: 14rem" alt="...">
                             @endif
 
                             <div class="card-body card-kegiatan">
@@ -120,13 +139,12 @@
                                         @endforeach
                                     @endif
                                 </p>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
-                                    <p class="card-text" id="card-jenisDonasi">Jarak</p>
-                                </div>
+                                <p class="card-text" id="card-namaPanti">{{ $activity->pantiSosial->NamaPantiSosial }}</p>
+                                <p class="card-text d-flex justify-content-end" id="card-jenisDonasi">{{ $activity->jarakKm }} km</p>
                             </div>
                         </div>
                     </a>
+                </a>
                 </div>
                 @endforeach
             </div>

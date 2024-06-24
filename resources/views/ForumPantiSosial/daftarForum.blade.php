@@ -60,7 +60,7 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/forumPage.js') }}"></script>
+<script src="{{ asset('js/ForumDonaturRelawan/forumPage.js') }}"></script>
 @endsection
 
 @section('pagination')

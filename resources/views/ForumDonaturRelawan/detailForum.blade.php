@@ -31,7 +31,7 @@
 
     {{-- Reply text area --}}
     <div class="replyTextArea">
-        <form action="{{ route('simpanKomentar', ['idDonaturRelawan' => $id]) }}" method="POST">
+        <form action="{{ route('donaturrelawan.simpanKomentar', ['idDonaturRelawan' => $id]) }}" method="POST">
             @csrf
             <input type="hidden" name="IDForum" value="{{ $forum->IDForum }}">
             <textarea class="w-100 form-control" name="KomentarForum" rows="4" placeholder="Bagikan pendapatmu..." required></textarea>

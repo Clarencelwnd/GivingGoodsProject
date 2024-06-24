@@ -14,7 +14,7 @@
         $PantiSosial = \App\Models\PantiSosial::find($id);
     @endphp
     {{-- INFORMATION BUTTON --}}
-    @if (!$PantiSosial->LinkGoogleMapsPantiSosial)
+    @if ($PantiSosial->LinkGoogleMapsPantiSosial == null)
         <div class="container information-button">
             <div class="overlay" id="overlay"></div>
             <div class="row justify-content-center">

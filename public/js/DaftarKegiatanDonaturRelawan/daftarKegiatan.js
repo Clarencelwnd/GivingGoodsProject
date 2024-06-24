@@ -136,6 +136,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Event listeners for relawan checkboxes
     relawanCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
+            if (checkbox.checked) {
+                // Select jenis kegiatan donasi and deselect jenis kegiatan relawan
+                document.getElementById('jenisKegiatanDonasi').checked = false;
+                document.getElementById('jenisKegiatanRelawan').checked = true;
+                // Deselect jenis relawan checkboxes
+                donasiCheckboxes.forEach(cb => {
+                    cb.checked = false;
+                });
+            }
             filterActivities();
         });
     });

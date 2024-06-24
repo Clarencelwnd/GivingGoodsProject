@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
     <link href="{{ asset('css/DaftarKegiatan/daftarKegiatanDonasi.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/Artikel/DaftarKegiatanDonasi.js') }}"></script>
+    {{-- <script src="{{ asset('js/Artikel/DaftarKegiatanDonasi.js') }}"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    @endsection
+@endsection
 
-    @section('content')
+@section('content')
     <div class="containerDaftarDonasi">
         <div class="title">
             <a href="javascript:history.back()">
@@ -36,16 +36,16 @@
                 <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly style="background-color: #f0f0f0;">
                 <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow" style="margin-top:10px">
                 <div class="dropdown-content" id="dropdown_content_jenis">
-                    <div class="dropdown-item" onclick="selectOptionJenis('Pakaian')"><span>Pakaian</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Makanan')"><span>Makanan</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Obat-obatan')"><span>Obat-obatan</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Buku-buku')"><span>Buku-buku</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Keperluan Ibadah')"><span>Keperluan Ibadah</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Mainan')"><span>Mainan</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Perlengkapan Mandi')"><span>Perlengkapan Mandi</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Keperluan Rumah')"><span>Keperluan Rumah</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Alat Tulis')"><span>Alat Tulis</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('Sepatu')"><span>Sepatu</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('pakaian')"><span>Pakaian</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('makanan')"><span>Makanan</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('obat')"><span>Obat</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('buku')"><span>Buku</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_ibadah')"><span>Keperluan Ibadah</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('mainan')"><span>Mainan</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_mandi')"><span>Keperluan Mandi</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_rumah')"><span>Keperluan Rumah</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('alat_tulis')"><span>Alat Tulis</span></div>
+                    <div class="dropdown-item" onclick="selectOptionJenis('sepatu')"><span>Sepatu</span></div>
                 </div>
             </div>
             @if ($errors->has('jenis_donasi'))
@@ -255,9 +255,9 @@
                 // Menambahkan opsi yang dipilih ke input field
                 var currentOption = document.getElementById('jenis_donasi_field').value;
                 if (currentOption.length > 0) {
-                    document.getElementById('jenis_donasi_field').value += ', ' + option;
+                    document.getElementById('jenis_donasi_field').value += ',' + option.toLowerCase();
                 } else {
-                    document.getElementById('jenis_donasi_field').value = option;
+                    document.getElementById('jenis_donasi_field').value = option.toLowerCase();
                 }
 
                 adjustArrowPadding();
@@ -292,7 +292,6 @@
                     arrow.style.marginTop = '0';
                 }
             }
-    </scrip>
+    </script>
 
 @endsection
-</html>

@@ -217,6 +217,7 @@ body {
 .close-btn {
     margin-left: 5px;
     cursor: pointer;
+    width: 20px;
 }
 
 .error-message {
