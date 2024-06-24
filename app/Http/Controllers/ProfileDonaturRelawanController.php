@@ -45,7 +45,7 @@ class ProfileDonaturRelawanController extends Controller
             'JenisKelaminDonaturRelawan' => ['required', 'regex:/^(Laki-laki|Perempuan)$/'],
             'NomorTeleponDonaturRelawan' => 'required|regex:/^\+628\d{9,11}$/',
             'AlamatDonaturRelawan' => 'required|max:450',
-            'LinkGoogleMapsDonaturRelawan' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//'
+        'LinkGoogleMapsDonaturRelawan' => 'required|regex:/^https:\/\/maps\.app\.goo\.gl\//'
         ],
         [
             'NamaDonaturRelawan.required' => 'Nama donatur atau relawan wajib diisi.',
@@ -99,17 +99,13 @@ class ProfileDonaturRelawanController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $original_name = $request->file('FotoDonaturRelawan')->getClientOriginalName();
-        $original_ext = $request->file('FotoDonaturRelawan')->getClientOriginalExtension();
-        $foto_donatur_relawan_name = time() . '_' . $original_name . '.' . $original_ext;
-
-
-        // $request->file('FotoDonaturRelawan')->storeAs('public/Profile', $foto_donatur_relawan_name);
-        $request->file('FotoDonaturRelawan')->storeAs('uploads', $foto_donatur_relawan_name, 'public');
-
-        // $foto_donatur_relawan = 'storage/Profile/' . $foto_donatur_relawan_name;
-        $foto_donatur_relawan_url = asset('storage/uploads/' . $foto_donatur_relawan_name);
-
+        $foto_donatur_relawan_url = null;
+        if($request->file('FotoDonaturRelawan')){
+            $file = $request->file('FotoDonaturRelawan');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('profileDR', $fileName, 'public');
+            $foto_donatur_relawan_url = asset('storage/profileDR/' . $fileName);
+        }
 
         $detailDR = DonaturAtauRelawan::find($id);
         $detailDR->FotoDonaturRelawan = $foto_donatur_relawan_url;

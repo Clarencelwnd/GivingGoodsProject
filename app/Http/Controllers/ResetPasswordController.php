@@ -108,10 +108,10 @@ class ResetPasswordController extends Controller
         session()->forget(['email', 'otp']);
         session()->flush();
 
-        return view('reset_password/dummy_login');
+        return redirect()->route('login-user');
     }
 
-    public function exit_reset_password(){
-        return view('reset_password/pop_up_exit_reset_password');
-    }
+    // public function exit_reset_password(){
+    //     return view('reset_password/pop_up_exit_reset_password');
+    // }
 }

@@ -31,7 +31,7 @@
         <div class="col-md-12 searchbar">
             <div class="d-flex form-inputs">
                 <input type="hidden">
-                <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama kegiatan donasi/ kegiatan relawan, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">
+                <input name="search" class="form-control" id="placeholder-text" type="text" placeholder="Cari nama kegiatan donasi/kegiatan relawan, jenis kegiatan relawan, atau jenis barang yang disumbangkan..">
                 <i class="bx bx-search"></i>
             </div>
         </div>

@@ -88,6 +88,10 @@ tr{
     resize: none;
 }
 
+textarea.form-control{
+    resize: none;
+}
+
 .form-control{
     background-color: #F0F0F0;
     color: #1C3F5B;
@@ -118,14 +122,14 @@ input.form-control:focus{
     background-color: #FFFFFF;
 }
 
-.btn-jam-operasional{
+.btn-jam-operasional#btn-schedule{
     /* padding-left: 10px; */
     background: #007C92;
     color: #FFFFFF;
     width: 50%;
 }
 
-.btn-jam-operasional:hover{
+.btn-jam-operasional#btn-schedule:hover{
     color: #FFFFFF;
     background: #017286;
     font-weight: 600;

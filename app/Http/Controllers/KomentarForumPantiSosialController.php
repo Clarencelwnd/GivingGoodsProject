@@ -17,7 +17,7 @@ class KomentarForumPantiSosialController extends Controller
          // Create a new comment entry
          KomentarForum::create([
             'IDForum' => $request->IDForum,
-            'IDPantiSosialPengomentarForum' => $idPantiSosial, // Dummy pengomentar forum
+            'IDPantiSosialPengomentarForum' => $idPantiSosial,
             'KomentarForum' => $request->KomentarForum,
             'TanggalKomentarForum' => now(), // or another date format you prefer
         ]);

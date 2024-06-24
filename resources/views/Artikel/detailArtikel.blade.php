@@ -5,11 +5,12 @@
 @section('stylesheets')
     @parent
     <link rel="stylesheet" href="{{ asset('css/Artikel/detailArtikelPage.css') }}">
+    <link src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></link>
 @endsection
 
 @section('content')
 <div class="btn-articleBack">
-    <a href="{{ route('displayDaftarArtikel', ['id' => $id]) }}" class="back-link">
+    <a href="javascript:void(0)" onclick="history.back()" class="back-link">
         <img src="{{ asset('Image/general/back.png') }}" alt="back button" class="back-img">
         <p class="judulArtikel-text">Manfaat Donasi</p>
     </a>

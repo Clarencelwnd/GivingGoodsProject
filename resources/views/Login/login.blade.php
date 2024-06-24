@@ -49,7 +49,7 @@
 
                 </div>
             <div class="already-have-account">
-                Belum Punya Akun? <a href="{{ route('registerDonaturRelawan') }}">Daftar</a>
+                Belum Punya Akun? <a href="{{ route('registerSelected') }}">Daftar</a>
             </div>
             <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>

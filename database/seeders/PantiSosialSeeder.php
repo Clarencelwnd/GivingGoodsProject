@@ -14,7 +14,6 @@ class PantiSosialSeeder extends Seeder
             [
                 'IDUser' => 1,
                 'NamaPantiSosial' => 'Panti Asuhan Budi Mulia',
-                'EmailPantiSosial' => 'budimulia@gmail.com',
                 'NomorRegistrasiPantiSosial' => '12345',
                 'DokumenValiditasPantiSosial' => 'doc123.pdf',
                 'DeskripsiPantiSosial' => 'Panti asuhan untuk anak-anak yatim piatu',
@@ -28,7 +27,6 @@ class PantiSosialSeeder extends Seeder
             [
                 'IDUser' => 2,
                 'NamaPantiSosial' => 'Panti Jompo Harapan Sejahtera',
-                'EmailPantiSosial' => 'jompoharapan@gmail.com',
                 'NomorRegistrasiPantiSosial' => '67890',
                 'DokumenValiditasPantiSosial' => 'doc678.pdf',
                 'DeskripsiPantiSosial' => 'Panti jompo untuk kaum lanjut usia',
@@ -42,7 +40,6 @@ class PantiSosialSeeder extends Seeder
             [
                 'IDUser' => 5,
                 'NamaPantiSosial' => 'Rumah Singgah Nusa Indah',
-                'EmailPantiSosial' => 'nusaindah@example.com',
                 'NomorRegistrasiPantiSosial' => '24680',
                 'DokumenValiditasPantiSosial' => 'doc246.pdf',
                 'DeskripsiPantiSosial' => 'Rumah singgah untuk tunawisma',

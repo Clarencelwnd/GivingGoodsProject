@@ -23,7 +23,7 @@
         <div class="card-body">
             <div class="card-top">
                 <h5 class="card-title" id="judulForum">{{ $forum->JudulForum }}</h5>
-                <h6 id="tanggalBuatForum">{{ $forum->TanggalBuatForum }}</h6>
+                <h6 id="tanggalBuatForum">{{ $forum->FormatTanggalBuatForum }}</h6>
             </div>
                 <h6 class="card-info" id="namaPembuatForum">{{ $forum->donaturRelawan->NamaDonaturRelawan ?? $forum->pantiSosial->NamaPantiSosial}}</h6>
                 <p class="card-text">{{ $forum->DeskripsiForum }}</p>
