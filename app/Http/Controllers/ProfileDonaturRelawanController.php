@@ -146,7 +146,7 @@ class ProfileDonaturRelawanController extends Controller
         return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
-    public function riwayat_kegiatan($id){
+    public function riwayat_kegiatan($id){ 
         // ambil data registrasi
         $registrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
         $registrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDDonaturRelawan', $id)->get();

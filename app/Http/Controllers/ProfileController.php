@@ -222,4 +222,11 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Berhasil Diubah');
     }
+
+    public function logout(){
+        Auth::logout();
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));
+        return view('profile_pansos/dummy_home_page_not_logim');
+    }
 }
