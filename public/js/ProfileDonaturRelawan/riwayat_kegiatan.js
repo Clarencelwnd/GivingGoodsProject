@@ -1,3 +1,11 @@
+function showDonationPopup() {
+    document.getElementById('donation-popup-container').style.display = 'flex';
+}
+
+function hideDonationPopup() {
+document.getElementById('donation-popup-container').style.display = 'none';
+}
+
 // SELECTED FILTER BUTTON
 document.addEventListener('DOMContentLoaded', function() {
     let kegiatan = document.querySelectorAll('.kegiatan[data-status-kegiatan]');

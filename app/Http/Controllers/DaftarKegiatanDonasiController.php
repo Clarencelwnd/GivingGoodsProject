@@ -20,7 +20,10 @@ class DaftarKegiatanDonasiController extends Controller
 
         $id = $idDonaturRelawan;
 
-        return view('DaftarKegiatan.DaftarKegiatanDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'id'));
+        // $jenisDonasi = [];
+        $donasi = explode(',', $kegiatanDonasi->JenisDonasiDibutuhkan);
+
+        return view('DaftarKegiatan.DaftarKegiatanDonasi', compact('kegiatanDonasi', 'donaturRelawan', 'id', 'donasi'));
     }
 
 

@@ -36,16 +36,9 @@
                 <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly style="background-color: #f0f0f0;">
                 <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow" style="margin-top:10px">
                 <div class="dropdown-content" id="dropdown_content_jenis">
-                    <div class="dropdown-item" onclick="selectOptionJenis('pakaian')"><span>Pakaian</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('makanan')"><span>Makanan</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('obat')"><span>Obat</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('buku')"><span>Buku</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_ibadah')"><span>Keperluan Ibadah</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('mainan')"><span>Mainan</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_mandi')"><span>Keperluan Mandi</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('keperluan_rumah')"><span>Keperluan Rumah</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('alat_tulis')"><span>Alat Tulis</span></div>
-                    <div class="dropdown-item" onclick="selectOptionJenis('sepatu')"><span>Sepatu</span></div>
+                    @foreach ($donasi as $item)
+                    <div class="dropdown-item" onclick="selectOptionJenis('{{ $item }}')"><span>{{ $item }}</span></div>
+                    @endforeach
                 </div>
             </div>
             @if ($errors->has('jenis_donasi'))
@@ -146,8 +139,12 @@
     </div>
 
     <script>
+        var tanggalMulaiKegiatanDonasi = "{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}"
+        var tanggalSelesaiKegiatanDonasi = "{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}"
         flatpickr("#date-picker", {
             dateFormat: "Y-m-d",
+            minDate: tanggalMulaiKegiatanDonasi,
+            maxDate: tanggalSelesaiKegiatanDonasi
         });
 
         flatpickr('#jam_mulai_kegiatan_field', {
