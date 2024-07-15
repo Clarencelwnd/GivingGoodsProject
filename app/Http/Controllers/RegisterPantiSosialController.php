@@ -31,8 +31,8 @@ class RegisterPantiSosialController extends Controller
 
          // Simpan data yang ingin Anda kirim ke halaman berikutnya di sesi
         $request->session()->put('organization_name', $request->input('organization-name'));
-        $request->session()->put('email', '+62' . $request->input('email'));
-        $request->session()->put('phone', $request->input('phone'));
+        $request->session()->put('email', $request->input('email'));
+        $request->session()->put('phone', '+62' . $request->input('phone'));
         $request->session()->put('password', $request->input('password'));
         // Lanjut ke halaman berikutnya jika validasi berhasil
         return redirect()->route('registerPantiSosialNext');

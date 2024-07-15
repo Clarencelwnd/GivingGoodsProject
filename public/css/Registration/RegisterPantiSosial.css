@@ -4,7 +4,7 @@
 
 .img-fluid{
     display: block;
-    height: 125vh;
+    height: 100vh;
     width: 50vw;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -14,6 +14,7 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
 .container {
     display: flex;
     justify-content: space-between;
@@ -24,6 +25,8 @@ body, html {
 .logo {
     margin-bottom: 20px;
     height: 120px;
+    max-width: 100%;
+    object-fit: contain;
 }
 
 .form-container {
@@ -113,7 +116,7 @@ body, html {
 }
 
 .footer-image {
-    margin-top: 3rem;
+    margin-top: 50px;
     margin-bottom: 20px;
     max-width: 100%;
     height: 15px;
@@ -147,3 +150,9 @@ body, html {
     margin-left: -1px;
 }
 
+#judul-form {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #003A44;
+}

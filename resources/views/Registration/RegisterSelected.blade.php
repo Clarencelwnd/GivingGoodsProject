@@ -17,7 +17,7 @@
             </div>
 
             <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                <div class="card-body p-md-5 d-flex flex-column align-items-center">
+                <div class="card-body d-flex flex-column align-items-center">
                     {{-- HEADER --}}
                     <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 

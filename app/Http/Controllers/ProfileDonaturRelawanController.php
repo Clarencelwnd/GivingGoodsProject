@@ -40,7 +40,7 @@ class ProfileDonaturRelawanController extends Controller
     public function edit_profile_logic(Request $request, $id){
         // dd($request->input('TanggalLahirDonaturRelawan'));
         $validator = Validator::make($request->all(),[
-            'NamaDonaturRelawan' => 'required',
+            'NamaDonaturRelawan' => 'required|min:2|max:255',
             'TanggalLahirDonaturRelawan' => 'required',
             'JenisKelaminDonaturRelawan' => ['required', 'regex:/^(Laki-laki|Perempuan)$/'],
             'NomorTeleponDonaturRelawan' => 'required|regex:/^\+628\d{9,11}$/',
@@ -49,6 +49,8 @@ class ProfileDonaturRelawanController extends Controller
         ],
         [
             'NamaDonaturRelawan.required' => 'Nama donatur atau relawan wajib diisi.',
+            'NamaDonaturRelawan.min' => 'Nama donatur atau relawan minimal berisi 2 karakter.',
+            'NamaDonaturRelawan.max' => 'Nama donatur atau relawan maksimal berisi 255 karakter.',
             'TanggalLahirDonaturRelawan.required' => 'Tanggal lahir donatur atau relawan wajib diisi.',
             'JenisKelaminDonaturRelawan.required' => 'Jenis kelamin donatur atau relawan wajib diisi.',
             'JenisKelaminDonaturRelawan.regex' => 'Jenis kelamin donatur atau relawan hanya bisa diisi dengan Laki-laki atau Perempuan.',
@@ -142,7 +144,7 @@ class ProfileDonaturRelawanController extends Controller
         return redirect()->back()->with('success', 'Berhasil Diubah');
     }
 
-    public function riwayat_kegiatan($id){ 
+    public function riwayat_kegiatan($id){
         // ambil data registrasi
         $registrasiDonatur = RegistrasiDonatur::with(['kegiatanDonasi.pantiSosial'])->where('IDDonaturRelawan', $id)->get();
         $registrasiRelawan = RegistrasiRelawan::with(['kegiatanRelawan.pantiSosial'])->where('IDDonaturRelawan', $id)->get();

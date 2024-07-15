@@ -14,20 +14,20 @@
 </head>
 <body>
     <div class="content row g-0 vh-100">
-        <div class="col-sm-6 d-none d-lg-block">
-            <img src="{{ asset('Image/login_reset_password/bg3.png') }}" alt="Sample photo" class="img-fluid">
+        <div class="col-sm-6 d-none d-lg-block" style="overflow-y: hidden;">
+            <img src="{{ asset('Image/login_reset_password/bg2.png') }}" alt="Sample photo" class="img-fluid">
         </div>
 
-        <div class="col-lg-6 d-flex justify-content-center">
-            <div class="card-body p-md-5 d-flex flex-column align-items-center">
+        <div class="col-lg-6 d-flex justify-content-center" style="overflow-y: auto; height: 100%;">
+            <div class="card-body d-flex flex-column align-items-center">
                 {{-- HEADER --}}
                 <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
                 {{-- FORM --}}
                 <div class="form-container">
-                    <h2>Mulai Bergabung</h2>
+                    <h2 id="judul-form">Mulai Bergabung</h2>
 
-                    <form action="{{ route('registerPantiSosial1') }}" method="POST">
+                    <form id="registerForm" action="{{ route('registerPantiSosial1') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="organization-name">Nama Organisasi</label>
@@ -84,7 +84,9 @@
              <div class="already-have-account">
                 Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
             </div>
-            <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+            <div class="footer">
+                <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+            </div>
         </div>
     </div>
 </div>

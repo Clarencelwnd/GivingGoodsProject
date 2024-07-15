@@ -34,7 +34,7 @@ class BuatKegiatanDonasiController extends Controller
                'jenisDonasi' => 'required|string|max:255',
                'deskripsiJenisDonasi' => 'required|string|max:255',
                'lokasiKegiatan' => 'required|string|max:255',
-               'linkGoogleMaps' => 'required|string|max:255',
+               'linkGoogleMaps' => 'required|string',
                'fotoKegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
                'jasaAmbilBarang' => 'required|string|max:255',
                'IDPantiSosial' => 'required|integer|exists:panti_sosial,IDPantiSosial',

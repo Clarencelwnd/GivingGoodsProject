@@ -32,11 +32,11 @@ class BuatKegiatanRelawanController extends Controller
             'jamSelesai' => 'required|string',
             'jmlhRelawanDibutuhkan' => 'required|integer',
             'lokasiKegiatan' => 'required|string|max:255',
-            'linkGoogleMaps' => 'required|string|max:255',
+            'linkGoogleMaps' => 'required|string',
             'fotoKegiatan' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
             'kriteriaRelawan' => 'required|string|max:255',
             'persyaratan' => 'required|string|max:255',
-            'kontakSpesifik' => 'required|string|max:255',
+            // 'kontakSpesifik' => 'string|max:255',
             'jenisRelawan' => 'required|string|max:255',
             'IDPantiSosial' => 'required|integer|exists:panti_sosial,IDPantiSosial',
         ]);

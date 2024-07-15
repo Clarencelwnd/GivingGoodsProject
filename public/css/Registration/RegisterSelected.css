@@ -51,10 +51,14 @@
     margin-top: 30px;
     background-color: #00AF71;
     color: #FFFFFF;
+    height: 50px;
 }
 
 .btn-primary:hover {
-    border: 1px solid #00AF71;
+    /* border: 1px solid #00AF71; */
+    font-weight: 700;
+    background: #009B65;
+    color: #FDFFFE;
 }
 
 .btn-secondary {
@@ -84,8 +88,8 @@
     font-weight: bold;
 }
 .footer-image {
-    margin-top: 7rem;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    /* margin-bottom: 20px; */
     max-width: 100%;
     height: 15px;
 }
