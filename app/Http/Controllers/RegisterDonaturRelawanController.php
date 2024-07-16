@@ -22,19 +22,11 @@ class RegisterDonaturRelawanController extends Controller
             'name.min' => 'Nama donatur atau relawan minimal berisi 2 karakter.',
             'name.max' => 'Nama donatur atau relawan maksimal berisi 255 karakter.',
             'email.required' => 'Email donatur atau relawan wajib diisi.',
-            'email.email' => 'Email donatur atau relawan wajib memenuhi format email.',
-            // 'email.unique' => 'Email donatur atau relawan wajib unik',
-            // 'TanggalLahirDonaturRelawan.required' => 'Tanggal lahir donatur atau relawan wajib diisi.',
-            // 'JenisKelaminDonaturRelawan.required' => 'Jenis kelamin donatur atau relawan wajib diisi.',
-            // 'JenisKelaminDonaturRelawan.regex' => 'Jenis kelamin donatur atau relawan hanya bisa diisi dengan Laki-laki atau Perempuan.',
-            'phone.required' => 'Nomor handphone donatur atau relawan wajib diisi.',
-            'phone.regex' => 'Nomor handphone donatur atau relawan wajib berisi angka yang dimulai dengan 8 diikuti dengan 10 - 12 digit.',
+            'email.email' => 'Email donatur atau relawan wajib diisi dengan format email yang sesuai.',
+            'phone.required' => 'Nomor telepon donatur atau relawan wajib diisi.',
+            'phone.regex' => 'Nomor telepon donatur atau relawan wajib berisi angka yang dimulai dengan 8 diikuti dengan 9 - 11 digit.',
             'password.required' => 'Kata sandi wajib diisi.',
             'password.min' => 'Kata sandi minimal berisi 8 karakter.',
-            // 'AlamatDonaturRelawan.required' => 'Alamat donatur atau relawan wajib diisi.',
-            // 'AlamatDonaturRelawan.max' => 'Alamat donatur atau relawan maksimal berisi 450 karakter.',
-            // 'LinkGoogleMapsDonaturRelawan.required' => 'Link google maps alamat donatur atau relawan wajib diisi.',
-            // 'LinkGoogleMapsDonaturRelawan.regex' => 'Link google maps wajib dengan format -> https://www.google.com/maps/place/'
         ]);
 
         if($validator->fails()){
