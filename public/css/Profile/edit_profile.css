@@ -124,14 +124,14 @@ input.form-control:focus{
 
 .btn-jam-operasional#btn-schedule{
     /* padding-left: 10px; */
-    background: #007C92;
+    background-color: #007C92;
     color: #FFFFFF;
     width: 50%;
 }
 
 .btn-jam-operasional#btn-schedule:hover{
     color: #FFFFFF;
-    background: #017286;
+    background-color: #017286;
     font-weight: 600;
 }
 
@@ -178,7 +178,7 @@ input[readonly]{
 }
 
 #btn-save, #btn-save-schedule{
-    background: #00AF71;
+    background-color: #00AF71;
     color: #FDFFFE;
     width: 30%;
 
@@ -186,7 +186,7 @@ input[readonly]{
 
 #btn-save:hover, #btn-save-schedule:hover{
     font-weight: 500;
-    background: #009B65;
+    background-color: #009B65;
     color: #FDFFFE;
 }
 
@@ -198,7 +198,7 @@ input[readonly]{
 
 #btn-back:hover{
     font-weight: 500;
-    background: #E6E7E6;
+    background-color: #E6E7E6;
     color: #007C92;
 }
 

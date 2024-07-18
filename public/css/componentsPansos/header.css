@@ -76,7 +76,7 @@ footer .text-muted{
     color: #FDFFFE;
     font-size: 16px;
     font-weight: 500;
-    background: #B7342C;
+    background-color: #B7342C;
     border-radius: 5px;
 }
 
@@ -85,7 +85,7 @@ footer .text-muted{
     color: #FDFFFE;
     font-size: 16px;
     font-weight: 600;
-    background: #B7342C;
+    background-color: #B7342C;
     border-radius: 5px;
 }
 

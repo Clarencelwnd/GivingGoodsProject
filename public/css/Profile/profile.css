@@ -57,7 +57,7 @@
 }
 
 #btn-choose-photo:hover, #btn-change-password:hover, #btn-back:hover{
-    background: #E6E7E6;
+    background-color: #E6E7E6;
     font-weight: 500;
 }
 
@@ -66,12 +66,12 @@
 }
 
 #btn-logout, #btn-yes-logout{
-    background: #B7342C;
+    background-color: #B7342C;
     color: #FDFFFE;
 }
 
 #btn-logout:hover, #btn-yes-logout:hover{
-    background: #A42E28;
+    background-color: #A42E28;
     font-weight: 500;
 }
 
@@ -84,14 +84,14 @@
 } */
 
 #btn-edit{
-    background: #007C92;
+    background-color: #007C92;
     color: #FFFFFF;
     margin-bottom: 20px;
     width: 30%;
 }
 
 #btn-edit:hover{
-    background: #017286;
+    background-color: #017286;
     font-weight: 600;
 }
 

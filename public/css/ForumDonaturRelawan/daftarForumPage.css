@@ -15,7 +15,7 @@
     width: auto;
     height: auto;
     margin-left: 30px;
-    background: #006374;
+    background-color: #006374;
     color: #FDFFFE;
     border-radius: 5px;
 }
@@ -75,7 +75,7 @@
 .btn-submitForum, #submitForumButton{
     padding-left: 51px;
     padding-right: 51px;
-    background: #00C27E;
+    background-color: #00C27E;
     border-radius: 10px;
     overflow: hidden;
     justify-content: center;

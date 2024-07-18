@@ -180,7 +180,7 @@ footer .text-muted{
     color: #FDFFFE;
     font-size: 16px;
     font-weight: 500;
-    background: #B7342C;
+    background-color: #B7342C;
     border-radius: 5px;
 }
 
@@ -189,7 +189,7 @@ footer .text-muted{
     color: #FDFFFE;
     font-size: 16px;
     font-weight: 600;
-    background: #B7342C;
+    background-color: #B7342C;
     border-radius: 5px;
 }
 
@@ -222,16 +222,16 @@ footer .text-muted{
 }
 
  .statusAkanDatang {
-    background: #898989;
+    background-color: #898989;
     color: white;
 }
 
 .statusSedangBerlangsung {
-    background: #F3A229;
+    background-color: #F3A229;
     color: white;
 }
 
 .statusSelesai {
-    background: #16B364;
+    background-color: #16B364;
     color: white;
 }

@@ -15,7 +15,7 @@
 <body>
     <div class="content row g-0 vh-100">
         <div class="col-sm-6 d-none d-lg-block" style="overflow-y: hidden;">
-            <img src="{{ asset('Image/login_reset_password/bg2.png') }}" alt="Sample photo" class="img-fluid">
+            <img src="{{ asset('Image/login_reset_password/bg3.png') }}" alt="Sample photo" class="img-fluid">
         </div>
 
         <div class="col-lg-6 d-flex justify-content-center" style="overflow-y: auto; height: 100%;">
@@ -29,6 +29,21 @@
 
                     <form id="registerForm" action="{{ route('registerPantiSosial1') }}" method="POST">
                         @csrf
+
+                        @if(Session::has('exists'))
+                        <div id="popup-container-email-exists" style="display: block;">
+                            <!-- Popup untuk email sudah terdaftar -->
+                            <div id="popup">
+                                <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Email sudah terdaftar</h3>
+                                <p style="margin-top: 10px;">Lanjutkan dengan email ini? <br> {{ session('registeredEmail') }}</p>
+                                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                                    <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="window.location.href='{{ url('/RegisterPantiSosial') }}'; return false;">Ubah</button>
+                                    <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" onclick="window.location.href='{{ route('login-user') }}'; return false;">Ya, Masuk</button>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+
                         <div class="form-group">
                             <label for="organization-name">Nama Organisasi</label>
                             <input type="text" name="organization-name" id="organization" value="{{ old('organization-name') }}">

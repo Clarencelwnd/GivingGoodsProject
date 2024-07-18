@@ -33,13 +33,6 @@ class RegisterDonaturRelawanController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // $request->validate([
-        //     'name' => 'required|min:2|max:255',
-        //     'email' => 'required|email|unique:users,email',
-        //     'phone' => 'required|numeric|min:7',
-        //     'password' => 'required|min:8', // sesuaikan validasi sesuai kebutuhan
-        // ]);
-
         $email = $request->input('email');
         $user = User::where('email', $email)->first();
 
