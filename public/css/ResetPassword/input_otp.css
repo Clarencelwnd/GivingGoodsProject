@@ -4,7 +4,6 @@
 
 .img-fluid{
     display: block;
-    height: 100vh;
     width: 50vw;
     border-top-left-radius: .25rem;
     border-bottom-left-radius: .25rem;
@@ -35,13 +34,11 @@
 
 .card-body{
     width: 98%;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 8px;
-    display: inline-flex;
 }
 
 .card-title{
@@ -52,7 +49,7 @@
 }
 
 .footer-image {
-    margin-top: 7rem;
+    margin-top: 40px;
     margin-bottom: 20px;
     max-width: 100%;
     height: 15px;
@@ -100,21 +97,25 @@
 #btn-next{
     background-color: #00AF71;
     color: #FDFFFE;
+    font-weight: 600;
 }
 
 #btn-next:hover{
     background-color: #009B65;
     color: #FDFFFE;
+    font-weight: 700;
 }
 
 #btn-back{
     color: #007C92;
     border: 1px solid #007C92;
+    font-weight: 600;
 }
 
 #btn-back:hover{
     background-color: #E6E7E6;
     color: #007C92;
+    font-weight: 700;
 }
 
 .bottom-txt{

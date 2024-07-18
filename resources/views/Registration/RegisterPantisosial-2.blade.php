@@ -51,7 +51,7 @@
 
                      <div class="form-group">
                         <label for="registration-num">Nomor Registrasi</label>
-                        <input type="text" id="registration_num" name="registration_num" value="{{ old('registration_num') }}">
+                        <input type="text" id="registration_num" name="registration_num" value="{{ session('registration_num') }}">
                         <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                             @error('registration_num')
                                 {{ $message }}
@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label for="document">Unggah Dokumen Validitas</label>
                         <div class="upload-container" style="padding-left: 5px;">
-                            <input type="file" id="document" name="validation_document" style="display: none;" onchange="updateFileName(this)">
+                            <input type="file" id="document" name="validation_document" style="display: none;" onchange="updateFileName(this)" value="{{session('validation_document')}}">
                             <div class="upload-btn" onclick="document.getElementById('document').click()">Upload</div>
                             <input type="text" id="validation_document_text" readonly>
                         </div>

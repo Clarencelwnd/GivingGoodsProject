@@ -40,17 +40,17 @@ class RegisterPantiSosialController extends Controller
         $email = $request->input('email');
         $user = User::where('email', $email)->first();
 
+        $request->session()->put('organization_name', $request->input('organization-name'));
+        $request->session()->put('email', $request->input('email'));
+        $request->session()->put('phone', $request->input('phone'));
+        $request->session()->put('password', $request->input('password'));
+
         if ($user) {
             // Jika email sudah ada, return error message
             $registeredEmail = $user->email;// Mengambil email yang sudah terdaftar
             return back()->with('exists', true)->with('registeredEmail', $registeredEmail)->withInput();// Mengirim email yang sudah terdaftar ke view
             // return back()->withInput()->with('error', 'Email sudah terdaftar.');
         } else {
-            // Simpan data yang ingin Anda kirim ke halaman berikutnya di sesi
-            $request->session()->put('organization_name', $request->input('organization-name'));
-            $request->session()->put('email', $request->input('email'));
-            $request->session()->put('phone', '+62' . $request->input('phone'));
-            $request->session()->put('password', $request->input('password'));
             // Lanjut ke halaman berikutnya jika validasi berhasil
             return redirect()->route('registerPantiSosialNext');
         }
@@ -92,7 +92,7 @@ class RegisterPantiSosialController extends Controller
         $PantiSosial = new PantiSosial();
         $PantiSosial->IDUser = $users->id;
         $PantiSosial->NamaPantiSosial = $organizationName;
-        $PantiSosial->NomorTeleponPantiSosial = $phone;
+        $PantiSosial->NomorTeleponPantiSosial = '+62' . $phone;
         $PantiSosial->NomorRegistrasiPantiSosial = $request->registration_num;
         $PantiSosial->LogoPantiSosial = 'https://www.gravatar.com/avatar/?d=mp&s=200';
 
@@ -113,6 +113,8 @@ class RegisterPantiSosialController extends Controller
         $result2 = $PantiSosial->save();
         //Berhasil save
         if ($result1 && $result2){
+            session()->forget(['organization_name', 'email', 'phone', 'password']);
+            session()->flush();
             return back()->with('success', 'Registration successful');
         }else{
             return back()->with('fail', 'Registration failed');

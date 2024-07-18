@@ -36,6 +36,11 @@ class RegisterDonaturRelawanController extends Controller
         $email = $request->input('email');
         $user = User::where('email', $email)->first();
 
+        $request->session()->put('name', $request->input('name'));
+        $request->session()->put('email', $request->input('email'));
+        $request->session()->put('phone', $request->input('phone'));
+        $request->session()->put('password', $request->input('password'));
+
         if ($user) {
             // Email sudah terdaftar
             $registeredEmail = $user->email;// Mengambil email yang sudah terdaftar
@@ -57,6 +62,8 @@ class RegisterDonaturRelawanController extends Controller
 
             //Berhasil save
             if ($result){
+                session()->forget(['name', 'email', 'phone', 'password']);
+                session()->flush();
                 return back()->with('success', 'Registration successful');
             }else{
                 return back()->with('fail', 'Registration failed');

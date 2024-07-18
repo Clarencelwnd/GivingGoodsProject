@@ -37,8 +37,8 @@
                                 <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Email sudah terdaftar</h3>
                                 <p style="margin-top: 10px;">Lanjutkan dengan email ini? <br> {{ session('registeredEmail') }}</p>
                                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                                    <button class="btn-secondary" style="background-color: #FFFFFF; color: #007C92; font-weight: 600; font-size: 16px; margin-right: 10px;" onclick="window.location.href='{{ url('/RegisterPantiSosial') }}'; return false;">Ubah</button>
-                                    <button class="btn-primary" style="background-color: #00AF71; color: #FFFFFF; font-weight: 600; font-size: 16px; margin-left: 10px;" onclick="window.location.href='{{ route('login-user') }}'; return false;">Ya, Masuk</button>
+                                    <button class="btn-secondary" style="margin-right: 10px;" onclick="window.location.href='{{ url('/RegisterPantiSosial') }}'; return false;">Ubah</button>
+                                    <button class="btn-primary" style="margin-left: 10px;" onclick="window.location.href='{{ route('login-user') }}'; return false;">Ya, Masuk</button>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             <label for="organization-name">Nama Organisasi</label>
-                            <input type="text" name="organization-name" id="organization" value="{{ old('organization-name') }}">
+                            <input type="text" name="organization-name" id="organization" value="{{ session('organization_name') }}">
                             <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                                 @error('organization-name')
                                     {{ $message }}
@@ -56,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" value="{{ old('email') }}">
+                            <input type="email" name="email" id="email" value="{{ session('email') }}">
                             <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                                 @error('email')
                                     {{ $message }}
@@ -68,7 +68,7 @@
                             <label for="phone">Nomor HP</label>
                             <div class="num-container" style="padding-left: 5px;">
                                 <div class="num-btn">+62</div>
-                                <input type="text" name="phone" value="{{ old('phone') }}">
+                                <input type="text" name="phone" value="{{ session('phone') }}">
                             </div>
                             <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                                 @error('phone')
@@ -79,7 +79,7 @@
 
                         <div class="form-group">
                             <label for="password">Kata Sandi</label>
-                            <input type="password" name="password" id="password">
+                            <input type="password" name="password" id="password" value="{{session('password')}}">
                             <span style="color:red; font-size: 12px; margin: 0; text-align: left; display: block; margin-top: -5px; margin-bottom: 5px;">
                                 @error('password')
                                     {{ $message }}

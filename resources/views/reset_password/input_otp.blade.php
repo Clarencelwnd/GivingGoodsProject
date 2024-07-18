@@ -12,12 +12,12 @@
 </head>
 <body>
     <div class="content row g-0 vh-100">
-        <div class="col-sm-6 d-none d-md-block">
-            <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid">
+        <div class="col-sm-6 d-none d-lg-block" style="overflow-y: hidden;">
+            <img src="{{asset('Image/general/templateImage.jpg')}}" alt="Sample photo" class="img-fluid" style="height: 100vh;">
         </div>
 
-        <div class="col-lg-6 d-flex justify-content-center">
-            <div class="card-body p-md-5 d-flex flex-column align-items-center">
+        <div class="col-lg-6 d-flex justify-content-center" style="overflow-y: auto; height: 100%;">
+            <div class="card-body d-flex flex-column align-items-center">
                 <!-- HEADER -->
                 <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
 
@@ -47,7 +47,9 @@
                 </div>
 
                 <!-- Sudah punya akun? -->
-                <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                <div class="footer">
+                    <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                </div>
             </div>
         </div>
     </div>
