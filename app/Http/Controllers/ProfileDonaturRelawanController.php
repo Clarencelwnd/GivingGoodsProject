@@ -106,7 +106,7 @@ class ProfileDonaturRelawanController extends Controller
             $file = $request->file('FotoDonaturRelawan');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('profileDR', $fileName, 'public');
-            $foto_donatur_relawan_url = asset('storage/profileDR/' . $fileName);
+            $foto_donatur_relawan_url = 'storage/profileDR/' . $fileName;
         }
 
         $detailDR = DonaturAtauRelawan::find($id);

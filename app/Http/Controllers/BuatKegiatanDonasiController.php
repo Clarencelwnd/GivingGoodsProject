@@ -48,7 +48,7 @@ class BuatKegiatanDonasiController extends Controller
                $file->storeAs('fotoKegiatanDonasi', $fileName, 'public');
 
                // Mendapatkan URL gambar
-               $fotoKegiatanUrl = asset('storage/fotoKegiatanDonasi/' . $fileName);
+               $fotoKegiatanPath = 'storage/fotoKegiatanDonasi/' . $fileName;
            }
         //    dd($request);
            KegiatanDonasi::create([

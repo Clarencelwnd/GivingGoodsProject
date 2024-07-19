@@ -205,7 +205,7 @@ class ProfileController extends Controller
             $file = $request->file('LogoPantiSosial');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('profilePansos', $fileName, 'public');
-            $logo_panti_sosial_url = asset('storage/profilePansos/' . $fileName);
+            $logo_panti_sosial_url = 'storage/profilePansos/' . $fileName;
         }
 
         $detailPansos = PantiSosial::find($id);

@@ -48,7 +48,7 @@ class BuatKegiatanRelawanController extends Controller
             $file->storeAs('fotoKegiatanRelawan', $fileName, 'public');
 
             // Mendapatkan URL gambar
-            $fotoKegiatanUrl = asset('storage/fotoKegiatanRelawan/' . $fileName);
+            $fotoKegiatanUrl = 'storage/fotoKegiatanRelawan/' . $fileName;
         }
 
             // Cek apakah data valid atau tidak

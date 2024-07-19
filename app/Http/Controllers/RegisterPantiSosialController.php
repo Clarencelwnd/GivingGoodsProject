@@ -102,7 +102,7 @@ class RegisterPantiSosialController extends Controller
             $file = $request->file('validation_document');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('documents', $fileName, 'public');
-            $validation_document_url = asset('/storage/documents/' . $fileName);
+            $validation_document_url = '/storage/documents/' . $fileName;
 
             $PantiSosial->DokumenValiditasPantiSosial = $validation_document_url; // menyimpan URL file ke kolom DokumenValiditasPantiSosial
         } else {
