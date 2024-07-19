@@ -14,7 +14,7 @@
     <div class="containerSummaryDaftarDonasi">
         <div class="title">
             <a href="javascript:history.back()">
-                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
+                <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
             <h1 id="judul-daftar-kegiatan">Daftar Kegiatan</h1>
         </div>
 
@@ -24,7 +24,7 @@
         <input type="hidden" name="idDonaturRelawan" value="{{ $donaturRelawan->IDDonaturRelawan }}">
 
         <div class="info-container">
-            <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
+            <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
             <div class="info-text-container">
                 Tolong pastikan bahwa informasi berikut sudah benar
             </div>
@@ -54,11 +54,11 @@
         <div class="section">
             <div class="subtitle">Jam & Tanggal Kegiatan</div>
             <div class="flex-row">
-                <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" height="24px">
+                <img src="{{ asset('Image/general/calendar.png') }}" alt="Calendar Icon" height="24px">
                 <div class="text">{{ $data['tanggal_kegiatan'] }}</div>
             </div>
             <div class="flex-row">
-                <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" height="24px">
+                <img src="{{ asset('Image/general/time.png') }}" alt="Time Icon" height="24px">
                 <div class="text">{{ $data['jam_mulai_kegiatan'] ?? 'Tunggu info lebih lanjut dari panti sosial' }}</div>
             </div>
         </div>
@@ -124,7 +124,7 @@
                 </span>
                 <div class="donation-info">
                     <div class="text-help" style="font-weight: 400;">Gunakan QR code di bawah ini untuk berdonasi sekarang:</div>
-                    <img src="{{ asset('image/general/barcode.png') }}" alt="QR Code" class="barcode">
+                    <img src="{{ asset('Image/general/barcode.png') }}" alt="QR Code" class="barcode">
                     <div class="text-help" style="font-weight: 500;">Terima kasih atas dukungan Anda!</div>
                 </div>
             </div>

@@ -19,7 +19,7 @@
             <div class="col-lg-6 d-flex align-items-center justify-content-center" style="overflow-y: auto; height: 100%;">
                 <div class="card-body d-flex flex-column align-items-center">
                     {{-- HEADER --}}
-                    <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
+                    <img src="{{ asset('Image/general/logo.png') }}" alt="Logo" class="logo">
 
                     {{-- OPTIONS --}}
                     <div class="form-container">
@@ -34,7 +34,7 @@
                         Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
                     </div>
                     <div class="footer">
-                        <img src="{{ asset('image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                        <img src="{{ asset('Image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
                     </div>
                 </div>
             </div>

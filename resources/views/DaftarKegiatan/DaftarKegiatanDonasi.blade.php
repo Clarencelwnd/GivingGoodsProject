@@ -15,7 +15,7 @@
     <div class="containerDaftarDonasi">
         <div class="title">
             <a href="javascript:history.back()">
-                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
+                <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
             <h1 id="judulKegiatan">Daftar Kegiatan</h1>
         </div>
 
@@ -34,7 +34,7 @@
             <div class="dropdown">
                 <div id="selected-options"></div>
                 <input type="text" class="input-field" name="jenis_donasi" id="jenis_donasi_field" value="{{ old('jenis_donasi') }}" readonly style="background-color: #f0f0f0;">
-                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow" style="margin-top:10px">
+                <img src="{{ asset('Image/general/drop.png') }}" class="arrow" id="dropdown_arrow_jenis" alt="Dropdown Arrow" style="margin-top:10px">
                 <div class="dropdown-content" id="dropdown_content_jenis">
                     @foreach ($donasi as $item)
                     <div class="dropdown-item" onclick="selectOptionJenis('{{ $item }}')"><span>{{ $item }}</span></div>
@@ -58,7 +58,7 @@
             <div class="subtitle">Pengiriman barang menggunakan?</div>
             <div class="dropdown">
                 <input type="text" class="input-field" name="pengiriman_barang" id="pengiriman_barang_field" value="{{ old('pengiriman_barang') }}" readonly style="background-color: #f0f0f0;">
-                <img src="{{ asset('image/general/drop.png') }}" class="arrow" id="dropdown_arrow" alt="Dropdown Arrow">
+                <img src="{{ asset('Image/general/drop.png') }}" class="arrow" id="dropdown_arrow" alt="Dropdown Arrow">
                 <div class="dropdown-content" id="dropdown_content">
                     <div class="dropdown-item" onclick="selectOption('Antar sendiri')">Antar sendiri</div>
                     <div class="dropdown-item" onclick="selectOption('Menggunakan jasa pengiriman (Gosend/Grab Express/Lalamove/dll..)')">Menggunakan jasa pengiriman (Gosend/Grab Express/Lalamove/dll..)</div>
@@ -100,7 +100,7 @@
         <div class="time-date-container">
             <div class="input-container">
                 <div class="date-picker-container">
-                    <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
+                    <img src="{{ asset('Image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
                     <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}" style="background-color: #f0f0f0;">
                 </div>
                 @if ($errors->has('tanggal_kegiatan'))
@@ -110,7 +110,7 @@
 
             <div class="input-container">
                 <div class="time-picker-container">
-                    <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
+                    <img src="{{ asset('Image/general/time.png') }}" alt="Time Icon" class="icon">
                     <input type="text" class="input-field-date-time" name="jam_mulai_kegiatan" id="jam_mulai_kegiatan_field" value="{{ old('jam_mulai_kegiatan') }}" style="background-color: #f0f0f0;">
                 </div>
                 @if ($errors->has('jam_mulai_kegiatan'))
@@ -244,7 +244,7 @@
                 // Membuat div baru untuk menampilkan opsi yang dipilih beserta tombol close
                 var selectedDiv = document.createElement("div");
                 selectedDiv.className = "selected-item";
-                selectedDiv.innerHTML = option + '<img src="{{ asset('image/general/close.png') }}" class="close-btn" alt="Close Icon" style="padding-left: 10px;" onclick="removeOption(this)">';
+                selectedDiv.innerHTML = option + '<img src="{{ asset('Image/general/close.png') }}" class="close-btn" alt="Close Icon" style="padding-left: 10px;" onclick="removeOption(this)">';
 
                 // Menambahkan div baru ke dalam div untuk menampilkan opsi yang dipilih
                 document.getElementById('selected-options').appendChild(selectedDiv);

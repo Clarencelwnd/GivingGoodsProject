@@ -14,7 +14,7 @@
     <div class="containerDaftarRelawan">
         <div class="title">
             <a href="javascript:history.back()">
-                <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
+                <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
             <h1 id="judulKegiatan">Daftar Kegiatan</h1>
         </div>
 
@@ -42,7 +42,7 @@
              langsung ke pihak panti sosial terkait setelah mendaftarkan diri.</div>
 
         <div class="info-container">
-            <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
+            <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="24px">
             <div class="info-text-container">
                 Pastikan Anda dapat mengikuti kegiatan pada batch waktu yang telah ditentukan oleh panti sosial.
             </div>
@@ -51,7 +51,7 @@
         <div class="time-date-container">
             <div class="input-container">
                 <div class="date-picker-container">
-                    <img src="{{ asset('image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
+                    <img src="{{ asset('Image/general/calendar.png') }}" alt="Calendar Icon" class="icon">
                     <input type="text" id="date-picker" class="input-field-date-time" name="tanggal_kegiatan" value="{{ old('tanggal_kegiatan') }}" style="background-color: #f0f0f0; font-size:16px">
                 </div>
                 @error('tanggal_kegiatan')
@@ -60,7 +60,7 @@
             </div>
 
             <div class="time-picker-container">
-                <img src="{{ asset('image/general/time.png') }}" alt="Time Icon" class="icon">
+                <img src="{{ asset('Image/general/time.png') }}" alt="Time Icon" class="icon">
                 <input type="text" class="input-field-date-time" name="jam_kegiatan" value="{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }} - {{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}" readonly style="background-color: #f0f0f0; font-size: 16px">
             </div>
         </div>

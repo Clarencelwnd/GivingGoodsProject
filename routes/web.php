@@ -41,8 +41,8 @@ use App\Http\Controllers\RegisterPantiSosialController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('Registration.RegisterSelected');
+})->name('registerSelected');
 
 // ===== GENERAL PAGE =====
 Route::get('/generalPage/viewAllKegiatan/{id}', [generalPageController::class, 'displayGeneralPage'])->name('viewAllKegiatan');
@@ -173,9 +173,9 @@ Route::get('/RegisterPantiSosial-2', function () {
 })->name('registerPantiSosialNext');
 
 // DISPLAY SELECTION
-Route::get('/RegisterSelected', function () {
-    return view('Registration.RegisterSelected');
-})->name('registerSelected');
+// Route::get('/RegisterSelected', function () {
+//     return view('Registration.RegisterSelected');
+// })->name('registerSelected');
 
 //DISPLAY DONATUR RELAWAN
 Route::get('/RegisterDonaturRelawan', function () {

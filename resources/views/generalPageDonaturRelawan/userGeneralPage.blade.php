@@ -1,4 +1,4 @@
-@extends('GeneralPageDonaturRelawan/templateDonaturRelawan')
+@extends('generalPageDonaturRelawan/templateDonaturRelawan')
 
 @section('title', 'Halaman Utama')
 

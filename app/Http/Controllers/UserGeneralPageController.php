@@ -63,7 +63,7 @@ class UserGeneralPageController extends Controller
             $relawan->setAttribute('jarakKm', $jarakKm);
         }
 
-        return view('GeneralPageDonaturRelawan.userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons', 'donaturRelawan', 'id'));
+        return view('generalPageDonaturRelawan.userGeneralPage', compact('kegiatanDonasi', 'kegiatanRelawan', 'jenisDonasiIcons', 'donaturRelawan', 'id'));
     }
 
 

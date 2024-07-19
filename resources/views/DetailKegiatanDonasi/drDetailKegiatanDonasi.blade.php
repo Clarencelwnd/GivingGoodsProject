@@ -12,7 +12,7 @@
 @section('content')
 <div class="containerDetailDonasi">
     <div class="title">
-        <a href="javascript:history.back()"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
+        <a href="javascript:history.back()"><img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="40px"></a>
         <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
     </div>
 
@@ -31,7 +31,7 @@
             <div class="flex-row">
                 <div class="text" style="padding-right: 12px;">{{ $kegiatanDonasi->LokasiKegiatanDonasi }}</div>
                 <a href="{{ $kegiatanDonasi->pantiSosial->LinkGoogleMapsPantiSosial }}" target="_blank">
-                    <img src="{{ asset('image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
+                    <img src="{{ asset('Image/general/arrowlink.png') }}" alt="Arrow Link" height="13px">
                 </a>
             </div>
             <div class="text" style="font-size: 18px">
@@ -52,7 +52,7 @@
             <div class="subtitle">Kebutuhan Jenis Donasi</div>
             <div class="detail-row">
                 <div class="detail-label">Jenis Donasi
-                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
+                    <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
                 </div>
                 <div class="detail-info-jenis">
                     <div class="donation-options">
@@ -85,7 +85,7 @@
         <div class="question-contact-container">
             <div class="question">Punya Pertanyaan?</div>
             <div class="contact">
-                <img src="{{ asset('image/general/chat.png') }}" alt="Chat Icon">
+                <img src="{{ asset('Image/general/chat.png') }}" alt="Chat Icon">
                 <div class="contact-text">Hubungi {{ $kegiatanDonasi->pantiSosial->NamaPantiSosial }}</div>
             </div>
         </div>
@@ -97,7 +97,7 @@
     <div id="donation-popup">
         <div class="popup-header">
             <h3>Jenis Donasi</h3>
-            <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+            <img src="{{ asset('Image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
         </div>
         <div class="popup-content">
             <div class="popup-column">
