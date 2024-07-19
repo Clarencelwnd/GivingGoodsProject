@@ -15,7 +15,7 @@
 <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('viewAllKegiatan', ['id' => $pantiSosial->IDPantiSosial]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $pantiSosial->IDPantiSosial]) }}"><img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
                 <h1 id="judul-kegiatan-relawan">Buat Kegiatan Relawan</h1>
             </div>
 
@@ -81,7 +81,7 @@
                             <div class="dropdownjenisrelawan" onclick="toggleDropdown()">
                                 <div class="dropdown-select">
                                     <span id="dropdown-selected">{{ old('jenisRelawan', '') }}</span>
-                                    <img id="dropdown-arrow" src="{{ asset('image/general/drop.png') }}" alt="Arrow" width="20px">
+                                    <img id="dropdown-arrow" src="{{ asset('Image/general/drop.png') }}" alt="Arrow" width="20px">
                                 </div>
                                 <div class="dropdown-menu">
                                     <div class="dropdown-item" onclick="selectOption('Bencana_Alam')">Bencana Alam</div>
@@ -109,7 +109,7 @@
                             <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" data-old="{{ old('tglMulai', '') }}" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">
                                 {{ old('tglMulai', '') }}
                             </div>
-                            <img src="{{ asset('image/general/line.png') }}" alt="Back" width="10px">
+                            <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="10px">
                             <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" data-old="{{ old('tglSelesai', '') }}" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">
                                 {{ old('tglSelesai', '') }}
                             </div>
@@ -167,7 +167,7 @@
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi pada Google Maps
-                        <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)">
+                        <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)">
                     </div>
                     <div class="detail-input-container">
                         <div class="detail-info" contenteditable="true" data-old="{{ old('linkGoogleMaps', '') }}" oninput="updateHiddenInput('linkGoogleMapsInput', this.innerText)">
@@ -191,7 +191,7 @@
                             <div class="detail-info-jam" id="jamMulai" contenteditable="true" data-old="{{ old('jamMulai', '') }}" oninput="updateHiddenInput('jamMulaiInput', this.innerText)">
                                 {{ old('jamMulai', '') }}
                             </div>
-                            <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
+                            <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="20px" style="padding-left: 15px; padding-right: 15px;">
                             <div class="detail-info-jam" id="jamSelesai" contenteditable="true" data-old="{{ old('jamSelesai', '') }}" oninput="updateHiddenInput('jamSelesaiInput', this.innerText)">
                                 {{ old('jamSelesai', '') }}
                             </div>

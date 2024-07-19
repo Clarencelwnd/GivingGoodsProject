@@ -15,7 +15,7 @@
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn"  width="30px" height="30px">
+                    <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn"  width="30px" height="30px">
                 </a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
@@ -42,7 +42,7 @@
                     <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                     <div class="detail-dates">
                         <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }} </div>
-                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="10px">
+                        <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="10px">
                         <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}</div>
                         <input type="hidden" name="tglMulai" id="tglMulaiInput" value="{{ $kegiatanDonasi->TanggalKegiatanDonasiMulai }}">
                         <input type="hidden" name="tglSelesai" id="tglSelesaiInput" value="{{ $kegiatanDonasi->TanggalKegiatanDonasiSelesai }}">
@@ -51,7 +51,7 @@
 
                 <div class="detail-row">
                     <div class="detail-label">Jenis Donasi
-                        <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
+                        <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                     </div>
 
                     <div class="detail-info-jenis d-flex justify-content-start">
@@ -93,7 +93,7 @@
 
                 <div class="detail-row">
                     <div class="detail-label">Lokasi pada Google Maps
-                        {{-- <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
+                        {{-- <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showInfoMessage(this)"> --}}
                     </div>
                     <div class="detail-info" style="background-color: #f0f0f0; color: #444444;" readonly>
                         {{ $kegiatanDonasi->LinkGoogleMapsLokasiKegiatanDonasi }}
@@ -135,25 +135,25 @@
         <div id="donation-popup">
             <div class="popup-header">
                 <h3>Jenis Donasi</h3>
-                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+                <img src="{{ asset('Image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
             </div>
 
             <div class="popup-content">
                 <div class="popup-column">
                     <!-- Left Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/pakaian.png') }}" alt="Pakaian"><span>Pakaian</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/makanan.png') }}" alt="Makanan"><span>Makanan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/obat.png') }}" alt="Obat-obatan"><span>Obat-obatan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/buku.png') }}" alt="Buku-buku"><span>Buku-buku</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_ibadah.png') }}" alt="Keperluan Ibadah"><span>Keperluan Ibadah</span></div>
                 </div>
                 <div class="popup-column">
                     <!-- Right Column Items -->
-                    <div class="popup-row"><img src="{{ asset('image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_mandi.png') }}" alt="Keperluan Mandi"><span>Keperluan Mandi</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
-                    <div class="popup-row"><img src="{{ asset('image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/mainan.png') }}" alt="Mainan"><span>Mainan</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_mandi.png') }}" alt="Keperluan Mandi"><span>Keperluan Mandi</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/keperluan_rumah.png') }}" alt="Keperluan Rumah"><span>Keperluan Rumah</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/alat_tulis.png') }}" alt="Alat Tulis"><span>Alat Tulis</span></div>
+                    <div class="popup-row"><img src="{{ asset('Image/donasi/sepatu.png') }}" alt="Sepatu"><span>Sepatu</span></div>
                 </div>
             </div>
         </div>

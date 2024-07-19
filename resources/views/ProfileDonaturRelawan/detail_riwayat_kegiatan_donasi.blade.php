@@ -61,7 +61,7 @@
             <br>
             <div class="caption">
                 Jenis Donasi
-                <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
+                <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="14px" onclick="showDonationPopup()">
             </div>
             <div class="row">
                 @foreach ($detailRegistrasiDonatur->donasiDanGambar as $donasi)
@@ -80,7 +80,7 @@
         <div id="donation-popup">
             <div class="popup-header">
                 <h3>Jenis Donasi</h3>
-                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+                <img src="{{ asset('Image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
             </div>
             <div class="popup-content">
                 <div class="popup-column">

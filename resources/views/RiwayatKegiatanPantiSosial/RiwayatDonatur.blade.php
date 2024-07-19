@@ -14,7 +14,7 @@
         <div class="title-back">
             <div class="back">
                 <a href="{{ route('kegiatan-donasi.show', ['idKegiatanDonasi' => $idKegiatanDonasi, 'idPantiSosial' => $id]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
+                    <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="30px" width="30px">
                 </a>
             </div>
             <div class="col">
@@ -103,7 +103,7 @@
             <div class="popup-header">
                 <div class="popup-title">Detail Donatur</div>
                 <div class="popup-close" onclick="closePopup()">
-                    <img src="{{ asset('image/general/close.png') }}" alt="Close">
+                    <img src="{{ asset('Image/general/close.png') }}" alt="Close">
                 </div>
             </div>
             <!-- Popup data -->

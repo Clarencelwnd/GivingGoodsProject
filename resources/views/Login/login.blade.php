@@ -19,7 +19,7 @@
         <div class="col-lg-6 d-flex align-items-center justify-content-center">
             <div class="card-body p-md-5 d-flex flex-column align-items-center">
                 {{-- HEADER --}}
-                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
+                <img src="{{ asset('Image/general/logo.png') }}" alt="Logo" class="logo">
 
                 <div class="form-container">
                     <h2 id="judul-form">Akses Akun Anda</h2>
@@ -51,7 +51,7 @@
             <div class="already-have-account">
                 Belum Punya Akun? <a href="{{ route('registerSelected') }}">Daftar</a>
             </div>
-            <img src="{{ asset('image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+            <img src="{{ asset('Image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
         </div>
     </div>
 

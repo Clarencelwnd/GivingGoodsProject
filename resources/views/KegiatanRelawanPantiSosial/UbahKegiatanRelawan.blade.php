@@ -16,7 +16,7 @@
         <div class="header">
             <div class="title">
                 <a href="{{ route('kegiatan-relawan.show', ['idKegiatanRelawan' => $idKegiatanRelawan, 'idPantiSosial' => $id]) }}">
-                    <img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
+                    <img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" height="20px">
                 </a>
                 <h1 id="judul-kegiatan-relawan">{{ $kegiatanRelawan->NamaKegiatanRelawan }}</h1>
             </div>
@@ -46,7 +46,7 @@
                     <div class="detail-label">Tanggal Kegiatan Berlangsung</div>
                     <div class="detail-dates">
                         <div class="detail-info-tanggal" id="tglMulai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglMulaiInput', this.innerText)">{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }}</div>
-                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px">
+                        <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="20px">
                         <div class="detail-info-tanggal" id="tglSelesai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('tglSelesaiInput', this.innerText)">{{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai }}</div>
                         <input type="hidden" name="tglMulai" id="tglMulaiInput" value="{{ $kegiatanRelawan->TanggalKegiatanRelawanMulai }}">
                         <input type="hidden" name="tglSelesai" id="tglSelesaiInput" value="{{ $kegiatanRelawan->TanggalKegiatanRelawanSelesai }}">
@@ -76,7 +76,7 @@
                     <div class="detail-label">Jam Kegiatan</div>
                     <div class="detail-time">
                         <div class="detail-info-tanggal" id="jamMulai" contenteditable="true" style="background-color: #f0f0f0;" oninput="updateHiddenInput('jamMulaiInput', this.innerText)">{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}</div>
-                        <img src="{{ asset('image/general/line.png') }}" alt="Back" width="20px" >
+                        <img src="{{ asset('Image/general/line.png') }}" alt="Back" width="20px" >
                         <div class="detail-info-tanggal" id="jamSelesai" contenteditable="true"  oninput="updateHiddenInput('jamSelesaiInput', this.innerText)">{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan  }}</div>
                         <input type="hidden" name="jamMulai" id="jamMulaiInput" value="{{ $kegiatanRelawan->JamMulaiKegiatanRelawan }}">
                         <input type="hidden" name="jamSelesai" id="jamSelesaiInput" value="{{ $kegiatanRelawan->JamSelesaiKegiatanRelawan }}">

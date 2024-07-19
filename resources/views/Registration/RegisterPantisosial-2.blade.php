@@ -20,7 +20,7 @@
         <div class="col-lg-6 d-flex justify-content-center" style="overflow-y: auto; height: 100%;">
             <div class="card-body d-flex flex-column align-items-center">
                 {{-- HEADER --}}
-                <img src="{{ asset('image/general/logo.png') }}" alt="Logo" class="logo">
+                <img src="{{ asset('Image/general/logo.png') }}" alt="Logo" class="logo">
 
                 {{-- FORM --}}
                 <div class="form-container">
@@ -33,7 +33,7 @@
                             <!-- Popup untuk berhasil membuat akun -->
                             <div id="popup">
                                 <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
-                                <img src="{{ asset('image/general/success2.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
+                                <img src="{{ asset('Image/general/success2.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                     Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
                 </div>
                 <div class="footer">
-                    <img src="{{ asset('image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                    <img src="{{ asset('Image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
                 </div>
         </div>
     </div>

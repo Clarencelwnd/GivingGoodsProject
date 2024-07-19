@@ -12,7 +12,7 @@
     <div class="main-content">
         <div class="header">
             <div class="title">
-                <a href="{{ route('viewAllKegiatan', ['id' => $id]) }}"><img src="{{ asset('image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
+                <a href="{{ route('viewAllKegiatan', ['id' => $id]) }}"><img src="{{ asset('Image/general/back.png') }}" alt="Back" class="back-btn" width="30px" height="30px"></a>
                 <h1 id="judul-kegiatan-donasi">{{ $kegiatanDonasi->NamaKegiatanDonasi }}</h1>
             </div>
             <div class="buttons">
@@ -42,7 +42,7 @@
 
             <div class="detail-row">
                 <div class="detail-label">Jenis Donasi
-                    <img src="{{ asset('image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
+                    <img src="{{ asset('Image/general/information.png') }}" alt="Info" class="donation-icon" height="12px" onclick="showDonationPopup()">
                 </div>
                 <div class="detail-info-jenis">
                     <div class="donation-options">
@@ -103,7 +103,7 @@
         <div id="donation-popup">
             <div class="popup-header">
                 <h3>Jenis Donasi</h3>
-                <img src="{{ asset('image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
+                <img src="{{ asset('Image/general/close.png') }}" alt="Close" class="close-icon" onclick="hideDonationPopup()" style="height: 20px">
             </div>
             <div class="popup-content">
                 <div class="popup-column">
