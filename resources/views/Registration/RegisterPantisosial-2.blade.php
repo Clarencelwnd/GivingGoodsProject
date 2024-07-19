@@ -33,7 +33,7 @@
                             <!-- Popup untuk berhasil membuat akun -->
                             <div id="popup">
                                 <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Berhasil Membuat Akun</h3>
-                                <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
+                                <img src="{{ asset('image/general/success2.png') }}" alt="Icon" style="margin-top: 20px; height:70px;">
                             </div>
                         </div>
 
@@ -91,7 +91,7 @@
                     Sudah Punya Akun? <a href="{{ route('login-user') }}">Masuk</a>
                 </div>
                 <div class="footer">
-                    <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                    <img src="{{ asset('image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
                 </div>
         </div>
     </div>

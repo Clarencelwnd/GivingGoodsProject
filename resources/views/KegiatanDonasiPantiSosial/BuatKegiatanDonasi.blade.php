@@ -224,7 +224,7 @@
     <div id="popup-container" style="display: none;">
         <div id="popup">
             <h3 style="color: #1C3F5B; font-size: 24px; font-weight: 700;">Kegiatan Berhasil Dibuat</h3>
-            <img src="{{ asset('image/general/􀁣.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
+            <img src="{{ asset('image/general/success2.png') }}" alt="Icon" style="margin-top: 20px; height:70px; transform: rotate(90deg);">
         </div>
     </div>
 

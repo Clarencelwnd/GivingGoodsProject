@@ -48,7 +48,7 @@
 
                 <!-- Sudah punya akun? -->
                 <div class="footer">
-                    <img src="{{ asset('image/footer/©️GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
+                    <img src="{{ asset('image/footer/GivingGoods _ 2024.png') }}" alt="Footer" class="footer-image">
                 </div>
             </div>
         </div>
