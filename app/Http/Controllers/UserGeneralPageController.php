@@ -74,10 +74,7 @@ class UserGeneralPageController extends Controller
 
     private function getCoordinatesFromGoogleMapsLink($googleMapsLink)
     {
-        $coordinates = [
-            'latitude' => 0,
-            'longitude' => 0
-        ];
+        $coordinates = [];
 
         // Pola regex untuk mengekstrak koordinat dari URL Google Maps
         $pattern = '/@(-?\d+\.\d+),(-?\d+\.\d+)/';
@@ -129,10 +126,10 @@ class UserGeneralPageController extends Controller
                 $distanceKm = $data['routes'][0]['legs'][0]['distance']['value'] / 1000;
                 return $distanceKm;
             } else {
-                return 0; // Jika tidak ada jarak yang valid
+                return null; // Jika tidak ada jarak yang valid
             }
         } else {
-            return 0; // Jika respons API tidak valid atau tidak ada rute ditemukan
+            return null; // Jika respons API tidak valid atau tidak ada rute ditemukan
         }
     }
 
