@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\forumPantiSosialController;
+use App\Http\Controllers\ForumPantiSosialController;
 use App\Http\Controllers\generalPageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\KomentarForumPantiSosialController;
@@ -96,9 +96,9 @@ Route::post('/update-status-relawan/{idRegistrasiRelawan}', [RiwayatRelawanContr
 Route::post('/update-status-checkbox-relawan/{idRegistrasiRelawan}', [RiwayatRelawanController::class, 'updateStatusCheckbox'])->name('update-status-checkbox-relawan');
 
 // ===== FORUM =====
-Route::get('/daftarForumPantiSosial/{id}', [forumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForumPantiSosial');
-Route::post('/daftarForumPantiSosial/{id}', [forumPantiSosialController::class, 'buatForum'])->name('buatForumPantiSosial');
-Route::get('/forumPantiSosial/{idPantiSosial}/{idForum}', [forumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForumPantiSosial');
+Route::get('/daftarForumPantiSosial/{id}', [ForumPantiSosialController::class, 'displayDaftarForum'])->name('displayDaftarForumPantiSosial');
+Route::post('/daftarForumPantiSosial/{id}', [ForumPantiSosialController::class, 'buatForum'])->name('buatForumPantiSosial');
+Route::get('/forumPantiSosial/{idPantiSosial}/{idForum}', [ForumPantiSosialController::class, 'displayDetailForum'])->name('displayDetailForumPantiSosial');
 Route::post('/komentarForumPantiSosial/{idPantiSosial}', [KomentarForumPantiSosialController::class, 'storeKomentar'])->name('simpanKomentarForumPantiSosial');
 
 // === FAQ ===
